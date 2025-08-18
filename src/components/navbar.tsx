@@ -7,12 +7,15 @@ import {
 } from '@headlessui/react'
 import { Bars2Icon } from '@heroicons/react/24/solid'
 import { motion } from 'framer-motion'
+import { LanguageSwitcher } from './language-switcher'
 import { Link } from './link'
 import { Logo } from './logo'
 import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
 
 const links = [
-  { href: '/pricing', label: 'Pricing' },
+  { href: '/support-packages', label: 'Support Packages' },
+  { href: '/hosting', label: 'Hosting' },
+  { href: '/domains', label: 'Domains' },
   { href: '/company', label: 'Company' },
   { href: '/blog', label: 'Blog' },
   { href: '/login', label: 'Login' },
@@ -31,6 +34,11 @@ function DesktopNav() {
           </Link>
         </PlusGridItem>
       ))}
+      <PlusGridItem className="relative flex">
+        <div className="flex items-center px-4 py-3">
+          <LanguageSwitcher />
+        </div>
+      </PlusGridItem>
     </nav>
   )
 }
@@ -66,6 +74,21 @@ function MobileNav() {
             </Link>
           </motion.div>
         ))}
+        <motion.div
+          initial={{ opacity: 0, rotateX: -90 }}
+          animate={{ opacity: 1, rotateX: 0 }}
+          transition={{
+            duration: 0.15,
+            ease: 'easeInOut',
+            rotateX: { duration: 0.3, delay: links.length * 0.1 },
+          }}
+          className="border-t border-black/5 pt-2"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-gray-600">Language</span>
+            <LanguageSwitcher />
+          </div>
+        </motion.div>
       </div>
       <div className="absolute left-1/2 w-screen -translate-x-1/2">
         <div className="absolute inset-x-0 top-0 border-t border-black/5" />
@@ -88,7 +111,12 @@ export function Navbar() {
             </PlusGridItem>
           </div>
           <DesktopNav />
-          <MobileNavButton />
+          <div className="flex items-center gap-4 lg:hidden">
+            <div className="hidden lg:block">
+              <LanguageSwitcher />
+            </div>
+            <MobileNavButton />
+          </div>
         </PlusGridRow>
       </PlusGrid>
       <MobileNav />

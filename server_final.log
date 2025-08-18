@@ -1,0 +1,192 @@
+
+> radiant@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.4.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.103:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1533ms
+ ✓ Compiled /middleware in 404ms (133 modules)
+🔥 MIDDLEWARE CALLED 🔥 /
+pathname in middleware /
+Calling i18nRouter for: /
+i18nRouter result: {
+  cookies: ResponseCookies {},
+  url: '',
+  body: null,
+  bodyUsed: false,
+  headers: { location: 'http://localhost:3000/en' },
+  ok: false,
+  redirected: false,
+  status: 307,
+  statusText: '',
+  type: 'default'
+}
+ ✓ Compiled in 78ms (133 modules)
+🔥 MIDDLEWARE CALLED 🔥 /pricing
+pathname in middleware /pricing
+Calling i18nRouter for: /pricing
+i18nRouter result: {
+  cookies: ResponseCookies {},
+  url: '',
+  body: null,
+  bodyUsed: false,
+  headers: { location: 'http://localhost:3000/en/pricing' },
+  ok: false,
+  redirected: false,
+  status: 307,
+  statusText: '',
+  type: 'default'
+}
+🔥 MIDDLEWARE CALLED 🔥 /en/pricing
+pathname in middleware /en/pricing
+Calling i18nRouter for: /en/pricing
+i18nRouter result: {
+  cookies: ResponseCookies {"NEXT_LOCALE":{"name":"NEXT_LOCALE","value":"en","path":"/","sameSite":"lax","maxAge":31536000,"expires":"2026-08-18T12:53:26.064Z"}},
+  url: '',
+  body: null,
+  bodyUsed: false,
+  headers: {
+  set-cookie: 'NEXT_LOCALE=en; Path=/; Expires=Tue, 18 Aug 2026 12:53:26 GMT; Max-Age=31536000; SameSite=lax',
+  x-middleware-next: '1',
+  x-middleware-override-headers: 'accept,accept-encoding,accept-language,connection,cookie,host,next-url,referer,sec-ch-ua,sec-ch-ua-mobile,sec-ch-ua-platform,sec-fetch-dest,sec-fetch-mode,sec-fetch-site,user-agent,x-forwarded-for,x-forwarded-host,x-forwarded-port,x-forwarded-proto',
+  x-middleware-request-accept: '*/*',
+  x-middleware-request-accept-encoding: 'gzip, deflate, br, zstd',
+  x-middleware-request-accept-language: 'en-GB,en-US;q=0.9,en;q=0.8',
+  x-middleware-request-connection: 'keep-alive',
+  x-middleware-request-cookie: 'MicrosoftApplicationsTelemetryDeviceId=1e472988-c157-4b2d-a32b-2cdd5f335f28; MicrosoftApplicationsTelemetryFirstLaunchTime=2025-05-19T11:36:45.049Z; __next_hmr_refresh_hash__=c2f33e3fe856c5173b7c8b7b384a6ecf633457081244afec; next-auth.csrf-token=2da1e9d03ab339169118a8585fb85efa6bde9a262b0c6172e3602bce196ec91e%7C158e2d7f193d92ac4bd237dc06f8f8eb5a438d9912a1afd1b649b7e57d490fff; next-auth.callback-url=http%3A%2F%2Flocalhost%3A3000%2Fguides; MicrosoftApplicationsTelemetryDeviceId=1e472988-c157-4b2d-a32b-2cdd5f335f28; MicrosoftApplicationsTelemetryFirstLaunchTime=2025-05-19T11:36:45.049Z; next-auth.session-token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..LmEkJvUbOFVmQzTh.sh8R9XsXndhZX_miGU8uKI8KTgn-OM8eSCkFIBhURXgHGTQ5SUJzXdo2-8ChdBYRaPk0SOrjNmwIkCnIyRtTaLYf12ZGLY8PZfZBzOmsw6sXnDZ6PxcQHYwSNAYsrQBf9UCgRJsmC_cLtlpmGOJcjNaXIw.NoMIEDzbGvFBRFxlw5vg8g; ajs_anonymous_id=%226e96d3ee-a583-45ce-848d-b77c3949accd%22; __next_hmr_refresh_hash__=6e00ac0d46142ffaa1a2f85c31bcc337633457081244afec',
+  x-middleware-request-host: 'localhost:3000',
+  x-middleware-request-next-url: '/en',
+  x-middleware-request-referer: 'http://localhost:3000/en',
+  x-middleware-request-sec-ch-ua: '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+  x-middleware-request-sec-ch-ua-mobile: '?0',
+  x-middleware-request-sec-ch-ua-platform: '"macOS"',
+  x-middleware-request-sec-fetch-dest: 'empty',
+  x-middleware-request-sec-fetch-mode: 'cors',
+  x-middleware-request-sec-fetch-site: 'same-origin',
+  x-middleware-request-user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+  x-middleware-request-x-forwarded-for: '::1',
+  x-middleware-request-x-forwarded-host: 'localhost:3000',
+  x-middleware-request-x-forwarded-port: '3000',
+  x-middleware-request-x-forwarded-proto: 'http',
+  x-middleware-set-cookie: 'NEXT_LOCALE=en; Path=/; Expires=Tue, 18 Aug 2026 12:53:26 GMT; Max-Age=31536000; SameSite=lax',
+  x-next-i18n-router-locale: 'en'
+},
+  ok: true,
+  redirected: false,
+  status: 200,
+  statusText: '',
+  type: 'default'
+}
+ ○ Compiling /[lang]/pricing ...
+ ✓ Compiled /[lang]/pricing in 3s (2171 modules)
+ GET /en/pricing 200 in 3734ms
+🔥 MIDDLEWARE CALLED 🔥 /en/pricing
+pathname in middleware /en/pricing
+Calling i18nRouter for: /en/pricing
+i18nRouter result: {
+  cookies: ResponseCookies {},
+  url: '',
+  body: null,
+  bodyUsed: false,
+  headers: {
+  x-middleware-next: '1',
+  x-middleware-override-headers: 'accept,accept-encoding,accept-language,cache-control,connection,cookie,host,sec-ch-ua,sec-ch-ua-mobile,sec-ch-ua-platform,sec-fetch-dest,sec-fetch-mode,sec-fetch-site,sec-fetch-user,upgrade-insecure-requests,user-agent,x-forwarded-for,x-forwarded-host,x-forwarded-port,x-forwarded-proto',
+  x-middleware-request-accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+  x-middleware-request-accept-encoding: 'gzip, deflate, br, zstd',
+  x-middleware-request-accept-language: 'en-GB,en-US;q=0.9,en;q=0.8',
+  x-middleware-request-cache-control: 'max-age=0',
+  x-middleware-request-connection: 'keep-alive',
+  x-middleware-request-cookie: 'MicrosoftApplicationsTelemetryDeviceId=1e472988-c157-4b2d-a32b-2cdd5f335f28; MicrosoftApplicationsTelemetryFirstLaunchTime=2025-05-19T11:36:45.049Z; __next_hmr_refresh_hash__=c2f33e3fe856c5173b7c8b7b384a6ecf633457081244afec; next-auth.csrf-token=2da1e9d03ab339169118a8585fb85efa6bde9a262b0c6172e3602bce196ec91e%7C158e2d7f193d92ac4bd237dc06f8f8eb5a438d9912a1afd1b649b7e57d490fff; next-auth.callback-url=http%3A%2F%2Flocalhost%3A3000%2Fguides; MicrosoftApplicationsTelemetryDeviceId=1e472988-c157-4b2d-a32b-2cdd5f335f28; MicrosoftApplicationsTelemetryFirstLaunchTime=2025-05-19T11:36:45.049Z; next-auth.session-token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..LmEkJvUbOFVmQzTh.sh8R9XsXndhZX_miGU8uKI8KTgn-OM8eSCkFIBhURXgHGTQ5SUJzXdo2-8ChdBYRaPk0SOrjNmwIkCnIyRtTaLYf12ZGLY8PZfZBzOmsw6sXnDZ6PxcQHYwSNAYsrQBf9UCgRJsmC_cLtlpmGOJcjNaXIw.NoMIEDzbGvFBRFxlw5vg8g; ajs_anonymous_id=%226e96d3ee-a583-45ce-848d-b77c3949accd%22; __next_hmr_refresh_hash__=6e00ac0d46142ffaa1a2f85c31bcc337633457081244afec; NEXT_LOCALE=en',
+  x-middleware-request-host: 'localhost:3000',
+  x-middleware-request-sec-ch-ua: '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+  x-middleware-request-sec-ch-ua-mobile: '?0',
+  x-middleware-request-sec-ch-ua-platform: '"macOS"',
+  x-middleware-request-sec-fetch-dest: 'document',
+  x-middleware-request-sec-fetch-mode: 'navigate',
+  x-middleware-request-sec-fetch-site: 'same-origin',
+  x-middleware-request-sec-fetch-user: '?1',
+  x-middleware-request-upgrade-insecure-requests: '1',
+  x-middleware-request-user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+  x-middleware-request-x-forwarded-for: '::1',
+  x-middleware-request-x-forwarded-host: 'localhost:3000',
+  x-middleware-request-x-forwarded-port: '3000',
+  x-middleware-request-x-forwarded-proto: 'http',
+  x-next-i18n-router-locale: 'en'
+},
+  ok: true,
+  redirected: false,
+  status: 200,
+  statusText: '',
+  type: 'default'
+}
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 792ms (2178 modules)
+ GET /en/pricing 404 in 1036ms
+🔥 MIDDLEWARE CALLED 🔥 /.well-known/appspecific/com.chrome.devtools.json
+pathname in middleware /.well-known/appspecific/com.chrome.devtools.json
+Calling i18nRouter for: /.well-known/appspecific/com.chrome.devtools.json
+i18nRouter result: {
+  cookies: ResponseCookies {},
+  url: '',
+  body: null,
+  bodyUsed: false,
+  headers: {
+  location: 'http://localhost:3000/en/.well-known/appspecific/com.chrome.devtools.json'
+},
+  ok: false,
+  redirected: false,
+  status: 307,
+  statusText: '',
+  type: 'default'
+}
+🔥 MIDDLEWARE CALLED 🔥 /en/.well-known/appspecific/com.chrome.devtools.json
+pathname in middleware /en/.well-known/appspecific/com.chrome.devtools.json
+Calling i18nRouter for: /en/.well-known/appspecific/com.chrome.devtools.json
+i18nRouter result: {
+  cookies: ResponseCookies {},
+  url: '',
+  body: null,
+  bodyUsed: false,
+  headers: {
+  x-middleware-next: '1',
+  x-middleware-override-headers: 'accept-encoding,accept-language,connection,cookie,host,sec-fetch-dest,sec-fetch-mode,sec-fetch-site,user-agent,x-forwarded-for,x-forwarded-host,x-forwarded-port,x-forwarded-proto',
+  x-middleware-request-accept-encoding: 'gzip, deflate, br, zstd',
+  x-middleware-request-accept-language: 'en-GB,en-US;q=0.9,en;q=0.8',
+  x-middleware-request-connection: 'keep-alive',
+  x-middleware-request-cookie: 'MicrosoftApplicationsTelemetryDeviceId=1e472988-c157-4b2d-a32b-2cdd5f335f28; MicrosoftApplicationsTelemetryFirstLaunchTime=2025-05-19T11:36:45.049Z; __next_hmr_refresh_hash__=c2f33e3fe856c5173b7c8b7b384a6ecf633457081244afec; next-auth.csrf-token=2da1e9d03ab339169118a8585fb85efa6bde9a262b0c6172e3602bce196ec91e%7C158e2d7f193d92ac4bd237dc06f8f8eb5a438d9912a1afd1b649b7e57d490fff; next-auth.callback-url=http%3A%2F%2Flocalhost%3A3000%2Fguides; MicrosoftApplicationsTelemetryDeviceId=1e472988-c157-4b2d-a32b-2cdd5f335f28; MicrosoftApplicationsTelemetryFirstLaunchTime=2025-05-19T11:36:45.049Z; next-auth.session-token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..LmEkJvUbOFVmQzTh.sh8R9XsXndhZX_miGU8uKI8KTgn-OM8eSCkFIBhURXgHGTQ5SUJzXdo2-8ChdBYRaPk0SOrjNmwIkCnIyRtTaLYf12ZGLY8PZfZBzOmsw6sXnDZ6PxcQHYwSNAYsrQBf9UCgRJsmC_cLtlpmGOJcjNaXIw.NoMIEDzbGvFBRFxlw5vg8g; ajs_anonymous_id=%226e96d3ee-a583-45ce-848d-b77c3949accd%22; __next_hmr_refresh_hash__=6e00ac0d46142ffaa1a2f85c31bcc337633457081244afec; NEXT_LOCALE=en',
+  x-middleware-request-host: 'localhost:3000',
+  x-middleware-request-sec-fetch-dest: 'empty',
+  x-middleware-request-sec-fetch-mode: 'no-cors',
+  x-middleware-request-sec-fetch-site: 'same-origin',
+  x-middleware-request-user-agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+  x-middleware-request-x-forwarded-for: '::1',
+  x-middleware-request-x-forwarded-host: 'localhost:3000',
+  x-middleware-request-x-forwarded-port: '3000',
+  x-middleware-request-x-forwarded-proto: 'http',
+  x-next-i18n-router-locale: 'en'
+},
+  ok: true,
+  redirected: false,
+  status: 200,
+  statusText: '',
+  type: 'default'
+}
+ GET /_next/static/chunks/main-app.js?v=1755521622069 404 in 47ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 46ms
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 404 in 14ms
+ ✓ Compiled /favicon.ico in 173ms (1355 modules)
+ GET /favicon.ico 200 in 256ms
+ ✓ Compiled in 590ms (969 modules)
+
+Error parsing `/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|manifest.json|.*\.(png|jpg|jpeg|gif|svg|ico|webp|avif|css|js|json|xml|txt|pdf|woff|woff2|ttf|eot|mp4|webm|mp3|wav)$).*)` https://nextjs.org/docs/messages/invalid-route-source
+Reason: Capturing groups are not allowed at 87
+
+  /((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|manifest.json|.*\.(png|jpg|jpeg|gif|svg|ico|webp|avif|css|js|json|xml|txt|pdf|woff|woff2|ttf|eot|mp4|webm|mp3|wav)$).*)
+                                                                                         ^
+
+ ⨯ /src/middleware contains invalid middleware config: Invalid source '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|manifest.json|.*\.(png|jpg|jpeg|gif|svg|ico|webp|avif|css|js|json|xml|txt|pdf|woff|woff2|ttf|eot|mp4|webm|mp3|wav)$).*)': Capturing groups are not allowed at 87 at "matcher[0]"
+[?25h

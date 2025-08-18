@@ -1,0 +1,15 @@
+
+> radiant@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.4.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.103:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1590ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 840ms (524 modules)
+ GET / 404 in 1050ms
+[?25h

@@ -159,7 +159,7 @@ function SocialLinks() {
 function Copyright() {
   return (
     <div className="text-sm/6 text-gray-950">
-      &copy; {new Date().getFullYear()} Host Jamstack Inc.
+      &copy; {new Date().getFullYear()} Host Jamstack. All rights reserved.
     </div>
   )
 }
@@ -240,12 +240,13 @@ export function Footer({
               <div className="flex flex-col gap-4 sm:flex-row sm:gap-8">
                 <PlusGridItem className="py-3">
                   <CompanyDetails />
-                  <Copyright />
+                  {/* <Copyright /> */}
                 </PlusGridItem>
               </div>
               <div className="flex">
                 <PlusGridItem className="flex items-center gap-8 py-3">
-                  <SocialLinks />
+                  {/* <SocialLinks /> */}
+                  <Copyright />
                 </PlusGridItem>
               </div>
             </PlusGridRow>

@@ -31,7 +31,7 @@ function Hero() {
         <Navbar />
         <div className="pt-16 pb-24 sm:pt-24 sm:pb-32 md:pt-32 md:pb-48">
           <h1 className="font-display text-6xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-8xl/[0.8] md:text-9xl/[0.8]">
-            Launch Safely
+            You build, we deploy.
           </h1>
           <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
             Helping makers ship safely. Deploy your Next.js, Astro, Vite or
@@ -55,12 +55,12 @@ function FeatureSection() {
     <div className="overflow-hidden">
       <Container className="pb-24">
         <Heading as="h2" className="max-w-3xl">
-          A snapshot of your entire sales pipeline.
+          Easy to deploy, easy to scale.
         </Heading>
         <Screenshot
           width={1216}
           height={768}
-          src="/screenshots/app.png"
+          src="/screenshots/app-2.png"
           className="mt-16 h-144 sm:h-auto sm:w-304"
         />
       </Container>

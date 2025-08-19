@@ -13,9 +13,9 @@ import { Logo } from './logo'
 import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
 
 const links = [
-  { href: '/support-packages', label: 'Support Packages' },
   { href: '/hosting', label: 'Hosting' },
   { href: '/domains', label: 'Domains' },
+  { href: '/support-packages', label: 'Support Packages' },
   { href: '/company', label: 'Company' },
   { href: '/blog', label: 'Blog' },
   { href: '/login', label: 'Login' },

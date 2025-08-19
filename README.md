@@ -1,6 +1,6 @@
-# Radiant
+# Host Jamstack
 
-Radiant is a [Tailwind Plus](https://tailwindcss.com/plus) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org), with a blog powered by [Sanity](https://www.sanity.io).
+Host Jamstack is a [Tailwind Plus](https://tailwindcss.com/plus) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org), with a blog powered by [Sanity](https://www.sanity.io).
 
 ## Getting started
 
@@ -13,7 +13,7 @@ npm install
 Next, create a new Sanity project to power the blog within this template:
 
 ```bash
-npm create sanity@latest -- --env=.env.local --create-project "Radiant Blog" --dataset production
+npm create sanity@latest -- --env=.env.local --create-project "Host Jamstack Blog" --dataset production
 ```
 
 This will prompt you to create a new Sanity account if you don't have one already. When asked "Would you like to add configuration files for a Sanity project in this Next.js folder?", choose "n".
@@ -50,4 +50,5 @@ To learn more about the technologies used in this site template, see the followi
 - [Next.js](https://nextjs.org/docs) - the official Next.js documentation
 - [Headless UI](https://headlessui.dev) - the official Headless UI documentation
 - [Sanity](https://www.sanity.io) - the Sanity website
+
 # hostjamstack

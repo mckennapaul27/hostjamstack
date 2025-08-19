@@ -7,7 +7,7 @@ import { apiVersion, dataset, projectId } from './src/sanity/env'
 import { schema } from './src/sanity/schema'
 
 export default defineConfig({
-  name: 'Radiant',
+  name: 'Host Jamstack',
   basePath: '/studio',
   projectId,
   dataset,

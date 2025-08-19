@@ -1,15 +1,18 @@
 import { BentoCard } from '@/components/bento-card'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
+import { DomainSearchBox } from '@/components/domain-search-box'
 import { Footer } from '@/components/footer'
 import { Gradient } from '@/components/gradient'
 import { Keyboard } from '@/components/keyboard'
 import { LinkedAvatars } from '@/components/linked-avatars'
-import { LogoCloud } from '@/components/logo-cloud'
+import { LogoCloudFrameworks } from '@/components/logo-cloud-frameworks'
 import { LogoCluster } from '@/components/logo-cluster'
 import { LogoTimeline } from '@/components/logo-timeline'
 import { Map } from '@/components/map'
 import { Navbar } from '@/components/navbar'
+import PricingCards from '@/components/pricing-cards'
+import PricingTable, { tiers } from '@/components/pricing-table'
 import { Screenshot } from '@/components/screenshot'
 import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
@@ -17,7 +20,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   description:
-    'Radiant helps you sell more by revealing sensitive information about your customers.',
+    'Host Jamstack helps you sell more by revealing sensitive information about your customers.',
 }
 
 function Hero() {
@@ -31,9 +34,9 @@ function Hero() {
             Launch Safely
           </h1>
           <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
-            Helping non-technical makers ship safely. Build in Bolt, Lovable,
-            Replit or other modern website builders — we handle the complicated
-            parts with hosting and one-off helper packs.
+            Helping makers ship safely. Deploy your Next.js, Astro, Vite or
+            other JAMstack apps with automatic SSL, CDN, and performance
+            optimization included.
           </p>
           <div className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
             <Button href="/pricing">Get started</Button>
@@ -77,7 +80,7 @@ function BentoSection() {
         <BentoCard
           eyebrow="Insight"
           title="Get perfect clarity"
-          description="Radiant uses social engineering to build a detailed financial picture of your leads. Know their budget, compensation package, social security number, and more."
+          description="Host Jamstack uses social engineering to build a detailed financial picture of your leads. Know their budget, compensation package, social security number, and more."
           graphic={
             <div className="h-80 bg-[url(/screenshots/profile.png)] bg-size-[1000px_560px] bg-position-[left_-109px_top_-112px] bg-no-repeat" />
           }
@@ -115,7 +118,7 @@ function BentoSection() {
         <BentoCard
           eyebrow="Limitless"
           title="Sell globally"
-          description="Radiant helps you sell in locations currently under international embargo."
+          description="Host Jamstack helps you sell in locations currently under international embargo."
           graphic={<Map />}
           className="max-lg:rounded-b-4xl lg:col-span-2 lg:rounded-br-4xl"
         />
@@ -138,7 +141,7 @@ function DarkBentoSection() {
             dark
             eyebrow="Networking"
             title="Sell at the speed of light"
-            description="Our RadiantAI chat assistants analyze the sentiment of your conversations in real time, ensuring you're always one step ahead."
+            description="Our Host JamstackAI chat assistants analyze the sentiment of your conversations in real time, ensuring you're always one step ahead."
             graphic={
               <div className="h-80 bg-[url(/screenshots/networking.png)] bg-size-[851px_344px] bg-no-repeat" />
             }
@@ -166,7 +169,7 @@ function DarkBentoSection() {
             dark
             eyebrow="Engagement"
             title="Become a thought leader"
-            description="RadiantAI automatically writes LinkedIn posts that relate current events to B2B sales, helping you build a reputation as a thought leader."
+            description="Host JamstackAI automatically writes LinkedIn posts that relate current events to B2B sales, helping you build a reputation as a thought leader."
             graphic={
               <div className="h-80 bg-[url(/screenshots/engagement.png)] bg-size-[851px_344px] bg-no-repeat" />
             }
@@ -180,18 +183,28 @@ function DarkBentoSection() {
 }
 
 export default function Home() {
+  let tier = tiers[0]
   return (
     <div className="overflow-hidden">
       <Hero />
       <main>
         <Container className="mt-10">
-          <LogoCloud />
+          <LogoCloudFrameworks />
         </Container>
-        <div className="bg-linear-to-b from-white from-50% to-gray-100 py-32">
+        <div className="bg-linear-to-b from-white from-50% to-gray-100 pt-32">
           <FeatureSection />
-          <BentoSection />
+          <Container>
+            <Subheading>Jamstack Hosting</Subheading>
+            <Heading as="h3" className="mt-2 max-w-3xl">
+              Find a plan to power your apps.
+            </Heading>
+            <PricingCards />
+            <PricingTable selectedTier={tier} />
+          </Container>
+          {/* <BentoSection /> */}
         </div>
-        <DarkBentoSection />
+        {/* <DarkBentoSection /> */}
+        <DomainSearchBox />
       </main>
       <Testimonials />
       <Footer />

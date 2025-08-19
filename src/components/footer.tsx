@@ -6,23 +6,35 @@ import { Link } from './link'
 import { Logo } from './logo'
 import { Subheading } from './text'
 
-function CallToAction() {
+function CallToAction({
+  title,
+  description,
+  subtitle,
+  button,
+  link,
+}: {
+  title: string
+  description: string
+  subtitle: string
+  button: string
+  link: string
+}) {
   return (
     <div className="relative pt-20 pb-16 text-center sm:py-24">
       <hgroup>
         <Subheading>Get started</Subheading>
         <p className="mt-6 text-3xl font-medium tracking-tight text-gray-950 sm:text-5xl">
-          Ready to launch safely?
+          {title}
           <br />
-          Explore our packages.
+          {description}
         </p>
       </hgroup>
       <p className="mx-auto mt-6 max-w-xs text-sm/6 text-gray-500">
-        You’ve built something great. Let’s make it live—safely.
+        {subtitle}
       </p>
       <div className="mt-6">
-        <Button className="w-full sm:w-auto" href="#">
-          Get started
+        <Button className="w-full sm:w-auto" href={link}>
+          {button}
         </Button>
       </div>
     </div>
@@ -147,18 +159,70 @@ function SocialLinks() {
 function Copyright() {
   return (
     <div className="text-sm/6 text-gray-950">
-      &copy; {new Date().getFullYear()} Radiant Inc.
+      &copy; {new Date().getFullYear()} Host Jamstack Inc.
     </div>
   )
 }
 
-export function Footer() {
+function CompanyDetails() {
+  return (
+    <div className="text-sm/6 text-gray-950">
+      <div className="font-medium">DRP Solutions ltd</div>
+      <div>Company number 208392740</div>
+      <div>Trakia, bl 216, Vh B, ap 8</div>
+      <div>Plovdiv</div>
+    </div>
+  )
+}
+
+const footerCtaContent = {
+  support: {
+    title: 'Ready to launch safely?',
+    description: 'Explore our packages.',
+    subtitle: 'You’ve built something great. Let’s make it live—safely.',
+    button: 'Explore support packages',
+    link: '/support-packages',
+  },
+  hosting: {
+    title: 'Ready for production?',
+    description: 'Explore our packages.',
+    subtitle: 'You’ve built something great. Let’s make it live—safely.',
+    button: 'Explore hosting packages',
+    link: '/hosting',
+  },
+  domains: {
+    title: 'Ready for production?',
+    description: 'Explore our packages.',
+    subtitle: 'You’ve built something great. Let’s make it live—safely.',
+    button: 'Explore domains',
+    link: '/domains',
+  },
+  general: {
+    title: 'Ready to launch safely?',
+    description: 'Explore our packages.',
+    subtitle: 'You’ve built something great. Let’s make it live—safely.',
+    button: 'Explore support packages',
+    link: '/support-packages',
+  },
+}
+
+export function Footer({
+  type = 'general',
+}: {
+  type?: 'hosting' | 'support' | 'domains' | 'general'
+}) {
   return (
     <footer>
       <Gradient className="relative">
         <div className="absolute inset-2 rounded-4xl bg-white/80" />
         <Container>
-          <CallToAction />
+          <CallToAction
+            title={footerCtaContent[type].title}
+            subtitle={footerCtaContent[type].subtitle}
+            description={footerCtaContent[type].description}
+            button={footerCtaContent[type].button}
+            link={footerCtaContent[type].link}
+          />
           <PlusGrid className="pb-16">
             <PlusGridRow>
               <div className="grid grid-cols-2 gap-y-10 pb-6 lg:grid-cols-6 lg:gap-8">
@@ -173,8 +237,9 @@ export function Footer() {
               </div>
             </PlusGridRow>
             <PlusGridRow className="flex justify-between">
-              <div>
+              <div className="flex flex-col gap-4 sm:flex-row sm:gap-8">
                 <PlusGridItem className="py-3">
+                  <CompanyDetails />
                   <Copyright />
                 </PlusGridItem>
               </div>

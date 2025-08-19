@@ -3,8 +3,8 @@ import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { Gradient, GradientBackground } from '@/components/gradient'
 import { Link } from '@/components/link'
-import { LogoCloud } from '@/components/logo-cloud'
 import { Navbar } from '@/components/navbar'
+import { tiers } from '@/components/pricing-table'
 import { Heading, Lead, Subheading } from '@/components/text'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import {
@@ -12,142 +12,23 @@ import {
   ChevronUpDownIcon,
   MinusIcon,
 } from '@heroicons/react/16/solid'
-import type { Metadata } from 'next'
 
-type TierFeature = {
-  section: string
-  name: string
-  value: boolean | string | number
-}
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'Companies all over the world have closed millions of deals with Host Jamstack. Sign up today and start selling smarter.',
+    'Companies all over the world have closed millions of deals with Radiant. Sign up today and start selling smarter.',
 }
-
-const tiers = [
-  {
-    name: 'Tiny Tweak' as const,
-    slug: 'tiny-tweak',
-    description: 'A single, quick hosting task.',
-    price: 10,
-    currency: 'EUR',
-    billing: 'one-off',
-    href: '#',
-    cta: 'Buy Tiny Tweak',
-    highlights: [
-      { description: 'Trigger a redeploy' },
-      { description: 'Add 1 DNS record' },
-      { description: 'Add 1 env var' },
-      { description: 'Add 1 redirect / rewrite' },
-      { description: 'SSL check' },
-      { description: 'No hosting included · No code changes', disabled: true },
-    ],
-    features: [] as TierFeature[],
-  },
-  {
-    name: 'Quick Fix' as const,
-    slug: 'quick-fix',
-    description: 'Small setup fixes on an existing site.',
-    price: 25,
-    currency: 'EUR',
-    billing: 'one-off',
-    href: '#',
-    cta: 'Buy Quick Fix',
-    highlights: [
-      { description: 'Connect 1 custom domain + SSL' },
-      { description: 'Up to 3 env vars' },
-      { description: 'Up to 3 redirects / rewrites' },
-      { description: 'One deploy hook' },
-      { description: 'Production health check' },
-      { description: 'No hosting included' },
-    ],
-    features: [] as TierFeature[],
-  },
-  {
-    name: 'First Deploy' as const,
-    slug: 'first-deploy',
-    description: 'Take a repo that already builds and put it live.',
-    price: 50,
-    currency: 'EUR',
-    billing: 'one-off',
-    href: '#',
-    cta: 'Buy First Deploy',
-    highlights: [
-      { description: 'Create project from Git' },
-      { description: 'Configure build / output' },
-      { description: 'Attach 1 production domain + SSL' },
-      { description: 'Up to 5 env vars & 5 redirects' },
-      { description: 'Handover checklist' },
-      { description: '3 months hosting included (fair-use)' },
-    ],
-    features: [] as TierFeature[],
-  },
-  {
-    name: 'Launch Pack' as const,
-    slug: 'launch-pack',
-    description: 'Polished go-live for brochure/marketing sites.',
-    price: 100,
-    currency: 'EUR',
-    billing: 'one-off',
-    href: '#',
-    cta: 'Buy Launch Pack (recommended)',
-    highlights: [
-      { description: 'Everything in First Deploy' },
-      { description: 'Staging subdomain' },
-      { description: 'Performance / cache headers' },
-      { description: 'Custom 404 / 500 pages' },
-      { description: 'Up to 10 redirects / rewrites' },
-      { description: 'Basic deploy notifications' },
-      { description: 'Go-live / rollback plan' },
-      { description: '12 months hosting included (fair-use)' },
-    ],
-    features: [] as TierFeature[],
-  },
-  {
-    name: 'Migration Mini' as const,
-    slug: 'migration-mini',
-    description: 'Move a small static site to modern hosting.',
-    price: 250,
-    currency: 'EUR',
-    billing: 'one-off',
-    href: '#',
-    cta: 'Buy Migration Mini',
-    highlights: [
-      { description: 'Everything in Launch Pack' },
-      { description: 'Migrate up to 10 pages' },
-      { description: 'Preserve URLs where possible' },
-      { description: 'Up to 20 301 redirects' },
-      { description: 'Custom domain + SSL' },
-      { description: 'Zero-downtime cutover' },
-      { description: 'Contact form via serverless' },
-      { description: 'Security headers' },
-    ],
-    features: [
-      { section: 'Features', name: 'Accounts', value: 3 },
-      { section: 'Features', name: 'Deal progress boards', value: 5 },
-      { section: 'Features', name: 'Sourcing platforms', value: 'Select' },
-      { section: 'Features', name: 'Contacts', value: 100 },
-      { section: 'Features', name: 'AI assisted outreach', value: false },
-      { section: 'Analysis', name: 'Competitor analysis', value: false },
-      { section: 'Analysis', name: 'Dashboard reporting', value: false },
-      { section: 'Analysis', name: 'Community insights', value: false },
-      { section: 'Analysis', name: 'Performance analysis', value: false },
-      { section: 'Support', name: 'Email support', value: true },
-      { section: 'Support', name: '24 / 7 call center support', value: false },
-      { section: 'Support', name: 'Dedicated account manager', value: false },
-    ],
-  },
-]
 
 function Header() {
   return (
     <Container className="mt-16">
-      <Heading as="h1">Support Packages</Heading>
+      <Heading as="h1">Fast, secure hosting for modern web apps.</Heading>
       <Lead className="mt-6 max-w-3xl">
-        Done-for-you deployments for non-technical builders. Hosting included on
-        Launch & Migration packs. Contact us to discuss your project.
+        Global edge hosting optimized for Next.js, Astro, and Vite applications.
+        Get your JAMstack site live with automatic SSL, CDN, and performance
+        optimization included.
       </Lead>
     </Container>
   )
@@ -155,7 +36,7 @@ function Header() {
 
 function PricingCards() {
   return (
-    <div className="relative py-24">
+    <div className="relative py-16">
       <Gradient className="absolute inset-x-2 top-48 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
       <Container className="relative">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -163,7 +44,6 @@ function PricingCards() {
             <PricingCard key={tierIndex} tier={tier} />
           ))}
         </div>
-        <LogoCloud className="mt-24" />
       </Container>
     </div>
   )
@@ -176,16 +56,24 @@ function PricingCard({ tier }: { tier: (typeof tiers)[number] }) {
         <div className="rounded-3xl bg-white p-10 pb-9 shadow-2xl ring-1 ring-black/5">
           <Subheading>{tier.name}</Subheading>
           <p className="mt-2 text-sm/6 text-gray-950/75">{tier.description}</p>
-          <div className="mt-8 flex items-center gap-4">
-            <div className="text-5xl font-medium text-gray-950">
-              €{tier.price}
+          {tier.slug === 'enterprise' ? (
+            <div className="mt-8 flex items-center gap-4">
+              <div className="text-5xl font-medium text-gray-950">Custom</div>
             </div>
-            <div className="text-sm/5 text-gray-950/75">
-              <p>EUR</p>
+          ) : (
+            <div className="mt-8 flex items-center gap-4">
+              <div className="text-5xl font-medium text-gray-950">
+                €{tier.priceMonthly}
+              </div>
+              <div className="text-sm/5 text-gray-950/75">
+                <p>EUR</p>
+              </div>
             </div>
-          </div>
+          )}
           <div className="mt-8">
-            <Button href={tier.href}>Buy now</Button>
+            <Button href={tier.href}>
+              {tier.slug === 'enterprise' ? 'Contact us' : 'Buy Now'}
+            </Button>
           </div>
           <div className="mt-8">
             <h3 className="text-sm/6 font-medium text-gray-950">Features</h3>
@@ -401,32 +289,42 @@ function Testimonial() {
     <div className="mx-2 my-24 rounded-4xl bg-gray-900 bg-[url(/dot-texture.svg)] pt-72 pb-24 lg:pt-36">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-[384px_1fr_1fr]">
-          <div className="-mt-96 lg:-mt-52">
+          {/* <div className="-mt-96 lg:-mt-52">
             <div className="-m-2 rounded-4xl bg-white/15 shadow-[inset_0_0_2px_1px_#ffffff4d] ring-1 ring-black/5 max-lg:mx-auto max-lg:max-w-xs">
               <div className="rounded-4xl p-2 shadow-md shadow-black/5">
-                <div className="overflow-hidden rounded-3xl shadow-2xl outline outline-1 -outline-offset-1 outline-black/10">
-                  <img
-                    alt=""
-                    src="/testimonials/tina-yards.jpg"
-                    className="aspect-3/4 w-full object-cover"
-                  />
+                <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 shadow-2xl outline outline-1 -outline-offset-1 outline-black/10">
+                  <div className="flex aspect-3/4 w-full items-end bg-linear-to-t from-black from-25% p-8">
+                    <div className="w-full text-center text-white">
+                      <div className="mb-2 text-4xl font-bold">⚡</div>
+                      <div className="text-sm font-medium">HostJamstack</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="flex max-lg:mt-16 lg:col-span-2 lg:px-16">
             <figure className="mx-auto flex max-w-xl flex-col gap-16 max-lg:text-center">
               <blockquote>
-                <p className="relative text-3xl tracking-tight text-white before:absolute before:-translate-x-full before:content-['“'] after:absolute after:content-['”'] lg:text-4xl">
-                  Thanks to Host Jamstack, we&apos;re finding new leads that we
-                  never would have found with legal methods.
+                <p className="relative text-3xl tracking-tight text-white lg:text-4xl">
+                  <span
+                    aria-hidden="true"
+                    className="absolute -translate-x-full"
+                  >
+                    "
+                  </span>
+                  HostJamstack took my Astro site from localhost to production
+                  in under an hour. SSL, CDN, everything configured perfectly.
+                  <span aria-hidden="true" className="absolute">
+                    "
+                  </span>
                 </p>
               </blockquote>
               <figcaption className="mt-auto">
-                <p className="text-sm/6 font-medium text-white">Tina Yards</p>
+                <p className="text-sm/6 font-medium text-white">Maria Santos</p>
                 <p className="text-sm/6 font-medium">
                   <span className="bg-linear-to-r from-[#fff1be] from-28% via-[#ee87cb] via-70% to-[#b060ff] bg-clip-text text-transparent">
-                    VP of Sales, Protocol
+                    Frontend Developer, IndieMaker
                   </span>
                 </p>
               </figcaption>
@@ -441,7 +339,7 @@ function Testimonial() {
 function FrequentlyAskedQuestions() {
   return (
     <Container>
-      <section id="faqs" className="mt-32">
+      <section id="faqs" className="scroll-mt-8">
         <Subheading className="text-center">
           Frequently asked questions
         </Subheading>
@@ -451,63 +349,60 @@ function FrequentlyAskedQuestions() {
         <div className="mx-auto mt-16 mb-32 max-w-xl space-y-12">
           <dl>
             <dt className="text-sm font-semibold">
-              1) Is it really a one-off payment?
+              What frameworks and tools do you support?
             </dt>
             <dd className="mt-4 text-sm/6 text-gray-600">
-              Yes. Each pack is a single payment. Packs with hosting keep your
-              site live for the stated period. Near the end you can renew with
-              another one-off, switch to monthly cover, or move elsewhere.
+              We specialize in modern JAMstack frameworks including Next.js,
+              Astro, Vite, and static sites. We also support projects built with
+              tools like Bolt, Lovable, and v0. Our hosting infrastructure is
+              optimized for fast, secure delivery of these modern web
+              applications.
             </dd>
           </dl>
           <dl>
             <dt className="text-sm font-semibold">
-              2) What does “hosting included” and “fair-use” mean?
+              How fast can you get my site live?
             </dt>
             <dd className="mt-4 text-sm/6 text-gray-600">
-              Hosting covers typical small-site usage. As guidance:
-              ~50&nbsp;GB/month bandwidth, ~250k function calls per month, and
-              reasonable build activity. If you consistently exceed this, we’ll
-              flag it early and propose options before any extra costs apply.
+              Most sites go live within a few business days once we have access
+              to your repository and domain settings. Simple deployments can
+              often be completed in hours, while more complex migrations or
+              custom configurations may take 2-3 days. We'll give you a clear
+              timeline upfront.
             </dd>
           </dl>
           <dl>
             <dt className="text-sm font-semibold">
-              3) What do you need from me to start?
+              Do you handle domain setup and SSL certificates?
             </dt>
             <dd className="mt-4 text-sm/6 text-gray-600">
-              Read access to your Git repo, domain registrar/DNS access (or
-              permission for us to manage it), and any required secrets (API
-              keys, SMTP). For migrations: current host details and priority
-              URLs. We support Next.js, Astro, Vite and plain static sites.
+              Yes, we handle the complete domain setup including DNS
+              configuration and SSL certificates. You'll need to provide access
+              to your domain registrar or allow us to manage DNS settings. All
+              sites get automatic HTTPS with industry-standard SSL certificates.
             </dd>
           </dl>
           <dl>
             <dt className="text-sm font-semibold">
-              4) How fast can you get me live?
+              What kind of support do you provide after launch?
             </dt>
             <dd className="mt-4 text-sm/6 text-gray-600">
-              Most projects go live within a few business days once we have
-              access and your domain is ready. DNS changes can take a short time
-              to propagate. We’ll confirm timelines up front.
+              All packages include clear handover documentation and email
+              support. We provide guidance on making updates, managing
+              deployments, and troubleshooting common issues. Our goal is to
+              make you self-sufficient while being available when you need
+              assistance.
             </dd>
           </dl>
           <dl>
             <dt className="text-sm font-semibold">
-              5) Do you handle domains, email and databases?
+              Can I move my site to another host later?
             </dt>
             <dd className="mt-4 text-sm/6 text-gray-600">
-              Domains/DNS/SSL — yes. Email — we don’t host it; we’ll configure
-              DNS for Microsoft 365 or Google Workspace. Databases — we don’t
-              host them; we’ll integrate your site with a hosted DB/CMS you
-              choose and set the environment variables.
-            </dd>
-          </dl>
-          <dl>
-            <dt className="text-sm font-semibold">6) Can I move away later?</dt>
-            <dd className="mt-4 text-sm/6 text-gray-600">
-              Absolutely. No lock-in. You own the code, content and domain. We
-              provide plain-speaking handover docs and can assist with transfer
-              if you need it.
+              Absolutely. There's no lock-in with HostJamstack. You own your
+              code, content, and domain. We provide detailed documentation about
+              your setup and can assist with migration to another platform if
+              needed. Our goal is to help you succeed, wherever that takes you.
             </dd>
           </dl>
         </div>
@@ -535,10 +430,10 @@ export default async function Pricing({
       </Container>
       <Header />
       <PricingCards />
-      {/* <PricingTable selectedTier={tier} />
-      <Testimonial /> */}
+      <PricingTable selectedTier={tier} />
+      <Testimonial />
       <FrequentlyAskedQuestions />
-      <Footer type="support" />
+      <Footer type="hosting" />
     </main>
   )
 }

@@ -4,8 +4,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Radiant',
-    default: 'Radiant - Close every deal',
+    template: '%s - Host Jamstack',
+    default: 'Host Jamstack - Close every deal',
   },
 }
 
@@ -27,7 +27,7 @@ export default async function RootLayout({
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="The Radiant Blog"
+          title="The Host Jamstack Blog"
           href="/blog/feed.xml"
         />
       </head>

@@ -19,58 +19,51 @@ import { Heading, Subheading } from './text'
 
 const testimonials = [
   {
-    img: '/testimonials/tina-yards.jpg',
-    name: 'Tina Yards',
-    title: 'VP of Sales, Protocol',
+    name: 'Sarah Chen',
+    title: 'Solo Developer',
     quote:
-      'Thanks to Radiant, we’re finding new leads that we never would have found with legal methods.',
+      'HostJamstack took my Next.js project from local development to production in under 2 hours. No DevOps headaches, just a live site with SSL and everything configured perfectly.',
   },
   {
-    img: '/testimonials/conor-neville.jpg',
-    name: 'Conor Neville',
-    title: 'Head of Customer Success, TaxPal',
+    name: 'Marcus Rodriguez',
+    title: 'Freelance Designer',
     quote:
-      'Radiant made undercutting all of our competitors an absolute breeze.',
+      'I used to dread the deployment phase of projects. Now with the Launch Pack, I can focus on design while they handle all the hosting complexity. My clients love the fast, secure sites.',
   },
   {
-    img: '/testimonials/amy-chase.jpg',
-    name: 'Amy Chase',
-    title: 'Head of GTM, Pocket',
+    name: 'Jenny Park',
+    title: 'Startup Founder',
     quote:
-      'We closed a deal in literally a few minutes because we knew their exact budget.',
+      'The Migration Mini package saved us weeks of work moving our marketing site to modern hosting. Zero downtime cutover and our site is now blazing fast on the edge network.',
   },
   {
-    img: '/testimonials/veronica-winton.jpg',
-    name: 'Veronica Winton',
-    title: 'CSO, Planeteria',
+    name: 'David Thompson',
+    title: 'Student Developer',
     quote:
-      'We’ve managed to put two of our main competitors out of business in 6 months.',
+      'As someone learning web development, HostJamstack bridges the gap between "it works on my laptop" and having a real production site. The First Deploy pack is perfect for beginners.',
   },
   {
-    img: '/testimonials/dillon-lenora.jpg',
-    name: 'Dillon Lenora',
-    title: 'VP of Sales, Detax',
-    quote: 'I was able to replace 80% of my team with RadiantAI bots.',
+    name: 'Lisa Chang',
+    title: 'Small Business Owner',
+    quote:
+      "I built my site with Lovable but had no idea how to get it live properly. The Launch Pack handled domains, SSL, performance headers - everything I needed but couldn't figure out myself.",
   },
   {
-    img: '/testimonials/harriet-arron.jpg',
-    name: 'Harriet Arron',
-    title: 'Account Manager, Commit',
+    name: 'Alex Kumar',
+    title: 'Creative Agency',
     quote:
-      'I’ve smashed all my targets without having to speak to a lead in months.',
+      'We can now promise clients professional hosting without needing a dedicated DevOps person. Quick fixes and deployments happen in hours, not days. Game changer for our agency.',
   },
 ]
 
 function TestimonialCard({
   name,
   title,
-  img,
   children,
   bounds,
   scrollX,
   ...props
 }: {
-  img: string
   name: string
   title: string
   children: React.ReactNode
@@ -116,13 +109,8 @@ function TestimonialCard({
       ref={ref}
       style={{ opacity }}
       {...props}
-      className="relative flex aspect-9/16 w-72 shrink-0 snap-start scroll-ml-(--scroll-padding) flex-col justify-end overflow-hidden rounded-3xl sm:aspect-3/4 sm:w-96"
+      className="relative flex aspect-9/16 w-72 shrink-0 snap-start scroll-ml-(--scroll-padding) flex-col justify-end overflow-hidden rounded-3xl bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 sm:aspect-3/4 sm:w-96"
     >
-      <img
-        alt=""
-        src={img}
-        className="absolute inset-x-0 top-0 aspect-square w-full object-cover"
-      />
       <div
         aria-hidden="true"
         className="absolute inset-0 rounded-3xl bg-linear-to-t from-black from-[calc(7/16*100%)] ring-1 ring-gray-950/10 ring-inset sm:from-25%"
@@ -131,11 +119,11 @@ function TestimonialCard({
         <blockquote>
           <p className="relative text-xl/7 text-white">
             <span aria-hidden="true" className="absolute -translate-x-full">
-              “
+              "
             </span>
             {children}
             <span aria-hidden="true" className="absolute">
-              ”
+              "
             </span>
           </p>
         </blockquote>
@@ -156,8 +144,7 @@ function CallToAction() {
   return (
     <div>
       <p className="max-w-sm text-sm/6 text-gray-600">
-        Join the best sellers in the business and start using Radiant to hit
-        your targets today.
+        We're here to help you get your site live and running smoothly.
       </p>
       <div className="mt-2">
         <Link
@@ -207,12 +194,11 @@ export function Testimonials() {
           '[--scroll-padding:max(--spacing(6),calc((100vw-(var(--container-2xl)))/2))] lg:[--scroll-padding:max(--spacing(8),calc((100vw-(var(--container-7xl)))/2))]',
         ])}
       >
-        {testimonials.map(({ img, name, title, quote }, testimonialIndex) => (
+        {testimonials.map(({ name, title, quote }, testimonialIndex) => (
           <TestimonialCard
             key={testimonialIndex}
             name={name}
             title={title}
-            img={img}
             bounds={bounds}
             scrollX={scrollX}
             onClick={() => scrollTo(testimonialIndex)}

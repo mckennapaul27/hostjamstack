@@ -1,4 +1,3 @@
-import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { GradientBackground } from '@/components/gradient'
@@ -10,7 +9,6 @@ import {
   getLegalArticleBySlug,
   type LegalArticleWithContent,
 } from '@/lib/legal-articles'
-import { ChevronLeftIcon } from '@heroicons/react/16/solid'
 import dayjs from 'dayjs'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -212,13 +210,6 @@ export default async function LegalPage({
               {/* MDX Content */}
               <div className="prose prose-lg max-w-none">
                 <MDXRemote source={mdxContent} components={mdxComponents} />
-              </div>
-
-              <div className="mt-16 border-t border-gray-200 pt-8">
-                <Button variant="outline" href={`/${lang}/legal`}>
-                  <ChevronLeftIcon className="size-4" />
-                  Back to legal documents
-                </Button>
               </div>
             </div>
           </div>

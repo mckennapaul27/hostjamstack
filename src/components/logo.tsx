@@ -1,11 +1,6 @@
 'use client'
 
-export function Logo({ className }: { className?: string }) {
-  let transition = {
-    duration: 0.5,
-    ease: 'easeInOut' as const,
-  }
-
+export function Logo() {
   return (
     <svg
       width="215"
@@ -13,6 +8,7 @@ export function Logo({ className }: { className?: string }) {
       viewBox="0 0 429 91"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="h-9"
     >
       <g clipPath="url(#clip0_1_2)">
         <path
@@ -37,7 +33,7 @@ export function Logo({ className }: { className?: string }) {
   )
 }
 
-export function Mark({ className }: { className?: string }) {
+export function Mark() {
   return (
     <svg
       width="91"

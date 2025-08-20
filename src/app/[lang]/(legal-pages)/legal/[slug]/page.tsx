@@ -6,17 +6,17 @@ import { Link } from '@/components/link'
 import { Navbar } from '@/components/navbar'
 import { Heading, Subheading } from '@/components/text'
 import {
-  generateArticlesIndex,
-  getArticleBySlug,
-  type ArticleWithContent,
-} from '@/lib/articles'
+  generateLegalArticlesIndex,
+  getLegalArticleBySlug,
+  type LegalArticleWithContent,
+} from '@/lib/legal-articles'
 import { ChevronLeftIcon } from '@heroicons/react/16/solid'
 import dayjs from 'dayjs'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 
-// MDX components for styling
+// MDX components for styling (same as blog)
 const mdxComponents = {
   h1: ({ children }: { children: React.ReactNode }) => (
     <h1 className="mt-12 mb-10 text-3xl/8 font-medium tracking-tight text-gray-950 first:mt-0 last:mb-0">
@@ -103,13 +103,15 @@ const mdxComponents = {
 }
 
 export async function generateStaticParams() {
-  // Generate params for all locales and all articles
-  const locales = ['en'] // Add more locales as needed
+  // Generate params for all locales but only English legal articles exist
+  const locales = ['en', 'es'] // Add all supported locales
   const params: { lang: string; slug: string }[] = []
 
+  // Get English legal articles only (since they're always served regardless of locale)
+  const legalArticles = await generateLegalArticlesIndex('en')
+
   for (const locale of locales) {
-    const articles = await generateArticlesIndex(locale)
-    for (const article of articles) {
+    for (const article of legalArticles) {
       params.push({
         lang: locale,
         slug: article.slug,
@@ -125,89 +127,86 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string; lang: string }>
 }): Promise<Metadata> {
-  const { slug, lang } = await params
-  const post = await getArticleBySlug(slug, lang)
+  const { slug } = await params
+  // Always fetch English version since legal docs are only in English
+  const legalArticle = await getLegalArticleBySlug(slug, 'en')
 
-  return post
+  return legalArticle
     ? {
-        title: post.title,
-        description: post.excerpt || post.description,
+        title: `${legalArticle.title} | HostJamstack`,
+        description: legalArticle.description,
         openGraph: {
-          title: post.title,
-          description: post.excerpt || post.description,
+          title: `${legalArticle.title} | HostJamstack`,
+          description: legalArticle.description,
           type: 'article',
-          publishedTime: post.publishedAt,
-          modifiedTime: post.updatedAt,
-          authors: [post.author.name],
+          publishedTime: legalArticle.publishedAt,
+          modifiedTime: legalArticle.updatedAt,
         },
         twitter: {
           card: 'summary_large_image',
-          title: post.title,
-          description: post.excerpt || post.description,
+          title: `${legalArticle.title} | HostJamstack`,
+          description: legalArticle.description,
         },
       }
     : {}
 }
 
 function extractMDXContent(content: string): string {
-  // Remove frontmatter from MDX content
+  // Remove frontmatter from MDX content if present
   const frontmatterRegex = /^---[\s\S]*?\n---\s*\n/
   return content.replace(frontmatterRegex, '').trim()
 }
 
-export default async function BlogPost({
+export default async function LegalPage({
   params,
 }: {
   params: Promise<{ slug: string; lang: string }>
 }) {
   const { slug, lang } = await params
-  const post: ArticleWithContent | null = await getArticleBySlug(slug, lang)
+  // Always fetch English version since legal docs are only in English
+  const legalArticle: LegalArticleWithContent | null =
+    await getLegalArticleBySlug(slug, 'en')
 
-  if (!post) notFound()
+  if (!legalArticle) notFound()
 
   // Extract MDX content without frontmatter
-  const mdxContent = extractMDXContent(post.content)
+  const mdxContent = extractMDXContent(legalArticle.content)
 
   return (
     <main className="overflow-hidden">
       <GradientBackground />
       <Container>
         <Navbar />
-        <Subheading className="mt-16">
-          {dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}
-        </Subheading>
+        <Subheading className="mt-16">Legal</Subheading>
         <Heading as="h1" className="mt-2">
-          {post.title}
+          {legalArticle.title}
         </Heading>
-        <div className="mt-16 grid grid-cols-1 gap-8 pb-24 lg:grid-cols-[15rem_1fr] xl:grid-cols-[15rem_1fr_15rem]">
-          <div className="flex flex-wrap items-center gap-8 max-lg:justify-between lg:flex-col lg:items-start">
+        <div className="mt-16 grid grid-cols-1 gap-8 pb-24">
+          <div className="flex flex-wrap items-center gap-8 max-lg:justify-between">
             <div className="flex items-center gap-3">
-              <div className="text-sm/5 text-gray-700">{post.author.name}</div>
+              <div className="text-sm/5 text-gray-700">
+                Last updated:{' '}
+                {dayjs(legalArticle.updatedAt).format('MMMM D, YYYY')}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Link
-                href={`/blog?category=${post.category.slug}`}
-                className="rounded-full border border-dotted border-gray-300 bg-gray-50 px-2 text-sm/6 font-medium text-gray-500"
-              >
-                {post.category.name}
-              </Link>
-              {post.tags.slice(0, 3).map((tag) => (
-                <span
-                  key={tag.slug}
-                  className="rounded-full border border-dotted border-gray-300 bg-gray-50 px-2 text-sm/6 font-medium text-gray-500"
-                >
-                  {tag.name}
-                </span>
-              ))}
-            </div>
+            {lang !== 'en' && (
+              <div className="rounded-full bg-amber-50 px-3 py-1 text-sm/5 text-amber-600">
+                Available in English only
+              </div>
+            )}
           </div>
           <div className="text-gray-700">
-            <div className="max-w-2xl xl:mx-auto">
-              {/* Reading time and word count */}
-              <div className="mb-8 flex items-center gap-4 text-sm text-gray-500">
-                <span>{post.readingTime}</span>
-                <span>•</span>
-                <span>{post.wordCount.toLocaleString()} words</span>
+            <div className="max-w-4xl">
+              {/* Company Notice */}
+              <div className="mb-12 rounded-lg bg-gray-50 p-6 text-sm/6">
+                <p className="mb-2 font-medium text-gray-950">
+                  Company Information
+                </p>
+                <p className="text-gray-600">
+                  This document is provided by{' '}
+                  <strong>DRP Solutions ltd</strong>, Company number 208392740,
+                  registered at Trakia, bl 216, Vh B, ap 8, Plovdiv, Bulgaria.
+                </p>
               </div>
 
               {/* MDX Content */}
@@ -215,10 +214,10 @@ export default async function BlogPost({
                 <MDXRemote source={mdxContent} components={mdxComponents} />
               </div>
 
-              <div className="mt-10">
-                <Button variant="outline" href="/blog">
+              <div className="mt-16 border-t border-gray-200 pt-8">
+                <Button variant="outline" href={`/${lang}/legal`}>
                   <ChevronLeftIcon className="size-4" />
-                  Back to blog
+                  Back to legal documents
                 </Button>
               </div>
             </div>

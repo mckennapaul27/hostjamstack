@@ -311,12 +311,12 @@ function Testimonial() {
                     aria-hidden="true"
                     className="absolute -translate-x-full"
                   >
-                    "
+                    &quot;
                   </span>
                   HostJamstack took my Astro site from localhost to production
                   in under an hour. SSL, CDN, everything configured perfectly.
                   <span aria-hidden="true" className="absolute">
-                    "
+                    &quot;
                   </span>
                 </p>
               </blockquote>
@@ -367,8 +367,8 @@ function FrequentlyAskedQuestions() {
               Most sites go live within a few business days once we have access
               to your repository and domain settings. Simple deployments can
               often be completed in hours, while more complex migrations or
-              custom configurations may take 2-3 days. We'll give you a clear
-              timeline upfront.
+              custom configurations may take 2-3 days. We&apos;ll give you a
+              clear timeline upfront.
             </dd>
           </dl>
           <dl>
@@ -377,9 +377,10 @@ function FrequentlyAskedQuestions() {
             </dt>
             <dd className="mt-4 text-sm/6 text-gray-600">
               Yes, we handle the complete domain setup including DNS
-              configuration and SSL certificates. You'll need to provide access
-              to your domain registrar or allow us to manage DNS settings. All
-              sites get automatic HTTPS with industry-standard SSL certificates.
+              configuration and SSL certificates. You&apos;ll need to provide
+              access to your domain registrar or allow us to manage DNS
+              settings. All sites get automatic HTTPS with industry-standard SSL
+              certificates.
             </dd>
           </dl>
           <dl>
@@ -399,10 +400,11 @@ function FrequentlyAskedQuestions() {
               Can I move my site to another host later?
             </dt>
             <dd className="mt-4 text-sm/6 text-gray-600">
-              Absolutely. There's no lock-in with HostJamstack. You own your
-              code, content, and domain. We provide detailed documentation about
-              your setup and can assist with migration to another platform if
-              needed. Our goal is to help you succeed, wherever that takes you.
+              Absolutely. There&apos;s no lock-in with HostJamstack. You own
+              your code, content, and domain. We provide detailed documentation
+              about your setup and can assist with migration to another platform
+              if needed. Our goal is to help you succeed, wherever that takes
+              you.
             </dd>
           </dl>
         </div>

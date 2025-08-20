@@ -54,7 +54,7 @@ function Circles() {
 function MainLogo() {
   return (
     <div className="absolute top-32 left-44 flex size-16 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-black/5">
-      <Mark className="h-9 fill-black" />
+      <Mark />
     </div>
   )
 }

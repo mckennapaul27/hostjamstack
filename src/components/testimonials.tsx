@@ -119,11 +119,11 @@ function TestimonialCard({
         <blockquote>
           <p className="relative text-xl/7 text-white">
             <span aria-hidden="true" className="absolute -translate-x-full">
-              "
+              &quot;
             </span>
             {children}
             <span aria-hidden="true" className="absolute">
-              "
+              &quot;
             </span>
           </p>
         </blockquote>
@@ -144,7 +144,7 @@ function CallToAction() {
   return (
     <div>
       <p className="max-w-sm text-sm/6 text-gray-600">
-        We're here to help you get your site live and running smoothly.
+        We&apos;re here to help you get your site live and running smoothly.
       </p>
       <div className="mt-2">
         <Link

@@ -1,0 +1,226 @@
+[
+  {
+    "title": "Choosing the Right JAMstack Hosting Solution: A Comprehensive Comparison Guide",
+    "description": "Navigate the complex landscape of JAMstack hosting options. Compare features, pricing, and capabilities of major platforms to find the perfect hosting solution for your Next.js, Astro, or Vite application.",
+    "slug": "choosing-the-right-jamstack-hosting-solution",
+    "publishedAt": "2024-12-19T16:00:00.000Z",
+    "updatedAt": "2024-12-19T16:00:00.000Z",
+    "status": "published",
+    "category": {
+      "name": "hosting",
+      "slug": "hosting",
+      "description": "Guides about web hosting, performance, and infrastructure for modern applications"
+    },
+    "tags": [
+      {
+        "name": "hosting",
+        "slug": "hosting"
+      },
+      {
+        "name": "jamstack",
+        "slug": "jamstack"
+      },
+      {
+        "name": "comparison",
+        "slug": "comparison"
+      },
+      {
+        "name": "nextjs",
+        "slug": "nextjs"
+      },
+      {
+        "name": "astro",
+        "slug": "astro"
+      },
+      {
+        "name": "vite",
+        "slug": "vite"
+      },
+      {
+        "name": "deployment",
+        "slug": "deployment"
+      },
+      {
+        "name": "performance",
+        "slug": "performance"
+      }
+    ],
+    "author": {
+      "name": "HostJamstack Team",
+      "bio": "The expert team behind HostJamstack, helping makers deploy their applications safely and securely."
+    },
+    "featured": false,
+    "readingTime": "12 min read",
+    "wordCount": 3800,
+    "language": "en",
+    "excerpt": "Navigate the complex landscape of JAMstack hosting options. Compare features, pricing, and capabilities of major platforms to find the perfect hosting solution for your Next.js, Astro, or Vite application."
+  },
+  {
+    "title": "DevOps for Makers: Essential Deployment Concepts Every Developer Should Know",
+    "description": "Master the fundamental DevOps concepts that every maker needs to understand for successful deployments. Learn about CI/CD, environment management, monitoring, and security without getting overwhelmed by complexity.",
+    "slug": "devops-for-makers-essential-deployment-concepts",
+    "publishedAt": "2024-12-19T14:00:00.000Z",
+    "updatedAt": "2024-12-19T14:00:00.000Z",
+    "status": "published",
+    "category": {
+      "name": "devops",
+      "slug": "devops",
+      "description": "DevOps practices, tools, and methodologies for modern application deployment"
+    },
+    "tags": [
+      {
+        "name": "devops",
+        "slug": "devops"
+      },
+      {
+        "name": "deployment",
+        "slug": "deployment"
+      },
+      {
+        "name": "ci-cd",
+        "slug": "ci-cd"
+      },
+      {
+        "name": "monitoring",
+        "slug": "monitoring"
+      },
+      {
+        "name": "security",
+        "slug": "security"
+      },
+      {
+        "name": "makers",
+        "slug": "makers"
+      },
+      {
+        "name": "infrastructure",
+        "slug": "infrastructure"
+      },
+      {
+        "name": "automation",
+        "slug": "automation"
+      }
+    ],
+    "author": {
+      "name": "HostJamstack Team",
+      "bio": "The expert team behind HostJamstack, helping makers deploy their applications safely and securely."
+    },
+    "featured": true,
+    "readingTime": "15 min read",
+    "wordCount": 4200,
+    "language": "en",
+    "excerpt": "Master the fundamental DevOps concepts that every maker needs to understand for successful deployments. Learn about CI/CD, environment management, monitoring, and security without getting overwhelmed by complexity."
+  },
+  {
+    "title": "Why JAMstack Sites Need More Than Just Static Hosting",
+    "description": "Discover why modern JAMstack applications built with Next.js, Astro, and Vite require specialized hosting beyond basic static file serving. Learn about edge functions, ISR, CDN optimization, and performance features that make the difference between a good site and a great one.",
+    "slug": "why-jamstack-sites-need-more-than-static-hosting",
+    "publishedAt": "2024-12-19T12:00:00.000Z",
+    "updatedAt": "2024-12-19T12:00:00.000Z",
+    "status": "published",
+    "category": {
+      "name": "hosting",
+      "slug": "hosting",
+      "description": "Guides about web hosting, performance, and infrastructure for modern applications"
+    },
+    "tags": [
+      {
+        "name": "jamstack",
+        "slug": "jamstack"
+      },
+      {
+        "name": "hosting",
+        "slug": "hosting"
+      },
+      {
+        "name": "performance",
+        "slug": "performance"
+      },
+      {
+        "name": "cdn",
+        "slug": "cdn"
+      },
+      {
+        "name": "edge-functions",
+        "slug": "edge-functions"
+      },
+      {
+        "name": "nextjs",
+        "slug": "nextjs"
+      },
+      {
+        "name": "astro",
+        "slug": "astro"
+      },
+      {
+        "name": "static-hosting",
+        "slug": "static-hosting"
+      }
+    ],
+    "author": {
+      "name": "HostJamstack Team",
+      "bio": "The expert team behind HostJamstack, helping makers deploy their applications safely and securely."
+    },
+    "featured": true,
+    "readingTime": "10 min read",
+    "wordCount": 3200,
+    "language": "en",
+    "excerpt": "Discover why modern JAMstack applications built with Next.js, Astro, and Vite require specialized hosting beyond basic static file serving. Learn about edge functions, ISR, CDN optimization, and performance features that make the difference between a good site and a great one."
+  },
+  {
+    "title": "From Code to Production: A Complete Guide to Deploying JAMstack Apps",
+    "description": "Learn how to take your Next.js, Astro, or Vite application from local development to a live, secure, and fast production environment. This comprehensive guide covers everything from DNS setup to SSL certificates, helping makers ship safely without learning complex DevOps.",
+    "slug": "from-code-to-production-jamstack-deployment-guide",
+    "publishedAt": "2024-12-19T10:00:00.000Z",
+    "updatedAt": "2024-12-19T10:00:00.000Z",
+    "status": "published",
+    "category": {
+      "name": "deployment",
+      "slug": "deployment",
+      "description": "Guides and tutorials about deploying applications to production"
+    },
+    "tags": [
+      {
+        "name": "jamstack",
+        "slug": "jamstack"
+      },
+      {
+        "name": "deployment",
+        "slug": "deployment"
+      },
+      {
+        "name": "nextjs",
+        "slug": "nextjs"
+      },
+      {
+        "name": "astro",
+        "slug": "astro"
+      },
+      {
+        "name": "vite",
+        "slug": "vite"
+      },
+      {
+        "name": "devops",
+        "slug": "devops"
+      },
+      {
+        "name": "ssl",
+        "slug": "ssl"
+      },
+      {
+        "name": "dns",
+        "slug": "dns"
+      }
+    ],
+    "author": {
+      "name": "HostJamstack Team",
+      "bio": "The expert team behind HostJamstack, helping makers deploy their applications safely and securely."
+    },
+    "featured": true,
+    "readingTime": "12 min read",
+    "wordCount": 2850,
+    "language": "en",
+    "excerpt": "Learn how to take your Next.js, Astro, or Vite application from local development to a live, secure, and fast production environment. This comprehensive guide covers everything from DNS setup to SSL certificates, helping makers ship safely without learning complex DevOps."
+  }
+]

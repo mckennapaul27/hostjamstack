@@ -9,7 +9,7 @@ import { ChevronDownIcon, GlobeAltIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
-import { i18n as i18nConfig } from '../i18n-config'
+import { i18n as i18nConfig, isValidLocale } from '../i18n-config'
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -50,9 +50,9 @@ export function LanguageSwitcher() {
 
     // Check if the first segment is a locale
     const firstSegment = segments[0]
-    const isFirstSegmentLocale = i18nConfig.locales.includes(
-      firstSegment as any,
-    )
+    const isFirstSegmentLocale = firstSegment
+      ? isValidLocale(firstSegment)
+      : false
 
     if (isFirstSegmentLocale) {
       // Remove the locale segment and rebuild the path

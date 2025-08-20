@@ -39,12 +39,12 @@ function Testimonial() {
                     aria-hidden="true"
                     className="absolute -translate-x-full"
                   >
-                    "
+                    &quot;
                   </span>
                   Found the perfect domain in minutes. The search was fast,
                   pricing was transparent, and setup was instant.
                   <span aria-hidden="true" className="absolute">
-                    "
+                    &quot;
                   </span>
                 </p>
               </blockquote>
@@ -102,7 +102,7 @@ function FrequentlyAskedQuestions() {
             <dd className="mt-4 text-sm/6 text-gray-600">
               We send renewal reminders 90, 30, and 7 days before expiration.
               Domains can be renewed up to 30 days after expiration. After that,
-              there's a grace period before the domain becomes available to
+              there&apos;s a grace period before the domain becomes available to
               others.
             </dd>
           </dl>
@@ -112,8 +112,8 @@ function FrequentlyAskedQuestions() {
             </dt>
             <dd className="mt-4 text-sm/6 text-gray-600">
               Absolutely! Domain transfers are free and typically complete
-              within 5-7 days. We'll handle the technical details and ensure no
-              downtime during the transfer process.
+              within 5-7 days. We&apos;ll handle the technical details and
+              ensure no downtime during the transfer process.
             </dd>
           </dl>
           <dl>

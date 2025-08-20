@@ -1,0 +1,201 @@
+{
+  "title": "Why JAMstack Sites Need More Than Just Static Hosting",
+  "description": "Discover why modern JAMstack applications built with Next.js, Astro, and Vite require specialized hosting beyond basic static file serving. Learn about edge functions, ISR, CDN optimization, and performance features that make the difference between a good site and a great one.",
+  "slug": "why-jamstack-sites-need-more-than-static-hosting",
+  "publishedAt": "2024-12-19T12:00:00.000Z",
+  "updatedAt": "2024-12-19T12:00:00.000Z",
+  "status": "published",
+  "category": {
+    "name": "hosting",
+    "slug": "hosting",
+    "description": "Guides about web hosting, performance, and infrastructure for modern applications"
+  },
+  "tags": [
+    {
+      "name": "jamstack",
+      "slug": "jamstack"
+    },
+    {
+      "name": "hosting",
+      "slug": "hosting"
+    },
+    {
+      "name": "performance",
+      "slug": "performance"
+    },
+    {
+      "name": "cdn",
+      "slug": "cdn"
+    },
+    {
+      "name": "edge-functions",
+      "slug": "edge-functions"
+    },
+    {
+      "name": "nextjs",
+      "slug": "nextjs"
+    },
+    {
+      "name": "astro",
+      "slug": "astro"
+    },
+    {
+      "name": "static-hosting",
+      "slug": "static-hosting"
+    }
+  ],
+  "author": {
+    "name": "HostJamstack Team",
+    "bio": "The expert team behind HostJamstack, helping makers deploy their applications safely and securely.",
+    "avatar": "/images/authors/hostjamstack-team.jpg",
+    "social": {
+      "twitter": "@hostjamstack",
+      "github": "hostjamstack",
+      "website": "https://hostjamstack.com"
+    }
+  },
+  "featured": true,
+  "readingTime": "10 min read",
+  "wordCount": 3200,
+  "language": "en",
+  "seo": {
+    "metaTitle": "Why JAMstack Sites Need More Than Static Hosting - Performance & Features Guide | HostJamstack",
+    "metaDescription": "Learn why basic static hosting isn't enough for modern JAMstack apps. Discover edge functions, ISR, CDN optimization, and advanced features your Next.js or Astro site needs to perform at its best.",
+    "keywords": [
+      "jamstack hosting",
+      "static hosting limitations",
+      "edge functions",
+      "ISR hosting",
+      "nextjs hosting",
+      "astro hosting",
+      "cdn optimization",
+      "jamstack performance",
+      "specialized hosting",
+      "modern web hosting",
+      "web performance optimization"
+    ],
+    "canonicalUrl": "https://hostjamstack.com/articles/en/why-jamstack-sites-need-more-than-static-hosting",
+    "ogImage": {
+      "url": "/images/articles/jamstack-vs-static-hosting.jpg",
+      "width": 1200,
+      "height": 630,
+      "alt": "Comparison between basic static hosting and specialized JAMstack hosting features"
+    },
+    "twitterCard": "summary_large_image",
+    "structuredData": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Why JAMstack Sites Need More Than Just Static Hosting",
+      "description": "Discover why modern JAMstack applications built with Next.js, Astro, and Vite require specialized hosting beyond basic static file serving.",
+      "image": "https://hostjamstack.com/images/articles/jamstack-vs-static-hosting.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "HostJamstack Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HostJamstack",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hostjamstack.com/images/logo.png"
+        }
+      },
+      "datePublished": "2024-12-19T12:00:00.000Z",
+      "dateModified": "2024-12-19T12:00:00.000Z",
+      "articleSection": "Technology",
+      "keywords": "JAMstack, hosting, performance, edge functions, CDN, Next.js, Astro"
+    }
+  },
+  "tableOfContents": [
+    {
+      "title": "The Evolution of 'Static' Sites",
+      "anchor": "the-evolution-of-static-sites",
+      "level": 2
+    },
+    {
+      "title": "What Basic Static Hosting Provides",
+      "anchor": "what-basic-static-hosting-provides",
+      "level": 2
+    },
+    {
+      "title": "The Limitations of Basic Static Hosting",
+      "anchor": "the-limitations-of-basic-static-hosting",
+      "level": 2
+    },
+    {
+      "title": "What Specialized JAMstack Hosting Provides",
+      "anchor": "what-specialized-jamstack-hosting-provides",
+      "level": 2
+    },
+    {
+      "title": "The Cost of Using Basic Static Hosting",
+      "anchor": "the-cost-of-using-basic-static-hosting",
+      "level": 2
+    },
+    {
+      "title": "Choosing the Right Hosting Approach",
+      "anchor": "choosing-the-right-hosting-approach",
+      "level": 2
+    },
+    {
+      "title": "Making the Transition",
+      "anchor": "making-the-transition",
+      "level": 2
+    },
+    {
+      "title": "The Business Case for Better Hosting",
+      "anchor": "the-business-case-for-better-hosting",
+      "level": 2
+    }
+  ],
+  "relatedArticles": [
+    "from-code-to-production-jamstack-deployment-guide",
+    "devops-for-makers-essential-deployment-concepts",
+    "optimizing-jamstack-performance-comprehensive-guide"
+  ],
+  "callToAction": {
+    "title": "Ready for Specialized JAMstack Hosting?",
+    "description": "Experience the difference with our optimized hosting platform. Get advanced CDN, edge functions, and framework-specific optimizations included.",
+    "buttonText": "Explore Hosting Plans",
+    "buttonUrl": "/hosting"
+  },
+  "comparison": {
+    "basicHosting": {
+      "title": "Basic Static Hosting",
+      "features": [
+        "Simple file serving",
+        "Basic CDN",
+        "SSL certificates",
+        "Custom domains",
+        "Git integration"
+      ],
+      "limitations": [
+        "No edge functions",
+        "Limited optimization",
+        "Basic caching",
+        "No framework integration",
+        "Manual optimization needed"
+      ]
+    },
+    "specializedHosting": {
+      "title": "Specialized JAMstack Hosting",
+      "features": [
+        "Framework-specific optimization",
+        "Edge functions & computing",
+        "Advanced CDN with smart caching",
+        "Automatic image optimization",
+        "Real-time performance monitoring",
+        "Preview deployments",
+        "Security headers & compliance",
+        "ISR & SSR support"
+      ],
+      "benefits": [
+        "Better performance",
+        "Enhanced user experience",
+        "Developer productivity",
+        "Automatic scaling",
+        "Advanced monitoring"
+      ]
+    }
+  }
+}

@@ -1,4 +1,6 @@
-import { i18n } from '@/i18n-config'
+import { initTranslations } from '@/app/i18n'
+import TranslationsProvider from '@/components/TranslationsProvider'
+import { i18n, isValidLocale } from '@/i18n-config'
 import '@/styles/tailwind.css'
 import type { Metadata } from 'next'
 
@@ -17,8 +19,18 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>
 }) {
   const awaitedParams = await params
+  let locale = awaitedParams.lang
+
+  // Validate locale and fallback to default if invalid
+  if (!isValidLocale(awaitedParams.lang)) {
+    locale = i18n.defaultLocale
+  }
+
+  // Initialize translations with common namespace
+  const { resources } = await initTranslations(locale, ['common'])
+
   return (
-    <html lang={awaitedParams.lang}>
+    <html lang={locale}>
       <head>
         <link
           rel="stylesheet"
@@ -31,7 +43,15 @@ export default async function RootLayout({
           href="/blog/feed.xml"
         />
       </head>
-      <body className="text-gray-950 antialiased">{children}</body>
+      <body className="text-gray-950 antialiased">
+        <TranslationsProvider
+          namespaces={['common']}
+          locale={locale}
+          resources={resources}
+        >
+          {children}
+        </TranslationsProvider>
+      </body>
     </html>
   )
 }

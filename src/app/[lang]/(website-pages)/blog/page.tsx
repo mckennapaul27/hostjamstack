@@ -5,20 +5,20 @@ import { GradientBackground } from '@/components/gradient'
 import { Link } from '@/components/link'
 import { Navbar } from '@/components/navbar'
 import { Heading, Lead, Subheading } from '@/components/text'
-import { image } from '@/sanity/image'
 import {
+  getArticles,
+  getArticlesCount,
   getCategories,
-  getFeaturedPosts,
-  getPosts,
-  getPostsCount,
-} from '@/sanity/queries'
+  getFeaturedArticles,
+  type Article,
+  type ArticleCategory,
+} from '@/lib/articles'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import {
   CheckIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronUpDownIcon,
-  RssIcon,
 } from '@heroicons/react/16/solid'
 import { clsx } from 'clsx'
 import dayjs from 'dayjs'
@@ -28,13 +28,13 @@ import { notFound } from 'next/navigation'
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Stay informed with product updates, company news, and insights on how to sell smarter at your company.',
+    'Stay informed with product updates, company news, and insights on how to deploy and host JAMstack applications safely and securely.',
 }
 
 const postsPerPage = 5
 
-async function FeaturedPosts() {
-  let { data: featuredPosts } = await getFeaturedPosts(3)
+async function FeaturedPosts({ locale }: { locale: string }) {
+  let { data: featuredPosts } = await getFeaturedArticles(3, locale)
 
   if (featuredPosts.length === 0) {
     return
@@ -45,18 +45,12 @@ async function FeaturedPosts() {
       <Container>
         <h2 className="text-2xl font-medium tracking-tight">Featured</h2>
         <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {featuredPosts.map((post) => (
+          {featuredPosts.map((post: Article) => (
             <div
               key={post.slug}
               className="relative flex flex-col rounded-3xl bg-white p-2 shadow-md ring-1 shadow-black/5 ring-black/5"
             >
-              {post.mainImage && (
-                <img
-                  alt={post.mainImage.alt || ''}
-                  src={image(post.mainImage).size(1170, 780).url()}
-                  className="aspect-3/2 w-full rounded-2xl object-cover"
-                />
-              )}
+              {/* Placeholder for main image - you can add this later if needed */}
               <div className="flex flex-1 flex-col p-8">
                 <div className="text-sm/5 text-gray-700">
                   {dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}
@@ -70,20 +64,11 @@ async function FeaturedPosts() {
                 <div className="mt-2 flex-1 text-sm/6 text-gray-500">
                   {post.excerpt}
                 </div>
-                {post.author && (
-                  <div className="mt-6 flex items-center gap-3">
-                    {post.author.image && (
-                      <img
-                        alt=""
-                        src={image(post.author.image).size(64, 64).url()}
-                        className="aspect-square size-6 rounded-full object-cover"
-                      />
-                    )}
-                    <div className="text-sm/5 text-gray-700">
-                      {post.author.name}
-                    </div>
+                <div className="mt-6 flex items-center gap-3">
+                  <div className="text-sm/5 text-gray-700">
+                    {post.author.name}
                   </div>
-                )}
+                </div>
               </div>
             </div>
           ))}
@@ -93,8 +78,14 @@ async function FeaturedPosts() {
   )
 }
 
-async function Categories({ selected }: { selected?: string }) {
-  let { data: categories } = await getCategories()
+async function Categories({
+  selected,
+  locale,
+}: {
+  selected?: string
+  locale: string
+}) {
+  let { data: categories } = await getCategories(locale)
 
   if (categories.length === 0) {
     return
@@ -104,8 +95,8 @@ async function Categories({ selected }: { selected?: string }) {
     <div className="flex flex-wrap items-center justify-between gap-2">
       <Menu>
         <MenuButton className="flex items-center justify-between gap-2 font-medium">
-          {categories.find(({ slug }) => slug === selected)?.title ||
-            'All categories'}
+          {categories.find(({ slug }: ArticleCategory) => slug === selected)
+            ?.name || 'All categories'}
           <ChevronUpDownIcon className="size-4 fill-gray-900" />
         </MenuButton>
         <MenuItems
@@ -122,7 +113,7 @@ async function Categories({ selected }: { selected?: string }) {
               <p className="col-start-2 text-sm/6">All categories</p>
             </Link>
           </MenuItem>
-          {categories.map((category) => (
+          {categories.map((category: ArticleCategory) => (
             <MenuItem key={category.slug}>
               <Link
                 href={`/blog?category=${category.slug}`}
@@ -130,25 +121,34 @@ async function Categories({ selected }: { selected?: string }) {
                 className="group grid grid-cols-[16px_1fr] items-center gap-2 rounded-md px-2 py-1 data-focus:bg-gray-950/5"
               >
                 <CheckIcon className="hidden size-4 group-data-selected:block" />
-                <p className="col-start-2 text-sm/6">{category.title}</p>
+                <p className="col-start-2 text-sm/6">{category.name}</p>
               </Link>
             </MenuItem>
           ))}
         </MenuItems>
       </Menu>
-      <Button variant="outline" href="/blog/feed.xml" className="gap-1">
+      {/* <Button variant="outline" href="/blog/feed.xml" className="gap-1">
         <RssIcon className="size-4" />
         RSS Feed
-      </Button>
+      </Button> */}
     </div>
   )
 }
 
-async function Posts({ page, category }: { page: number; category?: string }) {
-  let { data: posts } = await getPosts(
+async function Posts({
+  page,
+  category,
+  locale,
+}: {
+  page: number
+  category?: string
+  locale: string
+}) {
+  let { data: posts } = await getArticles(
     (page - 1) * postsPerPage,
     page * postsPerPage,
     category,
+    locale,
   )
 
   if (posts.length === 0 && (page > 1 || category)) {
@@ -161,7 +161,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
 
   return (
     <div className="mt-6">
-      {posts.map((post) => (
+      {posts.map((post: Article) => (
         <div
           key={post.slug}
           className="relative grid grid-cols-1 border-b border-b-gray-100 py-10 first:border-t first:border-t-gray-200 max-sm:gap-3 sm:grid-cols-3"
@@ -170,20 +170,9 @@ async function Posts({ page, category }: { page: number; category?: string }) {
             <div className="text-sm/5 max-sm:text-gray-700 sm:font-medium">
               {dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}
             </div>
-            {post.author && (
-              <div className="mt-2.5 flex items-center gap-3">
-                {post.author.image && (
-                  <img
-                    alt=""
-                    src={image(post.author.image).width(64).height(64).url()}
-                    className="aspect-square size-6 rounded-full object-cover"
-                  />
-                )}
-                <div className="text-sm/5 text-gray-700">
-                  {post.author.name}
-                </div>
-              </div>
-            )}
+            <div className="mt-2.5 flex items-center gap-3">
+              <div className="text-sm/5 text-gray-700">{post.author.name}</div>
+            </div>
           </div>
           <div className="sm:col-span-2 sm:max-w-2xl">
             <h2 className="text-sm/5 font-medium">{post.title}</h2>
@@ -208,9 +197,11 @@ async function Posts({ page, category }: { page: number; category?: string }) {
 async function Pagination({
   page,
   category,
+  locale,
 }: {
   page: number
   category?: string
+  locale: string
 }) {
   function url(page: number) {
     let params = new URLSearchParams()
@@ -221,7 +212,7 @@ async function Pagination({
     return params.size !== 0 ? `/blog?${params.toString()}` : '/blog'
   }
 
-  let totalPosts = (await getPostsCount(category)).data
+  let totalPosts = (await getArticlesCount(category, locale)).data
   let hasPreviousPage = page - 1
   let previousPageUrl = hasPreviousPage ? url(page - 1) : undefined
   let hasNextPage = page * postsPerPage < totalPosts
@@ -269,19 +260,25 @@ async function Pagination({
 
 export default async function Blog({
   searchParams,
+  params,
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+  params: Promise<{ lang: string }>
 }) {
-  let params = await searchParams
+  let searchParamsResolved = await searchParams
+  let { lang } = await params
   let page =
-    'page' in params
-      ? typeof params.page === 'string' && parseInt(params.page) > 1
-        ? parseInt(params.page)
+    'page' in searchParamsResolved
+      ? typeof searchParamsResolved.page === 'string' &&
+        parseInt(searchParamsResolved.page) > 1
+        ? parseInt(searchParamsResolved.page)
         : notFound()
       : 1
 
   let category =
-    typeof params.category === 'string' ? params.category : undefined
+    typeof searchParamsResolved.category === 'string'
+      ? searchParamsResolved.category
+      : undefined
 
   return (
     <main className="overflow-hidden">
@@ -290,18 +287,18 @@ export default async function Blog({
         <Navbar />
         <Subheading className="mt-16">Blog</Subheading>
         <Heading as="h1" className="mt-2">
-          What’s happening at Host Jamstack.
+          What&apos;s happening at Host Jamstack.
         </Heading>
         <Lead className="mt-6 max-w-3xl">
           Stay informed with product updates, company news, and insights on how
-          to sell smarter at your company.
+          to deploy and host JAMstack applications safely and securely.
         </Lead>
       </Container>
-      {page === 1 && !category && <FeaturedPosts />}
+      {page === 1 && !category && <FeaturedPosts locale={lang} />}
       <Container className="mt-16 pb-24">
-        <Categories selected={category} />
-        <Posts page={page} category={category} />
-        <Pagination page={page} category={category} />
+        <Categories selected={category} locale={lang} />
+        <Posts page={page} category={category} locale={lang} />
+        <Pagination page={page} category={category} locale={lang} />
       </Container>
       <Footer />
     </main>

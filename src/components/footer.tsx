@@ -232,16 +232,14 @@ export function Footer({
                 </div>
               </div>
             </PlusGridRow>
-            <PlusGridRow className="flex justify-between">
+            <PlusGridRow className="flex flex-col justify-between sm:flex-row">
               <div className="flex flex-col gap-4 sm:flex-row sm:gap-8">
                 <PlusGridItem className="py-3">
                   <CompanyDetails />
-                  {/* <Copyright /> */}
                 </PlusGridItem>
               </div>
               <div className="flex">
                 <PlusGridItem className="flex items-center gap-8 py-3">
-                  {/* <SocialLinks /> */}
                   <Copyright />
                 </PlusGridItem>
               </div>

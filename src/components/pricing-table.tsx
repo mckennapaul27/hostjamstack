@@ -270,7 +270,7 @@ export default function PricingTable({
   selectedTier: (typeof tiers)[number]
 }) {
   return (
-    <Container className="py-24">
+    <Container className="!px-0 py-24">
       <table className="w-full text-left">
         <caption className="sr-only">Pricing plan comparison</caption>
         <colgroup>
@@ -318,7 +318,7 @@ export default function PricingTable({
                       <MenuItem key={tier.slug}>
                         <Link
                           scroll={false}
-                          href={`/pricing?tier=${tier.slug}`}
+                          href={`?tier=${tier.slug}`}
                           data-selected={
                             tier === selectedTier ? true : undefined
                           }

@@ -1,20 +1,23 @@
 import { Button } from '@/components/button'
-import { Container } from '@/components/container'
 import { Gradient } from '@/components/gradient'
 import { Subheading } from '@/components/text'
 import { tiers } from './pricing-table'
 
 export default function PricingCards() {
   return (
-    <div className="relative py-16">
+    <div className="relative -mr-4 -ml-4 py-16 sm:-mr-0 sm:-ml-0">
       <Gradient className="absolute inset-x-2 top-48 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
-      <Container className="relative">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {tiers.map((tier, tierIndex) => (
-            <PricingCard key={tierIndex} tier={tier} />
-          ))}
+
+      <div className={'relative px-4 sm:px-6 lg:px-8'}>
+        <div className="mx-auto max-w-2xl lg:max-w-7xl">
+          {' '}
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            {tiers.map((tier, tierIndex) => (
+              <PricingCard key={tierIndex} tier={tier} />
+            ))}
+          </div>
         </div>
-      </Container>
+      </div>
     </div>
   )
 }
@@ -52,7 +55,7 @@ function PricingCard({ tier }: { tier: (typeof tiers)[number] }) {
   return (
     <div className="-m-2 grid grid-cols-1 rounded-4xl shadow-[inset_0_0_2px_1px_#ffffff4d] ring-1 ring-black/5 max-lg:mx-auto max-lg:w-full max-lg:max-w-md">
       <div className="grid grid-cols-1 rounded-4xl p-2 shadow-md shadow-black/5">
-        <div className="rounded-3xl bg-white p-10 pb-9 shadow-2xl ring-1 ring-black/5">
+        <div className="rounded-3xl bg-white p-6 pb-9 shadow-2xl ring-1 ring-black/5 sm:p-10">
           <Subheading>{tier.name}</Subheading>
           <p className="mt-2 text-sm/6 text-gray-950/75">{tier.description}</p>
           {tier.slug === 'enterprise' ? (

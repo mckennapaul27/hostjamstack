@@ -39,9 +39,9 @@ function Hero() {
             optimization included.
           </p>
           <div className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
-            <Button href="/pricing">Get started</Button>
-            <Button variant="secondary" href="/pricing">
-              See pricing
+            <Button href="/hosting">See pricing</Button>
+            <Button href="/support-packages" variant="secondary">
+              See support packages
             </Button>
           </div>
         </div>
@@ -182,8 +182,16 @@ function FeatureSection() {
 //   )
 // }
 
-export default function Home() {
-  let tier = tiers[0]
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+  let params = await searchParams
+  let tier =
+    typeof params.tier === 'string'
+      ? tiers.find(({ slug }) => slug === params.tier)!
+      : tiers[0]
   return (
     <div className="overflow-hidden">
       <Hero />
@@ -204,7 +212,9 @@ export default function Home() {
           {/* <BentoSection /> */}
         </div>
         {/* <DarkBentoSection /> */}
-        <DomainSearchBox />
+        <div className="px-2">
+          <DomainSearchBox />
+        </div>
       </main>
       <Testimonials />
       <Footer />

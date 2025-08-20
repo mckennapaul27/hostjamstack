@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: {
     template: '%s - Host Jamstack',
-    default: 'Host Jamstack - Close every deal',
+    default: 'Host Jamstack - Premium Jamstack Hosting & Deployment',
   },
 }
 

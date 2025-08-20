@@ -20,7 +20,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   description:
-    'Host Jamstack helps you sell more by revealing sensitive information about your customers.',
+    'Deploy your Next.js, Astro, Vite or other JAMstack apps with automatic SSL, CDN, and performance optimization. Premium hosting for makers who want to ship safely and scale effortlessly.',
 }
 
 function Hero() {

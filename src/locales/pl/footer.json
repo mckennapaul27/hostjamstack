@@ -1,0 +1,49 @@
+{
+  "cta": {
+    "getStarted": "Zacznij",
+    "support": {
+      "title": "Gotowy na bezpieczny start?",
+      "description": "Poznaj nasze pakiety.",
+      "subtitle": "Zbudowałeś coś wspaniałego. Spraw, żeby żyło—bezpiecznie.",
+      "button": "Poznaj pakiety wsparcia"
+    },
+    "hosting": {
+      "title": "Gotowy na produkcję?",
+      "description": "Poznaj nasze pakiety.",
+      "subtitle": "Zbudowałeś coś wspaniałego. Spraw, żeby żyło—bezpiecznie.",
+      "button": "Poznaj pakiety hostingu"
+    },
+    "domains": {
+      "title": "Gotowy na produkcję?",
+      "description": "Poznaj nasze pakiety.",
+      "subtitle": "Zbudowałeś coś wspaniałego. Spraw, żeby żyło—bezpiecznie.",
+      "button": "Poznaj domeny"
+    },
+    "general": {
+      "title": "Gotowy na bezpieczny start?",
+      "description": "Poznaj nasze pakiety.",
+      "subtitle": "Zbudowałeś coś wspaniałego. Spraw, żeby żyło—bezpiecznie.",
+      "button": "Poznaj pakiety wsparcia"
+    }
+  },
+  "sitemap": {
+    "product": "Produkt",
+    "hosting": "Hosting",
+    "domains": "Domeny",
+    "supportPackages": "Pakiety wsparcia",
+    "company": "Firma",
+    "blog": "Blog",
+    "helpCenter": "Centrum pomocy",
+    "legal": "Prawne",
+    "termsOfService": "Warunki usługi",
+    "privacyPolicy": "Polityka prywatności",
+    "refundPolicy": "Polityka zwrotów"
+  },
+  "copyright": "Wszelkie prawa zastrzeżone.",
+  "companyDetails": {
+    "name": "DRP Solutions ltd",
+    "companyNumber": "Numer firmy 208392740",
+    "address1": "Trakia, bl 216, Vh B, ap 8",
+    "address2": "Plovdiv"
+  }
+}

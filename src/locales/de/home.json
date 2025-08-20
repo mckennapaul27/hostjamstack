@@ -1,0 +1,15 @@
+{
+  "hero": {
+    "title": "Sie bauen, wir stellen bereit.",
+    "description": "Helfen Machern, sicher zu versenden. Stellen Sie Ihre Next.js, Astro, Vite oder andere JAMstack-Apps mit automatischem SSL, CDN und Leistungsoptimierung bereit.",
+    "seePricing": "Preise ansehen",
+    "supportPackages": "Support-Pakete ansehen"
+  },
+  "features": {
+    "title": "Einfach bereitzustellen, einfach zu skalieren."
+  },
+  "pricing": {
+    "subtitle": "Jamstack Hosting",
+    "title": "Finden Sie einen Plan für Ihre Apps."
+  }
+}

@@ -1,7 +1,20 @@
 {
   "nav": {
-    "pricing": "Pricing",
+    "hosting": "Hosting",
+    "domains": "Domains",
+    "supportPackages": "Support Packages",
+    "company": "Company",
     "blog": "Blog",
-    "login": "Login"
+    "login": "Login",
+    "home": "Home",
+    "openMainMenu": "Open main menu",
+    "language": "Language"
+  },
+  "cookieBanner": {
+    "message": "We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies.",
+    "learnMore": "Learn more",
+    "acceptAll": "Accept All",
+    "decline": "Decline",
+    "close": "Close cookie banner"
   }
 }

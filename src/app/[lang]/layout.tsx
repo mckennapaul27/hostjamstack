@@ -1,5 +1,6 @@
 import { initTranslations } from '@/app/i18n'
 import TranslationsProvider from '@/components/TranslationsProvider'
+import CookieBanner from '@/components/cookie-banner'
 import { i18n, isValidLocale } from '@/i18n-config'
 import '@/styles/tailwind.css'
 import type { Metadata } from 'next'
@@ -50,6 +51,7 @@ export default async function RootLayout({
           resources={resources}
         >
           {children}
+          <CookieBanner />
         </TranslationsProvider>
       </body>
     </html>

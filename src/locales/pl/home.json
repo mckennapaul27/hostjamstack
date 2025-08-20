@@ -1,0 +1,15 @@
+{
+  "hero": {
+    "title": "Ty budujesz, my wdrażamy.",
+    "description": "Pomagamy twórcom bezpiecznie wysyłać. Wdróż swoje aplikacje Next.js, Astro, Vite lub inne JAMstack z automatycznym SSL, CDN i optymalizacją wydajności.",
+    "seePricing": "Zobacz cennik",
+    "supportPackages": "Zobacz pakiety wsparcia"
+  },
+  "features": {
+    "title": "Łatwe do wdrożenia, łatwe do skalowania."
+  },
+  "pricing": {
+    "subtitle": "Hosting Jamstack",
+    "title": "Znajdź plan, który zasili Twoje aplikacje."
+  }
+}

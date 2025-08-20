@@ -1,0 +1,49 @@
+{
+  "cta": {
+    "getStarted": "Commencer",
+    "support": {
+      "title": "Prêt à lancer en toute sécurité ?",
+      "description": "Explorez nos forfaits.",
+      "subtitle": "Vous avez construit quelque chose de formidable. Rendons-le vivant—en toute sécurité.",
+      "button": "Explorer les forfaits support"
+    },
+    "hosting": {
+      "title": "Prêt pour la production ?",
+      "description": "Explorez nos forfaits.",
+      "subtitle": "Vous avez construit quelque chose de formidable. Rendons-le vivant—en toute sécurité.",
+      "button": "Explorer les forfaits hébergement"
+    },
+    "domains": {
+      "title": "Prêt pour la production ?",
+      "description": "Explorez nos forfaits.",
+      "subtitle": "Vous avez construit quelque chose de formidable. Rendons-le vivant—en toute sécurité.",
+      "button": "Explorer les domaines"
+    },
+    "general": {
+      "title": "Prêt à lancer en toute sécurité ?",
+      "description": "Explorez nos forfaits.",
+      "subtitle": "Vous avez construit quelque chose de formidable. Rendons-le vivant—en toute sécurité.",
+      "button": "Explorer les forfaits support"
+    }
+  },
+  "sitemap": {
+    "product": "Produit",
+    "hosting": "Hébergement",
+    "domains": "Domaines",
+    "supportPackages": "Forfaits support",
+    "company": "Entreprise",
+    "blog": "Blog",
+    "helpCenter": "Centre d'aide",
+    "legal": "Légal",
+    "termsOfService": "Conditions de service",
+    "privacyPolicy": "Politique de confidentialité",
+    "refundPolicy": "Politique de remboursement"
+  },
+  "copyright": "Tous droits réservés.",
+  "companyDetails": {
+    "name": "DRP Solutions ltd",
+    "companyNumber": "Numéro d'entreprise 208392740",
+    "address1": "Trakia, bl 216, Vh B, ap 8",
+    "address2": "Plovdiv"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "hero": {
+    "title": "Tú creas, nosotros desplegamos.",
+    "description": "Ayudando a los creadores a enviar de forma segura. Despliega tus aplicaciones Next.js, Astro, Vite u otras JAMstack con SSL automático, CDN y optimización de rendimiento incluidos.",
+    "seePricing": "Ver precios",
+    "supportPackages": "Ver paquetes de soporte"
+  },
+  "features": {
+    "title": "Fácil de desplegar, fácil de escalar."
+  },
+  "pricing": {
+    "subtitle": "Hosting Jamstack",
+    "title": "Encuentra un plan para potenciar tus aplicaciones."
+  }
+}

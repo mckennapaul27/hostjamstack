@@ -1,0 +1,49 @@
+{
+  "cta": {
+    "getStarted": "Loslegen",
+    "support": {
+      "title": "Bereit für einen sicheren Start?",
+      "description": "Entdecken Sie unsere Pakete.",
+      "subtitle": "Sie haben etwas Großartiges gebaut. Lassen Sie es live gehen—sicher.",
+      "button": "Support-Pakete erkunden"
+    },
+    "hosting": {
+      "title": "Bereit für die Produktion?",
+      "description": "Entdecken Sie unsere Pakete.",
+      "subtitle": "Sie haben etwas Großartiges gebaut. Lassen Sie es live gehen—sicher.",
+      "button": "Hosting-Pakete erkunden"
+    },
+    "domains": {
+      "title": "Bereit für die Produktion?",
+      "description": "Entdecken Sie unsere Pakete.",
+      "subtitle": "Sie haben etwas Großartiges gebaut. Lassen Sie es live gehen—sicher.",
+      "button": "Domains erkunden"
+    },
+    "general": {
+      "title": "Bereit für einen sicheren Start?",
+      "description": "Entdecken Sie unsere Pakete.",
+      "subtitle": "Sie haben etwas Großartiges gebaut. Lassen Sie es live gehen—sicher.",
+      "button": "Support-Pakete erkunden"
+    }
+  },
+  "sitemap": {
+    "product": "Produkt",
+    "hosting": "Hosting",
+    "domains": "Domains",
+    "supportPackages": "Support-Pakete",
+    "company": "Unternehmen",
+    "blog": "Blog",
+    "helpCenter": "Hilfecenter",
+    "legal": "Rechtliches",
+    "termsOfService": "Nutzungsbedingungen",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "refundPolicy": "Rückerstattungsrichtlinie"
+  },
+  "copyright": "Alle Rechte vorbehalten.",
+  "companyDetails": {
+    "name": "DRP Solutions ltd",
+    "companyNumber": "Firmennummer 208392740",
+    "address1": "Trakia, bl 216, Vh B, ap 8",
+    "address2": "Plovdiv"
+  }
+}

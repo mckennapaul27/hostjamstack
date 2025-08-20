@@ -1,0 +1,49 @@
+{
+  "cta": {
+    "getStarted": "Get started",
+    "support": {
+      "title": "Ready to launch safely?",
+      "description": "Explore our packages.",
+      "subtitle": "You've built something great. Let's make it live—safely.",
+      "button": "Explore support packages"
+    },
+    "hosting": {
+      "title": "Ready for production?",
+      "description": "Explore our packages.",
+      "subtitle": "You've built something great. Let's make it live—safely.",
+      "button": "Explore hosting packages"
+    },
+    "domains": {
+      "title": "Ready for production?",
+      "description": "Explore our packages.",
+      "subtitle": "You've built something great. Let's make it live—safely.",
+      "button": "Explore domains"
+    },
+    "general": {
+      "title": "Ready to launch safely?",
+      "description": "Explore our packages.",
+      "subtitle": "You've built something great. Let's make it live—safely.",
+      "button": "Explore support packages"
+    }
+  },
+  "sitemap": {
+    "product": "Product",
+    "hosting": "Hosting",
+    "domains": "Domains",
+    "supportPackages": "Support packages",
+    "company": "Company",
+    "blog": "Blog",
+    "helpCenter": "Help center",
+    "legal": "Legal",
+    "termsOfService": "Terms of service",
+    "privacyPolicy": "Privacy policy",
+    "refundPolicy": "Refund policy"
+  },
+  "copyright": "All rights reserved.",
+  "companyDetails": {
+    "name": "DRP Solutions ltd",
+    "companyNumber": "Company number 208392740",
+    "address1": "Trakia, bl 216, Vh B, ap 8",
+    "address2": "Plovdiv"
+  }
+}

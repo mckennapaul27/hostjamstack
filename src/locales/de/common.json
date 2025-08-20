@@ -1,7 +1,20 @@
 {
   "nav": {
-    "pricing": "Preise",
+    "hosting": "Hosting",
+    "domains": "Domains",
+    "supportPackages": "Support-Pakete",
+    "company": "Unternehmen",
     "blog": "Blog",
-    "login": "Anmelden"
+    "login": "Anmelden",
+    "home": "Startseite",
+    "openMainMenu": "Hauptmenü öffnen",
+    "language": "Sprache"
+  },
+  "cookieBanner": {
+    "message": "Wir verwenden Cookies, um Ihr Browsing-Erlebnis zu verbessern, personalisierte Inhalte zu liefern und unseren Traffic zu analysieren. Durch Klicken auf \"Alle akzeptieren\" stimmen Sie unserer Verwendung von Cookies zu.",
+    "learnMore": "Mehr erfahren",
+    "acceptAll": "Alle akzeptieren",
+    "decline": "Ablehnen",
+    "close": "Cookie-Banner schließen"
   }
 }

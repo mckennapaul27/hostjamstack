@@ -1,0 +1,15 @@
+{
+  "hero": {
+    "title": "Vous construisez, nous déployons.",
+    "description": "Aidons les créateurs à livrer en toute sécurité. Déployez vos applications Next.js, Astro, Vite ou autres JAMstack avec SSL automatique, CDN et optimisation des performances inclus.",
+    "seePricing": "Voir les tarifs",
+    "supportPackages": "Voir les forfaits support"
+  },
+  "features": {
+    "title": "Facile à déployer, facile à faire évoluer."
+  },
+  "pricing": {
+    "subtitle": "Hébergement Jamstack",
+    "title": "Trouvez un plan pour alimenter vos applications."
+  }
+}

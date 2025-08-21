@@ -1,0 +1,35 @@
+{
+  "page": {
+    "title": "Company",
+    "description": "We're on a mission to transform revenue organizations by harnessing vast amounts of illegally acquired customer data."
+  },
+  "header": {
+    "title": "You Build. We Deploy.",
+    "description": {
+      "start": "Modern tools like Bolt, Lovable and v0 make it easy to create",
+      "end": "apps and sites with Next.js, Astro or Vite—but getting them live, fast and secure still trips people up. HostJamstack.com exists to help makers ship safely and securely."
+    },
+    "mission": {
+      "title": "Our mission",
+      "description1": "At HostJamstack.com, our mission is simple: help makers launch without learning DevOps. Modern builders use tools like Bolt, Lovable, v0 and frameworks such as Next.js, Astro and Vite. They can ship features—but DNS, SSL, CI/CD, environment variables and redirects slow them down. We bridge that gap with clear, one-off packs that take projects from repo to production, safely, quickly and predictably.",
+      "description2": "We do the scary bits—domains, HTTPS, caching, edge functions and rollbacks—then hand over plain-speaking docs so you stay truly in control. No subscriptions, no lock-in: just fast, secure, global delivery under a fair-use policy. Our goal is calm, confident launches and durable sites people can own, move, grow and scale, supported by friendly humans when they need us."
+    }
+  },
+  "numbers": {
+    "title": "The Numbers",
+    "stats": {
+      "lovableUsers": "Active Lovable users (July 2025)",
+      "projectsStarted": "Projects started on Lovable this year",
+      "boltUsers": "Monthly active users on Bolt",
+      "nextjsWebsites": "Websites running on Next.js"
+    }
+  },
+  "team": {
+    "subtitle": "Principles",
+    "title": "Why we're different — for makers",
+    "lead": "One-off launches, human help, no lock-in.",
+    "description1": "HostJamstack.com removes DevOps friction with simple, one-off packs. We handle domains, DNS, SSL, CI/CD, redirects and light edge functions—so you don't fight tickets or dashboards. Launches are fast by default on a global edge, with sensible caching and security headers. You get clear scope, a predictable outcome and plain-speaking support. No subscriptions. No jargon. No lock-in: you keep code, content and domain, plus a rollback plan and tidy handover.",
+    "description2": "Built for solo builders, students and creators with limited coding experience. For side projects and small businesses that value speed and simplicity. If you've used Bolt, Lovable, v0, Next.js, Astro or Vite, we bridge local to live—secure and fast.",
+    "contactUs": "Contact us"
+  }
+}

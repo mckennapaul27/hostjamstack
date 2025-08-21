@@ -1,3 +1,4 @@
+import { initTranslations } from '@/app/i18n'
 import { AnimatedNumber } from '@/components/animated-number'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
@@ -10,15 +11,15 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Company',
   description:
-    'We’re on a mission to transform revenue organizations by harnessing vast amounts of illegally acquired customer data.',
+    "We're on a mission to transform revenue organizations by harnessing vast amounts of illegally acquired customer data.",
 }
 
-function Header() {
+function Header({ t }: { t: any }) {
   return (
     <Container className="mt-16">
-      <Heading as="h1">You Build. We Deploy.</Heading>
+      <Heading as="h1">{t('header.title')}</Heading>
       <Lead className="mt-6 max-w-3xl">
-        Modern tools like Bolt, Lovable and v0 make it easy to create{' '}
+        {t('header.description.start')}{' '}
         <a
           href="https://jamstack.org"
           className="underline"
@@ -27,29 +28,18 @@ function Header() {
         >
           jamstack
         </a>{' '}
-        apps and sites with Next.js, Astro or Vite—but getting them live, fast
-        and secure still trips people up. HostJamstack.com exists to help makers
-        ship safely and securely.
+        {t('header.description.end')}
       </Lead>
       <section className="mt-16 grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
         <div className="max-w-lg">
-          <h2 className="text-2xl font-medium tracking-tight">Our mission</h2>
+          <h2 className="text-2xl font-medium tracking-tight">
+            {t('header.mission.title')}
+          </h2>
           <p className="mt-6 text-sm/6 text-gray-600">
-            At HostJamstack.com, our mission is simple: help makers launch
-            without learning DevOps. Modern builders use tools like Bolt,
-            Lovable, v0 and frameworks such as Next.js, Astro and Vite. They can
-            ship features—but DNS, SSL, CI/CD, environment variables and
-            redirects slow them down. We bridge that gap with clear, one-off
-            packs that take projects from repo to production, safely, quickly
-            and predictably.
+            {t('header.mission.description1')}
           </p>
           <p className="mt-8 text-sm/6 text-gray-600">
-            We do the scary bits—domains, HTTPS, caching, edge functions and
-            rollbacks—then hand over plain-speaking docs so you stay truly in
-            control. No subscriptions, no lock-in: just fast, secure, global
-            delivery under a fair-use policy. Our goal is calm, confident
-            launches and durable sites people can own, move, grow and scale,
-            supported by friendly humans when they need us.
+            {t('header.mission.description2')}
           </p>
         </div>
         <div className="pt-20 lg:row-span-2 lg:-mr-16 xl:mr-auto">
@@ -85,12 +75,12 @@ function Header() {
           </div>
         </div>
         <div className="max-lg:mt-16 lg:col-span-1">
-          <Subheading>The Numbers</Subheading>
+          <Subheading>{t('numbers.title')}</Subheading>
           <hr className="mt-6 border-t border-gray-200" />
           <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
             <div className="flex flex-col gap-y-2 border-b border-dotted border-gray-200 pb-4">
               <dt className="text-sm/6 text-gray-600">
-                Active Lovable users (July 2025)
+                {t('numbers.stats.lovableUsers')}
               </dt>
               <dd className="order-first text-6xl font-medium tracking-tight">
                 <AnimatedNumber start={0} end={2.3} />M
@@ -98,7 +88,7 @@ function Header() {
             </div>
             <div className="flex flex-col gap-y-2 border-b border-dotted border-gray-200 pb-4">
               <dt className="text-sm/6 text-gray-600">
-                Projects started on Lovable this year
+                {t('numbers.stats.projectsStarted')}
               </dt>
               <dd className="order-first text-6xl font-medium tracking-tight">
                 <AnimatedNumber start={15} end={50} />
@@ -107,7 +97,7 @@ function Header() {
             </div>
             <div className="flex flex-col gap-y-2 max-sm:border-b max-sm:border-dotted max-sm:border-gray-200 max-sm:pb-4">
               <dt className="text-sm/6 text-gray-600">
-                Monthly active users on Bolt
+                {t('numbers.stats.boltUsers')}
               </dt>
               <dd className="order-first text-6xl font-medium tracking-tight">
                 <AnimatedNumber start={0.5} end={1} />
@@ -116,7 +106,7 @@ function Header() {
             </div>
             <div className="flex flex-col gap-y-2">
               <dt className="text-sm/6 text-gray-600">
-                Websites running on Next.js
+                {t('numbers.stats.nextjsWebsites')}
               </dt>
               <dd className="order-first text-6xl font-medium tracking-tight">
                 <AnimatedNumber start={1} end={4} />
@@ -150,37 +140,23 @@ function Header() {
 //   )
 // }
 
-function Team() {
+function Team({ t }: { t: any }) {
   return (
     <Container className="my-32">
-      <Subheading>Principles</Subheading>
+      <Subheading>{t('team.subtitle')}</Subheading>
       <Heading as="h3" className="mt-2">
-        Why we’re different — for makers
+        {t('team.title')}
       </Heading>
-      <Lead className="mt-6 max-w-3xl">
-        One-off launches, human help, no lock-in.
-      </Lead>
+      <Lead className="mt-6 max-w-3xl">{t('team.lead')}</Lead>
       <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2">
         <div className="max-w-lg">
-          <p className="text-sm/6 text-gray-600">
-            HostJamstack.com removes DevOps friction with simple, one-off packs.
-            We handle domains, DNS, SSL, CI/CD, redirects and light edge
-            functions—so you don’t fight tickets or dashboards. Launches are
-            fast by default on a global edge, with sensible caching and security
-            headers. You get clear scope, a predictable outcome and
-            plain-speaking support. No subscriptions. No jargon. No lock-in: you
-            keep code, content and domain, plus a rollback plan and tidy
-            handover.
-          </p>
+          <p className="text-sm/6 text-gray-600">{t('team.description1')}</p>
           <p className="mt-8 text-sm/6 text-gray-600">
-            Built for solo builders, students and creators with limited coding
-            experience. For side projects and small businesses that value speed
-            and simplicity. If you’ve used Bolt, Lovable, v0, Next.js, Astro or
-            Vite, we bridge local to live—secure and fast.
+            {t('team.description2')}
           </p>
           <div className="mt-6">
             <Button className="w-full sm:w-auto" href="#">
-              Contact us
+              {t('team.contactUs')}
             </Button>
           </div>
         </div>
@@ -478,18 +454,27 @@ function Team() {
 //   )
 // }
 
-export default function Company() {
+export default async function Company({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}) {
+  const awaitedParams = await params
+
+  // Initialize translations for company namespace
+  const { t } = await initTranslations(awaitedParams.lang, ['company'])
+
   return (
     <main className="overflow-hidden">
       <GradientBackground />
       <Container>
-        <Navbar />
+        <Navbar locale={awaitedParams.lang} />
       </Container>
-      <Header />
-      <Team />
+      <Header t={t} />
+      <Team t={t} />
       {/* <Investors />
       <Careers /> */}
-      <Footer />
+      <Footer locale={awaitedParams.lang} />
     </main>
   )
 }

@@ -1,3 +1,4 @@
+import { initTranslations } from '@/app/i18n'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
@@ -12,9 +13,33 @@ import {
 } from '@/lib/articles'
 import { ChevronLeftIcon } from '@heroicons/react/16/solid'
 import dayjs from 'dayjs'
+import 'dayjs/locale/de'
+import 'dayjs/locale/es'
+import 'dayjs/locale/fr'
+import 'dayjs/locale/pl'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
+
+// Helper function to set dayjs locale
+function setDayjsLocale(locale: string) {
+  switch (locale) {
+    case 'es':
+      dayjs.locale('es')
+      break
+    case 'fr':
+      dayjs.locale('fr')
+      break
+    case 'de':
+      dayjs.locale('de')
+      break
+    case 'pl':
+      dayjs.locale('pl')
+      break
+    default:
+      dayjs.locale('en')
+  }
+}
 
 // MDX components for styling
 const mdxComponents = {
@@ -161,6 +186,13 @@ export default async function BlogPost({
   params: Promise<{ slug: string; lang: string }>
 }) {
   const { slug, lang } = await params
+
+  // Initialize translations for blog namespace
+  const { t } = await initTranslations(lang, ['blog'])
+
+  // Set dayjs locale for date formatting
+  setDayjsLocale(lang)
+
   const post: ArticleWithContent | null = await getArticleBySlug(slug, lang)
 
   if (!post) notFound()
@@ -172,7 +204,7 @@ export default async function BlogPost({
     <main className="overflow-hidden">
       <GradientBackground />
       <Container>
-        <Navbar />
+        <Navbar locale={lang} />
         <Subheading className="mt-16">
           {dayjs(post.publishedAt).format('dddd, MMMM D, YYYY')}
         </Subheading>
@@ -186,7 +218,7 @@ export default async function BlogPost({
             </div>
             <div className="flex flex-wrap gap-2">
               <Link
-                href={`/blog?category=${post.category.slug}`}
+                href={`/${lang}/blog?category=${post.category.slug}`}
                 className="rounded-full border border-dotted border-gray-300 bg-gray-50 px-2 text-sm/6 font-medium text-gray-500"
               >
                 {post.category.name}
@@ -207,7 +239,9 @@ export default async function BlogPost({
               <div className="mb-8 flex items-center gap-4 text-sm text-gray-500">
                 <span>{post.readingTime}</span>
                 <span>•</span>
-                <span>{post.wordCount.toLocaleString()} words</span>
+                <span>
+                  {post.wordCount.toLocaleString()} {t('postDetail.words')}
+                </span>
               </div>
 
               {/* MDX Content */}
@@ -216,16 +250,16 @@ export default async function BlogPost({
               </div>
 
               <div className="mt-10">
-                <Button variant="outline" href="/blog">
+                <Button variant="outline" href={`/${lang}/blog`}>
                   <ChevronLeftIcon className="size-4" />
-                  Back to blog
+                  {t('postDetail.backToBlog')}
                 </Button>
               </div>
             </div>
           </div>
         </div>
       </Container>
-      <Footer />
+      <Footer locale={lang} />
     </main>
   )
 }

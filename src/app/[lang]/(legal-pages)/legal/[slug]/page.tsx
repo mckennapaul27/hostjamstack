@@ -1,3 +1,5 @@
+import { initTranslations } from '@/app/i18n'
+import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { GradientBackground } from '@/components/gradient'
@@ -9,6 +11,7 @@ import {
   getLegalArticleBySlug,
   type LegalArticleWithContent,
 } from '@/lib/legal-articles'
+import { ChevronLeftIcon } from '@heroicons/react/16/solid'
 import dayjs from 'dayjs'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -161,6 +164,10 @@ export default async function LegalPage({
   params: Promise<{ slug: string; lang: string }>
 }) {
   const { slug, lang } = await params
+
+  // Initialize translations for legal namespace
+  const { t } = await initTranslations(lang, ['legal'])
+
   // Always fetch English version since legal docs are only in English
   const legalArticle: LegalArticleWithContent | null =
     await getLegalArticleBySlug(slug, 'en')
@@ -174,8 +181,10 @@ export default async function LegalPage({
     <main className="overflow-hidden">
       <GradientBackground />
       <Container>
-        <Navbar />
-        <Subheading className="mt-16">Legal</Subheading>
+        <Navbar locale={lang} />
+        <Subheading className="mt-16">
+          {t('documentDetail.breadcrumb')}
+        </Subheading>
         <Heading as="h1" className="mt-2">
           {legalArticle.title}
         </Heading>
@@ -183,13 +192,13 @@ export default async function LegalPage({
           <div className="flex flex-wrap items-center gap-8 max-lg:justify-between">
             <div className="flex items-center gap-3">
               <div className="text-sm/5 text-gray-700">
-                Last updated:{' '}
+                {t('documentDetail.lastUpdated')}{' '}
                 {dayjs(legalArticle.updatedAt).format('MMMM D, YYYY')}
               </div>
             </div>
             {lang !== 'en' && (
               <div className="rounded-full bg-amber-50 px-3 py-1 text-sm/5 text-amber-600">
-                Available in English only
+                {t('documentDetail.availableInEnglishOnly')}
               </div>
             )}
           </div>
@@ -198,12 +207,10 @@ export default async function LegalPage({
               {/* Company Notice */}
               <div className="mb-12 rounded-lg bg-gray-50 p-6 text-sm/6">
                 <p className="mb-2 font-medium text-gray-950">
-                  Company Information
+                  {t('documentDetail.companyNotice.title')}
                 </p>
                 <p className="text-gray-600">
-                  This document is provided by{' '}
-                  <strong>DRP Solutions ltd</strong>, Company number 208392740,
-                  registered at Trakia, bl 216, Vh B, ap 8, Plovdiv, Bulgaria.
+                  {t('documentDetail.companyNotice.text')}
                 </p>
               </div>
 
@@ -211,11 +218,18 @@ export default async function LegalPage({
               <div className="prose prose-lg max-w-none">
                 <MDXRemote source={mdxContent} components={mdxComponents} />
               </div>
+
+              <div className="mt-16 border-t border-gray-200 pt-8">
+                <Button variant="outline" href={`/${lang}/legal`}>
+                  <ChevronLeftIcon className="size-4" />
+                  {t('documentDetail.backToDocuments')}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </Container>
-      <Footer />
+      <Footer locale={lang} />
     </main>
   )
 }

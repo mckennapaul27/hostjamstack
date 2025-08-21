@@ -1,0 +1,112 @@
+{
+  "page": {
+    "title": "Pricing",
+    "description": "Companies all over the world have closed millions of deals with Host Jamstack. Sign up today and start selling smarter."
+  },
+  "header": {
+    "title": "Support Packages",
+    "description": "Done-for-you deployments for non-technical builders. Hosting included on Launch & Migration packs. Contact us to discuss your project."
+  },
+  "tiers": {
+    "tinyTweak": {
+      "description": "A single, quick hosting task.",
+      "cta": "Buy Tiny Tweak",
+      "highlights": [
+        "Trigger a redeploy",
+        "Add 1 DNS record",
+        "Add 1 env var",
+        "Add 1 redirect / rewrite",
+        "SSL check",
+        "No hosting included · No code changes"
+      ]
+    },
+    "quickFix": {
+      "description": "Small setup fixes on an existing site.",
+      "cta": "Buy Quick Fix",
+      "highlights": [
+        "Connect 1 custom domain + SSL",
+        "Up to 3 env vars",
+        "Up to 3 redirects / rewrites",
+        "One deploy hook",
+        "Production health check",
+        "No hosting included"
+      ]
+    },
+    "firstDeploy": {
+      "description": "Take a repo that already builds and put it live.",
+      "cta": "Buy First Deploy",
+      "highlights": [
+        "Create project from Git",
+        "Configure build / output",
+        "Attach 1 production domain + SSL",
+        "Up to 5 env vars & 5 redirects",
+        "Handover checklist",
+        "3 months hosting included (fair-use)"
+      ]
+    },
+    "launchPack": {
+      "description": "Polished go-live for brochure/marketing sites.",
+      "cta": "Buy Launch Pack (recommended)",
+      "highlights": [
+        "Everything in First Deploy",
+        "Staging subdomain",
+        "Performance / cache headers",
+        "Custom 404 / 500 pages",
+        "Up to 10 redirects / rewrites",
+        "Basic deploy notifications",
+        "Go-live / rollback plan",
+        "12 months hosting included (fair-use)"
+      ]
+    },
+    "migrationMini": {
+      "description": "Move a small static site to modern hosting.",
+      "cta": "Buy Migration Mini",
+      "highlights": [
+        "Everything in Launch Pack",
+        "Migrate up to 10 pages",
+        "Preserve URLs where possible",
+        "Up to 20 301 redirects",
+        "Custom domain + SSL",
+        "Zero-downtime cutover",
+        "Contact form via serverless",
+        "Security headers"
+      ]
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Your questions answered.",
+    "questions": {
+      "oneOff": {
+        "question": "1) Is it really a one-off payment?",
+        "answer": "Yes. Each pack is a single payment. Packs with hosting keep your site live for the stated period. Near the end you can renew with another one-off, switch to monthly cover, or move elsewhere."
+      },
+      "hosting": {
+        "question": "2) What does \"hosting included\" and \"fair-use\" mean?",
+        "answer": "Hosting covers typical small-site usage. As guidance: ~50 GB/month bandwidth, ~250k function calls per month, and reasonable build activity. If you consistently exceed this, we'll flag it early and propose options before any extra costs apply."
+      },
+      "requirements": {
+        "question": "3) What do you need from me to start?",
+        "answer": "Read access to your Git repo, domain registrar/DNS access (or permission for us to manage it), and any required secrets (API keys, SMTP). For migrations: current host details and priority URLs. We support Next.js, Astro, Vite and plain static sites."
+      },
+      "speed": {
+        "question": "4) How fast can you get me live?",
+        "answer": "Most projects go live within a few business days once we have access and your domain is ready. DNS changes can take a short time to propagate. We'll confirm timelines up front."
+      },
+      "services": {
+        "question": "5) Do you handle domains, email and databases?",
+        "answer": "Domains/DNS/SSL — yes. Email — we don't host it; we'll configure DNS for Microsoft 365 or Google Workspace. Databases — we don't host them; we'll integrate your site with a hosted DB/CMS you choose and set the environment variables."
+      },
+      "migration": {
+        "question": "6) Can I move away later?",
+        "answer": "Absolutely. No lock-in. You own the code, content and domain. We provide plain-speaking handover docs and can assist with transfer if you need it."
+      }
+    }
+  },
+  "ui": {
+    "buyNow": "Buy now",
+    "features": "Features",
+    "oneOff": "one-off",
+    "notIncluded": "Not included:"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "page": {
+    "title": "Blog",
+    "description": "Bleiben Sie informiert über Produktupdates, Unternehmensnachrichten und Einblicke, wie JAMstack-Anwendungen sicher bereitgestellt und gehostet werden.",
+    "subtitle": "Blog",
+    "heading": "Was bei Host Jamstack passiert.",
+    "lead": "Bleiben Sie informiert über Produktupdates, Unternehmensnachrichten und Einblicke, wie JAMstack-Anwendungen sicher bereitgestellt und gehostet werden."
+  },
+  "sections": {
+    "featured": "Empfohlen",
+    "allCategories": "Alle Kategorien"
+  },
+  "posts": {
+    "noPostsFound": "Keine Beiträge gefunden.",
+    "readMore": "Weiterlesen"
+  },
+  "pagination": {
+    "previous": "Vorherige",
+    "next": "Nächste"
+  },
+  "postDetail": {
+    "readingTime": "Lesezeit",
+    "words": "Wörter",
+    "backToBlog": "Zurück zum Blog"
+  }
+}

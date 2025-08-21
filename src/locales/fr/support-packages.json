@@ -1,0 +1,112 @@
+{
+  "page": {
+    "title": "Tarification",
+    "description": "Des entreprises du monde entier ont conclu des millions d'affaires avec Host Jamstack. Inscrivez-vous aujourd'hui et commencez à vendre plus intelligemment."
+  },
+  "header": {
+    "title": "Forfaits de Support",
+    "description": "Déploiements clés en main pour les constructeurs non techniques. Hébergement inclus dans les forfaits Launch et Migration. Contactez-nous pour discuter de votre projet."
+  },
+  "tiers": {
+    "tinyTweak": {
+      "description": "Une tâche d'hébergement unique et rapide.",
+      "cta": "Acheter Tiny Tweak",
+      "highlights": [
+        "Déclencher un redéploiement",
+        "Ajouter 1 enregistrement DNS",
+        "Ajouter 1 variable d'environnement",
+        "Ajouter 1 redirection / réécriture",
+        "Vérification SSL",
+        "Aucun hébergement inclus · Aucun changement de code"
+      ]
+    },
+    "quickFix": {
+      "description": "Petites corrections de configuration sur un site existant.",
+      "cta": "Acheter Quick Fix",
+      "highlights": [
+        "Connecter 1 domaine personnalisé + SSL",
+        "Jusqu'à 3 variables d'environnement",
+        "Jusqu'à 3 redirections / réécritures",
+        "Un hook de déploiement",
+        "Vérification de santé de production",
+        "Aucun hébergement inclus"
+      ]
+    },
+    "firstDeploy": {
+      "description": "Prendre un dépôt qui fonctionne déjà et le mettre en ligne.",
+      "cta": "Acheter First Deploy",
+      "highlights": [
+        "Créer un projet depuis Git",
+        "Configurer build / sortie",
+        "Attacher 1 domaine de production + SSL",
+        "Jusqu'à 5 variables d'env et 5 redirections",
+        "Liste de vérification de transfert",
+        "3 mois d'hébergement inclus (usage raisonnable)"
+      ]
+    },
+    "launchPack": {
+      "description": "Lancement poli pour les sites de brochure/marketing.",
+      "cta": "Acheter Launch Pack (recommandé)",
+      "highlights": [
+        "Tout dans First Deploy",
+        "Sous-domaine de staging",
+        "En-têtes de performance / cache",
+        "Pages 404 / 500 personnalisées",
+        "Jusqu'à 10 redirections / réécritures",
+        "Notifications de déploiement de base",
+        "Plan de lancement / rollback",
+        "12 mois d'hébergement inclus (usage raisonnable)"
+      ]
+    },
+    "migrationMini": {
+      "description": "Déplacer un petit site statique vers un hébergement moderne.",
+      "cta": "Acheter Migration Mini",
+      "highlights": [
+        "Tout dans Launch Pack",
+        "Migrer jusqu'à 10 pages",
+        "Préserver les URLs si possible",
+        "Jusqu'à 20 redirections 301",
+        "Domaine personnalisé + SSL",
+        "Basculement sans temps d'arrêt",
+        "Formulaire de contact via serverless",
+        "En-têtes de sécurité"
+      ]
+    }
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "subtitle": "Vos questions, nos réponses.",
+    "questions": {
+      "oneOff": {
+        "question": "1) Est-ce vraiment un paiement unique ?",
+        "answer": "Oui. Chaque forfait est un paiement unique. Les forfaits avec hébergement maintiennent votre site en ligne pour la période indiquée. Près de la fin, vous pouvez renouveler avec un autre paiement unique, passer à une couverture mensuelle, ou aller ailleurs."
+      },
+      "hosting": {
+        "question": "2) Que signifie \"hébergement inclus\" et \"usage raisonnable\" ?",
+        "answer": "L'hébergement couvre l'usage typique d'un petit site. Comme guide : ~50 GB/mois de bande passante, ~250k appels de fonction par mois, et activité de build raisonnable. Si vous dépassez cela constamment, nous le signalerons tôt et proposerons des options avant que des coûts supplémentaires s'appliquent."
+      },
+      "requirements": {
+        "question": "3) De quoi avez-vous besoin de moi pour commencer ?",
+        "answer": "Accès en lecture à votre dépôt Git, accès au registraire de domaine/DNS (ou permission pour nous de le gérer), et tout secret requis (clés API, SMTP). Pour les migrations : détails de l'hôte actuel et URLs prioritaires. Nous supportons Next.js, Astro, Vite et les sites statiques simples."
+      },
+      "speed": {
+        "question": "4) À quelle vitesse pouvez-vous me mettre en ligne ?",
+        "answer": "La plupart des projets sont mis en ligne dans quelques jours ouvrables une fois que nous avons accès et que votre domaine est prêt. Les changements DNS peuvent prendre un peu de temps à se propager. Nous confirmerons les délais à l'avance."
+      },
+      "services": {
+        "question": "5) Gérez-vous les domaines, l'email et les bases de données ?",
+        "answer": "Domaines/DNS/SSL — oui. Email — nous ne l'hébergeons pas ; nous configurerons DNS pour Microsoft 365 ou Google Workspace. Bases de données — nous ne les hébergeons pas ; nous intégrerons votre site avec une BD/CMS hébergée que vous choisissez et définirons les variables d'environnement."
+      },
+      "migration": {
+        "question": "6) Puis-je partir plus tard ?",
+        "answer": "Absolument. Pas de verrouillage. Vous possédez le code, le contenu et le domaine. Nous fournissons des documents de transfert clairs et pouvons aider avec le transfert si vous en avez besoin."
+      }
+    }
+  },
+  "ui": {
+    "buyNow": "Acheter maintenant",
+    "features": "Fonctionnalités",
+    "oneOff": "unique",
+    "notIncluded": "Non inclus :"
+  }
+}

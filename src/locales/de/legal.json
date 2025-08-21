@@ -1,0 +1,79 @@
+{
+  "page": {
+    "title": "Rechtsdokumente | HostJamstack",
+    "description": "Zugriff auf alle rechtlichen Dokumente für HostJamstack-Dienste einschließlich Allgemeine Geschäftsbedingungen, Datenschutzrichtlinie und Rückerstattungsrichtlinie."
+  },
+  "header": {
+    "title": "Rechtsdokumente",
+    "description": "Wichtige rechtliche Informationen zur Nutzung der HostJamstack-Dienste. Bitte lesen Sie diese Dokumente sorgfältig durch, da sie wichtige Informationen über Ihre Rechte und Pflichten enthalten.",
+    "languageNotice": {
+      "note": "Hinweis:",
+      "text": "Rechtsdokumente sind nur auf Englisch verfügbar. Alle Inhalte unten werden auf Englisch angezeigt, unabhängig von Ihrer gewählten Sprache."
+    }
+  },
+  "companyInfo": {
+    "title": "Unternehmensinformationen",
+    "sections": {
+      "legalEntity": {
+        "title": "Juristische Person",
+        "companyName": "DRP Solutions ltd",
+        "companyNumber": "Unternehmensnummer: 208392740"
+      },
+      "registeredAddress": {
+        "title": "Eingetragene Adresse",
+        "address": "Trakia, bl 216, Vh B, ap 8\nPlovdiv, Bulgarien"
+      },
+      "contact": {
+        "title": "Kontakt",
+        "email": "E-Mail: hello@hostjamstack.com",
+        "website": "Website: hostjamstack.com"
+      },
+      "governingLaw": {
+        "title": "Anwendbares Recht",
+        "law": "Bulgarisches Recht",
+        "compliance": "EU/DSGVO-konform"
+      }
+    }
+  },
+  "documents": {
+    "title": "Verfügbare Dokumente",
+    "descriptions": {
+      "terms-and-conditions": "Nutzungsbedingungen für die Verwendung von HostJamstack Hosting-, Support- und Domain-Diensten.",
+      "privacy-policy": "Wie wir Ihre persönlichen Informationen in Übereinstimmung mit der DSGVO sammeln, verwenden und schützen.",
+      "refund-policy": "Rückerstattungsbedingungen für unsere verschiedenen Servicetypen und Abrechnungsmodelle."
+    },
+    "lastUpdated": "Zuletzt aktualisiert:",
+    "noDocuments": "Keine rechtlichen Dokumente verfügbar."
+  },
+  "importantNotice": {
+    "title": "Wichtiger Hinweis",
+    "sections": {
+      "effectiveDate": {
+        "label": "Inkrafttreten:",
+        "text": "Alle rechtlichen Dokumente sind seit dem 20. Dezember 2024 wirksam."
+      },
+      "updates": {
+        "label": "Aktualisierungen:",
+        "text": "Wir können diese Dokumente von Zeit zu Zeit aktualisieren. Wir werden Sie über wesentliche Änderungen per E-Mail oder Website-Ankündigung informieren."
+      },
+      "questions": {
+        "label": "Fragen:",
+        "text": "Wenn Sie Fragen zu einem dieser Dokumente haben, kontaktieren Sie uns bitte unter hello@hostjamstack.com."
+      },
+      "language": {
+        "label": "Sprache:",
+        "text": "Diese Dokumente werden nur auf Englisch bereitgestellt. Bei Konflikten zwischen Übersetzungen hat die englische Version Vorrang."
+      }
+    }
+  },
+  "documentDetail": {
+    "breadcrumb": "Rechtliches",
+    "lastUpdated": "Zuletzt aktualisiert:",
+    "availableInEnglishOnly": "Nur auf Englisch verfügbar",
+    "companyNotice": {
+      "title": "Unternehmensinformationen",
+      "text": "Dieses Dokument wird bereitgestellt von DRP Solutions ltd, Unternehmensnummer 208392740, eingetragen in Trakia, bl 216, Vh B, ap 8, Plovdiv, Bulgarien."
+    },
+    "backToDocuments": "Zurück zu Rechtsdokumenten"
+  }
+}

@@ -93,8 +93,8 @@ export default async function Home({
             <Heading as="h3" className="mt-2 max-w-3xl">
               {t('pricing.title')}
             </Heading>
-            <PricingCards />
-            <PricingTable selectedTier={tier} />
+            <PricingCards locale={awaitedParams.lang} />
+            <PricingTable selectedTier={tier} locale={awaitedParams.lang} />
           </Container>
           {/* <BentoSection /> */}
         </div>

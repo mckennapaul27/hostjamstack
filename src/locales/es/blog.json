@@ -1,0 +1,26 @@
+{
+  "page": {
+    "title": "Blog",
+    "description": "Mantente informado con actualizaciones de productos, noticias de la empresa e información sobre cómo desplegar y alojar aplicaciones JAMstack de forma segura.",
+    "subtitle": "Blog",
+    "heading": "Lo que está pasando en Host Jamstack.",
+    "lead": "Mantente informado con actualizaciones de productos, noticias de la empresa e información sobre cómo desplegar y alojar aplicaciones JAMstack de forma segura."
+  },
+  "sections": {
+    "featured": "Destacados",
+    "allCategories": "Todas las categorías"
+  },
+  "posts": {
+    "noPostsFound": "No se encontraron publicaciones.",
+    "readMore": "Leer más"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
+  "postDetail": {
+    "readingTime": "tiempo de lectura",
+    "words": "palabras",
+    "backToBlog": "Volver al blog"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "tiers": {
+    "growth": {
+      "description": "Der perfekte Ausgangspunkt für Ihre Web-App oder Ihr persönliches Projekt.",
+      "highlights": [
+        "Repository importieren, in Sekunden deployen",
+        "Automatische CI/CD",
+        "Web Application Firewall",
+        "Globales, automatisiertes CDN",
+        "Flexible Berechnung",
+        "DDoS-Abwehr",
+        "Traffic- und Performance-Einblicke"
+      ]
+    },
+    "pro": {
+      "description": "Alles was Sie brauchen, um Ihre App und Ihr Unternehmen zu entwickeln und zu skalieren.",
+      "highlights": [
+        "Alles in Growth, plus:",
+        "10x mehr inklusive Nutzung",
+        "Observability-Tools",
+        "Schnellere Builds",
+        "Kaltstart-Prävention",
+        "Erweiterte WAF-Schutz",
+        "E-Mail-Support"
+      ]
+    },
+    "enterprise": {
+      "description": "Kritische Sicherheit, Performance, Observability, Plattform-SLAs und Support.",
+      "highlights": [
+        "Alles in Pro, plus:",
+        "Gast- und Team-Zugriffskontrollen",
+        "SCIM & Verzeichnissynchronisation",
+        "Verwaltete WAF-Regelsätze",
+        "Multi-Region-Berechnung & Failover",
+        "99,99% SLA",
+        "Erweiterte Unterstützung"
+      ]
+    }
+  },
+  "features": {
+    "sections": {
+      "deliveryNetwork": "Liefernetzwerk",
+      "contentCaching": "Inhalt, Caching & Optimierung",
+      "compute": "Berechnung",
+      "support": "Support"
+    },
+    "names": {
+      "edgeRequests": "Edge-Anfragen",
+      "fastDataTransfer": "Schnelle Datenübertragung",
+      "isrReads": "ISR-Lesevorgänge",
+      "isrWrites": "ISR-Schreibvorgänge",
+      "storageSize": "Speichergröße",
+      "simpleOperations": "Einfache Operationen",
+      "advancedOperations": "Erweiterte Operationen",
+      "blobDataTransfer": "Blob-Datenübertragung",
+      "imageTransformations": "Bildtransformationen",
+      "edgeConfigReads": "Edge-Konfiguration Lesevorgänge",
+      "edgeConfigWrites": "Edge-Konfiguration Schreibvorgänge",
+      "activeCpu": "Aktive CPU",
+      "provisionedMemory": "Bereitgestellter Speicher",
+      "invocations": "Aufrufe",
+      "emailSupport": "E-Mail-Support",
+      "callCenterSupport": "24/7 Callcenter-Support",
+      "dedicatedAccountManager": "Dedizierter Account Manager"
+    },
+    "values": {
+      "custom": "Individuell",
+      "included": "enthalten",
+      "month": "Monat",
+      "writes": "Schreibvorgänge"
+    }
+  },
+  "ui": {
+    "getStarted": "Loslegen",
+    "pricingPlanComparison": "Preisplan-Vergleich",
+    "includedIn": "Enthalten in",
+    "notIncludedIn": "Nicht enthalten in",
+    "buyNow": "Jetzt Kaufen",
+    "contactUs": "Kontakt",
+    "features": "Funktionen"
+  }
+}

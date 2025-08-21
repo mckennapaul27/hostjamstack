@@ -1,0 +1,35 @@
+{
+  "page": {
+    "title": "Firma",
+    "description": "Jesteśmy w misji transformacji organizacji przychodowych poprzez wykorzystanie ogromnych ilości nielegalnie pozyskanych danych klientów."
+  },
+  "header": {
+    "title": "Ty Budujesz. My Wdrażamy.",
+    "description": {
+      "start": "Nowoczesne narzędzia jak Bolt, Lovable i v0 ułatwiają tworzenie",
+      "end": "aplikacji i stron jamstack z Next.js, Astro czy Vite—ale uruchomienie ich na żywo, szybko i bezpiecznie wciąż sprawia ludziom problemy. HostJamstack.com istnieje, aby pomóc twórcom dostarczać bezpiecznie i niezawodnie."
+    },
+    "mission": {
+      "title": "Nasza misja",
+      "description1": "W HostJamstack.com nasza misja jest prosta: pomóc twórcom uruchamiać bez nauki DevOps. Nowoczesni budowniczy używają narzędzi jak Bolt, Lovable, v0 i frameworków jak Next.js, Astro i Vite. Mogą dostarczać funkcje—ale DNS, SSL, CI/CD, zmienne środowiskowe i przekierowania ich spowalniają. Wypełniamy tę lukę jasnymi, jednorazowymi pakietami, które przenoszą projekty z repozytorium do produkcji, bezpiecznie, szybko i przewidywalnie.",
+      "description2": "Robimy straszne rzeczy—domeny, HTTPS, cache, funkcje edge i rollbacki—potem przekazujemy jasną dokumentację, żebyś naprawdę zachował kontrolę. Bez subskrypcji, bez blokady: tylko szybka, bezpieczna, globalna dostawa pod polityką uczciwego użycia. Naszym celem są spokojne, pewne uruchomienia i trwałe strony, które ludzie mogą posiadać, przenosić, rozwijać i skalować, wspierani przez przyjaznych ludzi, gdy nas potrzebują."
+    }
+  },
+  "numbers": {
+    "title": "Liczby",
+    "stats": {
+      "lovableUsers": "Aktywni użytkownicy Lovable (Lipiec 2025)",
+      "projectsStarted": "Projekty rozpoczęte na Lovable w tym roku",
+      "boltUsers": "Miesięcznie aktywni użytkownicy na Bolt",
+      "nextjsWebsites": "Strony internetowe działające na Next.js"
+    }
+  },
+  "team": {
+    "subtitle": "Zasady",
+    "title": "Dlaczego jesteśmy inni — dla twórców",
+    "lead": "Jednorazowe uruchomienia, ludzka pomoc, bez blokady.",
+    "description1": "HostJamstack.com usuwa tarcie DevOps prostymi, jednorazowymi pakietami. Obsługujemy domeny, DNS, SSL, CI/CD, przekierowania i lekkie funkcje edge—żebyś nie walczył z ticketami czy dashboardami. Uruchomienia są domyślnie szybkie na globalnym edge, z rozsądnym cachem i nagłówkami bezpieczeństwa. Dostajesz jasny zakres, przewidywalny wynik i zrozumiałe wsparcie. Bez subskrypcji. Bez żargonu. Bez blokady: zachowujesz kod, treść i domenę, plus plan rollback i porządne przekazanie.",
+    "description2": "Zbudowane dla samotnych budowniczych, studentów i twórców z ograniczonym doświadczeniem w kodowaniu. Dla projektów pobocznych i małych firm, które cenią szybkość i prostotę. Jeśli używałeś Bolt, Lovable, v0, Next.js, Astro czy Vite, łączymy lokalne z live—bezpiecznie i szybko.",
+    "contactUs": "Skontaktuj się z nami"
+  }
+}

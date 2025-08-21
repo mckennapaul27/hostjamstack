@@ -1,0 +1,112 @@
+{
+  "page": {
+    "title": "Precios",
+    "description": "Empresas de todo el mundo han cerrado millones de acuerdos con Host Jamstack. Regístrate hoy y comienza a vender más inteligentemente."
+  },
+  "header": {
+    "title": "Paquetes de Soporte",
+    "description": "Despliegues hechos para ti para constructores no técnicos. Hosting incluido en paquetes Launch y Migration. Contáctanos para discutir tu proyecto."
+  },
+  "tiers": {
+    "tinyTweak": {
+      "description": "Una tarea de hosting única y rápida.",
+      "cta": "Comprar Tiny Tweak",
+      "highlights": [
+        "Activar un redespliegue",
+        "Agregar 1 registro DNS",
+        "Agregar 1 variable de entorno",
+        "Agregar 1 redirección / reescritura",
+        "Verificación SSL",
+        "Sin hosting incluido · Sin cambios de código"
+      ]
+    },
+    "quickFix": {
+      "description": "Pequeñas correcciones de configuración en un sitio existente.",
+      "cta": "Comprar Quick Fix",
+      "highlights": [
+        "Conectar 1 dominio personalizado + SSL",
+        "Hasta 3 variables de entorno",
+        "Hasta 3 redirecciones / reescrituras",
+        "Un hook de despliegue",
+        "Verificación de salud de producción",
+        "Sin hosting incluido"
+      ]
+    },
+    "firstDeploy": {
+      "description": "Tomar un repositorio que ya funciona y ponerlo en línea.",
+      "cta": "Comprar First Deploy",
+      "highlights": [
+        "Crear proyecto desde Git",
+        "Configurar build / salida",
+        "Adjuntar 1 dominio de producción + SSL",
+        "Hasta 5 variables de entorno y 5 redirecciones",
+        "Lista de verificación de entrega",
+        "3 meses de hosting incluido (uso justo)"
+      ]
+    },
+    "launchPack": {
+      "description": "Lanzamiento pulido para sitios de folletos/marketing.",
+      "cta": "Comprar Launch Pack (recomendado)",
+      "highlights": [
+        "Todo en First Deploy",
+        "Subdominio de staging",
+        "Headers de rendimiento / caché",
+        "Páginas 404 / 500 personalizadas",
+        "Hasta 10 redirecciones / reescrituras",
+        "Notificaciones básicas de despliegue",
+        "Plan de lanzamiento / rollback",
+        "12 meses de hosting incluido (uso justo)"
+      ]
+    },
+    "migrationMini": {
+      "description": "Mover un sitio estático pequeño a hosting moderno.",
+      "cta": "Comprar Migration Mini",
+      "highlights": [
+        "Todo en Launch Pack",
+        "Migrar hasta 10 páginas",
+        "Preservar URLs donde sea posible",
+        "Hasta 20 redirecciones 301",
+        "Dominio personalizado + SSL",
+        "Corte sin tiempo de inactividad",
+        "Formulario de contacto vía serverless",
+        "Headers de seguridad"
+      ]
+    }
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Tus preguntas respondidas.",
+    "questions": {
+      "oneOff": {
+        "question": "1) ¿Es realmente un pago único?",
+        "answer": "Sí. Cada paquete es un pago único. Los paquetes con hosting mantienen tu sitio vivo durante el período establecido. Cerca del final puedes renovar con otro pago único, cambiar a cobertura mensual, o moverte a otro lugar."
+      },
+      "hosting": {
+        "question": "2) ¿Qué significa \"hosting incluido\" y \"uso justo\"?",
+        "answer": "El hosting cubre el uso típico de un sitio pequeño. Como guía: ~50 GB/mes de ancho de banda, ~250k llamadas de función por mes, y actividad de build razonable. Si excedes esto consistentemente, lo señalaremos temprano y propondremos opciones antes de que se apliquen costos adicionales."
+      },
+      "requirements": {
+        "question": "3) ¿Qué necesitas de mí para empezar?",
+        "answer": "Acceso de lectura a tu repositorio Git, acceso al registrador de dominio/DNS (o permiso para que lo manejemos), y cualquier secreto requerido (claves API, SMTP). Para migraciones: detalles del host actual y URLs prioritarias. Soportamos Next.js, Astro, Vite y sitios estáticos simples."
+      },
+      "speed": {
+        "question": "4) ¿Qué tan rápido pueden ponerme en línea?",
+        "answer": "La mayoría de proyectos se ponen en línea en unos pocos días hábiles una vez que tenemos acceso y tu dominio está listo. Los cambios DNS pueden tomar un poco de tiempo en propagarse. Confirmaremos los tiempos por adelantado."
+      },
+      "services": {
+        "question": "5) ¿Manejan dominios, email y bases de datos?",
+        "answer": "Dominios/DNS/SSL — sí. Email — no lo alojamos; configuraremos DNS para Microsoft 365 o Google Workspace. Bases de datos — no las alojamos; integraremos tu sitio con una BD/CMS alojada que elijas y estableceremos las variables de entorno."
+      },
+      "migration": {
+        "question": "6) ¿Puedo irme más tarde?",
+        "answer": "Absolutamente. Sin bloqueo. Eres dueño del código, contenido y dominio. Proporcionamos documentos de entrega claros y podemos ayudar con la transferencia si lo necesitas."
+      }
+    }
+  },
+  "ui": {
+    "buyNow": "Comprar ahora",
+    "features": "Características",
+    "oneOff": "único",
+    "notIncluded": "No incluido:"
+  }
+}

@@ -1,3 +1,4 @@
+import { initTranslations } from '@/app/i18n'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
@@ -22,6 +23,10 @@ import {
 } from '@heroicons/react/16/solid'
 import { clsx } from 'clsx'
 import dayjs from 'dayjs'
+import 'dayjs/locale/de'
+import 'dayjs/locale/es'
+import 'dayjs/locale/fr'
+import 'dayjs/locale/pl'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -33,8 +38,25 @@ export const metadata: Metadata = {
 
 const postsPerPage = 5
 
-async function FeaturedPosts({ locale }: { locale: string }) {
+// Helper function to set dayjs locale
+function setDayjsLocale(locale: string) {
+  const localeMap: { [key: string]: string } = {
+    en: 'en',
+    es: 'es',
+    fr: 'fr',
+    de: 'de',
+    pl: 'pl',
+  }
+
+  const dayjsLocale = localeMap[locale] || 'en'
+  dayjs.locale(dayjsLocale)
+}
+
+async function FeaturedPosts({ locale, t }: { locale: string; t: any }) {
   let { data: featuredPosts } = await getFeaturedArticles(3, locale)
+
+  // Set dayjs locale for this component
+  setDayjsLocale(locale)
 
   if (featuredPosts.length === 0) {
     return
@@ -43,7 +65,9 @@ async function FeaturedPosts({ locale }: { locale: string }) {
   return (
     <div className="mt-16 bg-linear-to-t from-gray-100 pb-14">
       <Container>
-        <h2 className="text-2xl font-medium tracking-tight">Featured</h2>
+        <h2 className="text-2xl font-medium tracking-tight">
+          {t('sections.featured')}
+        </h2>
         <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3">
           {featuredPosts.map((post: Article) => (
             <div
@@ -81,9 +105,11 @@ async function FeaturedPosts({ locale }: { locale: string }) {
 async function Categories({
   selected,
   locale,
+  t,
 }: {
   selected?: string
   locale: string
+  t: any
 }) {
   let { data: categories } = await getCategories(locale)
 
@@ -96,7 +122,7 @@ async function Categories({
       <Menu>
         <MenuButton className="flex items-center justify-between gap-2 font-medium">
           {categories.find(({ slug }: ArticleCategory) => slug === selected)
-            ?.name || 'All categories'}
+            ?.name || t('sections.allCategories')}
           <ChevronUpDownIcon className="size-4 fill-gray-900" />
         </MenuButton>
         <MenuItems
@@ -110,7 +136,9 @@ async function Categories({
               className="group grid grid-cols-[1rem_1fr] items-center gap-2 rounded-md px-2 py-1 data-focus:bg-gray-950/5"
             >
               <CheckIcon className="hidden size-4 group-data-selected:block" />
-              <p className="col-start-2 text-sm/6">All categories</p>
+              <p className="col-start-2 text-sm/6">
+                {t('sections.allCategories')}
+              </p>
             </Link>
           </MenuItem>
           {categories.map((category: ArticleCategory) => (
@@ -139,10 +167,12 @@ async function Posts({
   page,
   category,
   locale,
+  t,
 }: {
   page: number
   category?: string
   locale: string
+  t: any
 }) {
   let { data: posts } = await getArticles(
     (page - 1) * postsPerPage,
@@ -151,12 +181,15 @@ async function Posts({
     locale,
   )
 
+  // Set dayjs locale for this component
+  setDayjsLocale(locale)
+
   if (posts.length === 0 && (page > 1 || category)) {
     notFound()
   }
 
   if (posts.length === 0) {
-    return <p className="mt-6 text-gray-500">No posts found.</p>
+    return <p className="mt-6 text-gray-500">{t('posts.noPostsFound')}</p>
   }
 
   return (
@@ -183,7 +216,7 @@ async function Posts({
                 className="flex items-center gap-1 text-sm/5 font-medium"
               >
                 <span className="absolute inset-0" />
-                Read more
+                {t('posts.readMore')}
                 <ChevronRightIcon className="size-4 fill-gray-400" />
               </Link>
             </div>
@@ -198,10 +231,12 @@ async function Pagination({
   page,
   category,
   locale,
+  t,
 }: {
   page: number
   category?: string
   locale: string
+  t: any
 }) {
   function url(page: number) {
     let params = new URLSearchParams()
@@ -231,7 +266,7 @@ async function Pagination({
         disabled={!previousPageUrl}
       >
         <ChevronLeftIcon className="size-4" />
-        Previous
+        {t('pagination.previous')}
       </Button>
       <div className="flex gap-2 max-sm:hidden">
         {Array.from({ length: pageCount }, (_, i) => (
@@ -251,7 +286,7 @@ async function Pagination({
         ))}
       </div>
       <Button variant="outline" href={nextPageUrl} disabled={!nextPageUrl}>
-        Next
+        {t('pagination.next')}
         <ChevronRightIcon className="size-4" />
       </Button>
     </div>
@@ -265,6 +300,9 @@ export default async function Blog({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
   params: Promise<{ lang: string }>
 }) {
+  const awaitedParams = await params
+  // Initialize translations for the blog namespace
+  const { t } = await initTranslations(awaitedParams.lang, ['blog'])
   let searchParamsResolved = await searchParams
   let { lang } = await params
   let page =
@@ -284,23 +322,20 @@ export default async function Blog({
     <main className="overflow-hidden">
       <GradientBackground />
       <Container>
-        <Navbar />
-        <Subheading className="mt-16">Blog</Subheading>
+        <Navbar locale={lang} />
+        <Subheading className="mt-16">{t('page.subtitle')}</Subheading>
         <Heading as="h1" className="mt-2">
-          What&apos;s happening at Host Jamstack.
+          {t('page.heading')}
         </Heading>
-        <Lead className="mt-6 max-w-3xl">
-          Stay informed with product updates, company news, and insights on how
-          to deploy and host JAMstack applications safely and securely.
-        </Lead>
+        <Lead className="mt-6 max-w-3xl">{t('page.lead')}</Lead>
       </Container>
-      {page === 1 && !category && <FeaturedPosts locale={lang} />}
+      {page === 1 && !category && <FeaturedPosts locale={lang} t={t} />}
       <Container className="mt-16 pb-24">
-        <Categories selected={category} locale={lang} />
-        <Posts page={page} category={category} locale={lang} />
-        <Pagination page={page} category={category} locale={lang} />
+        <Categories selected={category} locale={lang} t={t} />
+        <Posts page={page} category={category} locale={lang} t={t} />
+        <Pagination page={page} category={category} locale={lang} t={t} />
       </Container>
-      <Footer />
+      <Footer locale={lang} />
     </main>
   )
 }

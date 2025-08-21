@@ -1,0 +1,82 @@
+{
+  "tiers": {
+    "growth": {
+      "description": "El lugar perfecto para comenzar con tu aplicación web o proyecto personal.",
+      "highlights": [
+        "Importa tu repositorio, despliega en segundos",
+        "CI/CD automático",
+        "Firewall de aplicaciones web",
+        "CDN global y automatizado",
+        "Computación fluida",
+        "Mitigación DDoS",
+        "Información de tráfico y rendimiento"
+      ]
+    },
+    "pro": {
+      "description": "Todo lo que necesitas para construir y escalar tu aplicación y negocio.",
+      "highlights": [
+        "Todo en Growth, más:",
+        "10x más uso incluido",
+        "Herramientas de observabilidad",
+        "Construcciones más rápidas",
+        "Prevención de arranque en frío",
+        "Protección WAF avanzada",
+        "Soporte por email"
+      ]
+    },
+    "enterprise": {
+      "description": "Seguridad crítica, rendimiento, observabilidad, SLAs de plataforma y soporte.",
+      "highlights": [
+        "Todo en Pro, más:",
+        "Controles de acceso de invitados y equipos",
+        "SCIM y sincronización de directorio",
+        "Conjuntos de reglas WAF gestionados",
+        "Computación multi-región y failover",
+        "SLA del 99.99%",
+        "Soporte avanzado"
+      ]
+    }
+  },
+  "features": {
+    "sections": {
+      "deliveryNetwork": "Red de Entrega",
+      "contentCaching": "Contenido, Caché y Optimización",
+      "compute": "Computación",
+      "support": "Soporte"
+    },
+    "names": {
+      "edgeRequests": "Solicitudes Edge",
+      "fastDataTransfer": "Transferencia Rápida de Datos",
+      "isrReads": "Lecturas ISR",
+      "isrWrites": "Escrituras ISR",
+      "storageSize": "Tamaño de Almacenamiento",
+      "simpleOperations": "Operaciones Simples",
+      "advancedOperations": "Operaciones Avanzadas",
+      "blobDataTransfer": "Transferencia de Datos Blob",
+      "imageTransformations": "Transformaciones de Imagen",
+      "edgeConfigReads": "Lecturas de Configuración Edge",
+      "edgeConfigWrites": "Escrituras de Configuración Edge",
+      "activeCpu": "CPU Activa",
+      "provisionedMemory": "Memoria Aprovisionada",
+      "invocations": "Invocaciones",
+      "emailSupport": "Soporte por email",
+      "callCenterSupport": "Soporte 24/7 por teléfono",
+      "dedicatedAccountManager": "Gerente de cuenta dedicado"
+    },
+    "values": {
+      "custom": "Personalizado",
+      "included": "incluido",
+      "month": "mes",
+      "writes": "escrituras"
+    }
+  },
+  "ui": {
+    "getStarted": "Comenzar",
+    "pricingPlanComparison": "Comparación de planes de precios",
+    "includedIn": "Incluido en",
+    "notIncludedIn": "No incluido en",
+    "buyNow": "Comprar Ahora",
+    "contactUs": "Contáctanos",
+    "features": "Características"
+  }
+}

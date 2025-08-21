@@ -1,0 +1,112 @@
+{
+  "page": {
+    "title": "Preise",
+    "description": "Unternehmen auf der ganzen Welt haben Millionen von Geschäften mit Host Jamstack abgeschlossen. Melden Sie sich heute an und beginnen Sie intelligenter zu verkaufen."
+  },
+  "header": {
+    "title": "Support-Pakete",
+    "description": "Fertige Deployments für nicht-technische Builder. Hosting in Launch- und Migration-Paketen enthalten. Kontaktieren Sie uns, um Ihr Projekt zu besprechen."
+  },
+  "tiers": {
+    "tinyTweak": {
+      "description": "Eine einzelne, schnelle Hosting-Aufgabe.",
+      "cta": "Tiny Tweak kaufen",
+      "highlights": [
+        "Ein Redeployment auslösen",
+        "1 DNS-Eintrag hinzufügen",
+        "1 Umgebungsvariable hinzufügen",
+        "1 Weiterleitung / Umschreibung hinzufügen",
+        "SSL-Überprüfung",
+        "Kein Hosting enthalten · Keine Code-Änderungen"
+      ]
+    },
+    "quickFix": {
+      "description": "Kleine Setup-Korrekturen an einer bestehenden Site.",
+      "cta": "Quick Fix kaufen",
+      "highlights": [
+        "1 benutzerdefinierte Domain + SSL verbinden",
+        "Bis zu 3 Umgebungsvariablen",
+        "Bis zu 3 Weiterleitungen / Umschreibungen",
+        "Ein Deploy-Hook",
+        "Produktions-Gesundheitsprüfung",
+        "Kein Hosting enthalten"
+      ]
+    },
+    "firstDeploy": {
+      "description": "Ein Repository, das bereits funktioniert, live schalten.",
+      "cta": "First Deploy kaufen",
+      "highlights": [
+        "Projekt aus Git erstellen",
+        "Build / Output konfigurieren",
+        "1 Produktions-Domain + SSL anhängen",
+        "Bis zu 5 Umgebungsvariablen & 5 Weiterleitungen",
+        "Übergabe-Checkliste",
+        "3 Monate Hosting enthalten (faire Nutzung)"
+      ]
+    },
+    "launchPack": {
+      "description": "Polierter Go-Live für Broschüren-/Marketing-Sites.",
+      "cta": "Launch Pack kaufen (empfohlen)",
+      "highlights": [
+        "Alles in First Deploy",
+        "Staging-Subdomain",
+        "Performance- / Cache-Header",
+        "Benutzerdefinierte 404 / 500 Seiten",
+        "Bis zu 10 Weiterleitungen / Umschreibungen",
+        "Basis-Deploy-Benachrichtigungen",
+        "Go-Live / Rollback-Plan",
+        "12 Monate Hosting enthalten (faire Nutzung)"
+      ]
+    },
+    "migrationMini": {
+      "description": "Eine kleine statische Site zu modernem Hosting migrieren.",
+      "cta": "Migration Mini kaufen",
+      "highlights": [
+        "Alles in Launch Pack",
+        "Bis zu 10 Seiten migrieren",
+        "URLs wo möglich beibehalten",
+        "Bis zu 20 301-Weiterleitungen",
+        "Benutzerdefinierte Domain + SSL",
+        "Null-Downtime-Umschaltung",
+        "Kontaktformular via serverless",
+        "Sicherheits-Header"
+      ]
+    }
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Ihre Fragen beantwortet.",
+    "questions": {
+      "oneOff": {
+        "question": "1) Ist es wirklich eine einmalige Zahlung?",
+        "answer": "Ja. Jedes Paket ist eine einmalige Zahlung. Pakete mit Hosting halten Ihre Site für den angegebenen Zeitraum live. Gegen Ende können Sie mit einer weiteren einmaligen Zahlung verlängern, zu monatlicher Abdeckung wechseln oder woanders hingehen."
+      },
+      "hosting": {
+        "question": "2) Was bedeutet \"Hosting enthalten\" und \"faire Nutzung\"?",
+        "answer": "Hosting deckt typische kleine Site-Nutzung ab. Als Richtlinie: ~50 GB/Monat Bandbreite, ~250k Funktionsaufrufe pro Monat und angemessene Build-Aktivität. Wenn Sie das konstant überschreiten, werden wir es früh markieren und Optionen vorschlagen, bevor zusätzliche Kosten anfallen."
+      },
+      "requirements": {
+        "question": "3) Was brauchen Sie von mir zum Starten?",
+        "answer": "Lesezugriff auf Ihr Git-Repository, Domain-Registrar/DNS-Zugriff (oder Erlaubnis für uns, es zu verwalten) und alle erforderlichen Geheimnisse (API-Schlüssel, SMTP). Für Migrationen: aktuelle Host-Details und Prioritäts-URLs. Wir unterstützen Next.js, Astro, Vite und einfache statische Sites."
+      },
+      "speed": {
+        "question": "4) Wie schnell können Sie mich live schalten?",
+        "answer": "Die meisten Projekte gehen innerhalb weniger Werktage live, sobald wir Zugriff haben und Ihre Domain bereit ist. DNS-Änderungen können etwas Zeit zur Verbreitung benötigen. Wir bestätigen Zeitpläne im Voraus."
+      },
+      "services": {
+        "question": "5) Übernehmen Sie Domains, E-Mail und Datenbanken?",
+        "answer": "Domains/DNS/SSL — ja. E-Mail — wir hosten es nicht; wir konfigurieren DNS für Microsoft 365 oder Google Workspace. Datenbanken — wir hosten sie nicht; wir integrieren Ihre Site mit einer gehosteten DB/CMS Ihrer Wahl und setzen die Umgebungsvariablen."
+      },
+      "migration": {
+        "question": "6) Kann ich später wegwechseln?",
+        "answer": "Absolut. Keine Bindung. Sie besitzen den Code, Inhalt und Domain. Wir stellen verständliche Übergabe-Dokumente bereit und können beim Transfer helfen, wenn Sie es brauchen."
+      }
+    }
+  },
+  "ui": {
+    "buyNow": "Jetzt kaufen",
+    "features": "Funktionen",
+    "oneOff": "einmalig",
+    "notIncluded": "Nicht enthalten:"
+  }
+}

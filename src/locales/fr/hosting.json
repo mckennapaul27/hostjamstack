@@ -1,0 +1,44 @@
+{
+  "page": {
+    "title": "Tarification",
+    "description": "Des entreprises du monde entier ont conclu des millions d'affaires avec Radiant. Inscrivez-vous aujourd'hui et commencez à vendre plus intelligemment."
+  },
+  "header": {
+    "title": "Hébergement rapide et sécurisé pour les applications web modernes.",
+    "description": "Hébergement edge global optimisé pour les applications Next.js, Astro et Vite. Mettez votre site JAMstack en ligne avec SSL automatique, CDN et optimisation des performances inclus."
+  },
+  "testimonial": {
+    "quote": "HostJamstack a fait passer mon site Astro de localhost à la production en moins d'une heure. SSL, CDN, tout configuré parfaitement.",
+    "author": "Maria Santos",
+    "role": "Développeuse Frontend, IndieMaker"
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "subtitle": "Vos questions, nos réponses.",
+    "questions": {
+      "frameworks": {
+        "question": "Quels frameworks et outils supportez-vous ?",
+        "answer": "Nous nous spécialisons dans les frameworks JAMstack modernes incluant Next.js, Astro, Vite et les sites statiques. Nous supportons aussi les projets construits avec des outils comme Bolt, Lovable et v0. Notre infrastructure d'hébergement est optimisée pour la livraison rapide et sécurisée de ces applications web modernes."
+      },
+      "speed": {
+        "question": "En combien de temps pouvez-vous mettre mon site en ligne ?",
+        "answer": "La plupart des sites sont mis en ligne dans quelques jours ouvrables une fois que nous avons accès à votre dépôt et aux paramètres de domaine. Les déploiements simples peuvent souvent être complétés en heures, tandis que les migrations plus complexes ou configurations personnalisées peuvent prendre 2-3 jours. Nous vous donnerons un calendrier clair dès le départ."
+      },
+      "domain": {
+        "question": "Gérez-vous la configuration de domaine et les certificats SSL ?",
+        "answer": "Oui, nous gérons la configuration complète du domaine incluant la configuration DNS et les certificats SSL. Vous devrez fournir l'accès à votre registraire de domaine ou nous permettre de gérer les paramètres DNS. Tous les sites obtiennent HTTPS automatique avec des certificats SSL standard de l'industrie."
+      },
+      "support": {
+        "question": "Quel type de support fournissez-vous après le lancement ?",
+        "answer": "Tous les forfaits incluent une documentation de transfert claire et un support par email. Nous fournissons des conseils pour faire des mises à jour, gérer les déploiements et résoudre les problèmes courants. Notre objectif est de vous rendre autonome tout en étant disponible quand vous avez besoin d'assistance."
+      },
+      "migration": {
+        "question": "Puis-je déplacer mon site vers un autre hébergeur plus tard ?",
+        "answer": "Absolument. Il n'y a pas de verrouillage avec HostJamstack. Vous possédez votre code, contenu et domaine. Nous fournissons une documentation détaillée sur votre configuration et pouvons aider avec la migration vers une autre plateforme si nécessaire. Notre objectif est de vous aider à réussir, où que cela vous mène."
+      }
+    }
+  },
+  "ui": {
+    "notIncluded": "Non inclus :"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "tiers": {
+    "growth": {
+      "description": "Idealne miejsce do rozpoczęcia pracy z aplikacją internetową lub projektem osobistym.",
+      "highlights": [
+        "Zaimportuj repozytorium, wdróż w sekundach",
+        "Automatyczne CI/CD",
+        "Firewall aplikacji internetowych",
+        "Globalny, automatyczny CDN",
+        "Elastyczne obliczenia",
+        "Ograniczanie DDoS",
+        "Analiza ruchu i wydajności"
+      ]
+    },
+    "pro": {
+      "description": "Wszystko czego potrzebujesz do budowania i skalowania aplikacji i biznesu.",
+      "highlights": [
+        "Wszystko w Growth, plus:",
+        "10x więcej włączonego użycia",
+        "Narzędzia obserwacji",
+        "Szybsze budowanie",
+        "Zapobieganie zimnym startom",
+        "Zaawansowana ochrona WAF",
+        "Wsparcie e-mail"
+      ]
+    },
+    "enterprise": {
+      "description": "Krytyczne bezpieczeństwo, wydajność, obserwacja, SLA platformy i wsparcie.",
+      "highlights": [
+        "Wszystko w Pro, plus:",
+        "Kontrola dostępu gości i zespołów",
+        "SCIM i synchronizacja katalogów",
+        "Zarządzane zestawy reguł WAF",
+        "Obliczenia wieloregionalne i failover",
+        "99,99% SLA",
+        "Zaawansowane wsparcie"
+      ]
+    }
+  },
+  "features": {
+    "sections": {
+      "deliveryNetwork": "Sieć Dostarczania",
+      "contentCaching": "Treść, Cachowanie i Optymalizacja",
+      "compute": "Obliczenia",
+      "support": "Wsparcie"
+    },
+    "names": {
+      "edgeRequests": "Żądania Edge",
+      "fastDataTransfer": "Szybki Transfer Danych",
+      "isrReads": "Odczyty ISR",
+      "isrWrites": "Zapisy ISR",
+      "storageSize": "Rozmiar Przechowywania",
+      "simpleOperations": "Proste Operacje",
+      "advancedOperations": "Zaawansowane Operacje",
+      "blobDataTransfer": "Transfer Danych Blob",
+      "imageTransformations": "Transformacje Obrazów",
+      "edgeConfigReads": "Odczyty Konfiguracji Edge",
+      "edgeConfigWrites": "Zapisy Konfiguracji Edge",
+      "activeCpu": "Aktywne CPU",
+      "provisionedMemory": "Przydzielona Pamięć",
+      "invocations": "Wywołania",
+      "emailSupport": "Wsparcie e-mail",
+      "callCenterSupport": "Wsparcie call center 24/7",
+      "dedicatedAccountManager": "Dedykowany menedżer konta"
+    },
+    "values": {
+      "custom": "Niestandardowe",
+      "included": "włączone",
+      "month": "miesiąc",
+      "writes": "zapisy"
+    }
+  },
+  "ui": {
+    "getStarted": "Zacznij",
+    "pricingPlanComparison": "Porównanie planów cenowych",
+    "includedIn": "Zawarte w",
+    "notIncludedIn": "Nie zawarte w",
+    "buyNow": "Kup Teraz",
+    "contactUs": "Skontaktuj się",
+    "features": "Funkcje"
+  }
+}

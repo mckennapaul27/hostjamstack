@@ -1,0 +1,26 @@
+{
+  "page": {
+    "title": "Blog",
+    "description": "Stay informed with product updates, company news, and insights on how to deploy and host JAMstack applications safely and securely.",
+    "subtitle": "Blog",
+    "heading": "What's happening at Host Jamstack.",
+    "lead": "Stay informed with product updates, company news, and insights on how to deploy and host JAMstack applications safely and securely."
+  },
+  "sections": {
+    "featured": "Featured",
+    "allCategories": "All categories"
+  },
+  "posts": {
+    "noPostsFound": "No posts found.",
+    "readMore": "Read more"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "postDetail": {
+    "readingTime": "reading time",
+    "words": "words",
+    "backToBlog": "Back to blog"
+  }
+}

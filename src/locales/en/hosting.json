@@ -1,0 +1,44 @@
+{
+  "page": {
+    "title": "Pricing",
+    "description": "Companies all over the world have closed millions of deals with Radiant. Sign up today and start selling smarter."
+  },
+  "header": {
+    "title": "Fast, secure hosting for modern web apps.",
+    "description": "Global edge hosting optimized for Next.js, Astro, and Vite applications. Get your JAMstack site live with automatic SSL, CDN, and performance optimization included."
+  },
+  "testimonial": {
+    "quote": "HostJamstack took my Astro site from localhost to production in under an hour. SSL, CDN, everything configured perfectly.",
+    "author": "Maria Santos",
+    "role": "Frontend Developer, IndieMaker"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Your questions answered.",
+    "questions": {
+      "frameworks": {
+        "question": "What frameworks and tools do you support?",
+        "answer": "We specialize in modern JAMstack frameworks including Next.js, Astro, Vite, and static sites. We also support projects built with tools like Bolt, Lovable, and v0. Our hosting infrastructure is optimized for fast, secure delivery of these modern web applications."
+      },
+      "speed": {
+        "question": "How fast can you get my site live?",
+        "answer": "Most sites go live within a few business days once we have access to your repository and domain settings. Simple deployments can often be completed in hours, while more complex migrations or custom configurations may take 2-3 days. We'll give you a clear timeline upfront."
+      },
+      "domain": {
+        "question": "Do you handle domain setup and SSL certificates?",
+        "answer": "Yes, we handle the complete domain setup including DNS configuration and SSL certificates. You'll need to provide access to your domain registrar or allow us to manage DNS settings. All sites get automatic HTTPS with industry-standard SSL certificates."
+      },
+      "support": {
+        "question": "What kind of support do you provide after launch?",
+        "answer": "All packages include clear handover documentation and email support. We provide guidance on making updates, managing deployments, and troubleshooting common issues. Our goal is to make you self-sufficient while being available when you need assistance."
+      },
+      "migration": {
+        "question": "Can I move my site to another host later?",
+        "answer": "Absolutely. There's no lock-in with HostJamstack. You own your code, content, and domain. We provide detailed documentation about your setup and can assist with migration to another platform if needed. Our goal is to help you succeed, wherever that takes you."
+      }
+    }
+  },
+  "ui": {
+    "notIncluded": "Not included:"
+  }
+}

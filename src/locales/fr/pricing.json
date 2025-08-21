@@ -1,0 +1,82 @@
+{
+  "tiers": {
+    "growth": {
+      "description": "Le point de départ idéal pour votre application web ou projet personnel.",
+      "highlights": [
+        "Importez votre dépôt, déployez en secondes",
+        "CI/CD automatique",
+        "Pare-feu d'applications web",
+        "CDN global et automatisé",
+        "Calcul fluide",
+        "Atténuation DDoS",
+        "Analyses de trafic et de performance"
+      ]
+    },
+    "pro": {
+      "description": "Tout ce dont vous avez besoin pour construire et faire évoluer votre application et votre entreprise.",
+      "highlights": [
+        "Tout ce qui est dans Growth, plus :",
+        "10x plus d'utilisation incluse",
+        "Outils d'observabilité",
+        "Builds plus rapides",
+        "Prévention des démarrages à froid",
+        "Protection WAF avancée",
+        "Support par email"
+      ]
+    },
+    "enterprise": {
+      "description": "Sécurité critique, performance, observabilité, SLAs de plateforme et support.",
+      "highlights": [
+        "Tout ce qui est dans Pro, plus :",
+        "Contrôles d'accès invités et équipes",
+        "SCIM et synchronisation d'annuaire",
+        "Ensembles de règles WAF gérés",
+        "Calcul multi-région et basculement",
+        "SLA 99.99%",
+        "Support avancé"
+      ]
+    }
+  },
+  "features": {
+    "sections": {
+      "deliveryNetwork": "Réseau de Livraison",
+      "contentCaching": "Contenu, Cache et Optimisation",
+      "compute": "Calcul",
+      "support": "Support"
+    },
+    "names": {
+      "edgeRequests": "Requêtes Edge",
+      "fastDataTransfer": "Transfert Rapide de Données",
+      "isrReads": "Lectures ISR",
+      "isrWrites": "Écritures ISR",
+      "storageSize": "Taille de Stockage",
+      "simpleOperations": "Opérations Simples",
+      "advancedOperations": "Opérations Avancées",
+      "blobDataTransfer": "Transfert de Données Blob",
+      "imageTransformations": "Transformations d'Images",
+      "edgeConfigReads": "Lectures de Configuration Edge",
+      "edgeConfigWrites": "Écritures de Configuration Edge",
+      "activeCpu": "CPU Active",
+      "provisionedMemory": "Mémoire Provisionnée",
+      "invocations": "Invocations",
+      "emailSupport": "Support par email",
+      "callCenterSupport": "Support centre d'appels 24/7",
+      "dedicatedAccountManager": "Gestionnaire de compte dédié"
+    },
+    "values": {
+      "custom": "Personnalisé",
+      "included": "inclus",
+      "month": "mois",
+      "writes": "écritures"
+    }
+  },
+  "ui": {
+    "getStarted": "Commencer",
+    "pricingPlanComparison": "Comparaison des plans tarifaires",
+    "includedIn": "Inclus dans",
+    "notIncludedIn": "Non inclus dans",
+    "buyNow": "Acheter Maintenant",
+    "contactUs": "Nous Contacter",
+    "features": "Fonctionnalités"
+  }
+}

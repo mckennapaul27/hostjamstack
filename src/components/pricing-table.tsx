@@ -1,3 +1,4 @@
+import { initTranslations } from '@/app/i18n'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Link } from '@/components/link'
@@ -264,15 +265,96 @@ export const tiers = [
   },
 ]
 
-export default function PricingTable({
+export default async function PricingTable({
   selectedTier,
+  locale,
 }: {
   selectedTier: (typeof tiers)[number]
+  locale: string
 }) {
+  const { t } = await initTranslations(locale, ['pricing'])
+
+  // Create a mapping for section translations
+  const getSectionTranslation = (section: string) => {
+    switch (section) {
+      case 'Delivery Network':
+        return t('features.sections.deliveryNetwork')
+      case 'Content, Caching & Optimization':
+        return t('features.sections.contentCaching')
+      case 'Compute':
+        return t('features.sections.compute')
+      case 'Support':
+        return t('features.sections.support')
+      default:
+        return section
+    }
+  }
+
+  // Create a mapping for feature name translations
+  const getFeatureNameTranslation = (name: string) => {
+    const nameMap: { [key: string]: string } = {
+      'Edge Requests': t('features.names.edgeRequests'),
+      'Fast Data Transfer': t('features.names.fastDataTransfer'),
+      'ISR Reads': t('features.names.isrReads'),
+      'ISR Writes': t('features.names.isrWrites'),
+      'Storage Size': t('features.names.storageSize'),
+      'Simple Operations': t('features.names.simpleOperations'),
+      'Advanced Operations': t('features.names.advancedOperations'),
+      'Blob Data Transfer': t('features.names.blobDataTransfer'),
+      'Image Transformations': t('features.names.imageTransformations'),
+      'Edge Config Reads': t('features.names.edgeConfigReads'),
+      'Edge Config Writes': t('features.names.edgeConfigWrites'),
+      'Active CPU': t('features.names.activeCpu'),
+      'Provisioned Memory': t('features.names.provisionedMemory'),
+      Invocations: t('features.names.invocations'),
+      'Email support': t('features.names.emailSupport'),
+      '24 / 7 call center support': t('features.names.callCenterSupport'),
+      'Dedicated account manager': t('features.names.dedicatedAccountManager'),
+    }
+    return nameMap[name] || name
+  }
+
+  // Create a function to translate feature values
+  const getFeatureValueTranslation = (value: string | boolean) => {
+    if (typeof value === 'boolean' || value === undefined) {
+      return value
+    }
+
+    if (value === 'Custom') {
+      return t('features.values.custom')
+    }
+
+    // Handle patterns like "1M /month included", "100 GB /month included", etc.
+    if (value.includes('included')) {
+      const parts = value.split(' ')
+      const translatedParts = parts.map((part) => {
+        if (part === 'included') return t('features.values.included')
+        if (part === '/month') return `/${t('features.values.month')}`
+        return part
+      })
+      return translatedParts.join(' ')
+    }
+
+    // Handle patterns like "1 GB / month", "5 GB / month"
+    if (value.includes('/ month')) {
+      return value.replace('/ month', ` / ${t('features.values.month')}`)
+    }
+
+    // Handle patterns like "100 writes / month included"
+    if (value.includes('writes') && value.includes('month')) {
+      return value
+        .replace('writes', t('features.values.writes', 'writes'))
+        .replace('/ month', ` / ${t('features.values.month')}`)
+        .replace('included', t('features.values.included'))
+    }
+
+    return value
+  }
+
   return (
     <Container className="!px-0 py-24">
       <table className="w-full text-left">
-        <caption className="sr-only">Pricing plan comparison</caption>
+        <caption className="sr-only">{t('ui.pricingPlanComparison')}</caption>
         <colgroup>
           <col className="w-3/5 sm:w-2/5" />
           <col
@@ -338,13 +420,13 @@ export default function PricingTable({
             </td>
             <td colSpan={3} className="p-0 text-right">
               <Button variant="outline" href={selectedTier.href}>
-                Get started
+                {t('ui.getStarted')}
               </Button>
             </td>
           </tr>
           <tr className="max-sm:hidden">
             <th className="p-0" scope="row">
-              <span className="sr-only">Get started</span>
+              <span className="sr-only">{t('ui.getStarted')}</span>
             </th>
             {tiers.map((tier) => (
               <td
@@ -353,7 +435,7 @@ export default function PricingTable({
                 className="px-0 pt-4 pb-0 data-selected:table-cell max-sm:hidden"
               >
                 <Button variant="outline" href={tier.href}>
-                  Get started
+                  {t('ui.getStarted')}
                 </Button>
               </td>
             ))}
@@ -369,7 +451,7 @@ export default function PricingTable({
                   className="px-0 pt-10 pb-0 group-first-of-type:pt-5"
                 >
                   <div className="-mx-4 rounded-lg bg-gray-50 px-4 py-3 text-sm/6 font-semibold">
-                    {section}
+                    {getSectionTranslation(section)}
                   </div>
                 </th>
               </tr>
@@ -384,7 +466,7 @@ export default function PricingTable({
                       scope="row"
                       className="px-0 py-4 text-sm/6 font-normal text-gray-600"
                     >
-                      {name}
+                      {getFeatureNameTranslation(name)}
                     </th>
                     {tiers.map((tier) => {
                       let value = tier.features.find(
@@ -404,18 +486,20 @@ export default function PricingTable({
                             <>
                               <CheckIcon className="size-4 fill-green-600" />
                               <span className="sr-only">
-                                Included in {tier.name}
+                                {t('ui.includedIn')} {tier.name}
                               </span>
                             </>
                           ) : value === false || value === undefined ? (
                             <>
                               <MinusIcon className="size-4 fill-gray-400" />
                               <span className="sr-only">
-                                Not included in {tier.name}
+                                {t('ui.notIncludedIn')} {tier.name}
                               </span>
                             </>
                           ) : (
-                            <div className="text-sm/6">{value}</div>
+                            <div className="text-sm/6">
+                              {getFeatureValueTranslation(value)}
+                            </div>
                           )}
                         </td>
                       )

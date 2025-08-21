@@ -1,0 +1,112 @@
+{
+  "page": {
+    "title": "Cennik",
+    "description": "Firmy na całym świecie zamknęły miliony transakcji z Host Jamstack. Zarejestruj się dziś i zacznij sprzedawać mądrzej."
+  },
+  "header": {
+    "title": "Pakiety Wsparcia",
+    "description": "Gotowe wdrożenia dla nietech​nicznych twórców. Hosting wliczony w pakiety Launch i Migration. Skontaktuj się z nami, aby omówić swój projekt."
+  },
+  "tiers": {
+    "tinyTweak": {
+      "description": "Pojedyncze, szybkie zadanie hostingowe.",
+      "cta": "Kup Tiny Tweak",
+      "highlights": [
+        "Wyzwolić ponowne wdrożenie",
+        "Dodać 1 rekord DNS",
+        "Dodać 1 zmienną środowiskową",
+        "Dodać 1 przekierowanie / przepisanie",
+        "Sprawdzenie SSL",
+        "Brak hostingu · Brak zmian w kodzie"
+      ]
+    },
+    "quickFix": {
+      "description": "Małe poprawki konfiguracji na istniejącej stronie.",
+      "cta": "Kup Quick Fix",
+      "highlights": [
+        "Połączyć 1 domenę niestandardową + SSL",
+        "Do 3 zmiennych środowiskowych",
+        "Do 3 przekierowań / przepisań",
+        "Jeden hook wdrożenia",
+        "Sprawdzenie stanu produkcji",
+        "Brak hostingu"
+      ]
+    },
+    "firstDeploy": {
+      "description": "Weź repozytorium, które już działa i uruchom je.",
+      "cta": "Kup First Deploy",
+      "highlights": [
+        "Utworzyć projekt z Git",
+        "Skonfigurować build / output",
+        "Dołączyć 1 domenę produkcyjną + SSL",
+        "Do 5 zmiennych env i 5 przekierowań",
+        "Lista kontrolna przekazania",
+        "3 miesiące hostingu (uczciwe użycie)"
+      ]
+    },
+    "launchPack": {
+      "description": "Wypolerowane uruchomienie dla stron broszurowych/marketingowych.",
+      "cta": "Kup Launch Pack (polecane)",
+      "highlights": [
+        "Wszystko w First Deploy",
+        "Subdomena stagingowa",
+        "Nagłówki wydajności / cache",
+        "Niestandardowe strony 404 / 500",
+        "Do 10 przekierowań / przepisań",
+        "Podstawowe powiadomienia wdrożenia",
+        "Plan uruchomienia / wycofania",
+        "12 miesięcy hostingu (uczciwe użycie)"
+      ]
+    },
+    "migrationMini": {
+      "description": "Przenieś małą stronę statyczną na nowoczesny hosting.",
+      "cta": "Kup Migration Mini",
+      "highlights": [
+        "Wszystko w Launch Pack",
+        "Migracja do 10 stron",
+        "Zachowanie URL-i gdzie możliwe",
+        "Do 20 przekierowań 301",
+        "Domena niestandardowa + SSL",
+        "Przełączenie bez przestoju",
+        "Formularz kontaktowy przez serverless",
+        "Nagłówki bezpieczeństwa"
+      ]
+    }
+  },
+  "faq": {
+    "title": "Często zadawane pytania",
+    "subtitle": "Twoje pytania, nasze odpowiedzi.",
+    "questions": {
+      "oneOff": {
+        "question": "1) Czy to naprawdę jednorazowa płatność?",
+        "answer": "Tak. Każdy pakiet to jednorazowa płatność. Pakiety z hostingiem utrzymują twoją stronę przez określony okres. Pod koniec możesz odnowić kolejną jednorazową płatnością, przejść na miesięczne pokrycie lub przenieść się gdzie indziej."
+      },
+      "hosting": {
+        "question": "2) Co oznacza \"hosting wliczony\" i \"uczciwe użycie\"?",
+        "answer": "Hosting pokrywa typowe użycie małej strony. Jako wskazówka: ~50 GB/miesiąc przepustowości, ~250k wywołań funkcji miesięcznie i rozsądna aktywność budowania. Jeśli konsekwentnie to przekraczasz, oznaczymy to wcześnie i zaproponujemy opcje przed zastosowaniem dodatkowych kosztów."
+      },
+      "requirements": {
+        "question": "3) Czego potrzebujesz ode mnie na start?",
+        "answer": "Dostęp do odczytu twojego repozytorium Git, dostęp do rejestratora domen/DNS (lub pozwolenie nam na zarządzanie) i wszelkie wymagane sekrety (klucze API, SMTP). Do migracji: szczegóły obecnego hosta i priorytetowe URL-e. Obsługujemy Next.js, Astro, Vite i proste strony statyczne."
+      },
+      "speed": {
+        "question": "4) Jak szybko możecie mnie uruchomić?",
+        "answer": "Większość projektów jest uruchamiana w ciągu kilku dni roboczych po uzyskaniu dostępu i przygotowaniu domeny. Zmiany DNS mogą potrzebować czasu na propagację. Potwierdzimy harmonogramy z góry."
+      },
+      "services": {
+        "question": "5) Czy obsługujecie domeny, email i bazy danych?",
+        "answer": "Domeny/DNS/SSL — tak. Email — nie hostujemy go; skonfigurujemy DNS dla Microsoft 365 lub Google Workspace. Bazy danych — nie hostujemy ich; zintegrujemy twoją stronę z hostowaną BD/CMS którą wybierzesz i ustawimy zmienne środowiskowe."
+      },
+      "migration": {
+        "question": "6) Czy mogę się przenieść później?",
+        "answer": "Absolutnie. Bez blokady. Jesteś właścicielem kodu, treści i domeny. Zapewniamy jasne dokumenty przekazania i możemy pomóc z transferem jeśli potrzebujesz."
+      }
+    }
+  },
+  "ui": {
+    "buyNow": "Kup teraz",
+    "features": "Funkcje",
+    "oneOff": "jednorazowo",
+    "notIncluded": "Nie zawarte:"
+  }
+}

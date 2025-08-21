@@ -1,3 +1,4 @@
+import { initTranslations } from '@/app/i18n'
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { GradientBackground } from '@/components/gradient'
@@ -18,47 +19,44 @@ export const metadata: Metadata = {
     'Access all legal documents for HostJamstack services including Terms and Conditions, Privacy Policy, and Refund Policy.',
 }
 
-function Header({ lang }: { lang: string }) {
+function Header({ lang, t }: { lang: string; t: any }) {
   return (
     <Container className="mt-16">
-      <Heading as="h1">Legal Documents</Heading>
-      <Lead className="mt-6 max-w-3xl">
-        Important legal information for using HostJamstack services. Please read
-        these documents carefully as they contain important information about
-        your rights and responsibilities.
-      </Lead>
-      {lang !== 'en' && (
+      <Heading as="h1">{t('header.title')}</Heading>
+      <Lead className="mt-6 max-w-3xl">{t('header.description')}</Lead>
+      {/* {lang !== 'en' && (
         <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4">
           <p className="text-sm text-amber-800">
-            <strong>Note:</strong> Legal documents are available in English
-            only. All content below is displayed in English regardless of your
-            selected language.
+            <strong>{t('header.languageNotice.note')}</strong>{' '}
+            {t('header.languageNotice.text')}
           </p>
         </div>
-      )}
+      )} */}
     </Container>
   )
 }
 
-function CompanyInfo() {
+function CompanyInfo({ t }: { t: any }) {
   return (
     <Container className="mt-16">
       <div className="rounded-2xl bg-gray-50 p-8">
-        <Subheading className="mb-6">Company Information</Subheading>
+        <Subheading className="mb-6">{t('companyInfo.title')}</Subheading>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div>
             <h3 className="mb-2 text-sm font-semibold text-gray-950">
-              Legal Entity
+              {t('companyInfo.sections.legalEntity.title')}
             </h3>
             <p className="text-sm/6 text-gray-600">
-              <strong>DRP Solutions ltd</strong>
+              <strong>
+                {t('companyInfo.sections.legalEntity.companyName')}
+              </strong>
               <br />
-              Company number: 208392740
+              {t('companyInfo.sections.legalEntity.companyNumber')}
             </p>
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-gray-950">
-              Registered Address
+              {t('companyInfo.sections.registeredAddress.title')}
             </h3>
             <p className="text-sm/6 text-gray-600">
               Trakia, bl 216, Vh B, ap 8<br />
@@ -67,22 +65,22 @@ function CompanyInfo() {
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-gray-950">
-              Contact
+              {t('companyInfo.sections.contact.title')}
             </h3>
             <p className="text-sm/6 text-gray-600">
-              Email: hello@hostjamstack.com
+              {t('companyInfo.sections.contact.email')}
               <br />
-              Website: hostjamstack.com
+              {t('companyInfo.sections.contact.website')}
             </p>
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-gray-950">
-              Governing Law
+              {t('companyInfo.sections.governingLaw.title')}
             </h3>
             <p className="text-sm/6 text-gray-600">
-              Bulgarian Law
+              {t('companyInfo.sections.governingLaw.law')}
               <br />
-              EU/GDPR Compliant
+              {t('companyInfo.sections.governingLaw.compliance')}
             </p>
           </div>
         </div>
@@ -94,9 +92,11 @@ function CompanyInfo() {
 function LegalDocumentCard({
   article,
   lang,
+  t,
 }: {
   article: LegalArticle
   lang: string
+  t: any
 }) {
   const getIcon = (slug: string) => {
     switch (slug) {
@@ -112,16 +112,10 @@ function LegalDocumentCard({
   }
 
   const getDescription = (slug: string) => {
-    switch (slug) {
-      case 'terms-and-conditions':
-        return 'Terms of service for using HostJamstack hosting, support, and domain services.'
-      case 'privacy-policy':
-        return 'How we collect, use, and protect your personal information in compliance with GDPR.'
-      case 'refund-policy':
-        return 'Refund terms and conditions for our different service types and billing models.'
-      default:
-        return article.description
-    }
+    const descriptions = t('documents.descriptions', {
+      returnObjects: true,
+    }) as Record<string, string>
+    return descriptions[slug] || article.description
   }
 
   return (
@@ -141,7 +135,8 @@ function LegalDocumentCard({
             {getDescription(article.slug)}
           </p>
           <p className="text-xs text-gray-500">
-            Last updated: {dayjs(article.updatedAt).format('MMMM D, YYYY')}
+            {t('documents.lastUpdated')}{' '}
+            {dayjs(article.updatedAt).format('MMMM D, YYYY')}
           </p>
         </div>
         <ChevronRightIcon className="mt-1 ml-4 size-5 text-gray-400 transition-colors group-hover:text-gray-600" />
@@ -150,58 +145,57 @@ function LegalDocumentCard({
   )
 }
 
-async function LegalDocuments({ locale }: { locale: string }) {
+async function LegalDocuments({ locale, t }: { locale: string; t: any }) {
   // Always fetch English legal articles since they're only available in English
   const legalArticles = await generateLegalArticlesIndex('en')
 
   return (
-    <Container className="mt-16 pb-24">
-      <Subheading className="mb-8">Available Documents</Subheading>
+    <Container className="mt-16 pb-16">
+      <Subheading className="mb-8">{t('documents.title')}</Subheading>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {legalArticles.map((article) => (
           <LegalDocumentCard
             key={article.slug}
             article={article}
             lang={locale}
+            t={t}
           />
         ))}
       </div>
 
       {legalArticles.length === 0 && (
         <div className="py-12 text-center">
-          <p className="text-gray-500">No legal documents available.</p>
+          <p className="text-gray-500">{t('documents.noDocuments')}</p>
         </div>
       )}
     </Container>
   )
 }
 
-function ImportantNotice() {
+function ImportantNotice({ t }: { t: any }) {
   return (
-    <Container className="mt-16">
+    <Container className="mb-24">
       <div className="rounded-2xl border border-amber-200 bg-amber-50 p-8">
         <h3 className="mb-4 text-lg font-semibold text-amber-900">
-          Important Notice
+          {t('importantNotice.title')}
         </h3>
         <div className="space-y-4 text-sm/6 text-amber-800">
           <p>
-            <strong>Effective Date:</strong> All legal documents are effective
-            as of December 20, 2024.
+            <strong>{t('importantNotice.sections.effectiveDate.label')}</strong>{' '}
+            {t('importantNotice.sections.effectiveDate.text')}
           </p>
           <p>
-            <strong>Updates:</strong> We may update these documents from time to
-            time. We will notify you of material changes via email or website
-            announcement.
+            <strong>{t('importantNotice.sections.updates.label')}</strong>{' '}
+            {t('importantNotice.sections.updates.text')}
           </p>
           <p>
-            <strong>Questions:</strong> If you have questions about any of these
-            documents, please contact us at hello@hostjamstack.com.
+            <strong>{t('importantNotice.sections.questions.label')}</strong>{' '}
+            {t('importantNotice.sections.questions.text')}
           </p>
-          <p>
-            <strong>Language:</strong> These documents are provided in English
-            only. In case of conflicts between translations, the English version
-            prevails.
-          </p>
+          {/* <p>
+            <strong>{t('importantNotice.sections.language.label')}</strong>{' '}
+            {t('importantNotice.sections.language.text')}
+          </p> */}
         </div>
       </div>
     </Container>
@@ -215,17 +209,20 @@ export default async function LegalIndex({
 }) {
   const { lang } = await params
 
+  // Initialize translations for legal namespace
+  const { t } = await initTranslations(lang, ['legal'])
+
   return (
     <main className="overflow-hidden">
       <GradientBackground />
       <Container>
-        <Navbar />
+        <Navbar locale={lang} />
       </Container>
-      <Header lang={lang} />
-      <CompanyInfo />
-      <LegalDocuments locale={lang} />
-      <ImportantNotice />
-      <Footer />
+      <Header lang={lang} t={t} />
+      <CompanyInfo t={t} />
+      <LegalDocuments locale={lang} t={t} />
+      <ImportantNotice t={t} />
+      <Footer locale={lang} />
     </main>
   )
 }

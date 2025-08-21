@@ -1,0 +1,26 @@
+{
+  "page": {
+    "title": "Blog",
+    "description": "Bądź na bieżąco z aktualizacjami produktów, wiadomościami firmy i poradami jak bezpiecznie wdrażać i hostować aplikacje JAMstack.",
+    "subtitle": "Blog",
+    "heading": "Co się dzieje w Host Jamstack.",
+    "lead": "Bądź na bieżąco z aktualizacjami produktów, wiadomościami firmy i poradami jak bezpiecznie wdrażać i hostować aplikacje JAMstack."
+  },
+  "sections": {
+    "featured": "Wyróżnione",
+    "allCategories": "Wszystkie kategorie"
+  },
+  "posts": {
+    "noPostsFound": "Nie znaleziono postów.",
+    "readMore": "Czytaj więcej"
+  },
+  "pagination": {
+    "previous": "Poprzedni",
+    "next": "Następny"
+  },
+  "postDetail": {
+    "readingTime": "czas czytania",
+    "words": "słów",
+    "backToBlog": "Powrót do bloga"
+  }
+}

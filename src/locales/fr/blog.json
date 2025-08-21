@@ -1,0 +1,26 @@
+{
+  "page": {
+    "title": "Blog",
+    "description": "Restez informé avec les mises à jour de produits, les nouvelles de l'entreprise et les conseils sur comment déployer et héberger des applications JAMstack en toute sécurité.",
+    "subtitle": "Blog",
+    "heading": "Ce qui se passe chez Host Jamstack.",
+    "lead": "Restez informé avec les mises à jour de produits, les nouvelles de l'entreprise et les conseils sur comment déployer et héberger des applications JAMstack en toute sécurité."
+  },
+  "sections": {
+    "featured": "À la une",
+    "allCategories": "Toutes les catégories"
+  },
+  "posts": {
+    "noPostsFound": "Aucun article trouvé.",
+    "readMore": "Lire la suite"
+  },
+  "pagination": {
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
+  "postDetail": {
+    "readingTime": "temps de lecture",
+    "words": "mots",
+    "backToBlog": "Retour au blog"
+  }
+}

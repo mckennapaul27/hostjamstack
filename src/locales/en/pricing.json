@@ -1,0 +1,82 @@
+{
+  "tiers": {
+    "growth": {
+      "description": "The perfect starting place for your web app or personal project.",
+      "highlights": [
+        "Import your repo, deploy in seconds",
+        "Automatic CI/CD",
+        "Web Application Firewall",
+        "Global, automated CDN",
+        "Fluid compute",
+        "DDoS Mitigation",
+        "Traffic & performance insights"
+      ]
+    },
+    "pro": {
+      "description": "Everything you need to build and scale your app and business.",
+      "highlights": [
+        "Everything in Growth, plus:",
+        "10x more included usage",
+        "Observability tools",
+        "Faster builds",
+        "Cold start prevention",
+        "Advanced WAF Protection",
+        "Email support"
+      ]
+    },
+    "enterprise": {
+      "description": "Critical security, performance, observability, platform SLAs, and support.",
+      "highlights": [
+        "Everything in Pro, plus:",
+        "Guest & Team access controls",
+        "SCIM & Directory Sync",
+        "Managed WAF Rulesets",
+        "Multi-region compute & failover",
+        "99.99% SLA",
+        "Advanced Support"
+      ]
+    }
+  },
+  "features": {
+    "sections": {
+      "deliveryNetwork": "Delivery Network",
+      "contentCaching": "Content, Caching & Optimization",
+      "compute": "Compute",
+      "support": "Support"
+    },
+    "names": {
+      "edgeRequests": "Edge Requests",
+      "fastDataTransfer": "Fast Data Transfer",
+      "isrReads": "ISR Reads",
+      "isrWrites": "ISR Writes",
+      "storageSize": "Storage Size",
+      "simpleOperations": "Simple Operations",
+      "advancedOperations": "Advanced Operations",
+      "blobDataTransfer": "Blob Data Transfer",
+      "imageTransformations": "Image Transformations",
+      "edgeConfigReads": "Edge Config Reads",
+      "edgeConfigWrites": "Edge Config Writes",
+      "activeCpu": "Active CPU",
+      "provisionedMemory": "Provisioned Memory",
+      "invocations": "Invocations",
+      "emailSupport": "Email support",
+      "callCenterSupport": "24 / 7 call center support",
+      "dedicatedAccountManager": "Dedicated account manager"
+    },
+    "values": {
+      "custom": "Custom",
+      "included": "included",
+      "month": "month",
+      "writes": "writes"
+    }
+  },
+  "ui": {
+    "getStarted": "Get started",
+    "pricingPlanComparison": "Pricing plan comparison",
+    "includedIn": "Included in",
+    "notIncludedIn": "Not included in",
+    "buyNow": "Buy Now",
+    "contactUs": "Contact us",
+    "features": "Features"
+  }
+}

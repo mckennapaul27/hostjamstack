@@ -1,0 +1,44 @@
+{
+  "page": {
+    "title": "Preise",
+    "description": "Unternehmen auf der ganzen Welt haben Millionen von Geschäften mit Radiant abgeschlossen. Melden Sie sich heute an und beginnen Sie intelligenter zu verkaufen."
+  },
+  "header": {
+    "title": "Schnelles, sicheres Hosting für moderne Web-Apps.",
+    "description": "Globales Edge-Hosting optimiert für Next.js, Astro und Vite Anwendungen. Bringen Sie Ihre JAMstack-Site mit automatischem SSL, CDN und Performance-Optimierung online."
+  },
+  "testimonial": {
+    "quote": "HostJamstack hat meine Astro-Site in unter einer Stunde von localhost in die Produktion gebracht. SSL, CDN, alles perfekt konfiguriert.",
+    "author": "Maria Santos",
+    "role": "Frontend-Entwicklerin, IndieMaker"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Ihre Fragen beantwortet.",
+    "questions": {
+      "frameworks": {
+        "question": "Welche Frameworks und Tools unterstützen Sie?",
+        "answer": "Wir spezialisieren uns auf moderne JAMstack-Frameworks einschließlich Next.js, Astro, Vite und statische Sites. Wir unterstützen auch Projekte, die mit Tools wie Bolt, Lovable und v0 erstellt wurden. Unsere Hosting-Infrastruktur ist für die schnelle, sichere Bereitstellung dieser modernen Webanwendungen optimiert."
+      },
+      "speed": {
+        "question": "Wie schnell können Sie meine Site online bringen?",
+        "answer": "Die meisten Sites gehen innerhalb weniger Werktage online, sobald wir Zugang zu Ihrem Repository und den Domain-Einstellungen haben. Einfache Deployments können oft in Stunden abgeschlossen werden, während komplexere Migrationen oder benutzerdefinierte Konfigurationen 2-3 Tage dauern können. Wir geben Ihnen vorab einen klaren Zeitplan."
+      },
+      "domain": {
+        "question": "Übernehmen Sie Domain-Setup und SSL-Zertifikate?",
+        "answer": "Ja, wir übernehmen das komplette Domain-Setup einschließlich DNS-Konfiguration und SSL-Zertifikate. Sie müssen Zugang zu Ihrem Domain-Registrar gewähren oder uns erlauben, DNS-Einstellungen zu verwalten. Alle Sites erhalten automatisches HTTPS mit branchenüblichen SSL-Zertifikaten."
+      },
+      "support": {
+        "question": "Welche Art von Support bieten Sie nach dem Launch?",
+        "answer": "Alle Pakete enthalten klare Übergabedokumentation und E-Mail-Support. Wir bieten Anleitung für Updates, Deployment-Management und Fehlerbehebung bei häufigen Problemen. Unser Ziel ist es, Sie selbstständig zu machen, während wir verfügbar sind, wenn Sie Hilfe benötigen."
+      },
+      "migration": {
+        "question": "Kann ich meine Site später zu einem anderen Host verschieben?",
+        "answer": "Absolut. Es gibt keine Bindung bei HostJamstack. Sie besitzen Ihren Code, Inhalt und Domain. Wir stellen detaillierte Dokumentation über Ihr Setup bereit und können bei der Migration zu einer anderen Plattform helfen, falls nötig. Unser Ziel ist es, Ihnen zum Erfolg zu verhelfen, wohin auch immer das führt."
+      }
+    }
+  },
+  "ui": {
+    "notIncluded": "Nicht enthalten:"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "page": {
+    "title": "Cennik",
+    "description": "Firmy na całym świecie zamknęły miliony transakcji z Radiant. Zarejestruj się dziś i zacznij sprzedawać mądrzej."
+  },
+  "header": {
+    "title": "Szybki, bezpieczny hosting dla nowoczesnych aplikacji webowych.",
+    "description": "Globalny hosting edge zoptymalizowany dla aplikacji Next.js, Astro i Vite. Uruchom swoją stronę JAMstack z automatycznym SSL, CDN i optymalizacją wydajności w zestawie."
+  },
+  "testimonial": {
+    "quote": "HostJamstack przeniósł moją stronę Astro z localhost do produkcji w mniej niż godzinę. SSL, CDN, wszystko skonfigurowane idealnie.",
+    "author": "Maria Santos",
+    "role": "Programistka Frontend, IndieMaker"
+  },
+  "faq": {
+    "title": "Często zadawane pytania",
+    "subtitle": "Twoje pytania, nasze odpowiedzi.",
+    "questions": {
+      "frameworks": {
+        "question": "Jakie frameworki i narzędzia obsługujecie?",
+        "answer": "Specjalizujemy się w nowoczesnych frameworkach JAMstack, w tym Next.js, Astro, Vite i stronach statycznych. Obsługujemy także projekty zbudowane za pomocą narzędzi takich jak Bolt, Lovable i v0. Nasza infrastruktura hostingowa jest zoptymalizowana pod kątem szybkiego, bezpiecznego dostarczania tych nowoczesnych aplikacji webowych."
+      },
+      "speed": {
+        "question": "Jak szybko możecie uruchomić moją stronę?",
+        "answer": "Większość stron jest uruchamiana w ciągu kilku dni roboczych po uzyskaniu dostępu do repozytorium i ustawień domeny. Proste wdrożenia można często ukończyć w ciągu godzin, podczas gdy bardziej złożone migracje lub niestandardowe konfiguracje mogą zająć 2-3 dni. Z góry przedstawimy jasny harmonogram."
+      },
+      "domain": {
+        "question": "Czy zajmujecie się konfiguracją domeny i certyfikatami SSL?",
+        "answer": "Tak, zajmujemy się kompletną konfiguracją domeny, w tym konfiguracją DNS i certyfikatami SSL. Będziesz musiał zapewnić dostęp do rejestratora domen lub pozwolić nam zarządzać ustawieniami DNS. Wszystkie strony otrzymują automatyczne HTTPS ze standardowymi certyfikatami SSL."
+      },
+      "support": {
+        "question": "Jaki rodzaj wsparcia zapewniacie po uruchomieniu?",
+        "answer": "Wszystkie pakiety zawierają jasną dokumentację przekazania i wsparcie e-mail. Zapewniamy wskazówki dotyczące aktualizacji, zarządzania wdrożeniami i rozwiązywania typowych problemów. Naszym celem jest uczynienie cię samowystarczalnym, pozostając dostępnymi gdy potrzebujesz pomocy."
+      },
+      "migration": {
+        "question": "Czy mogę później przenieść swoją stronę do innego hosta?",
+        "answer": "Absolutnie. Nie ma blokady z HostJamstack. Jesteś właścicielem swojego kodu, treści i domeny. Zapewniamy szczegółową dokumentację twojej konfiguracji i możemy pomóc w migracji do innej platformy w razie potrzeby. Naszym celem jest pomóc ci odnieść sukces, gdziekolwiek cię to zaprowadzi."
+      }
+    }
+  },
+  "ui": {
+    "notIncluded": "Nie zawarte:"
+  }
+}

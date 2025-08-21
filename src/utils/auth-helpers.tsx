@@ -84,9 +84,9 @@ export const authOptions: NextAuthOptions = {
 
       if (user) {
         console.log('Creating new token for user:', user.email)
-        token.name = (user as any).name
+        token.name = (user as { name: string }).name
         token.email = user.email // Assuming email exists on the User type
-        token._id = (user as any)._id
+        token._id = (user as { _id: string })._id
 
         // Include the raw JWT in the token payload for session use
         token.rawJwt = jwt.sign(token, process.env.JWT_SECRET as string)
@@ -103,7 +103,13 @@ export const authOptions: NextAuthOptions = {
         name: token.name,
         email: token.email,
         _id: token._id,
-      } as any
+      } as {
+        name: string
+        email: string
+        _id: string
+        user_set_locale: string | null
+        country: string | null
+      }
       if (token.rawJwt && typeof token.rawJwt === 'string') {
         session.rawJwt = token.rawJwt
       }

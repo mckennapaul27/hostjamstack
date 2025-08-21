@@ -1,0 +1,64 @@
+{
+  "page": {
+    "title": "Domain Registration | HostJamstack",
+    "description": "Register your perfect domain name with competitive pricing and instant setup. Choose from hundreds of extensions with transparent pricing."
+  },
+  "header": {
+    "title": "Find your perfect domain name.",
+    "description": "Register your domain with competitive pricing, instant DNS setup, and professional email included. Choose from hundreds of extensions to match your brand perfectly."
+  },
+  "extensions": {
+    "title": "Choose from hundreds of domain extensions",
+    "description": "Whether you're building a business, showcasing your portfolio, or starting a blog, we have the perfect domain extension for you. From classic .com and .net to modern .app, .tech, and .design extensions, find the one that matches your brand.",
+    "pricing": "Competitive pricing starting from €9.99/year • Free WHOIS protection • Instant setup"
+  },
+  "testimonial": {
+    "quote": "Found the perfect domain in minutes. The search was fast, pricing was transparent, and setup was instant.",
+    "author": "Alex Chen",
+    "company": "Startup Founder, TechForward"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Your questions answered.",
+    "questions": {
+      "registration": {
+        "question": "How quickly can I get my domain after registration?",
+        "answer": "Domain registration is instant for most extensions. Once payment is processed, your domain is immediately active and ready to use. DNS propagation typically takes 24-48 hours globally."
+      },
+      "dns": {
+        "question": "Do you provide DNS management and email forwarding?",
+        "answer": "Yes, all domain registrations include free DNS management through our intuitive control panel. Email forwarding is included with most plans, and we offer professional email hosting as an add-on."
+      },
+      "expiration": {
+        "question": "What happens when my domain expires?",
+        "answer": "We send renewal reminders 90, 30, and 7 days before expiration. Domains can be renewed up to 30 days after expiration. After that, there's a grace period before the domain becomes available to others."
+      },
+      "transfer": {
+        "question": "Can I transfer my existing domain to you?",
+        "answer": "Absolutely! Domain transfers are free and typically complete within 5-7 days. We'll handle the technical details and ensure no downtime during the transfer process."
+      },
+      "privacy": {
+        "question": "Do you offer domain privacy protection?",
+        "answer": "Yes, WHOIS privacy protection is included free with all domain registrations. This keeps your personal information private and reduces spam and unwanted contact."
+      }
+    }
+  },
+  "search": {
+    "subtitle": "domains",
+    "title": "Search for a domain",
+    "placeholder": "Enter domain name (e.g., example.com or just example)",
+    "searchButton": "Search",
+    "searchingButton": "Searching...",
+    "helperText": "Enter a full domain (like \"example.com\") or just the name (like \"example\") to check multiple extensions",
+    "results": {
+      "title": "Search Results",
+      "suggestedTitle": "Suggested Alternatives",
+      "available": "Available",
+      "unavailable": "Unavailable",
+      "premium": "Premium",
+      "buyNow": "Buy Now",
+      "noResults": "No results found for your search.",
+      "noResultsHelper": "Try a different domain name or check your spelling."
+    }
+  }
+}

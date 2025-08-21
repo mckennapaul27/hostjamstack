@@ -15,7 +15,9 @@ export const metadata: Metadata = {
     'Companies all over the world have closed millions of deals with Radiant. Sign up today and start selling smarter.',
 }
 
-function Header({ t }: { t: any }) {
+async function Header({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['hosting'])
+
   return (
     <Container className="mt-16">
       <Heading as="h1">{t('header.title')}</Heading>
@@ -24,7 +26,7 @@ function Header({ t }: { t: any }) {
   )
 }
 
-function PricingCards({ locale }: { locale: string }) {
+async function PricingCards({ locale }: { locale: string }) {
   return (
     <div className="relative py-16">
       <Gradient className="absolute inset-x-2 top-48 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
@@ -129,7 +131,8 @@ function PlusIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function Testimonial({ t }: { t: any }) {
+async function Testimonial({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['hosting', 'pricing'])
   return (
     <div className="mx-2 my-24 rounded-4xl bg-gray-900 bg-[url(/dot-texture.svg)] pt-72 pb-24 lg:pt-36">
       <Container>
@@ -182,7 +185,8 @@ function Testimonial({ t }: { t: any }) {
   )
 }
 
-function FrequentlyAskedQuestions({ t }: { t: any }) {
+async function FrequentlyAskedQuestions({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['hosting', 'pricing'])
   const questions = ['frameworks', 'speed', 'domain', 'support', 'migration']
 
   return (
@@ -219,12 +223,6 @@ export default async function Pricing({
   const awaitedParams = await params
   const awaitedSearchParams = await searchParams
 
-  // Initialize translations for hosting and pricing namespaces
-  const { t } = await initTranslations(awaitedParams.lang, [
-    'hosting',
-    'pricing',
-  ])
-
   let tier =
     typeof awaitedSearchParams.tier === 'string'
       ? tiers.find(({ slug }) => slug === awaitedSearchParams.tier)!
@@ -236,11 +234,11 @@ export default async function Pricing({
       <Container>
         <Navbar locale={awaitedParams.lang} />
       </Container>
-      <Header t={t} />
+      <Header lang={awaitedParams.lang} />
       <PricingCards locale={awaitedParams.lang} />
       <PricingTable selectedTier={tier} locale={awaitedParams.lang} />
-      <Testimonial t={t} />
-      <FrequentlyAskedQuestions t={t} />
+      <Testimonial lang={awaitedParams.lang} />
+      <FrequentlyAskedQuestions lang={awaitedParams.lang} />
       <Footer type="hosting" locale={awaitedParams.lang} />
     </main>
   )

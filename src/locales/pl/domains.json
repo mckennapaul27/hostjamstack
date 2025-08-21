@@ -1,0 +1,64 @@
+{
+  "page": {
+    "title": "Rejestracja Domen | HostJamstack",
+    "description": "Zarejestruj swoją idealną nazwę domeny z konkurencyjnymi cenami i natychmiastową konfiguracją. Wybierz spośród setek rozszerzeń z przejrzystymi cenami."
+  },
+  "header": {
+    "title": "Znajdź swoją idealną nazwę domeny.",
+    "description": "Zarejestruj swoją domenę z konkurencyjnymi cenami, natychmiastową konfiguracją DNS i profesjonalnym emailem w zestawie. Wybierz spośród setek rozszerzeń, które idealnie pasują do Twojej marki."
+  },
+  "extensions": {
+    "title": "Wybierz spośród setek rozszerzeń domen",
+    "description": "Czy budujesz biznes, prezentujesz swoje portfolio czy rozpoczynasz bloga, mamy idealne rozszerzenie domeny dla Ciebie. Od klasycznych .com i .net po nowoczesne rozszerzenia .app, .tech i .design, znajdź to, które pasuje do Twojej marki.",
+    "pricing": "Konkurencyjne ceny od €9,99/rok • Darmowa ochrona WHOIS • Natychmiastowa konfiguracja"
+  },
+  "testimonial": {
+    "quote": "Znalazłem idealną domenę w ciągu kilku minut. Wyszukiwanie było szybkie, ceny przejrzyste, a konfiguracja natychmiastowa.",
+    "author": "Alex Chen",
+    "company": "Założyciel Startupu, TechForward"
+  },
+  "faq": {
+    "title": "Często zadawane pytania",
+    "subtitle": "Twoje pytania z odpowiedziami.",
+    "questions": {
+      "registration": {
+        "question": "Jak szybko mogę otrzymać swoją domenę po rejestracji?",
+        "answer": "Rejestracja domeny jest natychmiastowa dla większości rozszerzeń. Po przetworzeniu płatności Twoja domena jest natychmiast aktywna i gotowa do użycia. Propagacja DNS zwykle trwa 24-48 godzin globalnie."
+      },
+      "dns": {
+        "question": "Czy zapewniacie zarządzanie DNS i przekazywanie emaili?",
+        "answer": "Tak, wszystkie rejestracje domen obejmują darmowe zarządzanie DNS przez nasz intuicyjny panel kontrolny. Przekazywanie emaili jest zawarte w większości planów, a oferujemy profesjonalny hosting emaili jako dodatek."
+      },
+      "expiration": {
+        "question": "Co się dzieje, gdy moja domena wygasa?",
+        "answer": "Wysyłamy przypomnienia o odnowieniu 90, 30 i 7 dni przed wygaśnięciem. Domeny można odnowić do 30 dni po wygaśnięciu. Potem następuje okres karencji, zanim domena stanie się dostępna dla innych."
+      },
+      "transfer": {
+        "question": "Czy mogę przenieść moją istniejącą domenę do Was?",
+        "answer": "Absolutnie! Transfery domen są darmowe i zwykle zajmują 5-7 dni. Zajmiemy się szczegółami technicznymi i zapewnimy brak przestoju podczas procesu transferu."
+      },
+      "privacy": {
+        "question": "Czy oferujecie ochronę prywatności domeny?",
+        "answer": "Tak, ochrona prywatności WHOIS jest darmowo zawarta we wszystkich rejestracjach domen. To utrzymuje Twoje dane osobowe w prywatności i redukuje spam oraz niechciane kontakty."
+      }
+    }
+  },
+  "search": {
+    "subtitle": "domeny",
+    "title": "Wyszukaj domenę",
+    "placeholder": "Wprowadź nazwę domeny (np. przykład.com lub tylko przykład)",
+    "searchButton": "Szukaj",
+    "searchingButton": "Szukam...",
+    "helperText": "Wprowadź pełną domenę (jak \"przykład.com\") lub tylko nazwę (jak \"przykład\"), aby sprawdzić wiele rozszerzeń",
+    "results": {
+      "title": "Wyniki Wyszukiwania",
+      "suggestedTitle": "Sugerowane Alternatywy",
+      "available": "Dostępna",
+      "unavailable": "Niedostępna",
+      "premium": "Premium",
+      "buyNow": "Kup Teraz",
+      "noResults": "Nie znaleziono wyników dla Twojego wyszukiwania.",
+      "noResultsHelper": "Spróbuj innej nazwy domeny lub sprawdź pisownię."
+    }
+  }
+}

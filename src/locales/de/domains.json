@@ -1,0 +1,64 @@
+{
+  "page": {
+    "title": "Domain-Registrierung | HostJamstack",
+    "description": "Registrieren Sie Ihren perfekten Domainnamen mit wettbewerbsfähigen Preisen und sofortigem Setup. Wählen Sie aus Hunderten von Erweiterungen mit transparenten Preisen."
+  },
+  "header": {
+    "title": "Finden Sie Ihren perfekten Domainnamen.",
+    "description": "Registrieren Sie Ihre Domain mit wettbewerbsfähigen Preisen, sofortigem DNS-Setup und professioneller E-Mail inklusive. Wählen Sie aus Hunderten von Erweiterungen, die perfekt zu Ihrer Marke passen."
+  },
+  "extensions": {
+    "title": "Wählen Sie aus Hunderten von Domain-Erweiterungen",
+    "description": "Ob Sie ein Unternehmen aufbauen, Ihr Portfolio präsentieren oder einen Blog starten - wir haben die perfekte Domain-Erweiterung für Sie. Von klassischen .com und .net bis hin zu modernen .app, .tech und .design Erweiterungen, finden Sie die, die zu Ihrer Marke passt.",
+    "pricing": "Wettbewerbsfähige Preise ab €9,99/Jahr • Kostenloser WHOIS-Schutz • Sofortige Einrichtung"
+  },
+  "testimonial": {
+    "quote": "Habe die perfekte Domain in Minuten gefunden. Die Suche war schnell, die Preise transparent und das Setup sofort.",
+    "author": "Alex Chen",
+    "company": "Startup-Gründer, TechForward"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Ihre Fragen beantwortet.",
+    "questions": {
+      "registration": {
+        "question": "Wie schnell kann ich meine Domain nach der Registrierung erhalten?",
+        "answer": "Die Domain-Registrierung ist für die meisten Erweiterungen sofort. Sobald die Zahlung verarbeitet ist, ist Ihre Domain sofort aktiv und einsatzbereit. Die DNS-Propagation dauert normalerweise 24-48 Stunden weltweit."
+      },
+      "dns": {
+        "question": "Bieten Sie DNS-Verwaltung und E-Mail-Weiterleitung an?",
+        "answer": "Ja, alle Domain-Registrierungen beinhalten kostenlose DNS-Verwaltung über unser intuitives Kontrollpanel. E-Mail-Weiterleitung ist bei den meisten Plänen enthalten, und wir bieten professionelles E-Mail-Hosting als Add-on an."
+      },
+      "expiration": {
+        "question": "Was passiert, wenn meine Domain abläuft?",
+        "answer": "Wir senden Verlängerungserinnerungen 90, 30 und 7 Tage vor dem Ablauf. Domains können bis zu 30 Tage nach dem Ablauf verlängert werden. Danach gibt es eine Nachfrist, bevor die Domain für andere verfügbar wird."
+      },
+      "transfer": {
+        "question": "Kann ich meine bestehende Domain zu Ihnen übertragen?",
+        "answer": "Absolut! Domain-Transfers sind kostenlos und dauern normalerweise 5-7 Tage. Wir kümmern uns um die technischen Details und sorgen für keine Ausfallzeiten während des Transfer-Prozesses."
+      },
+      "privacy": {
+        "question": "Bieten Sie Domain-Datenschutz an?",
+        "answer": "Ja, WHOIS-Datenschutz ist kostenlos bei allen Domain-Registrierungen enthalten. Dies hält Ihre persönlichen Informationen privat und reduziert Spam und unerwünschte Kontakte."
+      }
+    }
+  },
+  "search": {
+    "subtitle": "domains",
+    "title": "Nach einer Domain suchen",
+    "placeholder": "Domain-Namen eingeben (z.B. beispiel.com oder nur beispiel)",
+    "searchButton": "Suchen",
+    "searchingButton": "Suche...",
+    "helperText": "Geben Sie eine vollständige Domain ein (wie \"beispiel.com\") oder nur den Namen (wie \"beispiel\"), um mehrere Erweiterungen zu prüfen",
+    "results": {
+      "title": "Suchergebnisse",
+      "suggestedTitle": "Vorgeschlagene Alternativen",
+      "available": "Verfügbar",
+      "unavailable": "Nicht verfügbar",
+      "premium": "Premium",
+      "buyNow": "Jetzt kaufen",
+      "noResults": "Keine Ergebnisse für Ihre Suche gefunden.",
+      "noResultsHelper": "Versuchen Sie einen anderen Domain-Namen oder überprüfen Sie die Rechtschreibung."
+    }
+  }
+}

@@ -2,6 +2,7 @@
 
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button } from './button'
@@ -48,12 +49,12 @@ function CookieBannerContent() {
                     'cookieBanner.message',
                     'We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.',
                   )}{' '}
-                  <a
+                  <Link
                     href="/legal/privacy-policy"
                     className="font-medium text-indigo-600 underline hover:text-indigo-500"
                   >
                     {t('cookieBanner.learnMore', 'Learn more')}
-                  </a>
+                  </Link>
                 </p>
               </div>
 

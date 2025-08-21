@@ -135,7 +135,8 @@ const tiers = [
   },
 ]
 
-function Header({ t }: { t: any }) {
+async function Header({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['support-packages'])
   return (
     <Container className="mt-16">
       <Heading as="h1">{t('header.title')}</Heading>
@@ -248,7 +249,8 @@ function PlusIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function FrequentlyAskedQuestions({ t }: { t: any }) {
+async function FrequentlyAskedQuestions({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['support-packages'])
   const questions = [
     'oneOff',
     'hosting',
@@ -289,18 +291,15 @@ export default async function Pricing({
 }) {
   const awaitedParams = await params
 
-  // Initialize translations for support-packages namespace
-  const { t } = await initTranslations(awaitedParams.lang, ['support-packages'])
-
   return (
     <main className="overflow-hidden">
       <GradientBackground />
       <Container>
         <Navbar locale={awaitedParams.lang} />
       </Container>
-      <Header t={t} />
+      <Header lang={awaitedParams.lang} />
       <PricingCards locale={awaitedParams.lang} />
-      <FrequentlyAskedQuestions t={t} />
+      <FrequentlyAskedQuestions lang={awaitedParams.lang} />
       <Footer type="support" locale={awaitedParams.lang} />
     </main>
   )

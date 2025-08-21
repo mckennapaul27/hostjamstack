@@ -52,7 +52,8 @@ function setDayjsLocale(locale: string) {
   dayjs.locale(dayjsLocale)
 }
 
-async function FeaturedPosts({ locale, t }: { locale: string; t: any }) {
+async function FeaturedPosts({ locale }: { locale: string }) {
+  const { t } = await initTranslations(locale, ['blog'])
   let { data: featuredPosts } = await getFeaturedArticles(3, locale)
 
   // Set dayjs locale for this component
@@ -105,12 +106,11 @@ async function FeaturedPosts({ locale, t }: { locale: string; t: any }) {
 async function Categories({
   selected,
   locale,
-  t,
 }: {
   selected?: string
   locale: string
-  t: any
 }) {
+  const { t } = await initTranslations(locale, ['blog'])
   let { data: categories } = await getCategories(locale)
 
   if (categories.length === 0) {
@@ -167,13 +167,12 @@ async function Posts({
   page,
   category,
   locale,
-  t,
 }: {
   page: number
   category?: string
   locale: string
-  t: any
 }) {
+  const { t } = await initTranslations(locale, ['blog'])
   let { data: posts } = await getArticles(
     (page - 1) * postsPerPage,
     page * postsPerPage,
@@ -231,13 +230,12 @@ async function Pagination({
   page,
   category,
   locale,
-  t,
 }: {
   page: number
   category?: string
   locale: string
-  t: any
 }) {
+  const { t } = await initTranslations(locale, ['blog'])
   function url(page: number) {
     let params = new URLSearchParams()
 
@@ -329,11 +327,11 @@ export default async function Blog({
         </Heading>
         <Lead className="mt-6 max-w-3xl">{t('page.lead')}</Lead>
       </Container>
-      {page === 1 && !category && <FeaturedPosts locale={lang} t={t} />}
+      {page === 1 && !category && <FeaturedPosts locale={lang} />}
       <Container className="mt-16 pb-24">
-        <Categories selected={category} locale={lang} t={t} />
-        <Posts page={page} category={category} locale={lang} t={t} />
-        <Pagination page={page} category={category} locale={lang} t={t} />
+        <Categories selected={category} locale={lang} />
+        <Posts page={page} category={category} locale={lang} />
+        <Pagination page={page} category={category} locale={lang} />
       </Container>
       <Footer locale={lang} />
     </main>

@@ -2,6 +2,7 @@ import { initTranslations } from '@/app/i18n'
 import { Button } from '@/components/button'
 import { Gradient } from '@/components/gradient'
 import { Subheading } from '@/components/text'
+import { type TFunction } from 'i18next'
 import { tiers } from './pricing-table'
 
 export default async function PricingCards({ locale }: { locale: string }) {
@@ -54,7 +55,13 @@ function PlusIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function PricingCard({ tier, t }: { tier: (typeof tiers)[number]; t: any }) {
+function PricingCard({
+  tier,
+  t,
+}: {
+  tier: (typeof tiers)[number]
+  t: TFunction
+}) {
   return (
     <div className="-m-2 grid grid-cols-1 rounded-4xl shadow-[inset_0_0_2px_1px_#ffffff4d] ring-1 ring-black/5 max-lg:mx-auto max-lg:w-full max-lg:max-w-md">
       <div className="grid grid-cols-1 rounded-4xl p-2 shadow-md shadow-black/5">
@@ -89,11 +96,13 @@ function PricingCard({ tier, t }: { tier: (typeof tiers)[number]; t: any }) {
               {t('ui.features')}
             </h3>
             <ul className="mt-3 space-y-3">
-              {t(`tiers.${tier.slug}.highlights`, { returnObjects: true }).map(
-                (highlight: string, featureIndex: number) => (
-                  <FeatureItem key={featureIndex} description={highlight} />
-                ),
-              )}
+              {(
+                t(`tiers.${tier.slug}.highlights`, {
+                  returnObjects: true,
+                }) as string[]
+              ).map((highlight: string, featureIndex: number) => (
+                <FeatureItem key={featureIndex} description={highlight} />
+              ))}
             </ul>
           </div>
         </div>

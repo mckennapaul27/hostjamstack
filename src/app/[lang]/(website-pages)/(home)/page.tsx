@@ -18,7 +18,8 @@ export const metadata: Metadata = {
     'Deploy your Next.js, Astro, Vite or other JAMstack apps with automatic SSL, CDN, and performance optimization. Premium hosting for makers who want to ship safely and scale effortlessly.',
 }
 
-function Hero({ t, locale }: { t: any; locale: string }) {
+async function Hero({ locale }: { locale: string }) {
+  const { t } = await initTranslations(locale, ['home'])
   return (
     <div className="relative">
       <Gradient className="absolute inset-2 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
@@ -43,7 +44,8 @@ function Hero({ t, locale }: { t: any; locale: string }) {
   )
 }
 
-function FeatureSection({ t }: { t: any }) {
+async function FeatureSection({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['home'])
   return (
     <div className="overflow-hidden">
       <Container className="pb-24">
@@ -72,7 +74,7 @@ export default async function Home({
   const awaitedSearchParams = await searchParams
 
   // Initialize translations for the home namespace
-  const { t } = await initTranslations(awaitedParams.lang, ['home'])
+  const { t } = await initTranslations(awaitedParams.lang, ['home', 'domains'])
 
   let tier =
     typeof awaitedSearchParams.tier === 'string'
@@ -81,13 +83,13 @@ export default async function Home({
 
   return (
     <div className="overflow-hidden">
-      <Hero t={t} locale={awaitedParams.lang} />
+      <Hero locale={awaitedParams.lang} />
       <main>
         <Container className="mt-10">
           <LogoCloudFrameworks />
         </Container>
         <div className="bg-linear-to-b from-white from-50% to-gray-100 pt-32">
-          <FeatureSection t={t} />
+          <FeatureSection lang={awaitedParams.lang} />
           <Container>
             <Subheading>{t('pricing.subtitle')}</Subheading>
             <Heading as="h3" className="mt-2 max-w-3xl">

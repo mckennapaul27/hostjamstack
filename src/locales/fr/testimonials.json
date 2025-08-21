@@ -1,0 +1,42 @@
+{
+  "section": {
+    "subtitle": "Ce que tout le monde dit",
+    "title": "Approuvé par les professionnels."
+  },
+  "testimonials": [
+    {
+      "name": "Sarah Chen",
+      "title": "Développeuse Indépendante",
+      "quote": "HostJamstack a fait passer mon projet Next.js du développement local à la production en moins de 2 heures. Aucun mal de tête DevOps, juste un site en ligne avec SSL et tout configuré parfaitement."
+    },
+    {
+      "name": "Marcus Rodriguez",
+      "title": "Designer Freelance",
+      "quote": "J'avais l'habitude de redouter la phase de déploiement des projets. Maintenant avec le Launch Pack, je peux me concentrer sur le design pendant qu'ils gèrent toute la complexité de l'hébergement. Mes clients adorent les sites rapides et sécurisés."
+    },
+    {
+      "name": "Jenny Park",
+      "title": "Fondatrice de Startup",
+      "quote": "Le package Migration Mini nous a fait économiser des semaines de travail pour migrer notre site marketing vers un hébergement moderne. Basculement sans temps d'arrêt et notre site est maintenant ultra-rapide sur le réseau edge."
+    },
+    {
+      "name": "David Thompson",
+      "title": "Développeur Étudiant",
+      "quote": "En tant que quelqu'un qui apprend le développement web, HostJamstack comble le fossé entre \"ça marche sur mon laptop\" et avoir un vrai site de production. Le pack First Deploy est parfait pour les débutants."
+    },
+    {
+      "name": "Lisa Chang",
+      "title": "Propriétaire de Petite Entreprise",
+      "quote": "J'ai construit mon site avec Lovable mais je n'avais aucune idée de comment le mettre en ligne correctement. Le Launch Pack a géré les domaines, SSL, les en-têtes de performance - tout ce dont j'avais besoin mais que je ne pouvais pas résoudre moi-même."
+    },
+    {
+      "name": "Alex Kumar",
+      "title": "Agence Créative",
+      "quote": "Nous pouvons maintenant promettre aux clients un hébergement professionnel sans avoir besoin d'une personne dédiée DevOps. Les corrections rapides et déploiements se font en heures, pas en jours. Un changement de donne pour notre agence."
+    }
+  ],
+  "callToAction": {
+    "description": "Nous sommes là pour vous aider à mettre votre site en ligne et à le faire fonctionner sans problème.",
+    "buttonText": "Commencer"
+  }
+}

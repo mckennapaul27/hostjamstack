@@ -19,7 +19,8 @@ export const metadata: Metadata = {
     'Access all legal documents for HostJamstack services including Terms and Conditions, Privacy Policy, and Refund Policy.',
 }
 
-function Header({ lang, t }: { lang: string; t: any }) {
+async function Header({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['legal'])
   return (
     <Container className="mt-16">
       <Heading as="h1">{t('header.title')}</Heading>
@@ -36,7 +37,8 @@ function Header({ lang, t }: { lang: string; t: any }) {
   )
 }
 
-function CompanyInfo({ t }: { t: any }) {
+async function CompanyInfo({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['legal'])
   return (
     <Container className="mt-16">
       <div className="rounded-2xl bg-gray-50 p-8">
@@ -89,15 +91,14 @@ function CompanyInfo({ t }: { t: any }) {
   )
 }
 
-function LegalDocumentCard({
+async function LegalDocumentCard({
   article,
   lang,
-  t,
 }: {
   article: LegalArticle
   lang: string
-  t: any
 }) {
+  const { t } = await initTranslations(lang, ['legal'])
   const getIcon = (slug: string) => {
     switch (slug) {
       case 'terms-and-conditions':
@@ -145,7 +146,8 @@ function LegalDocumentCard({
   )
 }
 
-async function LegalDocuments({ locale, t }: { locale: string; t: any }) {
+async function LegalDocuments({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['legal'])
   // Always fetch English legal articles since they're only available in English
   const legalArticles = await generateLegalArticlesIndex('en')
 
@@ -154,12 +156,7 @@ async function LegalDocuments({ locale, t }: { locale: string; t: any }) {
       <Subheading className="mb-8">{t('documents.title')}</Subheading>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {legalArticles.map((article) => (
-          <LegalDocumentCard
-            key={article.slug}
-            article={article}
-            lang={locale}
-            t={t}
-          />
+          <LegalDocumentCard key={article.slug} article={article} lang={lang} />
         ))}
       </div>
 
@@ -172,7 +169,8 @@ async function LegalDocuments({ locale, t }: { locale: string; t: any }) {
   )
 }
 
-function ImportantNotice({ t }: { t: any }) {
+async function ImportantNotice({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['legal'])
   return (
     <Container className="mb-24">
       <div className="rounded-2xl border border-amber-200 bg-amber-50 p-8">
@@ -210,7 +208,6 @@ export default async function LegalIndex({
   const { lang } = await params
 
   // Initialize translations for legal namespace
-  const { t } = await initTranslations(lang, ['legal'])
 
   return (
     <main className="overflow-hidden">
@@ -218,10 +215,10 @@ export default async function LegalIndex({
       <Container>
         <Navbar locale={lang} />
       </Container>
-      <Header lang={lang} t={t} />
-      <CompanyInfo t={t} />
-      <LegalDocuments locale={lang} t={t} />
-      <ImportantNotice t={t} />
+      <Header lang={lang} />
+      <CompanyInfo lang={lang} />
+      <LegalDocuments lang={lang} />
+      <ImportantNotice lang={lang} />
       <Footer locale={lang} />
     </main>
   )

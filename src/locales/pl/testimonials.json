@@ -1,0 +1,42 @@
+{
+  "section": {
+    "subtitle": "Co wszyscy mówią",
+    "title": "Zaufany przez profesjonalistów."
+  },
+  "testimonials": [
+    {
+      "name": "Sarah Chen",
+      "title": "Programistka Solo",
+      "quote": "HostJamstack przeniósł mój projekt Next.js z lokalnego rozwoju do produkcji w mniej niż 2 godziny. Żadnych problemów z DevOps, tylko działająca strona z SSL i wszystkim idealnie skonfigurowanym."
+    },
+    {
+      "name": "Marcus Rodriguez",
+      "title": "Freelancer Designer",
+      "quote": "Kiedyś bałem się fazy wdrażania projektów. Teraz z Launch Pack mogę skupić się na designie, podczas gdy oni zajmują się całą złożonością hostingu. Moi klienci uwielbiają szybkie, bezpieczne strony."
+    },
+    {
+      "name": "Jenny Park",
+      "title": "Założycielka Startupu",
+      "quote": "Pakiet Migration Mini zaoszczędził nam tygodnie pracy przy przenoszeniu naszej strony marketingowej na nowoczesny hosting. Zero przestojów i nasza strona jest teraz błyskawicznie szybka w sieci edge."
+    },
+    {
+      "name": "David Thompson",
+      "title": "Programista Student",
+      "quote": "Jako ktoś uczący się rozwoju stron internetowych, HostJamstack wypełnia lukę między \"działa na moim laptopie\" a posiadaniem prawdziwej strony produkcyjnej. Pakiet First Deploy jest idealny dla początkujących."
+    },
+    {
+      "name": "Lisa Chang",
+      "title": "Właścicielka Małej Firmy",
+      "quote": "Zbudowałam swoją stronę z Lovable, ale nie miałam pojęcia, jak właściwie ją uruchomić. Launch Pack obsłużył domeny, SSL, nagłówki wydajności - wszystko czego potrzebowałam, ale nie mogłam sama rozgryźć."
+    },
+    {
+      "name": "Alex Kumar",
+      "title": "Agencja Kreatywna",
+      "quote": "Możemy teraz obiecać klientom profesjonalny hosting bez potrzeby dedykowanej osoby DevOps. Szybkie poprawki i wdrożenia dzieją się w godzinach, nie dniach. Przełom dla naszej agencji."
+    }
+  ],
+  "callToAction": {
+    "description": "Jesteśmy tutaj, aby pomóc Ci uruchomić Twoją stronę i sprawić, by działała płynnie.",
+    "buttonText": "Rozpocznij"
+  }
+}

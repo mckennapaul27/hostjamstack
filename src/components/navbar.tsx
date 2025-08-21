@@ -61,7 +61,6 @@ export async function NavbarDesktop({ locale }: { locale: string }) {
 }
 
 export function Navbar({ locale }: { locale: string }) {
-  console.log('local in navbar:', locale)
   return (
     <React.Fragment>
       <div className="hidden lg:block">

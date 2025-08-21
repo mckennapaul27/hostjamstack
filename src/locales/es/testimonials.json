@@ -1,0 +1,42 @@
+{
+  "section": {
+    "subtitle": "Lo que todos están diciendo",
+    "title": "Confiado por profesionales."
+  },
+  "testimonials": [
+    {
+      "name": "Sarah Chen",
+      "title": "Desarrolladora Independiente",
+      "quote": "HostJamstack llevó mi proyecto Next.js desde desarrollo local hasta producción en menos de 2 horas. Sin dolores de cabeza de DevOps, solo un sitio en vivo con SSL y todo configurado perfectamente."
+    },
+    {
+      "name": "Marcus Rodriguez",
+      "title": "Diseñador Freelance",
+      "quote": "Solía temer la fase de despliegue de proyectos. Ahora con el Launch Pack, puedo enfocarme en diseño mientras ellos manejan toda la complejidad del hosting. Mis clientes aman los sitios rápidos y seguros."
+    },
+    {
+      "name": "Jenny Park",
+      "title": "Fundadora de Startup",
+      "quote": "El paquete Migration Mini nos ahorró semanas de trabajo migrando nuestro sitio de marketing a hosting moderno. Transferencia sin tiempo de inactividad y nuestro sitio ahora es súper rápido en la red edge."
+    },
+    {
+      "name": "David Thompson",
+      "title": "Desarrollador Estudiante",
+      "quote": "Como alguien aprendiendo desarrollo web, HostJamstack cierra la brecha entre \"funciona en mi laptop\" y tener un sitio de producción real. El paquete First Deploy es perfecto para principiantes."
+    },
+    {
+      "name": "Lisa Chang",
+      "title": "Propietaria de Pequeña Empresa",
+      "quote": "Construí mi sitio con Lovable pero no tenía idea de cómo ponerlo en línea correctamente. El Launch Pack manejó dominios, SSL, headers de rendimiento - todo lo que necesitaba pero no podía resolver yo misma."
+    },
+    {
+      "name": "Alex Kumar",
+      "title": "Agencia Creativa",
+      "quote": "Ahora podemos prometer a clientes hosting profesional sin necesitar una persona dedicada a DevOps. Correcciones rápidas y despliegues suceden en horas, no días. Un cambio de juego para nuestra agencia."
+    }
+  ],
+  "callToAction": {
+    "description": "Estamos aquí para ayudarte a poner tu sitio en línea y funcionando sin problemas.",
+    "buttonText": "Comenzar"
+  }
+}

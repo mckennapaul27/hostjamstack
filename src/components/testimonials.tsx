@@ -12,49 +12,11 @@ import {
   type HTMLMotionProps,
 } from 'framer-motion'
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import useMeasure, { type RectReadOnly } from 'react-use-measure'
 import { Container } from './container'
 import { Link } from './link'
 import { Heading, Subheading } from './text'
-
-const testimonials = [
-  {
-    name: 'Sarah Chen',
-    title: 'Solo Developer',
-    quote:
-      'HostJamstack took my Next.js project from local development to production in under 2 hours. No DevOps headaches, just a live site with SSL and everything configured perfectly.',
-  },
-  {
-    name: 'Marcus Rodriguez',
-    title: 'Freelance Designer',
-    quote:
-      'I used to dread the deployment phase of projects. Now with the Launch Pack, I can focus on design while they handle all the hosting complexity. My clients love the fast, secure sites.',
-  },
-  {
-    name: 'Jenny Park',
-    title: 'Startup Founder',
-    quote:
-      'The Migration Mini package saved us weeks of work moving our marketing site to modern hosting. Zero downtime cutover and our site is now blazing fast on the edge network.',
-  },
-  {
-    name: 'David Thompson',
-    title: 'Student Developer',
-    quote:
-      'As someone learning web development, HostJamstack bridges the gap between "it works on my laptop" and having a real production site. The First Deploy pack is perfect for beginners.',
-  },
-  {
-    name: 'Lisa Chang',
-    title: 'Small Business Owner',
-    quote:
-      "I built my site with Lovable but had no idea how to get it live properly. The Launch Pack handled domains, SSL, performance headers - everything I needed but couldn't figure out myself.",
-  },
-  {
-    name: 'Alex Kumar',
-    title: 'Creative Agency',
-    quote:
-      'We can now promise clients professional hosting without needing a dedicated DevOps person. Quick fixes and deployments happen in hours, not days. Game changer for our agency.',
-  },
-]
 
 function TestimonialCard({
   name,
@@ -141,17 +103,19 @@ function TestimonialCard({
 }
 
 function CallToAction() {
+  const { t } = useTranslation('testimonials')
+
   return (
     <div>
       <p className="max-w-sm text-sm/6 text-gray-600">
-        We&apos;re here to help you get your site live and running smoothly.
+        {t('callToAction.description')}
       </p>
       <div className="mt-2">
         <Link
           href="#"
           className="inline-flex items-center gap-2 text-sm/6 font-medium text-pink-600"
         >
-          Get started
+          {t('callToAction.buttonText')}
           <ArrowLongRightIcon className="size-5" />
         </Link>
       </div>
@@ -160,10 +124,18 @@ function CallToAction() {
 }
 
 export function Testimonials() {
+  const { t } = useTranslation('testimonials')
   let scrollRef = useRef<HTMLDivElement | null>(null)
   let { scrollX } = useScroll({ container: scrollRef })
   let [setReferenceWindowRef, bounds] = useMeasure()
   let [activeIndex, setActiveIndex] = useState(0)
+
+  // Get testimonials from translations
+  const testimonials = t('testimonials', { returnObjects: true }) as Array<{
+    name: string
+    title: string
+    quote: string
+  }>
 
   useMotionValueEvent(scrollX, 'change', (x) => {
     setActiveIndex(Math.floor(x / scrollRef.current!.children[0].clientWidth))
@@ -179,9 +151,9 @@ export function Testimonials() {
     <div className="overflow-hidden py-32">
       <Container>
         <div ref={setReferenceWindowRef}>
-          <Subheading>What everyone is saying</Subheading>
+          <Subheading>{t('section.subtitle')}</Subheading>
           <Heading as="h3" className="mt-2">
-            Trusted by professionals.
+            {t('section.title')}
           </Heading>
         </div>
       </Container>

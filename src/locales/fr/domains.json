@@ -1,0 +1,64 @@
+{
+  "page": {
+    "title": "Enregistrement de Domaine | HostJamstack",
+    "description": "Enregistrez votre nom de domaine parfait avec des prix compétitifs et une configuration instantanée. Choisissez parmi des centaines d'extensions avec des prix transparents."
+  },
+  "header": {
+    "title": "Trouvez votre nom de domaine parfait.",
+    "description": "Enregistrez votre domaine avec des prix compétitifs, une configuration DNS instantanée et un email professionnel inclus. Choisissez parmi des centaines d'extensions pour correspondre parfaitement à votre marque."
+  },
+  "extensions": {
+    "title": "Choisissez parmi des centaines d'extensions de domaine",
+    "description": "Que vous construisiez une entreprise, présentiez votre portfolio ou lanciez un blog, nous avons l'extension de domaine parfaite pour vous. Des classiques .com et .net aux extensions modernes .app, .tech et .design, trouvez celle qui correspond à votre marque.",
+    "pricing": "Prix compétitifs à partir de 9,99€/an • Protection WHOIS gratuite • Configuration instantanée"
+  },
+  "testimonial": {
+    "quote": "J'ai trouvé le domaine parfait en quelques minutes. La recherche était rapide, les prix transparents et la configuration instantanée.",
+    "author": "Alex Chen",
+    "company": "Fondateur de Startup, TechForward"
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "subtitle": "Vos questions ont des réponses.",
+    "questions": {
+      "registration": {
+        "question": "Combien de temps faut-il pour obtenir mon domaine après l'enregistrement ?",
+        "answer": "L'enregistrement de domaine est instantané pour la plupart des extensions. Une fois le paiement traité, votre domaine est immédiatement actif et prêt à utiliser. La propagation DNS prend généralement 24-48 heures globalement."
+      },
+      "dns": {
+        "question": "Fournissez-vous la gestion DNS et le transfert d'email ?",
+        "answer": "Oui, tous les enregistrements de domaine incluent une gestion DNS gratuite via notre panneau de contrôle intuitif. Le transfert d'email est inclus avec la plupart des plans, et nous offrons l'hébergement email professionnel en option."
+      },
+      "expiration": {
+        "question": "Que se passe-t-il quand mon domaine expire ?",
+        "answer": "Nous envoyons des rappels de renouvellement 90, 30 et 7 jours avant l'expiration. Les domaines peuvent être renouvelés jusqu'à 30 jours après l'expiration. Après cela, il y a une période de grâce avant que le domaine ne devienne disponible pour d'autres."
+      },
+      "transfer": {
+        "question": "Puis-je transférer mon domaine existant chez vous ?",
+        "answer": "Absolument ! Les transferts de domaine sont gratuits et se terminent généralement en 5-7 jours. Nous gérons les détails techniques et assurons aucun temps d'arrêt pendant le processus de transfert."
+      },
+      "privacy": {
+        "question": "Offrez-vous une protection de confidentialité de domaine ?",
+        "answer": "Oui, la protection de confidentialité WHOIS est incluse gratuitement avec tous les enregistrements de domaine. Cela garde vos informations personnelles privées et réduit le spam et les contacts indésirables."
+      }
+    }
+  },
+  "search": {
+    "subtitle": "domaines",
+    "title": "Rechercher un domaine",
+    "placeholder": "Entrez le nom de domaine (ex., exemple.com ou juste exemple)",
+    "searchButton": "Rechercher",
+    "searchingButton": "Recherche...",
+    "helperText": "Entrez un domaine complet (comme \"exemple.com\") ou juste le nom (comme \"exemple\") pour vérifier plusieurs extensions",
+    "results": {
+      "title": "Résultats de Recherche",
+      "suggestedTitle": "Alternatives Suggérées",
+      "available": "Disponible",
+      "unavailable": "Indisponible",
+      "premium": "Premium",
+      "buyNow": "Acheter Maintenant",
+      "noResults": "Aucun résultat trouvé pour votre recherche.",
+      "noResultsHelper": "Essayez un nom de domaine différent ou vérifiez l'orthographe."
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "section": {
+    "subtitle": "Was alle sagen",
+    "title": "Vertraut von Profis."
+  },
+  "testimonials": [
+    {
+      "name": "Sarah Chen",
+      "title": "Solo-Entwicklerin",
+      "quote": "HostJamstack brachte mein Next.js-Projekt in unter 2 Stunden von der lokalen Entwicklung zur Produktion. Keine DevOps-Kopfschmerzen, nur eine Live-Site mit SSL und allem perfekt konfiguriert."
+    },
+    {
+      "name": "Marcus Rodriguez",
+      "title": "Freelance Designer",
+      "quote": "Früher habe ich die Deployment-Phase von Projekten gefürchtet. Jetzt kann ich mich mit dem Launch Pack auf Design konzentrieren, während sie die ganze Hosting-Komplexität handhaben. Meine Kunden lieben die schnellen, sicheren Sites."
+    },
+    {
+      "name": "Jenny Park",
+      "title": "Startup-Gründerin",
+      "quote": "Das Migration Mini-Paket sparte uns wochenlange Arbeit beim Umzug unserer Marketing-Site zu modernem Hosting. Null Ausfallzeit und unsere Site ist jetzt blitzschnell im Edge-Netzwerk."
+    },
+    {
+      "name": "David Thompson",
+      "title": "Student Entwickler",
+      "quote": "Als jemand, der Webentwicklung lernt, überbrückt HostJamstack die Lücke zwischen \"es funktioniert auf meinem Laptop\" und einer echten Produktions-Site. Das First Deploy-Paket ist perfekt für Anfänger."
+    },
+    {
+      "name": "Lisa Chang",
+      "title": "Kleinunternehmerin",
+      "quote": "Ich habe meine Site mit Lovable erstellt, hatte aber keine Ahnung, wie ich sie richtig live bekommen sollte. Das Launch Pack handhabte Domains, SSL, Performance-Header - alles was ich brauchte, aber nicht selbst herausfinden konnte."
+    },
+    {
+      "name": "Alex Kumar",
+      "title": "Kreativagentur",
+      "quote": "Wir können Kunden jetzt professionelles Hosting versprechen, ohne eine dedizierte DevOps-Person zu brauchen. Schnelle Fixes und Deployments passieren in Stunden, nicht Tagen. Ein Game Changer für unsere Agentur."
+    }
+  ],
+  "callToAction": {
+    "description": "Wir sind hier, um Ihnen zu helfen, Ihre Site live und reibungslos laufen zu lassen.",
+    "buttonText": "Loslegen"
+  }
+}

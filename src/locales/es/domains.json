@@ -1,0 +1,64 @@
+{
+  "page": {
+    "title": "Registro de Dominios | HostJamstack",
+    "description": "Registra tu nombre de dominio perfecto con precios competitivos y configuración instantánea. Elige entre cientos de extensiones con precios transparentes."
+  },
+  "header": {
+    "title": "Encuentra tu nombre de dominio perfecto.",
+    "description": "Registra tu dominio con precios competitivos, configuración DNS instantánea y email profesional incluido. Elige entre cientos de extensiones para que coincidan perfectamente con tu marca."
+  },
+  "extensions": {
+    "title": "Elige entre cientos de extensiones de dominio",
+    "description": "Ya sea que estés construyendo un negocio, mostrando tu portafolio o iniciando un blog, tenemos la extensión de dominio perfecta para ti. Desde los clásicos .com y .net hasta las modernas extensiones .app, .tech y .design, encuentra la que coincida con tu marca.",
+    "pricing": "Precios competitivos desde €9.99/año • Protección WHOIS gratuita • Configuración instantánea"
+  },
+  "testimonial": {
+    "quote": "Encontré el dominio perfecto en minutos. La búsqueda fue rápida, los precios transparentes y la configuración instantánea.",
+    "author": "Alex Chen",
+    "company": "Fundador de Startup, TechForward"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Tus preguntas respondidas.",
+    "questions": {
+      "registration": {
+        "question": "¿Qué tan rápido puedo obtener mi dominio después del registro?",
+        "answer": "El registro de dominio es instantáneo para la mayoría de extensiones. Una vez procesado el pago, tu dominio está inmediatamente activo y listo para usar. La propagación DNS típicamente toma 24-48 horas globalmente."
+      },
+      "dns": {
+        "question": "¿Proporcionan gestión DNS y reenvío de email?",
+        "answer": "Sí, todos los registros de dominio incluyen gestión DNS gratuita a través de nuestro panel de control intuitivo. El reenvío de email está incluido con la mayoría de planes, y ofrecemos hosting de email profesional como complemento."
+      },
+      "expiration": {
+        "question": "¿Qué pasa cuando mi dominio expira?",
+        "answer": "Enviamos recordatorios de renovación 90, 30 y 7 días antes de la expiración. Los dominios pueden renovarse hasta 30 días después de la expiración. Después de eso, hay un período de gracia antes de que el dominio esté disponible para otros."
+      },
+      "transfer": {
+        "question": "¿Puedo transferir mi dominio existente a ustedes?",
+        "answer": "¡Absolutamente! Las transferencias de dominio son gratuitas y típicamente se completan en 5-7 días. Nos encargamos de los detalles técnicos y aseguramos que no haya tiempo de inactividad durante el proceso de transferencia."
+      },
+      "privacy": {
+        "question": "¿Ofrecen protección de privacidad de dominio?",
+        "answer": "Sí, la protección de privacidad WHOIS está incluida gratis con todos los registros de dominio. Esto mantiene tu información personal privada y reduce el spam y contacto no deseado."
+      }
+    }
+  },
+  "search": {
+    "subtitle": "dominios",
+    "title": "Buscar un dominio",
+    "placeholder": "Ingresa nombre de dominio (ej., ejemplo.com o solo ejemplo)",
+    "searchButton": "Buscar",
+    "searchingButton": "Buscando...",
+    "helperText": "Ingresa un dominio completo (como \"ejemplo.com\") o solo el nombre (como \"ejemplo\") para verificar múltiples extensiones",
+    "results": {
+      "title": "Resultados de Búsqueda",
+      "suggestedTitle": "Alternativas Sugeridas",
+      "available": "Disponible",
+      "unavailable": "No disponible",
+      "premium": "Premium",
+      "buyNow": "Comprar Ahora",
+      "noResults": "No se encontraron resultados para tu búsqueda.",
+      "noResultsHelper": "Prueba con un nombre de dominio diferente o verifica la ortografía."
+    }
+  }
+}

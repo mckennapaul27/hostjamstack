@@ -14,7 +14,8 @@ export const metadata: Metadata = {
     "We're on a mission to transform revenue organizations by harnessing vast amounts of illegally acquired customer data.",
 }
 
-function Header({ t }: { t: any }) {
+async function Header({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['company'])
   return (
     <Container className="mt-16">
       <Heading as="h1">{t('header.title')}</Heading>
@@ -140,7 +141,8 @@ function Header({ t }: { t: any }) {
 //   )
 // }
 
-function Team({ t }: { t: any }) {
+async function Team({ lang }: { lang: string }) {
+  const { t } = await initTranslations(lang, ['company'])
   return (
     <Container className="my-32">
       <Subheading>{t('team.subtitle')}</Subheading>
@@ -461,17 +463,14 @@ export default async function Company({
 }) {
   const awaitedParams = await params
 
-  // Initialize translations for company namespace
-  const { t } = await initTranslations(awaitedParams.lang, ['company'])
-
   return (
     <main className="overflow-hidden">
       <GradientBackground />
       <Container>
         <Navbar locale={awaitedParams.lang} />
       </Container>
-      <Header t={t} />
-      <Team t={t} />
+      <Header lang={awaitedParams.lang} />
+      <Team lang={awaitedParams.lang} />
       {/* <Investors />
       <Careers /> */}
       <Footer locale={awaitedParams.lang} />

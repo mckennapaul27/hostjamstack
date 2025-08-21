@@ -74,12 +74,25 @@ export default async function Home({
   const awaitedSearchParams = await searchParams
 
   // Initialize translations for the home namespace
-  const { t } = await initTranslations(awaitedParams.lang, ['home', 'domains'])
+  const { t } = await initTranslations(awaitedParams.lang, [
+    'home',
+    'domains',
+    'testimonials',
+  ])
 
   let tier =
     typeof awaitedSearchParams.tier === 'string'
       ? tiers.find(({ slug }) => slug === awaitedSearchParams.tier)!
       : tiers[0]
+
+  // Get testimonials from the testimonials namespace
+  const testimonials = t('testimonials:testimonials', {
+    returnObjects: true,
+  }) as Array<{
+    name: string
+    title: string
+    quote: string
+  }>
 
   return (
     <div className="overflow-hidden">
@@ -98,14 +111,12 @@ export default async function Home({
             <PricingCards locale={awaitedParams.lang} />
             <PricingTable selectedTier={tier} locale={awaitedParams.lang} />
           </Container>
-          {/* <BentoSection /> */}
         </div>
-        {/* <DarkBentoSection /> */}
         <div className="px-2">
           <DomainSearchBox />
         </div>
       </main>
-      <Testimonials />
+      <Testimonials testimonials={testimonials} />
       <Footer locale={awaitedParams.lang} />
     </div>
   )

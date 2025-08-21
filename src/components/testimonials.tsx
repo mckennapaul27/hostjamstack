@@ -123,7 +123,15 @@ function CallToAction() {
   )
 }
 
-export function Testimonials() {
+export function Testimonials({
+  testimonials,
+}: {
+  testimonials: {
+    name: string
+    title: string
+    quote: string
+  }[]
+}) {
   const { t } = useTranslation('testimonials')
   let scrollRef = useRef<HTMLDivElement | null>(null)
   let { scrollX } = useScroll({ container: scrollRef })
@@ -131,11 +139,6 @@ export function Testimonials() {
   let [activeIndex, setActiveIndex] = useState(0)
 
   // Get testimonials from translations
-  const testimonials = t('testimonials', { returnObjects: true }) as Array<{
-    name: string
-    title: string
-    quote: string
-  }>
 
   useMotionValueEvent(scrollX, 'change', (x) => {
     setActiveIndex(Math.floor(x / scrollRef.current!.children[0].clientWidth))

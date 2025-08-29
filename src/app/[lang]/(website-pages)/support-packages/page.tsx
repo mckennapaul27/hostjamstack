@@ -28,7 +28,7 @@ const tiers = [
     price: 10,
     currency: 'EUR',
     billing: 'one-off',
-    href: '#',
+    href: '/checkout/support?package=tiny-tweak',
     cta: 'Buy Tiny Tweak',
     highlights: [
       { description: 'Trigger a redeploy' },
@@ -47,7 +47,7 @@ const tiers = [
     price: 25,
     currency: 'EUR',
     billing: 'one-off',
-    href: '#',
+    href: '/checkout/support?package=quick-fix',
     cta: 'Buy Quick Fix',
     highlights: [
       { description: 'Connect 1 custom domain + SSL' },
@@ -66,7 +66,7 @@ const tiers = [
     price: 50,
     currency: 'EUR',
     billing: 'one-off',
-    href: '#',
+    href: '/checkout/support?package=first-deploy',
     cta: 'Buy First Deploy',
     highlights: [
       { description: 'Create project from Git' },
@@ -85,7 +85,7 @@ const tiers = [
     price: 100,
     currency: 'EUR',
     billing: 'one-off',
-    href: '#',
+    href: '/checkout/support?package=launch-pack',
     cta: 'Buy Launch Pack (recommended)',
     highlights: [
       { description: 'Everything in First Deploy' },
@@ -106,7 +106,7 @@ const tiers = [
     price: 250,
     currency: 'EUR',
     billing: 'one-off',
-    href: '#',
+    href: '/checkout/support?package=migration-mini',
     cta: 'Buy Migration Mini',
     highlights: [
       { description: 'Everything in Launch Pack' },

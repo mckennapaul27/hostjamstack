@@ -40,5 +40,29 @@
   },
   "ui": {
     "notIncluded": "Nicht enthalten:"
+  },
+  "checkout": {
+    "title": "Hosting Plan Checkout",
+    "subtitle": "Wählen Sie Ihren Hosting-Plan",
+    "backToPlans": "← Zurück zu Hosting-Plänen",
+    "planInfo": "Plan-Informationen",
+    "planFeatures": "Plan-Features:",
+    "billingPeriod": "Abrechnungszeitraum",
+    "monthlyPrice": "Monatlicher Preis",
+    "pricing": {
+      "month": "Monat",
+      "months": "Monate"
+    },
+    "orderSummary": {
+      "title": "Bestellübersicht",
+      "plan": "Plan",
+      "billingPeriod": "Abrechnungszeitraum",
+      "subtotal": "Zwischensumme",
+      "taxes": "Steuern",
+      "vatNotApplicable": "MwSt. nicht anwendbar",
+      "total": "Gesamt"
+    },
+    "continue": "Weiter zur Kontoeinrichtung",
+    "guarantee": "30-Tage Geld-zurück-Garantie"
   }
 }

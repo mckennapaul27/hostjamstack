@@ -78,5 +78,37 @@
     "buyNow": "Acheter Maintenant",
     "contactUs": "Nous Contacter",
     "features": "Fonctionnalités"
+  },
+  "checkout": {
+    "title": "Commande Plan d'Hébergement",
+    "subtitle": "Choisissez votre plan d'hébergement",
+    "backToPlans": "← Retour aux Plans d'Hébergement",
+    "planInfo": {
+      "title": "Informations du Plan"
+    },
+    "features": "Fonctionnalités du Plan",
+    "billingPeriod": {
+      "label": "Période de Facturation",
+      "monthly": "1 Mois",
+      "sixMonths": "6 Mois",
+      "yearly": "12 Mois (1 An)"
+    },
+    "discount": {
+      "label": "Remise",
+      "sixMonths": "10% de remise",
+      "yearly": "20% de remise"
+    },
+    "monthlyPrice": "Prix Mensuel",
+    "subtotal": "Sous-total",
+    "orderSummary": {
+      "title": "Résumé de Commande",
+      "plan": "Plan",
+      "subtotal": "Sous-total",
+      "taxes": "Taxes",
+      "vatNotApplicable": "TVA non applicable",
+      "total": "Total"
+    },
+    "continue": "Continuer vers la Configuration du Compte",
+    "guarantee": "Garantie de remboursement de 30 jours"
   }
 }

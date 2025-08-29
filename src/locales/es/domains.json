@@ -60,5 +60,34 @@
       "noResults": "No se encontraron resultados para tu búsqueda.",
       "noResultsHelper": "Prueba con un nombre de dominio diferente o verifica la ortografía."
     }
+  },
+  "checkout": {
+    "title": "Checkout de Registro de Dominio",
+    "subtitle": "checkout",
+    "orderSummary": {
+      "title": "Resumen del Pedido",
+      "domain": "Dominio",
+      "registrationPeriod": "Período de Registro",
+      "oneYear": "1 Año",
+      "twoYears": "2 Años",
+      "threeYears": "3 Años",
+      "fourYears": "4 Años",
+      "price": "Precio",
+      "renewalPrice": "Precio de Renovación",
+      "subtotal": "Subtotal",
+      "taxes": "Impuestos",
+      "total": "Total",
+      "vatNotApplicable": "IVA no aplicable",
+      "premium": "Dominio Premium"
+    },
+    "domainInfo": {
+      "title": "Información del Dominio",
+      "available": "Disponible para registro",
+      "premium": "Este es un dominio premium con precios especiales"
+    },
+    "continue": "Continuar a Configuración de Cuenta",
+    "loading": "Cargando información del dominio...",
+    "error": "Error al cargar información del dominio. Por favor, inténtalo de nuevo.",
+    "backToSearch": "← Volver a Búsqueda de Dominios"
   }
 }

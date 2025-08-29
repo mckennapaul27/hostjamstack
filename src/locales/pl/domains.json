@@ -60,5 +60,34 @@
       "noResults": "Nie znaleziono wyników dla Twojego wyszukiwania.",
       "noResultsHelper": "Spróbuj innej nazwy domeny lub sprawdź pisownię."
     }
+  },
+  "checkout": {
+    "title": "Checkout Rejestracji Domeny",
+    "subtitle": "checkout",
+    "orderSummary": {
+      "title": "Podsumowanie Zamówienia",
+      "domain": "Domena",
+      "registrationPeriod": "Okres Rejestracji",
+      "oneYear": "1 Rok",
+      "twoYears": "2 Lata",
+      "threeYears": "3 Lata",
+      "fourYears": "4 Lata",
+      "price": "Cena",
+      "renewalPrice": "Cena Odnowienia",
+      "subtotal": "Suma częściowa",
+      "taxes": "Podatki",
+      "total": "Łącznie",
+      "vatNotApplicable": "VAT nie dotyczy",
+      "premium": "Domena Premium"
+    },
+    "domainInfo": {
+      "title": "Informacje o Domenie",
+      "available": "Dostępna do rejestracji",
+      "premium": "To jest domena premium ze specjalnymi cenami"
+    },
+    "continue": "Kontynuuj do Konfiguracji Konta",
+    "loading": "Ładowanie informacji o domenie...",
+    "error": "Błąd ładowania informacji o domenie. Spróbuj ponownie.",
+    "backToSearch": "← Powrót do Wyszukiwania Domen"
   }
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { clsx } from 'clsx'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button } from './button'
@@ -31,7 +32,8 @@ interface SearchResponse {
 }
 
 export function DomainSearchBox({ className = '' }: { className?: string }) {
-  const { t } = useTranslation('domains')
+  const { t, i18n } = useTranslation('domains')
+  const router = useRouter()
   const [domainInput, setDomainInput] = useState('')
   const [searchResults, setSearchResults] = useState<DomainResult[]>([])
   const [suggestedResults, setSuggestedResults] = useState<DomainResult[]>([])
@@ -253,14 +255,8 @@ export function DomainSearchBox({ className = '' }: { className?: string }) {
                             {result.available && (
                               <button
                                 onClick={() => {
-                                  // TODO: Implement purchase flow
-                                  console.log(
-                                    'Purchase domain:',
-                                    result.domainName,
-                                  )
-                                  alert(
-                                    `Purchase flow for ${result.domainName} would start here`,
-                                  )
+                                  const checkoutUrl = `/${i18n.language}/checkout/domain?domain=${encodeURIComponent(result.domainName)}&price=${result.price || 0}&premium=${result.premium || false}`
+                                  router.push(checkoutUrl)
                                 }}
                                 className="mt-4 w-full cursor-pointer rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                               >
@@ -342,14 +338,8 @@ export function DomainSearchBox({ className = '' }: { className?: string }) {
                               {result.available && (
                                 <button
                                   onClick={() => {
-                                    // TODO: Implement purchase flow
-                                    console.log(
-                                      'Purchase domain:',
-                                      result.domainName,
-                                    )
-                                    alert(
-                                      `Purchase flow for ${result.domainName} would start here`,
-                                    )
+                                    const checkoutUrl = `/${i18n.language}/checkout/domain?domain=${encodeURIComponent(result.domainName)}&price=${result.price || 0}&premium=${result.premium || false}`
+                                    router.push(checkoutUrl)
                                   }}
                                   className="mt-4 w-full cursor-pointer rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                                 >

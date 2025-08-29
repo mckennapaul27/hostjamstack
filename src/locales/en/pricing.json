@@ -78,5 +78,36 @@
     "buyNow": "Buy Now",
     "contactUs": "Contact us",
     "features": "Features"
+  },
+  "checkout": {
+    "title": "Hosting Plan Checkout",
+    "subtitle": "checkout",
+    "backToPlans": "← Back to Hosting Plans",
+    "planInfo": {
+      "title": "Plan Information"
+    },
+    "features": "Plan Features",
+    "billingPeriod": {
+      "label": "Billing Period",
+      "monthly": "1 Month",
+      "sixMonths": "6 Months",
+      "yearly": "12 Months"
+    },
+    "discount": {
+      "label": "Discount",
+      "sixMonths": "10% off",
+      "yearly": "20% off"
+    },
+    "monthlyPrice": "Monthly Price",
+    "subtotal": "Subtotal",
+    "orderSummary": {
+      "title": "Order Summary",
+      "plan": "Plan",
+      "subtotal": "Subtotal",
+      "taxes": "Taxes",
+      "total": "Total",
+      "vatNotApplicable": "VAT not applicable"
+    },
+    "continue": "Continue to Account Setup"
   }
 }

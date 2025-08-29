@@ -73,7 +73,7 @@ function PricingCard({
           {tier.slug === 'enterprise' ? (
             <div className="mt-8 flex items-center gap-4">
               <div className="text-5xl font-medium text-gray-950">
-                {t('features.values.custom')}
+                {/* {t('features.values.custom')} */}-
               </div>
             </div>
           ) : (

@@ -60,5 +60,34 @@
       "noResults": "Aucun résultat trouvé pour votre recherche.",
       "noResultsHelper": "Essayez un nom de domaine différent ou vérifiez l'orthographe."
     }
+  },
+  "checkout": {
+    "title": "Checkout d'Enregistrement de Domaine",
+    "subtitle": "checkout",
+    "orderSummary": {
+      "title": "Résumé de Commande",
+      "domain": "Domaine",
+      "registrationPeriod": "Période d'Enregistrement",
+      "oneYear": "1 An",
+      "twoYears": "2 Ans",
+      "threeYears": "3 Ans",
+      "fourYears": "4 Ans",
+      "price": "Prix",
+      "renewalPrice": "Prix de Renouvellement",
+      "subtotal": "Sous-total",
+      "taxes": "Taxes",
+      "total": "Total",
+      "vatNotApplicable": "TVA non applicable",
+      "premium": "Domaine Premium"
+    },
+    "domainInfo": {
+      "title": "Informations sur le Domaine",
+      "available": "Disponible pour enregistrement",
+      "premium": "Ceci est un domaine premium avec des prix spéciaux"
+    },
+    "continue": "Continuer vers Configuration du Compte",
+    "loading": "Chargement des informations du domaine...",
+    "error": "Erreur lors du chargement des informations du domaine. Veuillez réessayer.",
+    "backToSearch": "← Retour à la Recherche de Domaine"
   }
 }

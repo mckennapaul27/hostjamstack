@@ -17,7 +17,7 @@ export const tiers = [
     description:
       'The perfect starting place for your web app or personal project.',
     priceMonthly: 10,
-    href: '#',
+    href: '/checkout/hosting?plan=growth',
     highlights: [
       { description: 'Import your repo, deploy in seconds' },
       { description: 'Automatic CI/CD' },
@@ -105,7 +105,7 @@ export const tiers = [
     description:
       'Everything you need to build and scale your app and business.',
     priceMonthly: 20,
-    href: '#',
+    href: '/checkout/hosting?plan=pro',
     highlights: [
       { description: 'Everything in Growth, plus:' },
       { description: '10x more included usage' },
@@ -193,7 +193,7 @@ export const tiers = [
     description:
       'Critical security, performance, observability, platform SLAs, and support.',
     priceMonthly: 100,
-    href: '#',
+    href: '/contact',
     highlights: [
       { description: 'Everything in Pro, plus:' },
       { description: 'Guest & Team access controls' },

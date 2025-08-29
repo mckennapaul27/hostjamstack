@@ -1,0 +1,59 @@
+{
+  "checkout": {
+    "title": "Sfinalizuj Zakup"
+  },
+  "billing": {
+    "title": "Informacje Rozliczeniowe",
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "company": "Firma",
+    "address": "Adres",
+    "apartment": "Mieszkanie, apartament, itp.",
+    "city": "Miasto",
+    "country": "Kraj",
+    "state": "Stan / Województwo",
+    "postalCode": "Kod pocztowy",
+    "phone": "Telefon"
+  },
+  "method": {
+    "title": "Płatność",
+    "creditCard": "Karta kredytowa",
+    "paypal": "PayPal",
+    "etransfer": "Przelew elektroniczny"
+  },
+  "card": {
+    "number": "Numer karty",
+    "nameOnCard": "Imię i nazwisko na karcie",
+    "expiryDate": "Data ważności (MM/RR)",
+    "cvc": "CVC"
+  },
+  "countries": {
+    "us": "Stany Zjednoczone",
+    "gb": "Wielka Brytania",
+    "de": "Niemcy",
+    "fr": "Francja",
+    "es": "Hiszpania",
+    "it": "Włochy",
+    "pl": "Polska"
+  },
+  "summary": {
+    "title": "Podsumowanie Zamówienia",
+    "hostingPlan": "Plan Hostingowy",
+    "domainRegistration": "Rejestracja Domeny",
+    "supportPackage": "Pakiet Wsparcia",
+    "completePayment": "Sfinalizuj płatność za"
+  },
+  "payButton": "Zapłać",
+  "processing": "Przetwarzanie Płatności...",
+  "securityNotice": "Szczegóły płatności przechowywane w postaci zwykłego tekstu",
+  "success": {
+    "title": "Płatność Pomyślna",
+    "message": "Dziękujemy za zakup!",
+    "paymentProcessed": "Twoja płatność została pomyślnie przetworzona",
+    "confirmationEmail": "Wkrótce otrzymasz email z potwierdzeniem",
+    "accountActivated": "Twoja usługa została aktywowana",
+    "goToDashboard": "Idź do Panelu",
+    "backToHome": "Powrót do Strony Głównej",
+    "needHelp": "Potrzebujesz pomocy? Skontaktuj się z naszym zespołem wsparcia pod"
+  }
+}

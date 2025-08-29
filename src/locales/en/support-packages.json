@@ -103,6 +103,35 @@
       }
     }
   },
+  "checkout": {
+    "title": "Support Package Checkout",
+    "subtitle": "checkout",
+    "backToPackages": "← Back to Support Packages",
+    "packageInfo": {
+      "title": "Package Information"
+    },
+    "features": "What's included",
+    "packageType": "Package Type",
+    "billing": {
+      "type": "Billing Type",
+      "oneTime": "One-time payment",
+      "oneOff": "One-time",
+      "noRecurring": "No recurring charges"
+    },
+    "price": "Price",
+    "orderSummary": {
+      "title": "Order Summary",
+      "package": "Package",
+      "deliveryTime": "Delivery Time",
+      "withinDays": "1-3 business days",
+      "subtotal": "Subtotal",
+      "taxes": "Taxes",
+      "vatNotApplicable": "VAT not applicable",
+      "total": "Total"
+    },
+    "continue": "Continue to Account Setup",
+    "guarantee": "Work begins after account creation and payment confirmation"
+  },
   "ui": {
     "buyNow": "Buy now",
     "features": "Features",

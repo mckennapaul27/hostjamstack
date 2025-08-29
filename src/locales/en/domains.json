@@ -60,5 +60,34 @@
       "noResults": "No results found for your search.",
       "noResultsHelper": "Try a different domain name or check your spelling."
     }
+  },
+  "checkout": {
+    "title": "Domain Registration Checkout",
+    "subtitle": "checkout",
+    "orderSummary": {
+      "title": "Order Summary",
+      "domain": "Domain",
+      "registrationPeriod": "Registration Period",
+      "oneYear": "1 Year",
+      "twoYears": "2 Years",
+      "threeYears": "3 Years",
+      "fourYears": "4 Years",
+      "price": "Price",
+      "renewalPrice": "Renewal Price",
+      "subtotal": "Subtotal",
+      "taxes": "Taxes",
+      "total": "Total",
+      "vatNotApplicable": "VAT not applicable",
+      "premium": "Premium Domain"
+    },
+    "domainInfo": {
+      "title": "Domain Information",
+      "available": "Available for registration",
+      "premium": "This is a premium domain with special pricing"
+    },
+    "continue": "Continue to Account Setup",
+    "loading": "Loading domain information...",
+    "error": "Error loading domain information. Please try again.",
+    "backToSearch": "← Back to Domain Search"
   }
 }

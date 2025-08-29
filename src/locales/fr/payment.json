@@ -1,0 +1,59 @@
+{
+  "checkout": {
+    "title": "Finaliser votre Achat"
+  },
+  "billing": {
+    "title": "Informations de Facturation",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "company": "Entreprise",
+    "address": "Adresse",
+    "apartment": "Appartement, suite, etc.",
+    "city": "Ville",
+    "country": "Pays",
+    "state": "État / Province",
+    "postalCode": "Code postal",
+    "phone": "Téléphone"
+  },
+  "method": {
+    "title": "Paiement",
+    "creditCard": "Carte de crédit",
+    "paypal": "PayPal",
+    "etransfer": "Virement électronique"
+  },
+  "card": {
+    "number": "Numéro de carte",
+    "nameOnCard": "Nom sur la carte",
+    "expiryDate": "Date d'expiration (MM/AA)",
+    "cvc": "CVC"
+  },
+  "countries": {
+    "us": "États-Unis",
+    "gb": "Royaume-Uni",
+    "de": "Allemagne",
+    "fr": "France",
+    "es": "Espagne",
+    "it": "Italie",
+    "pl": "Pologne"
+  },
+  "summary": {
+    "title": "Résumé de Commande",
+    "hostingPlan": "Plan d'Hébergement",
+    "domainRegistration": "Enregistrement de Domaine",
+    "supportPackage": "Forfait Support",
+    "completePayment": "Finaliser le paiement pour"
+  },
+  "payButton": "Payer",
+  "processing": "Traitement du Paiement...",
+  "securityNotice": "Détails de paiement stockés en texte brut",
+  "success": {
+    "title": "Paiement Réussi",
+    "message": "Merci pour votre achat !",
+    "paymentProcessed": "Votre paiement a été traité avec succès",
+    "confirmationEmail": "Vous recevrez un email de confirmation sous peu",
+    "accountActivated": "Votre service a été activé",
+    "goToDashboard": "Aller au Tableau de bord",
+    "backToHome": "Retour à l'Accueil",
+    "needHelp": "Besoin d'aide ? Contactez notre équipe support à"
+  }
+}

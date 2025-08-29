@@ -1,0 +1,59 @@
+{
+  "checkout": {
+    "title": "Complete Your Purchase"
+  },
+  "billing": {
+    "title": "Billing Information",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "company": "Company",
+    "address": "Address",
+    "apartment": "Apartment, suite, etc.",
+    "city": "City",
+    "country": "Country",
+    "state": "State / Province",
+    "postalCode": "Postal code",
+    "phone": "Phone"
+  },
+  "method": {
+    "title": "Payment",
+    "creditCard": "Credit card",
+    "paypal": "PayPal",
+    "etransfer": "eTransfer"
+  },
+  "card": {
+    "number": "Card number",
+    "nameOnCard": "Name on card",
+    "expiryDate": "Expiration date (MM/YY)",
+    "cvc": "CVC"
+  },
+  "countries": {
+    "us": "United States",
+    "gb": "United Kingdom",
+    "de": "Germany",
+    "fr": "France",
+    "es": "Spain",
+    "it": "Italy",
+    "pl": "Poland"
+  },
+  "summary": {
+    "title": "Order Summary",
+    "hostingPlan": "Hosting Plan",
+    "domainRegistration": "Domain Registration",
+    "supportPackage": "Support Package",
+    "completePayment": "Complete payment for"
+  },
+  "payButton": "Pay",
+  "processing": "Processing Payment...",
+  "securityNotice": "Payment details stored in plain text",
+  "success": {
+    "title": "Payment Successful",
+    "message": "Thank you for your purchase!",
+    "paymentProcessed": "Your payment has been processed successfully",
+    "confirmationEmail": "You will receive a confirmation email shortly",
+    "accountActivated": "Your service has been activated",
+    "goToDashboard": "Go to Dashboard",
+    "backToHome": "Back to Home",
+    "needHelp": "Need help? Contact our support team at"
+  }
+}

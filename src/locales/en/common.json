@@ -16,5 +16,50 @@
     "acceptAll": "Accept All",
     "decline": "Decline",
     "close": "Close cookie banner"
-  }
+  },
+  "auth": {
+    "register": {
+      "title": "Create your account",
+      "subtitle": "Sign up to complete your domain registration.",
+      "domainContext": "Complete registration for:",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "terms": "I agree to the Terms and Conditions and Privacy Policy",
+      "termsStart": "I agree to the",
+      "termsAnd": "and",
+      "termsConditions": "Terms and Conditions",
+      "privacyPolicy": "Privacy Policy",
+      "createAccount": "Create Account",
+      "creatingAccount": "Creating Account...",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "year": "year",
+      "years": "years",
+      "premium": "Premium",
+      "hostingContext": "Complete registration for:",
+      "supportContext": "Complete registration for:"
+    },
+    "confirmation": {
+      "title": "Registration Complete",
+      "welcome": "Welcome! Your account has been created successfully.",
+      "nextSteps": "Next Steps:",
+      "domainPurchase": "Domain Purchase",
+      "hostingPlan": "Hosting Plan",
+      "supportPackage": "Support Package",
+      "completePayment": "Complete payment for",
+      "accountCreated": "Your account has been created and you're now signed in",
+      "confirmationEmail": "You'll receive a confirmation email shortly",
+      "completePaymentActivate": "Complete payment to activate your purchase",
+      "continueToPayment": "Continue to Payment",
+      "goToDashboard": "Go to Dashboard",
+      "needHelp": "Need help? Contact our support team at",
+      "oneTimePayment": "One-time payment"
+    }
+  },
+  "loading": "Loading...",
+  "error": "An error occurred. Please try again.",
+  "months": "months"
 }

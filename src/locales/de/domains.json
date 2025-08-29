@@ -60,5 +60,34 @@
       "noResults": "Keine Ergebnisse für Ihre Suche gefunden.",
       "noResultsHelper": "Versuchen Sie einen anderen Domain-Namen oder überprüfen Sie die Rechtschreibung."
     }
+  },
+  "checkout": {
+    "title": "Domain-Registrierung Checkout",
+    "subtitle": "checkout",
+    "orderSummary": {
+      "title": "Bestellübersicht",
+      "domain": "Domain",
+      "registrationPeriod": "Registrierungszeitraum",
+      "oneYear": "1 Jahr",
+      "twoYears": "2 Jahre",
+      "threeYears": "3 Jahre",
+      "fourYears": "4 Jahre",
+      "price": "Preis",
+      "renewalPrice": "Verlängerungspreis",
+      "subtotal": "Zwischensumme",
+      "taxes": "Steuern",
+      "total": "Gesamt",
+      "vatNotApplicable": "MwSt. nicht anwendbar",
+      "premium": "Premium-Domain"
+    },
+    "domainInfo": {
+      "title": "Domain-Informationen",
+      "available": "Verfügbar für Registrierung",
+      "premium": "Dies ist eine Premium-Domain mit speziellen Preisen"
+    },
+    "continue": "Weiter zur Account-Einrichtung",
+    "loading": "Domain-Informationen werden geladen...",
+    "error": "Fehler beim Laden der Domain-Informationen. Bitte versuchen Sie es erneut.",
+    "backToSearch": "← Zurück zur Domain-Suche"
   }
 }

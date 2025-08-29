@@ -2,13 +2,10 @@ import * as Headless from '@headlessui/react'
 import NextLink, { type LinkProps } from 'next/link'
 import { forwardRef } from 'react'
 
-export const Link = forwardRef(function Link(
-  props: LinkProps & React.ComponentPropsWithoutRef<'a'>,
-  ref: React.ForwardedRef<HTMLAnchorElement>,
-) {
-  return (
-    <Headless.DataInteractive>
-      <NextLink ref={ref} {...props} />
-    </Headless.DataInteractive>
-  )
+export const Link = forwardRef<
+  HTMLAnchorElement,
+  LinkProps & React.ComponentPropsWithoutRef<'a'>
+>(function Link(props, ref) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return <Headless.DataInteractive as={NextLink as any} ref={ref} {...props} />
 })

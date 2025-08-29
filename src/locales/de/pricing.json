@@ -78,5 +78,37 @@
     "buyNow": "Jetzt Kaufen",
     "contactUs": "Kontakt",
     "features": "Funktionen"
+  },
+  "checkout": {
+    "title": "Hosting Plan Checkout",
+    "subtitle": "Wählen Sie Ihren Hosting-Plan",
+    "backToPlans": "← Zurück zu Hosting-Plänen",
+    "planInfo": {
+      "title": "Plan-Informationen"
+    },
+    "features": "Plan-Features",
+    "billingPeriod": {
+      "label": "Abrechnungszeitraum",
+      "monthly": "1 Monat",
+      "sixMonths": "6 Monate",
+      "yearly": "12 Monate (1 Jahr)"
+    },
+    "discount": {
+      "label": "Rabatt",
+      "sixMonths": "10% Rabatt",
+      "yearly": "20% Rabatt"
+    },
+    "monthlyPrice": "Monatlicher Preis",
+    "subtotal": "Zwischensumme",
+    "orderSummary": {
+      "title": "Bestellübersicht",
+      "plan": "Plan",
+      "subtotal": "Zwischensumme",
+      "taxes": "Steuern",
+      "vatNotApplicable": "MwSt. nicht anwendbar",
+      "total": "Gesamt"
+    },
+    "continue": "Weiter zur Kontoeinrichtung",
+    "guarantee": "30-Tage Geld-zurück-Garantie"
   }
 }

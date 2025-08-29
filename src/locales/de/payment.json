@@ -1,0 +1,59 @@
+{
+  "checkout": {
+    "title": "Kauf Abschließen"
+  },
+  "billing": {
+    "title": "Rechnungsinformationen",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "company": "Unternehmen",
+    "address": "Adresse",
+    "apartment": "Wohnung, Suite, etc.",
+    "city": "Stadt",
+    "country": "Land",
+    "state": "Bundesland / Provinz",
+    "postalCode": "Postleitzahl",
+    "phone": "Telefon"
+  },
+  "method": {
+    "title": "Zahlung",
+    "creditCard": "Kreditkarte",
+    "paypal": "PayPal",
+    "etransfer": "Elektronische Überweisung"
+  },
+  "card": {
+    "number": "Kartennummer",
+    "nameOnCard": "Name auf der Karte",
+    "expiryDate": "Ablaufdatum (MM/JJ)",
+    "cvc": "CVC"
+  },
+  "countries": {
+    "us": "Vereinigte Staaten",
+    "gb": "Vereinigtes Königreich",
+    "de": "Deutschland",
+    "fr": "Frankreich",
+    "es": "Spanien",
+    "it": "Italien",
+    "pl": "Polen"
+  },
+  "summary": {
+    "title": "Bestellübersicht",
+    "hostingPlan": "Hosting-Plan",
+    "domainRegistration": "Domain-Registrierung",
+    "supportPackage": "Support-Paket",
+    "completePayment": "Zahlung abschließen für"
+  },
+  "payButton": "Bezahlen",
+  "processing": "Zahlung wird verarbeitet...",
+  "securityNotice": "Zahlungsdetails im Klartext gespeichert",
+  "success": {
+    "title": "Zahlung Erfolgreich",
+    "message": "Vielen Dank für Ihren Kauf!",
+    "paymentProcessed": "Ihre Zahlung wurde erfolgreich verarbeitet",
+    "confirmationEmail": "Sie erhalten in Kürze eine Bestätigungs-E-Mail",
+    "accountActivated": "Ihr Service wurde aktiviert",
+    "goToDashboard": "Zum Dashboard",
+    "backToHome": "Zurück zur Startseite",
+    "needHelp": "Benötigen Sie Hilfe? Kontaktieren Sie unser Support-Team unter"
+  }
+}

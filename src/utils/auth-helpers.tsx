@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
         try {
           if (credentials) {
             // /api/check-password
-            const res = await fetch(`${serverUrl}/api/check-password`, {
+            const res = await fetch(`${serverUrl}/api/auth/check-password`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -30,6 +30,7 @@ export const authOptions: NextAuthOptions = {
               }),
             })
             const { isMatch, user } = await res.json()
+            console.log('user in auth-helpers', user)
             if (res.status === 200 && isMatch) {
               return user
             }
@@ -84,9 +85,10 @@ export const authOptions: NextAuthOptions = {
 
       if (user) {
         console.log('Creating new token for user:', user.email)
-        token.name = (user as { name: string }).name
-        token.email = user.email // Assuming email exists on the User type
-        token._id = (user as { _id: string })._id
+        token.firstName = user.firstName
+        token.lastName = user.lastName
+        token.email = user.email
+        token._id = user._id
 
         // Include the raw JWT in the token payload for session use
         token.rawJwt = jwt.sign(token, process.env.JWT_SECRET as string)
@@ -100,15 +102,15 @@ export const authOptions: NextAuthOptions = {
 
       session.user = {
         ...session.user,
-        name: token.name,
+        firstName: token.firstName,
+        lastName: token.lastName,
         email: token.email,
         _id: token._id,
       } as {
-        name: string
+        firstName: string
+        lastName: string
         email: string
         _id: string
-        user_set_locale: string | null
-        country: string | null
       }
       if (token.rawJwt && typeof token.rawJwt === 'string') {
         session.rawJwt = token.rawJwt

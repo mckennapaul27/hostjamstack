@@ -223,7 +223,7 @@ async function ContextDisplay({
                     <span className="font-medium">
                       {t('auth.register.monthly')}
                     </span>{' '}
-                    €{priceMonthly}/monat
+                    €{priceMonthly}/month
                   </p>
                 )}
               </div>

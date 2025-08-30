@@ -213,17 +213,17 @@ export default function SupportPage() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Support Tickets</h1>
           <p className="text-gray-600">Get help from our support team</p>
         </div>
-        <div className="flex space-x-3">
+        <div className="mt-4 flex space-x-3 md:mt-0">
           <Link
             href={`/${lang}/dashboard/support/packages`}
             className="border-bg-gray-950 inline-flex items-center justify-center rounded-full border bg-transparent px-4 py-2 text-base font-medium whitespace-nowrap text-gray-950 shadow-md transition-colors hover:bg-gray-800 hover:text-white"
           >
-            Support Packages
+            Packages
           </Link>
           <Link
             href={`/${lang}/dashboard/support/new`}
@@ -238,12 +238,12 @@ export default function SupportPage() {
       {/* Support Package Info */}
       {packages.length > 0 && (
         <div className="rounded-lg border border-gray-200 bg-white p-6">
-          <div className="flex items-center justify-between">
-            <div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col">
               <h3 className="mb-2 text-lg font-medium text-gray-900">
                 {packages[0].packageName}
               </h3>
-              <div className="flex items-center space-x-6 text-sm text-gray-600">
+              <div className="mt-4 flex flex-col gap-2 space-x-6 text-sm text-gray-600 md:mt-0 md:flex-row md:items-center md:justify-between">
                 <span>
                   Response Time: {packages[0].responseTimeGuarantee} minutes
                 </span>
@@ -257,7 +257,7 @@ export default function SupportPage() {
                 </span>
               </div>
             </div>
-            <div className="text-right">
+            <div className="mt-2 text-left md:text-right">
               <div className="text-sm text-gray-500">Support Level</div>
               <div className="text-lg font-medium text-green-600 capitalize">
                 {packages[0].packageType}
@@ -283,7 +283,7 @@ export default function SupportPage() {
             />
           </div>
 
-          <div className="flex space-x-2">
+          <div className="flex flex-col space-x-2 md:ml-8 md:flex-row">
             {[
               { key: 'all', label: 'All', count: statusCounts.all },
               { key: 'open', label: 'Open', count: statusCounts.open },
@@ -329,7 +329,7 @@ export default function SupportPage() {
                 key={ticket._id}
                 className="p-6 transition-colors hover:bg-gray-50"
               >
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col items-start justify-between">
                   <div className="flex-1">
                     <div className="mb-2 flex items-center space-x-3">
                       {getStatusIcon(ticket.status)}
@@ -348,7 +348,7 @@ export default function SupportPage() {
                       {ticket.description}
                     </p>
 
-                    <div className="flex items-center space-x-6 text-sm text-gray-500">
+                    <div className="flex flex-col items-start space-y-2 space-x-6 text-sm text-gray-500 md:flex-row md:items-center md:justify-between md:space-y-0">
                       <div className="flex items-center space-x-1">
                         {getPriorityIcon(ticket.priority)}
                         <span className="capitalize">
@@ -401,7 +401,7 @@ export default function SupportPage() {
                     )}
                   </div>
 
-                  <div className="ml-4 flex items-center space-x-2">
+                  <div className="mt-4 flex space-x-2 md:flex-row md:items-center md:justify-between">
                     {ticket.assignedTo && (
                       <div className="flex items-center space-x-2 text-sm text-gray-500">
                         <UserCircleIcon className="h-4 w-4" />

@@ -1,11 +1,9 @@
-import { Button } from '@/components/button'
+import { initTranslations } from '@/app/i18n'
+import LoginForm from '@/components/auth/login-form'
 import { GradientBackground } from '@/components/gradient'
-import { Link } from '@/components/link'
-import { Mark } from '@/components/logo'
-import { Checkbox, Field, Input, Label } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/16/solid'
-import { clsx } from 'clsx'
+import TranslationsProvider from '@/components/TranslationsProvider'
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Login',
@@ -17,82 +15,67 @@ export default async function Login({
 }: {
   params: Promise<{ lang: string }>
 }) {
-  const locale = (await params).lang
-  console.log('locale', locale)
+  const awaitedParams = await params
+  const locale = awaitedParams.lang
+
+  // Initialize translations for the common namespace
+  const { resources } = await initTranslations(locale, ['common'])
+
   return (
     <main className="overflow-hidden bg-gray-50">
       <GradientBackground />
-      <div className="isolate flex min-h-dvh items-center justify-center p-6 lg:p-8">
-        <div className="w-full max-w-md rounded-xl bg-white shadow-md ring-1 ring-black/5">
-          <form action="#" method="POST" className="p-7 sm:p-11">
-            <div className="flex items-start">
-              <Link href="/" title="Home">
-                <Mark />
-              </Link>
+      <TranslationsProvider
+        namespaces={['common']}
+        locale={locale}
+        resources={resources}
+      >
+        <Suspense fallback={<LoginFormSkeleton />}>
+          <LoginForm locale={locale} />
+        </Suspense>
+      </TranslationsProvider>
+    </main>
+  )
+}
+
+// Loading skeleton for the login form
+function LoginFormSkeleton() {
+  return (
+    <div className="isolate flex min-h-dvh items-center justify-center p-6 lg:p-8">
+      <div className="w-full max-w-md rounded-xl bg-white shadow-md ring-1 ring-black/5">
+        <div className="p-7 sm:p-11">
+          <div className="flex items-start">
+            <div className="h-8 w-8 animate-pulse rounded bg-gray-200" />
+          </div>
+          <div className="mt-8 h-6 w-32 animate-pulse rounded bg-gray-200" />
+          <div className="mt-1 h-4 w-48 animate-pulse rounded bg-gray-200" />
+
+          <div className="mt-8 space-y-3">
+            <div className="h-4 w-12 animate-pulse rounded bg-gray-200" />
+            <div className="h-10 w-full animate-pulse rounded-lg bg-gray-200" />
+          </div>
+
+          <div className="mt-8 space-y-3">
+            <div className="h-4 w-16 animate-pulse rounded bg-gray-200" />
+            <div className="h-10 w-full animate-pulse rounded-lg bg-gray-200" />
+          </div>
+
+          <div className="mt-8 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="h-4 w-4 animate-pulse rounded bg-gray-200" />
+              <div className="h-4 w-24 animate-pulse rounded bg-gray-200" />
             </div>
-            <h1 className="mt-8 text-base/6 font-medium">Welcome back!</h1>
-            <p className="mt-1 text-sm/5 text-gray-600">
-              Sign in to your account to continue.
-            </p>
-            <Field className="mt-8 space-y-3">
-              <Label className="text-sm/5 font-medium">Email</Label>
-              <Input
-                required
-                autoFocus
-                type="email"
-                name="email"
-                className={clsx(
-                  'block w-full rounded-lg border border-transparent shadow-sm ring-1 ring-black/10',
-                  'px-[calc(--spacing(2)-1px)] py-[calc(--spacing(1.5)-1px)] text-base/6 sm:text-sm/6',
-                  'data-focus:outline-2 data-focus:-outline-offset-1 data-focus:outline-black',
-                )}
-              />
-            </Field>
-            <Field className="mt-8 space-y-3">
-              <Label className="text-sm/5 font-medium">Password</Label>
-              <Input
-                required
-                type="password"
-                name="password"
-                className={clsx(
-                  'block w-full rounded-lg border border-transparent shadow-sm ring-1 ring-black/10',
-                  'px-[calc(--spacing(2)-1px)] py-[calc(--spacing(1.5)-1px)] text-base/6 sm:text-sm/6',
-                  'data-focus:outline-2 data-focus:-outline-offset-1 data-focus:outline-black',
-                )}
-              />
-            </Field>
-            <div className="mt-8 flex items-center justify-between text-sm/5">
-              <Field className="flex items-center gap-3">
-                <Checkbox
-                  name="remember-me"
-                  className={clsx(
-                    'group block size-4 rounded-sm border border-transparent shadow-sm ring-1 ring-black/10',
-                    'data-checked:bg-black data-checked:ring-black',
-                    'data-focus:outline-2 data-focus:outline-offset-2 data-focus:outline-black',
-                  )}
-                >
-                  <CheckIcon className="fill-white opacity-0 group-data-checked:opacity-100" />
-                </Checkbox>
-                <Label>Remember me</Label>
-              </Field>
-              <Link href="#" className="font-medium hover:text-gray-600">
-                Forgot password?
-              </Link>
-            </div>
-            <div className="mt-8">
-              <Button type="submit" className="w-full">
-                Sign in
-              </Button>
-            </div>
-          </form>
-          <div className="m-1.5 rounded-lg bg-gray-50 py-4 text-center text-sm/5 ring-1 ring-black/5">
-            Not a member?{' '}
-            <Link href="#" className="font-medium hover:text-gray-600">
-              Create an account
-            </Link>
+            <div className="h-4 w-32 animate-pulse rounded bg-gray-200" />
+          </div>
+
+          <div className="mt-8">
+            <div className="h-10 w-full animate-pulse rounded-lg bg-gray-200" />
           </div>
         </div>
+
+        <div className="m-1.5 rounded-lg bg-gray-50 py-4 text-center ring-1 ring-black/5">
+          <div className="mx-auto h-4 w-48 animate-pulse rounded bg-gray-200" />
+        </div>
       </div>
-    </main>
+    </div>
   )
 }

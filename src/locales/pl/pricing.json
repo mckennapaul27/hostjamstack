@@ -110,5 +110,23 @@
     },
     "continue": "Przejdź do Konfiguracji Konta",
     "guarantee": "30-dniowa gwarancja zwrotu pieniędzy"
+  },
+  "hostingPackages": {
+    "title": "Pakiety Hostingowe",
+    "description": "Zarządzaj swoimi planami hostingowymi i poznaj opcje aktualizacji",
+    "currentPlan": "Obecny Plan",
+    "active": "Aktywny",
+    "billingPeriod": "Okres Rozliczeniowy",
+    "monthlyPrice": "Cena Miesięczna",
+    "purchaseDate": "Data Zakupu",
+    "nextBilling": "Następna Płatność",
+    "planFeatures": "Funkcje Planu",
+    "renews": "Odnawia się",
+    "availablePlans": "Dostępne Plany",
+    "upgradeDescription": "Uaktualnij swój plan hostingowy dla lepszej wydajności i funkcji",
+    "downgrade": "Downgrade",
+    "upgradeTo": "Uaktualnij do",
+    "keyFeatures": "Kluczowe Funkcje",
+    "moreFeatures": "więcej funkcji"
   }
 }

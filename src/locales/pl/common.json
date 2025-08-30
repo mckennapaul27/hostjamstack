@@ -52,6 +52,25 @@
       "businessDays": "1-3 dni robocze",
       "plan": "Plan"
     },
+    "login": {
+      "title": "Witamy ponownie!",
+      "subtitle": "Zaloguj się do swojego konta, aby kontynuować.",
+      "email": "Email",
+      "password": "Hasło",
+      "rememberMe": "Zapamiętaj mnie",
+      "forgotPassword": "Zapomniałeś hasła?",
+      "signIn": "Zaloguj się",
+      "signingIn": "Logowanie...",
+      "notAMember": "Nie jesteś jeszcze członkiem?",
+      "createAccount": "Utwórz konto",
+      "emailRequired": "Email jest wymagany",
+      "emailInvalid": "Proszę wprowadzić prawidłowy email",
+      "passwordRequired": "Hasło jest wymagane",
+      "invalidCredentials": "Nieprawidłowy email lub hasło. Spróbuj ponownie.",
+      "loginFailed": "Logowanie nieudane. Spróbuj ponownie.",
+      "unexpectedError": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.",
+      "registrationSuccess": "Rejestracja udana! Zaloguj się, aby kontynuować."
+    },
     "confirmation": {
       "title": "Rejestracja Zakończona",
       "welcome": "Witamy! Twoje konto zostało pomyślnie utworzone.",
@@ -74,5 +93,6 @@
   },
   "loading": "Ładowanie...",
   "error": "Wystąpił błąd. Spróbuj ponownie.",
-  "months": "miesiące"
+  "months": "miesiące",
+  "optional": "opcjonalne"
 }

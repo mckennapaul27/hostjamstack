@@ -6,7 +6,6 @@ import {
   Bars3Icon,
   BellIcon,
   ChevronDownIcon,
-  CogIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/outline'
 import { signOut, useSession } from 'next-auth/react'
@@ -121,7 +120,7 @@ export default function DashboardHeader({
                     )}
                   </Menu.Item>
 
-                  <Menu.Item>
+                  {/* <Menu.Item>
                     {({ active }) => (
                       <Link
                         href={`/${lang}/dashboard/settings`}
@@ -133,7 +132,7 @@ export default function DashboardHeader({
                         Account Settings
                       </Link>
                     )}
-                  </Menu.Item>
+                  </Menu.Item> */}
                 </div>
 
                 <div className="py-1">

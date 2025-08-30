@@ -43,7 +43,6 @@ const navigation = [
     submenu: [
       { name: 'All Domains', href: '/dashboard/domains' },
       { name: 'Search & Buy', href: '/dashboard/domains/search' },
-      { name: 'DNS Management', href: '/dashboard/domains/dns' },
     ],
   },
   {
@@ -54,7 +53,7 @@ const navigation = [
     submenu: [
       { name: 'All Projects', href: '/dashboard/hosting' },
       { name: 'Packages', href: '/dashboard/hosting/packages' },
-      { name: 'Deployments', href: '/dashboard/hosting/deployments' },
+      // { name: 'Deployments', href: '/dashboard/hosting/deployments' },
     ],
   },
   {
@@ -65,7 +64,7 @@ const navigation = [
     submenu: [
       { name: 'Tickets', href: '/dashboard/support' },
       { name: 'Packages', href: '/dashboard/support/packages' },
-      { name: 'New Ticket', href: '/dashboard/support/new' },
+      // { name: 'New Ticket', href: '/dashboard/support/new' },
     ],
   },
 ]
@@ -254,11 +253,11 @@ function SidebarContent({
       {/* Footer */}
       <div className="border-t border-gray-200 px-4 py-4">
         <Link
-          href={`/${lang}/dashboard/settings`}
+          href={`/${lang}/dashboard/profile`}
           onClick={handleLinkClick}
           className={cn(
             'group flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors',
-            pathname === `/${lang}/dashboard/settings`
+            pathname === `/${lang}/dashboard/profile`
               ? 'bg-purple-50 text-purple-700'
               : 'text-gray-700 hover:bg-gray-50',
           )}

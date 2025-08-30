@@ -52,6 +52,25 @@
       "businessDays": "1-3 Werktage",
       "plan": "Plan"
     },
+    "login": {
+      "title": "Willkommen zurück!",
+      "subtitle": "Melden Sie sich in Ihrem Konto an, um fortzufahren.",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "rememberMe": "Angemeldet bleiben",
+      "forgotPassword": "Passwort vergessen?",
+      "signIn": "Anmelden",
+      "signingIn": "Anmeldung läuft...",
+      "notAMember": "Noch kein Mitglied?",
+      "createAccount": "Konto erstellen",
+      "emailRequired": "E-Mail ist erforderlich",
+      "emailInvalid": "Bitte geben Sie eine gültige E-Mail ein",
+      "passwordRequired": "Passwort ist erforderlich",
+      "invalidCredentials": "Ungültige E-Mail oder Passwort. Bitte versuchen Sie es erneut.",
+      "loginFailed": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "registrationSuccess": "Registrierung erfolgreich! Bitte melden Sie sich an, um fortzufahren."
+    },
     "confirmation": {
       "title": "Registrierung Abgeschlossen",
       "welcome": "Willkommen! Ihr Konto wurde erfolgreich erstellt.",
@@ -74,5 +93,6 @@
   },
   "loading": "Lädt...",
   "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
-  "months": "Monate"
+  "months": "Monate",
+  "optional": "optional"
 }

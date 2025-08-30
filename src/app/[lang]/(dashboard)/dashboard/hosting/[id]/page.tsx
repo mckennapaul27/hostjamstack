@@ -210,9 +210,9 @@ export default function HostingProjectPage() {
     <div className="space-y-6">
       {/* Project Header */}
       <div className="rounded-lg border border-gray-200 bg-white p-6">
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center space-x-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-purple-500 to-purple-600">
+            <div className="hidden h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 sm:flex">
               <CodeBracketIcon className="h-6 w-6 text-white" />
             </div>
             <div>
@@ -231,7 +231,7 @@ export default function HostingProjectPage() {
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="mt-4 flex space-x-3 sm:mt-0">
             <a
               href={project.repository.url}
               target="_blank"
@@ -256,18 +256,18 @@ export default function HostingProjectPage() {
         {/* Production Deployment Info */}
         {latestDeployment && (
           <div className="rounded-lg bg-gray-50 p-4">
-            <div className="mb-3 flex items-center justify-between">
+            <div className="mb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <h3 className="text-lg font-medium text-gray-900">
                 Production Deployment
               </h3>
-              <div className="flex items-center space-x-3">
+              <div className="mt-4 flex flex-col gap-2 space-x-3 sm:mt-0 sm:flex-row sm:items-center sm:justify-between">
                 <button className="rounded border border-gray-300 bg-white px-3 py-1 text-sm text-gray-600 hover:text-gray-900">
                   Build Logs
                 </button>
                 <button className="rounded border border-gray-300 bg-white px-3 py-1 text-sm text-gray-600 hover:text-gray-900">
                   Runtime Logs
                 </button>
-                <button className="rounded border border-gray-300 bg-white px-3 py-1 text-sm text-gray-600 hover:text-gray-900">
+                <button className="max-w-fit rounded border border-gray-300 bg-white px-3 py-1 text-sm text-gray-600 hover:text-gray-900">
                   <ArrowTopRightOnSquareIcon className="h-4 w-4" />
                 </button>
               </div>
@@ -340,12 +340,12 @@ export default function HostingProjectPage() {
 
       {/* Tab Navigation */}
       <div className="border-b border-gray-200">
-        <nav className="-mb-px flex space-x-8">
+        <nav className="flex flex-col space-x-8 sm:flex-row">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`border-b-2 px-1 py-2 text-sm font-medium ${
+              className={`!mr-0 border-b-2 px-1 py-2 text-sm font-medium sm:!mr-2 ${
                 activeTab === tab.id
                   ? 'border-purple-500 text-purple-600'
                   : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'

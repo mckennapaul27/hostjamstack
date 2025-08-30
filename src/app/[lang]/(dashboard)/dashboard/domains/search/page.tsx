@@ -1,119 +1,92 @@
 'use client'
 
-import { purchaseDomain, searchDomains } from '@/lib/dashboard-api'
 import { formatCurrency } from '@/lib/utils'
 import {
   CheckCircleIcon,
   MagnifyingGlassIcon,
   XCircleIcon,
 } from '@heroicons/react/24/outline'
-import { useSession } from 'next-auth/react'
+
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
 interface DomainSearchResult {
-  domain: string
+  domainName: string
   available: boolean
-  price: number
-  currency: string
+  price?: number
   premium?: boolean
+  purchasePrice?: number
 }
 
 export default function DomainSearchPage() {
-  const { data: session } = useSession()
   const params = useParams()
   const lang = (params?.lang as string) || 'en'
-  console.log('lang in domains/search page', lang)
 
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<DomainSearchResult[]>([])
   const [loading, setLoading] = useState(false)
-  const [purchasing, setPurchasing] = useState<string | null>(null)
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!searchQuery.trim() || !session?.rawJwt) return
+    if (!searchQuery.trim()) return
 
     setLoading(true)
     try {
-      const results = await searchDomains(session.rawJwt, searchQuery)
-      console.log('results in domains/search page', results)
+      const cleanInput = searchQuery.trim().toLowerCase()
 
-      // Mock results for development
-      const mockResults: DomainSearchResult[] = [
-        {
-          domain: `${searchQuery}.com`,
-          available: true,
-          price: 12.99,
-          currency: 'EUR',
+      const response = await fetch('/api/namecom/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        {
-          domain: `${searchQuery}.net`,
-          available: false,
-          price: 14.99,
-          currency: 'EUR',
-        },
-        {
-          domain: `${searchQuery}.org`,
-          available: true,
-          price: 16.99,
-          currency: 'EUR',
-        },
-        {
-          domain: `${searchQuery}.io`,
-          available: true,
-          price: 45.99,
-          currency: 'EUR',
-          premium: true,
-        },
-        {
-          domain: `${searchQuery}.dev`,
-          available: true,
-          price: 39.99,
-          currency: 'EUR',
-          premium: true,
-        },
-        {
-          domain: `${searchQuery}.app`,
-          available: false,
-          price: 25.99,
-          currency: 'EUR',
-        },
-        {
-          domain: `${searchQuery}.co`,
-          available: true,
-          price: 29.99,
-          currency: 'EUR',
-        },
-        {
-          domain: `${searchQuery}.xyz`,
-          available: true,
-          price: 8.99,
-          currency: 'EUR',
-        },
-      ]
+        body: JSON.stringify({
+          keyword: cleanInput,
+          tlds: [
+            'com',
+            'org',
+            'net',
+            'info',
+            'biz',
+            'co',
+            'ai',
+            'dev',
+            'io',
+            'app',
+            'xyz',
+          ],
+        }),
+      })
 
-      setSearchResults(mockResults)
+      const data: {
+        results?: DomainSearchResult[]
+        suggested?: DomainSearchResult[]
+        error?: string
+      } = await response.json()
+
+      if (data.error) {
+        console.error('Search error:', data.error)
+        setSearchResults([])
+      } else {
+        // Combine both results and suggested results
+        const allResults = [...(data.results || []), ...(data.suggested || [])]
+        setSearchResults(allResults)
+      }
     } catch (error) {
       console.error('Search failed:', error)
+      setSearchResults([])
     } finally {
       setLoading(false)
     }
   }
 
-  const handlePurchase = async (domain: string) => {
-    if (!session?.rawJwt) return
-
-    setPurchasing(domain)
-    try {
-      const result = await purchaseDomain(session.rawJwt, domain, 1)
-      console.log('Purchase initiated:', result)
-      // Redirect to payment or show success
-    } catch (error) {
-      console.error('Purchase failed:', error)
-    } finally {
-      setPurchasing(null)
-    }
+  const handlePurchase = (
+    domain: string,
+    price?: number,
+    premium?: boolean,
+  ) => {
+    // Redirect to dashboard domain checkout
+    const checkoutUrl = `/${lang}/dashboard/domains/checkout?domain=${encodeURIComponent(domain)}&price=${price || 0}&premium=${premium || false}`
+    window.location.href = checkoutUrl
   }
 
   const popularExtensions = [
@@ -230,7 +203,7 @@ export default function DomainSearchPage() {
           <div className="divide-y divide-gray-200">
             {searchResults.map((result) => (
               <div
-                key={result.domain}
+                key={result.domainName}
                 className="flex items-center justify-between p-6"
               >
                 <div className="flex items-center space-x-4">
@@ -243,7 +216,7 @@ export default function DomainSearchPage() {
                     <div>
                       <div className="flex items-center space-x-2">
                         <span className="text-lg font-medium text-gray-900">
-                          {result.domain}
+                          {result.domainName}
                         </span>
                         {result.premium && (
                           <span className="inline-flex items-center rounded bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-800">
@@ -259,10 +232,10 @@ export default function DomainSearchPage() {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  {result.available && (
+                  {result.available && result.price && (
                     <div className="text-right">
                       <div className="text-lg font-medium text-gray-900">
-                        {formatCurrency(result.price, result.currency)}
+                        {formatCurrency(result.price)}
                       </div>
                       <div className="text-sm text-gray-500">per year</div>
                     </div>
@@ -270,13 +243,16 @@ export default function DomainSearchPage() {
 
                   {result.available ? (
                     <button
-                      onClick={() => handlePurchase(result.domain)}
-                      disabled={purchasing === result.domain}
-                      className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800 disabled:bg-gray-400"
+                      onClick={() =>
+                        handlePurchase(
+                          result.domainName,
+                          result.price,
+                          result.premium,
+                        )
+                      }
+                      className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
                     >
-                      {purchasing === result.domain
-                        ? 'Processing...'
-                        : 'Buy Now'}
+                      Buy Now
                     </button>
                   ) : (
                     <button

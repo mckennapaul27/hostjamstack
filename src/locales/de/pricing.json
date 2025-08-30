@@ -110,5 +110,23 @@
     },
     "continue": "Weiter zur Kontoeinrichtung",
     "guarantee": "30-Tage Geld-zurück-Garantie"
+  },
+  "hostingPackages": {
+    "title": "Hosting-Pakete",
+    "description": "Verwalten Sie Ihre Hosting-Pläne und erkunden Sie Upgrade-Optionen",
+    "currentPlan": "Aktueller Plan",
+    "active": "Aktiv",
+    "billingPeriod": "Abrechnungszeitraum",
+    "monthlyPrice": "Monatlicher Preis",
+    "purchaseDate": "Kaufdatum",
+    "nextBilling": "Nächste Abrechnung",
+    "planFeatures": "Plan-Features",
+    "renews": "Verlängert",
+    "availablePlans": "Verfügbare Pläne",
+    "upgradeDescription": "Upgraden Sie Ihren Hosting-Plan für bessere Leistung und Features",
+    "downgrade": "Downgrade",
+    "upgradeTo": "Upgrade auf",
+    "keyFeatures": "Wichtige Features",
+    "moreFeatures": "weitere Features"
   }
 }

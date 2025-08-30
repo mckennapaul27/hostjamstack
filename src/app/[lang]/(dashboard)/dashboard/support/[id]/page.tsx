@@ -209,7 +209,7 @@ export default function SupportTicketDetailPage() {
     <div className="space-y-6">
       {/* Ticket Header */}
       <div className="rounded-lg border border-gray-200 bg-white p-6">
-        <div className="mb-4 flex items-start justify-between">
+        <div className="mb-4 flex flex-col">
           <div>
             <div className="mb-2 flex items-center space-x-3">
               <ChatBubbleLeftRightIcon className="h-6 w-6 text-gray-400" />

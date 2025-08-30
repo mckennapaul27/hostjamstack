@@ -46,6 +46,8 @@
   "payButton": "Bezahlen",
   "processing": "Zahlung wird verarbeitet...",
   "securityNotice": "Zahlungsdetails im Klartext gespeichert",
+  "backToCheckout": "Zurück zum Checkout",
+  "domainPaymentDescription": "Geben Sie Ihre Zahlungsdetails ein, um Ihre Domain-Registrierung abzuschließen",
   "success": {
     "title": "Zahlung Erfolgreich",
     "message": "Vielen Dank für Ihren Kauf!",

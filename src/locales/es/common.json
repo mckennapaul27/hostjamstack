@@ -52,6 +52,25 @@
       "businessDays": "1-3 días hábiles",
       "plan": "Plan"
     },
+    "login": {
+      "title": "¡Bienvenido de vuelta!",
+      "subtitle": "Inicia sesión en tu cuenta para continuar.",
+      "email": "Email",
+      "password": "Contraseña",
+      "rememberMe": "Recuérdame",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "signIn": "Iniciar sesión",
+      "signingIn": "Iniciando sesión...",
+      "notAMember": "¿No eres miembro?",
+      "createAccount": "Crear una cuenta",
+      "emailRequired": "El email es requerido",
+      "emailInvalid": "Por favor ingresa un email válido",
+      "passwordRequired": "La contraseña es requerida",
+      "invalidCredentials": "Email o contraseña inválidos. Por favor intenta de nuevo.",
+      "loginFailed": "Error al iniciar sesión. Por favor intenta de nuevo.",
+      "unexpectedError": "Ocurrió un error inesperado. Por favor intenta de nuevo.",
+      "registrationSuccess": "¡Registro exitoso! Por favor inicia sesión para continuar."
+    },
     "confirmation": {
       "title": "Registro Completo",
       "welcome": "¡Bienvenido! Tu cuenta ha sido creada exitosamente.",
@@ -74,5 +93,6 @@
   },
   "loading": "Cargando...",
   "error": "Ocurrió un error. Por favor, intenta de nuevo.",
-  "months": "meses"
+  "months": "meses",
+  "optional": "opcional"
 }

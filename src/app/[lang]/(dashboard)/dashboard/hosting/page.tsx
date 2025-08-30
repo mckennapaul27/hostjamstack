@@ -179,12 +179,12 @@ export default function HostingPage() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Hosting Projects</h1>
           <p className="text-gray-600">Manage your deployed applications</p>
         </div>
-        <div className="flex space-x-3">
+        <div className="mt-4 flex space-x-3 sm:mt-0">
           <Link
             href={`/${lang}/dashboard/hosting/packages`}
             className="border-bg-gray-950 inline-flex items-center justify-center rounded-full border bg-transparent px-4 py-2 text-base font-medium whitespace-nowrap text-gray-950 shadow-md transition-colors hover:bg-gray-800 hover:text-white"

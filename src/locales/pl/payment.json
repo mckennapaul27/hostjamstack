@@ -46,6 +46,8 @@
   "payButton": "Zapłać",
   "processing": "Przetwarzanie Płatności...",
   "securityNotice": "Szczegóły płatności przechowywane w postaci zwykłego tekstu",
+  "backToCheckout": "Powrót do Kasy",
+  "domainPaymentDescription": "Wprowadź dane płatności, aby zakończyć rejestrację domeny",
   "success": {
     "title": "Płatność Pomyślna",
     "message": "Dziękujemy za zakup!",

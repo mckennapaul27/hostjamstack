@@ -46,6 +46,8 @@
   "payButton": "Pay",
   "processing": "Processing Payment...",
   "securityNotice": "Payment details stored in plain text",
+  "backToCheckout": "Back to Checkout",
+  "domainPaymentDescription": "Enter your payment details to complete your domain registration",
   "success": {
     "title": "Payment Successful",
     "message": "Thank you for your purchase!",

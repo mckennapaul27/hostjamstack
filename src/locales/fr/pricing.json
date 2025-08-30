@@ -110,5 +110,23 @@
     },
     "continue": "Continuer vers la Configuration du Compte",
     "guarantee": "Garantie de remboursement de 30 jours"
+  },
+  "hostingPackages": {
+    "title": "Forfaits d'Hébergement",
+    "description": "Gérez vos plans d'hébergement et explorez les options de mise à niveau",
+    "currentPlan": "Plan Actuel",
+    "active": "Actif",
+    "billingPeriod": "Période de Facturation",
+    "monthlyPrice": "Prix Mensuel",
+    "purchaseDate": "Date d'Achat",
+    "nextBilling": "Prochaine Facturation",
+    "planFeatures": "Fonctionnalités du Plan",
+    "renews": "Renouvelle",
+    "availablePlans": "Plans Disponibles",
+    "upgradeDescription": "Mettez à niveau votre plan d'hébergement pour de meilleures performances et fonctionnalités",
+    "downgrade": "Rétrograder",
+    "upgradeTo": "Mettre à niveau vers",
+    "keyFeatures": "Fonctionnalités Clés",
+    "moreFeatures": "plus de fonctionnalités"
   }
 }

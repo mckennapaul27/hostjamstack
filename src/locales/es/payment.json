@@ -46,6 +46,8 @@
   "payButton": "Pagar",
   "processing": "Procesando Pago...",
   "securityNotice": "Detalles de pago almacenados en texto plano",
+  "backToCheckout": "Volver al Checkout",
+  "domainPaymentDescription": "Ingresa los detalles de tu pago para completar el registro de tu dominio",
   "success": {
     "title": "Pago Exitoso",
     "message": "¡Gracias por tu compra!",

@@ -109,5 +109,23 @@
       "vatNotApplicable": "VAT not applicable"
     },
     "continue": "Continue to Account Setup"
+  },
+  "hostingPackages": {
+    "title": "Hosting Packages",
+    "description": "Manage your hosting plans and explore upgrade options",
+    "currentPlan": "Current Plan",
+    "active": "Active",
+    "billingPeriod": "Billing Period",
+    "monthlyPrice": "Monthly Price",
+    "purchaseDate": "Purchase Date",
+    "nextBilling": "Next Billing",
+    "planFeatures": "Plan Features",
+    "renews": "Renews",
+    "availablePlans": "Available Plans",
+    "upgradeDescription": "Upgrade your hosting plan for better performance and features",
+    "downgrade": "Downgrade",
+    "upgradeTo": "Upgrade to",
+    "keyFeatures": "Key Features",
+    "moreFeatures": "more features"
   }
 }

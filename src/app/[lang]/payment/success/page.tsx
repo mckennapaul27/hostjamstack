@@ -62,7 +62,7 @@ export default async function PaymentSuccess({
             {t('payment:success.needHelp')}{' '}
             <a
               href="mailto:support@hostjamstack.com"
-              className="text-blue-600 hover:text-blue-500"
+              className="text-purple-600 hover:text-purple-500"
             >
               support@hostjamstack.com
             </a>

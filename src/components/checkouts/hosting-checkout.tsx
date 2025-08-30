@@ -161,13 +161,13 @@ function HostingCheckoutContent() {
               {t('pricing:checkout.planInfo.title', 'Plan Information')}
             </h2>
 
-            <div className="mb-6 flex items-start gap-4 rounded-lg bg-blue-50 p-4">
-              <CheckCircleIcon className="mt-0.5 h-6 w-6 flex-shrink-0 text-blue-600" />
+            <div className="mb-6 flex items-start gap-4 rounded-lg bg-purple-50 p-4">
+              <CheckCircleIcon className="mt-0.5 h-6 w-6 flex-shrink-0 text-purple-600" />
               <div>
-                <p className="font-medium text-blue-800">
+                <p className="font-medium text-purple-800">
                   {planInfo.name} Plan
                 </p>
-                <p className="mt-1 text-sm text-blue-700">
+                <p className="mt-1 text-sm text-purple-700">
                   {t(
                     `pricing:tiers.${planInfo.slug}.description`,
                     planInfo.description,
@@ -209,7 +209,7 @@ function HostingCheckoutContent() {
                 <select
                   value={billingPeriod}
                   onChange={(e) => setBillingPeriod(parseInt(e.target.value))}
-                  className="rounded-md border border-gray-300 bg-white px-3 py-1 text-sm font-medium text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                  className="rounded-md border border-gray-300 bg-white px-3 py-1 text-sm font-medium text-gray-900 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                 >
                   <option value={1}>
                     {t('pricing:checkout.billingPeriod.monthly', '1 Month')}

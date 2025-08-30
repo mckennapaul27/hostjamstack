@@ -109,15 +109,15 @@ export default async function Confirmation({
             </h2>
 
             {isDomainContext && (
-              <div className="mb-4 rounded-lg bg-blue-50 p-4">
-                <h3 className="font-medium text-blue-900">
+              <div className="mb-4 rounded-lg bg-purple-50 p-4">
+                <h3 className="font-medium text-purple-900">
                   {t('auth.confirmation.domainPurchase')}
                 </h3>
-                <p className="mt-1 text-blue-700">
+                <p className="mt-1 text-purple-700">
                   {t('auth.confirmation.completePayment')}{' '}
                   <strong>{domain}</strong>
                 </p>
-                <p className="mt-1 text-sm text-blue-600">
+                <p className="mt-1 text-sm text-purple-600">
                   €{domainPrice} for {years}{' '}
                   {parseInt(years || '1') === 1
                     ? t('auth.register.year')
@@ -132,15 +132,15 @@ export default async function Confirmation({
             )}
 
             {isHostingContext && (
-              <div className="mb-4 rounded-lg bg-blue-50 p-4">
-                <h3 className="font-medium text-blue-900">
+              <div className="mb-4 rounded-lg bg-purple-50 p-4">
+                <h3 className="font-medium text-purple-900">
                   {t('auth.confirmation.hostingPlan')}
                 </h3>
-                <p className="mt-1 text-blue-700">
+                <p className="mt-1 text-purple-700">
                   {t('auth.confirmation.completePayment')}{' '}
                   <strong>{planName} Plan</strong>
                 </p>
-                <p className="mt-1 text-sm text-blue-600">
+                <p className="mt-1 text-sm text-purple-600">
                   €{hostingPrice} for{' '}
                   {billingPeriod === '1'
                     ? '1 month'
@@ -157,15 +157,15 @@ export default async function Confirmation({
             )}
 
             {isSupportContext && (
-              <div className="mb-4 rounded-lg bg-blue-50 p-4">
-                <h3 className="font-medium text-blue-900">
+              <div className="mb-4 rounded-lg bg-purple-50 p-4">
+                <h3 className="font-medium text-purple-900">
                   {t('auth.confirmation.supportPackage')}
                 </h3>
-                <p className="mt-1 text-blue-700">
+                <p className="mt-1 text-purple-700">
                   {t('auth.confirmation.completePayment')}{' '}
                   <strong>{packageName}</strong>
                 </p>
-                <p className="mt-1 text-sm text-blue-600">
+                <p className="mt-1 text-sm text-purple-600">
                   €{supportPrice} • {t('auth.confirmation.oneTimePayment')}
                 </p>
               </div>
@@ -195,7 +195,7 @@ export default async function Confirmation({
             {t('auth.confirmation.needHelp')}{' '}
             <a
               href="mailto:support@hostjamstack.com"
-              className="text-blue-600 hover:text-blue-500"
+              className="text-purple-600 hover:text-purple-500"
             >
               support@hostjamstack.com
             </a>

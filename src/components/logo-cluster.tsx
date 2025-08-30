@@ -32,8 +32,8 @@ function Circle({
       style={{ '--opacity': opacity } as React.CSSProperties}
       className={clsx(
         'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full',
-        'bg-[radial-gradient(circle,transparent_25%,color-mix(in_srgb,var(--color-blue-500)_var(--opacity),transparent)_100%)]',
-        'ring-1 ring-blue-500/8 ring-inset',
+        'bg-[radial-gradient(circle,transparent_25%,color-mix(in_srgb,var(--color-purple-500)_var(--opacity),transparent)_100%)]',
+        'ring-1 ring-purple-500/8 ring-inset',
       )}
     />
   )

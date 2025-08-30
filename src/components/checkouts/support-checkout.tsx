@@ -228,14 +228,16 @@ function SupportCheckoutContent() {
               )}
             </h2>
 
-            <div className="mb-6 flex items-start gap-4 rounded-lg bg-blue-50 p-4">
-              <CheckCircleIcon className="mt-0.5 h-6 w-6 flex-shrink-0 text-blue-600" />
+            <div className="mb-6 flex items-start gap-4 rounded-lg bg-purple-50 p-4">
+              <CheckCircleIcon className="mt-0.5 h-6 w-6 flex-shrink-0 text-purple-600" />
               <div>
-                <p className="font-medium text-blue-800">{packageInfo.name}</p>
-                <p className="mt-1 text-sm text-blue-700">
+                <p className="font-medium text-purple-800">
+                  {packageInfo.name}
+                </p>
+                <p className="mt-1 text-sm text-purple-700">
                   {packageInfo.description}
                 </p>
-                <p className="mt-2 text-sm text-blue-600">
+                <p className="mt-2 text-sm text-purple-600">
                   {t(
                     'support-packages:checkout.billing.oneOff',
                     'One-time payment',

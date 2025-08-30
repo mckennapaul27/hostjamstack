@@ -251,17 +251,17 @@ export default function RegisterForm(props: RegisterFormProps) {
         {(props.isDomainContext ||
           props.isHostingContext ||
           props.isSupportContext) && (
-          <div className="mt-6 rounded-lg border border-blue-200 bg-blue-50 p-4 lg:hidden">
+          <div className="mt-6 rounded-lg border border-purple-200 bg-purple-50 p-4 lg:hidden">
             {props.isDomainContext && (
               <>
-                <h3 className="text-sm font-medium text-blue-900">
+                <h3 className="text-sm font-medium text-purple-900">
                   {t('auth.register.domainContext')}
                 </h3>
-                <p className="mt-1 text-lg font-semibold text-blue-900">
+                <p className="mt-1 text-lg font-semibold text-purple-900">
                   {props.domain}
                 </p>
                 {props.domainPrice && props.years && (
-                  <p className="mt-1 text-sm text-blue-700">
+                  <p className="mt-1 text-sm text-purple-700">
                     €{props.domainPrice} for {props.years}{' '}
                     {parseInt(props.years) === 1
                       ? t('auth.register.year')
@@ -278,17 +278,17 @@ export default function RegisterForm(props: RegisterFormProps) {
 
             {props.isHostingContext && (
               <>
-                <h3 className="text-sm font-medium text-blue-900">
+                <h3 className="text-sm font-medium text-purple-900">
                   {t(
                     'auth.register.hostingContext',
                     'Complete registration for:',
                   )}
                 </h3>
-                <p className="mt-1 text-lg font-semibold text-blue-900">
+                <p className="mt-1 text-lg font-semibold text-purple-900">
                   {props.planName} Plan
                 </p>
                 {props.hostingPrice && props.billingPeriod && (
-                  <p className="mt-1 text-sm text-blue-700">
+                  <p className="mt-1 text-sm text-purple-700">
                     €{props.hostingPrice} for{' '}
                     {props.billingPeriod === '1'
                       ? '1 month'
@@ -309,17 +309,17 @@ export default function RegisterForm(props: RegisterFormProps) {
 
             {props.isSupportContext && (
               <>
-                <h3 className="text-sm font-medium text-blue-900">
+                <h3 className="text-sm font-medium text-purple-900">
                   {t(
                     'auth.register.supportContext',
                     'Complete registration for:',
                   )}
                 </h3>
-                <p className="mt-1 text-lg font-semibold text-blue-900">
+                <p className="mt-1 text-lg font-semibold text-purple-900">
                   {props.packageName}
                 </p>
                 {props.supportPrice && props.currency && (
-                  <p className="mt-1 text-sm text-blue-700">
+                  <p className="mt-1 text-sm text-purple-700">
                     €{props.supportPrice} • One-time payment
                   </p>
                 )}

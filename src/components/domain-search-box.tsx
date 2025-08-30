@@ -88,7 +88,7 @@ export function DomainSearchBox({ className = '' }: { className?: string }) {
   const getExtensionColor = (extension: string) => {
     switch (extension) {
       case '.com':
-        return 'text-blue-400'
+        return 'text-purple-400'
       case '.co':
         return 'text-red-400'
       case '.info':
@@ -152,7 +152,7 @@ export function DomainSearchBox({ className = '' }: { className?: string }) {
                   className={clsx(
                     'block w-full rounded-lg border border-transparent shadow-sm ring-1 ring-white/20',
                     'bg-white/10 px-4 py-3 text-base text-white placeholder-white/60',
-                    'focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none',
+                    'focus:border-transparent focus:ring-2 focus:ring-purple-500 focus:outline-none',
                     'backdrop-blur-sm',
                   )}
                   onKeyDown={(e) =>
@@ -286,7 +286,7 @@ export function DomainSearchBox({ className = '' }: { className?: string }) {
                               className={clsx(
                                 'rounded-lg p-6 text-center backdrop-blur-sm transition-all',
                                 result.available
-                                  ? 'bg-blue-500/20 ring-1 ring-blue-400/30 hover:bg-blue-500/30'
+                                  ? 'bg-purple-500/20 ring-1 ring-purple-400/30 hover:bg-purple-500/30'
                                   : 'bg-gray-500/20 ring-1 ring-gray-400/30',
                               )}
                             >
@@ -309,7 +309,7 @@ export function DomainSearchBox({ className = '' }: { className?: string }) {
                                   className={clsx(
                                     'inline-block rounded-full px-3 py-1 text-sm font-medium',
                                     result.available
-                                      ? 'bg-blue-500/30 text-blue-200'
+                                      ? 'bg-purple-500/30 text-purple-200'
                                       : 'bg-gray-500/30 text-gray-200',
                                   )}
                                 >

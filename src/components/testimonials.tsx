@@ -71,7 +71,7 @@ function TestimonialCard({
       ref={ref}
       style={{ opacity }}
       {...props}
-      className="relative flex aspect-9/16 w-72 shrink-0 snap-start scroll-ml-(--scroll-padding) flex-col justify-end overflow-hidden rounded-3xl bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 sm:aspect-3/4 sm:w-96"
+      className="relative flex aspect-9/16 w-72 shrink-0 snap-start scroll-ml-(--scroll-padding) flex-col justify-end overflow-hidden rounded-3xl bg-gradient-to-br from-pink-500 via-purple-600 to-purple-600 sm:aspect-3/4 sm:w-96"
     >
       <div
         aria-hidden="true"

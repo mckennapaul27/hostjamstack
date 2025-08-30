@@ -233,6 +233,279 @@
 }
 ```
 
+### 8. Hosting Packages Model
+
+```javascript
+{
+  _id: ObjectId,
+  userId: ObjectId, // Reference to Users
+
+  // Package Details
+  packageName: "Starter Plan",
+  packageType: "shared", // shared, vps, dedicated, serverless
+  status: "active", // active, suspended, cancelled, pending
+
+  // Resource Limits
+  storage: 10, // GB
+  bandwidth: 100, // GB per month
+  databases: 5,
+  emailAccounts: 10,
+  subdomains: 25,
+
+  // Features
+  features: [
+    "SSL Certificates",
+    "Daily Backups",
+    "24/7 Support",
+    "CDN Included"
+  ],
+
+  // Billing
+  price: 9.99,
+  currency: "EUR",
+  billingCycle: "monthly", // monthly, yearly
+  nextBillingDate: Date,
+  autoRenew: true,
+
+  // Usage Stats
+  currentUsage: {
+    storage: 2.5, // GB used
+    bandwidth: 45, // GB used this month
+    databases: 2,
+    emailAccounts: 3
+  },
+
+  // Server Details
+  serverLocation: "Frankfurt, Germany",
+  serverIp: "192.168.1.100",
+  controlPanelUrl: "https://cpanel.hostjamstack.com",
+
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+### 9. Hosting Projects Model
+
+```javascript
+{
+  _id: ObjectId,
+  hostingPackageId: ObjectId, // Reference to HostingPackages
+  userId: ObjectId, // Reference to Users
+
+  // Project Details
+  projectName: "my-awesome-site",
+  displayName: "My Awesome Site",
+  description: "Personal portfolio website",
+
+  // Git Integration
+  repository: {
+    provider: "github", // github, gitlab, bitbucket
+    url: "https://github.com/user/repo",
+    branch: "main",
+    autoDeployEnabled: true
+  },
+
+  // Build Settings
+  buildSettings: {
+    buildCommand: "npm run build",
+    outputDirectory: "dist",
+    installCommand: "npm install",
+    nodeVersion: "18.x"
+  },
+
+  // Environment Variables
+  environmentVariables: [{
+    key: "API_URL",
+    value: "https://api.example.com",
+    environment: "production" // production, preview, development
+  }],
+
+  // Domains
+  domains: [
+    {
+      domain: "example.com",
+      type: "production", // production, preview
+      sslEnabled: true,
+      createdAt: Date
+    }
+  ],
+
+  // Status
+  status: "ready", // ready, building, error, disabled
+  lastDeployment: ObjectId, // Reference to Deployments
+
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+### 10. Deployments Model
+
+```javascript
+{
+  _id: ObjectId,
+  projectId: ObjectId, // Reference to HostingProjects
+  userId: ObjectId, // Reference to Users
+
+  // Deployment Info
+  deploymentId: "dpl_abc123def456", // Unique deployment ID
+  status: "ready", // building, ready, error, cancelled
+  environment: "production", // production, preview
+
+  // Source
+  source: {
+    type: "git", // git, upload
+    commitSha: "a1b2c3d4",
+    commitMessage: "Fix header styling",
+    branch: "main",
+    author: "John Doe"
+  },
+
+  // Build Info
+  buildLogs: [], // Array of log entries
+  buildDuration: 45000, // milliseconds
+  buildStartedAt: Date,
+  buildCompletedAt: Date,
+
+  // Deployment URLs
+  url: "https://my-site-abc123.hostjamstack.app",
+  domains: ["example.com"], // Custom domains
+
+  // Analytics (if enabled)
+  analytics: {
+    pageViews: 1250,
+    uniqueVisitors: 890,
+    topPages: ["/", "/about", "/contact"]
+  },
+
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+### 11. Support Packages Model
+
+```javascript
+{
+  _id: ObjectId,
+  userId: ObjectId, // Reference to Users
+
+  // Package Details
+  packageName: "Priority Support",
+  packageType: "priority", // basic, priority, enterprise
+  status: "active", // active, expired, cancelled
+
+  // Package Features
+  features: [
+    "24/7 Priority Support",
+    "Phone Support",
+    "1-hour Response Time",
+    "Technical Consultation",
+    "Site Migration Assistance"
+  ],
+
+  // Limits
+  monthlyTickets: 10, // -1 for unlimited
+  responseTimeGuarantee: 60, // minutes
+  supportChannels: ["email", "phone", "chat"],
+
+  // Billing
+  price: 29.99,
+  currency: "EUR",
+  billingCycle: "monthly",
+  nextBillingDate: Date,
+  autoRenew: true,
+
+  // Usage This Month
+  currentUsage: {
+    ticketsUsed: 3,
+    hoursUsed: 5.5,
+    resetDate: Date // when monthly usage resets
+  },
+
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+### 12. Support Tickets Model
+
+```javascript
+{
+  _id: ObjectId,
+  userId: ObjectId, // Reference to Users
+  supportPackageId: ObjectId, // Reference to SupportPackages (optional)
+
+  // Ticket Details
+  ticketNumber: "TKT-2024-001",
+  subject: "Help with SSL configuration",
+  description: "I'm having trouble setting up SSL on my domain",
+  priority: "normal", // low, normal, high, urgent
+  status: "open", // open, in_progress, waiting_customer, resolved, closed
+
+  // Classification
+  category: "technical", // technical, billing, general, migration
+  subcategory: "ssl_certificates",
+
+  // Assignment
+  assignedTo: ObjectId, // Reference to support staff
+  assignedAt: Date,
+
+  // SLA Tracking
+  firstResponseAt: Date,
+  lastResponseAt: Date,
+  resolvedAt: Date,
+  slaBreached: false,
+
+  // Related Resources
+  relatedDomains: ["example.com"],
+  relatedHostingPackages: [ObjectId],
+
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+### 13. Support Messages Model
+
+```javascript
+{
+  _id: ObjectId,
+  ticketId: ObjectId, // Reference to SupportTickets
+  userId: ObjectId, // Reference to Users (null if from support staff)
+
+  // Message Details
+  content: "Thanks for your help, the SSL is working now!",
+  messageType: "reply", // reply, note, status_change
+  isFromCustomer: true,
+
+  // Attachments
+  attachments: [{
+    filename: "screenshot.png",
+    fileSize: 1024567,
+    mimeType: "image/png",
+    url: "https://storage.hostjamstack.com/attachments/abc123.png"
+  }],
+
+  // Staff Info (if from support)
+  staffInfo: {
+    name: "Sarah Johnson",
+    role: "Technical Support",
+    department: "Support"
+  },
+
+  // Status Updates
+  statusChange: {
+    from: "open",
+    to: "in_progress"
+  },
+
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
 ## 🔗 Key Relationships & Considerations
 
 ### Indexing Strategy
@@ -260,6 +533,37 @@
 // Domain Transfers
 { domainId: 1 }
 { status: 1, createdAt: 1 }
+
+// Hosting Packages
+{ userId: 1 }
+{ status: 1 }
+{ nextBillingDate: 1 }
+
+// Hosting Projects
+{ hostingPackageId: 1 }
+{ userId: 1 }
+{ "repository.url": 1 }
+
+// Deployments
+{ projectId: 1, createdAt: -1 }
+{ status: 1 }
+{ environment: 1 }
+
+// Support Packages
+{ userId: 1 }
+{ status: 1 }
+{ nextBillingDate: 1 }
+
+// Support Tickets
+{ userId: 1 }
+{ supportPackageId: 1 }
+{ status: 1, priority: 1 }
+{ ticketNumber: 1 } // unique
+{ createdAt: -1 }
+
+// Support Messages
+{ ticketId: 1, createdAt: 1 }
+{ userId: 1 }
 ```
 
 **Notifications**: Email reminders, renewal alerts

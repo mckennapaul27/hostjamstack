@@ -250,7 +250,7 @@ function DomainCheckoutContent() {
                   onChange={(e) =>
                     setRegistrationPeriod(parseInt(e.target.value))
                   }
-                  className="rounded-md border border-gray-300 bg-white px-3 py-1 text-sm font-medium text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                  className="rounded-md border border-gray-300 bg-white px-3 py-1 text-sm font-medium text-gray-900 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                   disabled={loading}
                 >
                   <option value={1}>

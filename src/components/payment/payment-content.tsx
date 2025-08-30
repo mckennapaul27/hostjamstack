@@ -109,7 +109,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                       id="firstName"
                       name="firstName"
                       required
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -124,7 +124,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                       id="lastName"
                       name="lastName"
                       required
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
                   <div className="sm:col-span-2">
@@ -138,7 +138,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                       type="text"
                       id="company"
                       name="company"
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
                   <div className="sm:col-span-2">
@@ -153,7 +153,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                       id="address"
                       name="address"
                       required
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
                   <div className="sm:col-span-2">
@@ -167,7 +167,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                       type="text"
                       id="apartment"
                       name="apartment"
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -182,7 +182,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                       id="city"
                       name="city"
                       required
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -197,7 +197,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                         id="country"
                         name="country"
                         required
-                        className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 pr-8 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                        className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 pr-8 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                       >
                         <option value="US">{t('payment:countries.us')}</option>
                         <option value="GB">{t('payment:countries.gb')}</option>
@@ -221,7 +221,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                       type="text"
                       id="state"
                       name="state"
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -236,7 +236,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                       id="postalCode"
                       name="postalCode"
                       required
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
                   <div className="sm:col-span-2">
@@ -250,7 +250,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                       type="tel"
                       id="phone"
                       name="phone"
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -270,7 +270,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                         value="credit-card"
                         checked={paymentMethod === 'credit-card'}
                         onChange={(e) => setPaymentMethod(e.target.value)}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                        className="h-4 w-4 text-purple-600 focus:ring-purple-500"
                       />
                       <span className="ml-2 text-sm font-medium text-gray-900">
                         {t('payment:method.creditCard', 'Credit card')}
@@ -292,7 +292,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                         name="cardNumber"
                         placeholder="1234 5678 9012 3456"
                         required
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                       />
                     </div>
                     <div>
@@ -307,7 +307,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                         id="nameOnCard"
                         name="nameOnCard"
                         required
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                       />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
@@ -324,7 +324,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                           name="expiryDate"
                           placeholder="MM/YY"
                           required
-                          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                         />
                       </div>
                       <div>
@@ -340,7 +340,7 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                           name="cvc"
                           placeholder="123"
                           required
-                          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
                         />
                       </div>
                     </div>
@@ -372,25 +372,25 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
         {/* Order Summary */}
         <div className="order-1 lg:order-2">
           <div className="sticky top-8">
-            <div className="rounded-2xl border border-gray-200 bg-blue-50 p-6">
+            <div className="rounded-2xl border border-gray-200 bg-purple-50 p-6">
               <h2 className="mb-4 text-lg font-semibold text-gray-900">
                 {t('payment:summary.title', 'Order Summary')}
               </h2>
 
               <div className="space-y-4">
                 <div>
-                  <Subheading className="text-blue-900">
+                  <Subheading className="text-purple-900">
                     {productType === 'hosting'
                       ? t('payment:summary.hostingPlan')
                       : productType === 'domain'
                         ? t('payment:summary.domainRegistration')
                         : t('payment:summary.supportPackage')}
                   </Subheading>
-                  <p className="mt-1 text-blue-700">
+                  <p className="mt-1 text-purple-700">
                     {t('payment:summary.completePayment')}{' '}
                     <strong>{productInfo.name}</strong>
                   </p>
-                  <p className="mt-1 text-sm text-blue-600">
+                  <p className="mt-1 text-sm text-purple-600">
                     {productInfo.price} for {productInfo.description}
                   </p>
                 </div>

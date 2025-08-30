@@ -156,22 +156,22 @@ async function ContextDisplay({
   const { t } = await initTranslations(locale, ['common'])
   return (
     <div className="lg:col-span-1">
-      <div className="rounded-xl border border-blue-200 bg-blue-50 p-6 shadow-sm">
+      <div className="rounded-xl border border-purple-200 bg-purple-50 p-6 shadow-sm">
         {isDomainContext && (
           <>
-            <h3 className="text-base font-medium text-blue-900">
+            <h3 className="text-base font-medium text-purple-900">
               {t('auth.register.domainContext')}
             </h3>
-            <p className="mt-2 text-xl font-bold text-blue-900">{domain}</p>
+            <p className="mt-2 text-xl font-bold text-purple-900">{domain}</p>
             {domainPrice && years && (
               <div className="mt-4 space-y-2">
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-purple-700">
                   <span className="font-medium">
                     {t('auth.register.price')}
                   </span>{' '}
                   €{domainPrice}
                 </p>
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-purple-700">
                   <span className="font-medium">
                     {t('auth.register.period')}
                   </span>{' '}
@@ -192,21 +192,21 @@ async function ContextDisplay({
 
         {isHostingContext && (
           <>
-            <h3 className="text-base font-medium text-blue-900">
+            <h3 className="text-base font-medium text-purple-900">
               {t('auth.register.hostingContext')}
             </h3>
-            <p className="mt-2 text-xl font-bold text-blue-900">
+            <p className="mt-2 text-xl font-bold text-purple-900">
               {planName} {t('auth.register.plan')}
             </p>
             {hostingPrice && billingPeriod && (
               <div className="mt-4 space-y-2">
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-purple-700">
                   <span className="font-medium">
                     {t('auth.register.totalPrice')}
                   </span>{' '}
                   €{hostingPrice}
                 </p>
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-purple-700">
                   <span className="font-medium">
                     {t('auth.register.billingPeriod')}
                   </span>{' '}
@@ -219,7 +219,7 @@ async function ContextDisplay({
                         : `${billingPeriod} ${t('common:months')}`}
                 </p>
                 {priceMonthly && (
-                  <p className="text-sm text-blue-700">
+                  <p className="text-sm text-purple-700">
                     <span className="font-medium">
                       {t('auth.register.monthly')}
                     </span>{' '}
@@ -233,27 +233,27 @@ async function ContextDisplay({
 
         {isSupportContext && (
           <>
-            <h3 className="text-base font-medium text-blue-900">
+            <h3 className="text-base font-medium text-purple-900">
               {t('auth.register.supportContext')}
             </h3>
-            <p className="mt-2 text-xl font-bold text-blue-900">
+            <p className="mt-2 text-xl font-bold text-purple-900">
               {packageName}
             </p>
             {supportPrice && currency && (
               <div className="mt-4 space-y-2">
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-purple-700">
                   <span className="font-medium">
                     {t('auth.register.price')}
                   </span>{' '}
                   €{supportPrice}
                 </p>
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-purple-700">
                   <span className="font-medium">{t('auth.register.type')}</span>{' '}
                   {billing === 'one-off'
                     ? t('auth.register.oneTimePayment')
                     : billing}
                 </p>
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-purple-700">
                   <span className="font-medium">
                     {t('auth.register.delivery')}
                   </span>{' '}

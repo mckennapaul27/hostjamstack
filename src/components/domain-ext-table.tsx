@@ -105,7 +105,7 @@ export function DomainExtTable() {
                 placeholder="Search Extensions"
                 className={clsx(
                   'block w-full rounded-lg border border-gray-300 py-3 pr-4 pl-10 text-base',
-                  'focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none',
+                  'focus:border-transparent focus:ring-2 focus:ring-purple-500 focus:outline-none',
                   'bg-white text-gray-900 placeholder-gray-500',
                 )}
               />
@@ -117,7 +117,7 @@ export function DomainExtTable() {
               onChange={(e) => setSelectedExtension(e.target.value)}
               className={clsx(
                 'rounded-lg border border-gray-300 bg-white px-4 py-3 text-base text-gray-900',
-                'focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none',
+                'focus:border-transparent focus:ring-2 focus:ring-purple-500 focus:outline-none',
                 'min-w-[100px]',
               )}
             >
@@ -131,7 +131,7 @@ export function DomainExtTable() {
             {/* Search Button */}
             <Button
               className={clsx(
-                'bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500',
+                'bg-purple-600 hover:bg-purple-700 focus:ring-2 focus:ring-purple-500',
                 'rounded-lg px-8 py-3 text-base font-medium text-white',
                 'transition-colors duration-200',
               )}

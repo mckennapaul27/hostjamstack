@@ -14,3 +14,28 @@
     transform: translateX(var(--move-x-to));
   }
 }
+
+/* Custom scrollbar hiding utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Table overflow fix for dropdowns */
+.table-overflow-visible {
+  overflow: visible !important;
+}
+
+.table-overflow-visible .dropdown-cell {
+  overflow: visible !important;
+  position: relative;
+  z-index: 50;
+}
+
+button {
+  cursor: pointer;
+}

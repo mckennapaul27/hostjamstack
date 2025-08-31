@@ -1,0 +1,170 @@
+{
+  "title": "Du code à la production : Un guide complet pour déployer les apps JAMstack",
+  "description": "Apprenez comment faire passer votre application Next.js, Astro ou Vite du développement local à un environnement de production sécurisé, rapide et en ligne. Ce guide complet couvre tout du setup DNS aux certificats SSL, aidant les développeurs à déployer en sécurité sans apprendre DevOps complexe.",
+  "slug": "du-code-a-la-production-guide-deployment-jamstack",
+  "publishedAt": "2024-12-19T10:00:00.000Z",
+  "updatedAt": "2024-12-19T10:00:00.000Z",
+  "status": "published",
+  "category": {
+    "name": "deployment",
+    "slug": "deployment",
+    "description": "Guides et tutoriels sur le déploiement d'applications en production"
+  },
+  "tags": [
+    {
+      "name": "jamstack",
+      "slug": "jamstack"
+    },
+    {
+      "name": "deployment",
+      "slug": "deployment"
+    },
+    {
+      "name": "nextjs",
+      "slug": "nextjs"
+    },
+    {
+      "name": "astro",
+      "slug": "astro"
+    },
+    {
+      "name": "vite",
+      "slug": "vite"
+    },
+    {
+      "name": "devops",
+      "slug": "devops"
+    },
+    {
+      "name": "ssl",
+      "slug": "ssl"
+    },
+    {
+      "name": "dns",
+      "slug": "dns"
+    }
+  ],
+  "author": {
+    "name": "HostJamstack Team",
+    "bio": "L'équipe d'experts derrière HostJamstack, aidant les développeurs à déployer leurs applications en toute sécurité et fiabilité.",
+    "avatar": "/images/authors/hostjamstack-team.jpg",
+    "social": {
+      "twitter": "@hostjamstack",
+      "github": "hostjamstack",
+      "website": "https://hostjamstack.com"
+    }
+  },
+  "featured": true,
+  "readingTime": "12 min de lecture",
+  "wordCount": 2850,
+  "language": "fr",
+  "seo": {
+    "metaTitle": "Guide complet déploiement JAMstack - Du code à la production | HostJamstack",
+    "metaDescription": "Maîtrisez le déploiement JAMstack avec notre guide complet. Apprenez DNS, SSL, CI/CD et variables d'environnement pour apps Next.js, Astro et Vite. Déployez en sécurité sans apprendre DevOps.",
+    "keywords": [
+      "déploiement jamstack",
+      "déploiement nextjs",
+      "déploiement astro",
+      "déploiement vite",
+      "configuration dns",
+      "certificats ssl",
+      "devops pour développeurs",
+      "déploiement production",
+      "variables environnement",
+      "configuration cdn",
+      "guide hébergement"
+    ],
+    "canonicalUrl": "https://hostjamstack.com/articles/fr/du-code-a-la-production-guide-deployment-jamstack",
+    "ogImage": {
+      "url": "/images/articles/jamstack-deployment-guide.jpg",
+      "width": 1200,
+      "height": 630,
+      "alt": "Guide complet pour déployer applications JAMstack du code à la production"
+    },
+    "twitterCard": "summary_large_image",
+    "structuredData": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Du code à la production : Un guide complet pour déployer les apps JAMstack",
+      "description": "Apprenez comment faire passer votre application Next.js, Astro ou Vite du développement local à un environnement de production sécurisé, rapide et en ligne.",
+      "image": "https://hostjamstack.com/images/articles/jamstack-deployment-guide.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "HostJamstack Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HostJamstack",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hostjamstack.com/images/logo.png"
+        }
+      },
+      "datePublished": "2024-12-19T10:00:00.000Z",
+      "dateModified": "2024-12-19T10:00:00.000Z"
+    }
+  },
+  "tableOfContents": [
+    {
+      "title": "Le défi du déploiement JAMstack",
+      "anchor": "le-defi-du-deploiement-jamstack",
+      "level": 2
+    },
+    {
+      "title": "Comprendre votre application JAMstack",
+      "anchor": "comprendre-votre-application-jamstack",
+      "level": 2
+    },
+    {
+      "title": "Étape 1 : Préparer votre application pour la production",
+      "anchor": "etape-1-preparer-votre-application-pour-la-production",
+      "level": 2
+    },
+    {
+      "title": "Étape 2 : Configuration domaine et DNS",
+      "anchor": "etape-2-configuration-domaine-et-dns",
+      "level": 2
+    },
+    {
+      "title": "Étape 3 : Certificats SSL et HTTPS",
+      "anchor": "etape-3-certificats-ssl-et-https",
+      "level": 2
+    },
+    {
+      "title": "Étape 4 : Pipelines de build et déploiement",
+      "anchor": "etape-4-pipelines-de-build-et-deploiement",
+      "level": 2
+    },
+    {
+      "title": "Étape 5 : Performance et mise en cache",
+      "anchor": "etape-5-performance-et-mise-en-cache",
+      "level": 2
+    },
+    {
+      "title": "Étape 6 : Monitoring et maintenance",
+      "anchor": "etape-6-monitoring-et-maintenance",
+      "level": 2
+    },
+    {
+      "title": "La réalité de la complexité",
+      "anchor": "la-realite-de-la-complexite",
+      "level": 2
+    },
+    {
+      "title": "Quand le faire soi-même vs. utiliser un service",
+      "anchor": "quand-le-faire-soi-meme-vs-utiliser-un-service",
+      "level": 2
+    }
+  ],
+  "relatedArticles": [
+    "pourquoi-les-sites-jamstack-ont-besoin-de-plus-qu-un-hebergement-statique",
+    "devops-pour-developpeurs-concepts-essentiels-deployment",
+    "choisir-la-bonne-solution-d-hebergement-jamstack"
+  ],
+  "callToAction": {
+    "title": "Prêt à déployer votre app JAMstack ?",
+    "description": "Évitez la complexité et mettez votre application en ligne avec nos services de déploiement expert. À partir de 50€ pour votre premier déploiement, hébergement inclus.",
+    "buttonText": "Commencer",
+    "buttonUrl": "/support-packages"
+  }
+}

@@ -1,0 +1,226 @@
+[
+  {
+    "title": "Choisir la bonne solution d'hébergement JAMstack : Un guide de comparaison complet",
+    "description": "Naviguez dans le paysage complexe des options d'hébergement JAMstack. Comparez les fonctionnalités, prix et capacités des principales plateformes pour trouver la solution d'hébergement parfaite pour votre application Next.js, Astro ou Vite.",
+    "slug": "choisir-la-bonne-solution-d-hebergement-jamstack",
+    "publishedAt": "2024-12-19T16:00:00.000Z",
+    "updatedAt": "2024-12-19T16:00:00.000Z",
+    "status": "published",
+    "category": {
+      "name": "hosting",
+      "slug": "hosting",
+      "description": "Guides sur l'hébergement web, la performance et l'infrastructure pour les applications modernes"
+    },
+    "tags": [
+      {
+        "name": "hosting",
+        "slug": "hosting"
+      },
+      {
+        "name": "jamstack",
+        "slug": "jamstack"
+      },
+      {
+        "name": "comparaison",
+        "slug": "comparaison"
+      },
+      {
+        "name": "nextjs",
+        "slug": "nextjs"
+      },
+      {
+        "name": "astro",
+        "slug": "astro"
+      },
+      {
+        "name": "vite",
+        "slug": "vite"
+      },
+      {
+        "name": "deployment",
+        "slug": "deployment"
+      },
+      {
+        "name": "performance",
+        "slug": "performance"
+      }
+    ],
+    "author": {
+      "name": "HostJamstack Team",
+      "bio": "L'équipe d'experts derrière HostJamstack, aidant les développeurs à déployer leurs applications en toute sécurité et fiabilité."
+    },
+    "featured": false,
+    "readingTime": "12 min de lecture",
+    "wordCount": 3800,
+    "language": "fr",
+    "excerpt": "Naviguez dans le paysage complexe des options d'hébergement JAMstack. Comparez les fonctionnalités, prix et capacités des principales plateformes pour trouver la solution d'hébergement parfaite pour votre application Next.js, Astro ou Vite."
+  },
+  {
+    "title": "DevOps pour développeurs : Concepts essentiels de déploiement que tout développeur devrait connaître",
+    "description": "Maîtrisez les concepts DevOps fondamentaux que tout développeur doit comprendre pour des déploiements réussis. Apprenez CI/CD, gestion d'environnement, monitoring et sécurité sans être submergé par la complexité.",
+    "slug": "devops-pour-developpeurs-concepts-essentiels-deployment",
+    "publishedAt": "2024-12-19T14:00:00.000Z",
+    "updatedAt": "2024-12-19T14:00:00.000Z",
+    "status": "published",
+    "category": {
+      "name": "devops",
+      "slug": "devops",
+      "description": "Pratiques DevOps, outils et méthodologies pour le déploiement d'applications modernes"
+    },
+    "tags": [
+      {
+        "name": "devops",
+        "slug": "devops"
+      },
+      {
+        "name": "deployment",
+        "slug": "deployment"
+      },
+      {
+        "name": "ci-cd",
+        "slug": "ci-cd"
+      },
+      {
+        "name": "monitoring",
+        "slug": "monitoring"
+      },
+      {
+        "name": "securite",
+        "slug": "securite"
+      },
+      {
+        "name": "developpeurs",
+        "slug": "developpeurs"
+      },
+      {
+        "name": "infrastructure",
+        "slug": "infrastructure"
+      },
+      {
+        "name": "automatisation",
+        "slug": "automatisation"
+      }
+    ],
+    "author": {
+      "name": "HostJamstack Team",
+      "bio": "L'équipe d'experts derrière HostJamstack, aidant les développeurs à déployer leurs applications en toute sécurité et fiabilité."
+    },
+    "featured": true,
+    "readingTime": "15 min de lecture",
+    "wordCount": 4200,
+    "language": "fr",
+    "excerpt": "Maîtrisez les concepts DevOps fondamentaux que tout développeur doit comprendre pour des déploiements réussis. Apprenez CI/CD, gestion d'environnement, monitoring et sécurité sans être submergé par la complexité."
+  },
+  {
+    "title": "Pourquoi les sites JAMstack ont besoin de plus qu'un simple hébergement statique",
+    "description": "Découvrez pourquoi les applications JAMstack modernes construites avec Next.js, Astro et Vite nécessitent un hébergement spécialisé au-delà du simple service de fichiers statiques. Apprenez les edge functions, ISR, optimisation CDN et fonctionnalités de performance qui font la différence entre un bon site et un excellent site.",
+    "slug": "pourquoi-les-sites-jamstack-ont-besoin-de-plus-qu-un-hebergement-statique",
+    "publishedAt": "2024-12-19T12:00:00.000Z",
+    "updatedAt": "2024-12-19T12:00:00.000Z",
+    "status": "published",
+    "category": {
+      "name": "hosting",
+      "slug": "hosting",
+      "description": "Guides sur l'hébergement web, la performance et l'infrastructure pour les applications modernes"
+    },
+    "tags": [
+      {
+        "name": "jamstack",
+        "slug": "jamstack"
+      },
+      {
+        "name": "hosting",
+        "slug": "hosting"
+      },
+      {
+        "name": "performance",
+        "slug": "performance"
+      },
+      {
+        "name": "cdn",
+        "slug": "cdn"
+      },
+      {
+        "name": "edge-functions",
+        "slug": "edge-functions"
+      },
+      {
+        "name": "nextjs",
+        "slug": "nextjs"
+      },
+      {
+        "name": "astro",
+        "slug": "astro"
+      },
+      {
+        "name": "hebergement-statique",
+        "slug": "hebergement-statique"
+      }
+    ],
+    "author": {
+      "name": "HostJamstack Team",
+      "bio": "L'équipe d'experts derrière HostJamstack, aidant les développeurs à déployer leurs applications en toute sécurité et fiabilité."
+    },
+    "featured": true,
+    "readingTime": "10 min de lecture",
+    "wordCount": 3200,
+    "language": "fr",
+    "excerpt": "Découvrez pourquoi les applications JAMstack modernes construites avec Next.js, Astro et Vite nécessitent un hébergement spécialisé au-delà du simple service de fichiers statiques. Apprenez les edge functions, ISR, optimisation CDN et fonctionnalités de performance qui font la différence entre un bon site et un excellent site."
+  },
+  {
+    "title": "Du code à la production : Un guide complet pour déployer les apps JAMstack",
+    "description": "Apprenez comment faire passer votre application Next.js, Astro ou Vite du développement local à un environnement de production sécurisé, rapide et en ligne. Ce guide complet couvre tout du setup DNS aux certificats SSL, aidant les développeurs à déployer en sécurité sans apprendre DevOps complexe.",
+    "slug": "du-code-a-la-production-guide-deployment-jamstack",
+    "publishedAt": "2024-12-19T10:00:00.000Z",
+    "updatedAt": "2024-12-19T10:00:00.000Z",
+    "status": "published",
+    "category": {
+      "name": "deployment",
+      "slug": "deployment",
+      "description": "Guides et tutoriels sur le déploiement d'applications en production"
+    },
+    "tags": [
+      {
+        "name": "jamstack",
+        "slug": "jamstack"
+      },
+      {
+        "name": "deployment",
+        "slug": "deployment"
+      },
+      {
+        "name": "nextjs",
+        "slug": "nextjs"
+      },
+      {
+        "name": "astro",
+        "slug": "astro"
+      },
+      {
+        "name": "vite",
+        "slug": "vite"
+      },
+      {
+        "name": "devops",
+        "slug": "devops"
+      },
+      {
+        "name": "ssl",
+        "slug": "ssl"
+      },
+      {
+        "name": "dns",
+        "slug": "dns"
+      }
+    ],
+    "author": {
+      "name": "HostJamstack Team",
+      "bio": "L'équipe d'experts derrière HostJamstack, aidant les développeurs à déployer leurs applications en toute sécurité et fiabilité."
+    },
+    "featured": true,
+    "readingTime": "12 min de lecture",
+    "wordCount": 2850,
+    "language": "fr",
+    "excerpt": "Apprenez comment faire passer votre application Next.js, Astro ou Vite du développement local à un environnement de production sécurisé, rapide et en ligne. Ce guide complet couvre tout du setup DNS aux certificats SSL, aidant les développeurs à déployer en sécurité sans apprendre DevOps complexe."
+  }
+]

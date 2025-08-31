@@ -15,6 +15,7 @@ async function DesktopNav({ locale }: { locale: string }) {
     { href: '/support-packages', label: t('nav.supportPackages') },
     { href: '/company', label: t('nav.company') },
     { href: '/blog', label: t('nav.blog') },
+    { href: '/contact', label: t('nav.contact') },
     { href: '/login', label: t('nav.login') },
   ]
 

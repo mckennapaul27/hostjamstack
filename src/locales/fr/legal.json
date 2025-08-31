@@ -70,6 +70,7 @@
     "breadcrumb": "Légal",
     "lastUpdated": "Dernière mise à jour :",
     "availableInEnglishOnly": "Disponible en anglais uniquement",
+    "fallbackToEnglish": "Affiché en anglais (traduction non disponible)",
     "companyNotice": {
       "title": "Informations de l'Entreprise",
       "text": "Ce document est fourni par DRP Solutions ltd, Numéro d'entreprise 208392740, enregistrée à Trakia, bl 216, Vh B, ap 8, Plovdiv, Bulgarie."

@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "title": "Get in Touch",
+    "subtitle": "We're here to help with any questions about hosting, domains, or support packages.",
+    "description": "Ready to take your JAMstack project to the next level? Our team is here to provide expert guidance and support for all your hosting and deployment needs."
+  },
+  "form": {
+    "name": {
+      "label": "Full Name",
+      "placeholder": "Enter your full name"
+    },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "your.email@example.com"
+    },
+    "company": {
+      "label": "Company (Optional)",
+      "placeholder": "Your company name"
+    },
+    "subject": {
+      "label": "Subject",
+      "placeholder": "What can we help you with?"
+    },
+    "category": {
+      "label": "Inquiry Type",
+      "options": {
+        "general": "General Inquiry",
+        "hosting": "Hosting Questions",
+        "domains": "Domain Registration",
+        "support": "Technical Support",
+        "billing": "Billing & Payments",
+        "partnership": "Partnership Opportunities"
+      }
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Tell us more about your project or question..."
+    },
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "success": "Thank you! We'll get back to you within 24 hours.",
+    "error": "There was an error sending your message. Please try again."
+  },
+  "contact": {
+    "title": "Contact Information",
+    "support": {
+      "title": "Support",
+      "description": "Get help with technical issues",
+      "hours": "24/7 via our support portal"
+    },
+    "sales": {
+      "title": "Sales",
+      "description": "Questions about pricing and plans",
+      "hours": "Monday - Friday, 9 AM - 6 PM CET"
+    },
+    "partnerships": {
+      "title": "Partnerships",
+      "description": "Collaboration opportunities",
+      "hours": "Monday - Friday, 9 AM - 6 PM CET"
+    }
+  },
+  "features": {
+    "title": "Why Choose Us?",
+    "fast": {
+      "title": "Lightning Fast",
+      "description": "Global CDN with edge caching for optimal performance"
+    },
+    "secure": {
+      "title": "Enterprise Security",
+      "description": "SSL certificates, DDoS protection, and secure deployments"
+    },
+    "support": {
+      "title": "Expert Support",
+      "description": "24/7 technical support from JAMstack specialists"
+    }
+  }
+}

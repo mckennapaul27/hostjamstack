@@ -27,11 +27,12 @@ export default async function RootLayout({
     locale = i18n.defaultLocale
   }
 
-  // Initialize translations with common, domains, and testimonials namespaces
+  // Initialize translations with common, domains, testimonials, and contact namespaces
   const { resources } = await initTranslations(locale, [
     'common',
     'domains',
     'testimonials',
+    'contact',
   ])
 
   return (
@@ -50,7 +51,7 @@ export default async function RootLayout({
       </head>
       <body className="text-gray-950 antialiased">
         <TranslationsProvider
-          namespaces={['common', 'domains', 'testimonials']}
+          namespaces={['common', 'domains', 'testimonials', 'contact']}
           locale={locale}
           resources={resources}
         >

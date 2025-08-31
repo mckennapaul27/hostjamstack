@@ -17,8 +17,10 @@ export interface LegalArticleWithContent extends LegalArticle {
 
 function getLegalArticlesPath(locale: string): string {
   console.log('locale', locale)
-  // Always use English for legal articles regardless of requested locale
-  return path.join(process.cwd(), 'legal-articles', 'en')
+  // Support all locales for legal articles
+  const supportedLocales = ['en', 'es', 'de', 'fr', 'pl']
+  const targetLocale = supportedLocales.includes(locale) ? locale : 'en'
+  return path.join(process.cwd(), 'legal-articles', targetLocale)
 }
 
 function readLegalArticleConfig(configPath: string): LegalArticle | null {
@@ -45,10 +47,14 @@ export async function generateLegalArticlesIndex(
   locale: string,
 ): Promise<LegalArticle[]> {
   console.log('generateLegalArticlesIndex', locale)
-  // Always fetch English legal articles regardless of requested locale
-  const legalArticlesPath = getLegalArticlesPath('en')
+  // Fetch legal articles for the requested locale, fallback to English
+  const legalArticlesPath = getLegalArticlesPath(locale)
 
   if (!fs.existsSync(legalArticlesPath)) {
+    // Fallback to English if requested locale doesn't exist
+    if (locale !== 'en') {
+      return generateLegalArticlesIndex('en')
+    }
     return []
   }
 
@@ -77,12 +83,16 @@ export async function getLegalArticleBySlug(
   locale: string = 'en',
 ): Promise<LegalArticleWithContent | null> {
   console.log('getLegalArticleBySlug', slug, locale)
-  // Always fetch English legal articles regardless of requested locale
-  const legalArticlesPath = getLegalArticlesPath('en')
+  // Fetch legal articles for the requested locale, fallback to English
+  const legalArticlesPath = getLegalArticlesPath(locale)
   const configPath = path.join(legalArticlesPath, `${slug}.json`)
   const mdxPath = path.join(legalArticlesPath, `${slug}.mdx`)
 
   if (!fs.existsSync(configPath) || !fs.existsSync(mdxPath)) {
+    // Fallback to English if requested locale doesn't exist
+    if (locale !== 'en') {
+      return getLegalArticleBySlug(slug, 'en')
+    }
     return null
   }
 

@@ -104,14 +104,14 @@ const mdxComponents = {
 }
 
 export async function generateStaticParams() {
-  // Generate params for all locales but only English legal articles exist
-  const locales = ['en', 'es'] // Add all supported locales
+  // Generate params for all supported locales and their respective legal articles
+  const locales = ['en', 'es', 'de', 'fr', 'pl'] // All supported locales
   const params: { lang: string; slug: string }[] = []
 
-  // Get English legal articles only (since they're always served regardless of locale)
-  const legalArticles = await generateLegalArticlesIndex('en')
-
+  // Get legal articles for each locale (with fallback to English)
   for (const locale of locales) {
+    const legalArticles = await generateLegalArticlesIndex(locale)
+
     for (const article of legalArticles) {
       params.push({
         lang: locale,
@@ -128,9 +128,9 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string; lang: string }>
 }): Promise<Metadata> {
-  const { slug } = await params
-  // Always fetch English version since legal docs are only in English
-  const legalArticle = await getLegalArticleBySlug(slug, 'en')
+  const { slug, lang } = await params
+  // Fetch localized version with fallback to English
+  const legalArticle = await getLegalArticleBySlug(slug, lang)
 
   return legalArticle
     ? {
@@ -168,9 +168,9 @@ export default async function LegalPage({
   // Initialize translations for legal namespace
   const { t } = await initTranslations(lang, ['legal'])
 
-  // Always fetch English version since legal docs are only in English
+  // Fetch localized version with fallback to English
   const legalArticle: LegalArticleWithContent | null =
-    await getLegalArticleBySlug(slug, 'en')
+    await getLegalArticleBySlug(slug, lang)
 
   if (!legalArticle) notFound()
 
@@ -196,9 +196,9 @@ export default async function LegalPage({
                 {dayjs(legalArticle.updatedAt).format('MMMM D, YYYY')}
               </div>
             </div>
-            {lang !== 'en' && (
+            {legalArticle.language !== lang && (
               <div className="rounded-full bg-amber-50 px-3 py-1 text-sm/5 text-amber-600">
-                {t('documentDetail.availableInEnglishOnly')}
+                {t('documentDetail.fallbackToEnglish')}
               </div>
             )}
           </div>

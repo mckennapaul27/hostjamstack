@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "title": "Skontaktuj się z nami",
+    "subtitle": "Jesteśmy tutaj, aby pomóc z wszelkimi pytaniami dotyczącymi hostingu, domen lub pakietów wsparcia.",
+    "description": "Gotowy, aby przenieść swój projekt JAMstack na wyższy poziom? Nasz zespół jest tutaj, aby zapewnić eksperckie wskazówki i wsparcie dla wszystkich Twoich potrzeb hostingowych i wdrożeniowych."
+  },
+  "form": {
+    "name": {
+      "label": "Imię i nazwisko",
+      "placeholder": "Wprowadź swoje imię i nazwisko"
+    },
+    "email": {
+      "label": "Adres email",
+      "placeholder": "twoj.email@przykład.com"
+    },
+    "company": {
+      "label": "Firma (Opcjonalnie)",
+      "placeholder": "Nazwa Twojej firmy"
+    },
+    "subject": {
+      "label": "Temat",
+      "placeholder": "W czym możemy pomóc?"
+    },
+    "category": {
+      "label": "Typ zapytania",
+      "options": {
+        "general": "Zapytanie ogólne",
+        "hosting": "Pytania o hosting",
+        "domains": "Rejestracja domen",
+        "support": "Wsparcie techniczne",
+        "billing": "Rozliczenia i płatności",
+        "partnership": "Możliwości partnerstwa"
+      }
+    },
+    "message": {
+      "label": "Wiadomość",
+      "placeholder": "Opowiedz nam więcej o swoim projekcie lub pytaniu..."
+    },
+    "submit": "Wyślij wiadomość",
+    "sending": "Wysyłanie...",
+    "success": "Dziękujemy! Odpowiemy w ciągu 24 godzin.",
+    "error": "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie."
+  },
+  "contact": {
+    "title": "Informacje kontaktowe",
+    "support": {
+      "title": "Wsparcie",
+      "description": "Uzyskaj pomoc w kwestiach technicznych",
+      "hours": "24/7 przez nasz portal wsparcia"
+    },
+    "sales": {
+      "title": "Sprzedaż",
+      "description": "Pytania o ceny i plany",
+      "hours": "Poniedziałek - Piątek, 9:00 - 18:00 CET"
+    },
+    "partnerships": {
+      "title": "Partnerstwa",
+      "description": "Możliwości współpracy",
+      "hours": "Poniedziałek - Piątek, 9:00 - 18:00 CET"
+    }
+  },
+  "features": {
+    "title": "Dlaczego nas wybrać?",
+    "fast": {
+      "title": "Błyskawicznie szybko",
+      "description": "Globalny CDN z cache na krawędzi dla optymalnej wydajności"
+    },
+    "secure": {
+      "title": "Bezpieczeństwo korporacyjne",
+      "description": "Certyfikaty SSL, ochrona DDoS i bezpieczne wdrożenia"
+    },
+    "support": {
+      "title": "Eksperckie wsparcie",
+      "description": "24/7 wsparcie techniczne od specjalistów JAMstack"
+    }
+  }
+}

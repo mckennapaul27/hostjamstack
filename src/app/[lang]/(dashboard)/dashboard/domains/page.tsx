@@ -23,11 +23,13 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function DomainsPage() {
   const { data: session } = useSession()
   const params = useParams()
   const lang = (params?.lang as string) || 'en'
+  const { t } = useTranslation('dashboard')
 
   const [domains, setDomains] = useState<Domain[]>([])
   const [loading, setLoading] = useState(true)
@@ -88,8 +90,10 @@ export default function DomainsPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Domains</h1>
-          <p className="text-gray-600">Manage your domain portfolio</p>
+          <h1 className="text-2xl font-bold text-gray-900">
+            {t('domains.title')}
+          </h1>
+          <p className="text-gray-600">{t('domains.subtitle')}</p>
         </div>
         <div className="mt-4 flex space-x-3 sm:mt-0">
           <Link
@@ -97,7 +101,7 @@ export default function DomainsPage() {
             className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
           >
             <PlusIcon className="h-4 w-4" />
-            <span>Search & Buy</span>
+            <span>{t('domains.searchBuy')}</span>
           </Link>
         </div>
       </div>
@@ -109,13 +113,26 @@ export default function DomainsPage() {
             <ExclamationTriangleIcon className="mr-3 h-5 w-5 text-yellow-600" />
             <div>
               <h3 className="text-sm font-medium text-yellow-800">
-                {expiringDomains.length} domain
-                {expiringDomains.length > 1 ? 's' : ''} expiring soon
+                {expiringDomains.length === 1
+                  ? t('domains.expiringAlert.single', {
+                      count: expiringDomains.length,
+                    })
+                  : t('domains.expiringAlert.multiple', {
+                      count: expiringDomains.length,
+                    })}
               </h3>
               <p className="text-sm text-yellow-700">
-                {expiringDomains.map((d) => d.domainName).join(', ')} - Consider
-                renewing to avoid losing your domain
-                {expiringDomains.length > 1 ? 's' : ''}
+                {expiringDomains.length === 1
+                  ? t('domains.expiringAlert.renewMessage', {
+                      domains: expiringDomains
+                        .map((d) => d.domainName)
+                        .join(', '),
+                    })
+                  : t('domains.expiringAlert.renewMessageMultiple', {
+                      domains: expiringDomains
+                        .map((d) => d.domainName)
+                        .join(', '),
+                    })}
               </p>
             </div>
           </div>
@@ -134,16 +151,32 @@ export default function DomainsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 text-sm focus:border-transparent focus:ring-2 focus:ring-purple-500"
-              placeholder="Search domains..."
+              placeholder={t('domains.search.placeholder')}
             />
           </div>
 
           <div className="flex flex-col space-x-2 sm:flex-row">
             {[
-              { key: 'all', label: 'All', count: statusCounts.all },
-              { key: 'active', label: 'Active', count: statusCounts.active },
-              { key: 'pending', label: 'Pending', count: statusCounts.pending },
-              { key: 'expired', label: 'Expired', count: statusCounts.expired },
+              {
+                key: 'all',
+                label: t('domains.filters.all'),
+                count: statusCounts.all,
+              },
+              {
+                key: 'active',
+                label: t('domains.filters.active'),
+                count: statusCounts.active,
+              },
+              {
+                key: 'pending',
+                label: t('domains.filters.pending'),
+                count: statusCounts.pending,
+              },
+              {
+                key: 'expired',
+                label: t('domains.filters.expired'),
+                count: statusCounts.expired,
+              },
             ].map((filter) => (
               <button
                 key={filter.key}
@@ -191,12 +224,13 @@ export default function DomainsPage() {
                               </span>
                               {domain.isPremium && (
                                 <span className="inline-flex items-center rounded bg-purple-200 px-2 py-0.5 text-xs font-medium text-purple-800">
-                                  Premium
+                                  {t('domains.table.premium')}
                                 </span>
                               )}
                             </div>
                             <div className="text-xs text-gray-500">
-                              Registered {formatDate(domain.registrationDate)}
+                              {t('domains.table.registered')}{' '}
+                              {formatDate(domain.registrationDate)}
                             </div>
                           </div>
                         </div>
@@ -226,7 +260,7 @@ export default function DomainsPage() {
                                         active ? 'bg-gray-100' : ''
                                       } group flex items-center px-4 py-2 text-sm text-gray-700`}
                                     >
-                                      Manage Domain
+                                      {t('domains.actions.manageDomain')}
                                     </Link>
                                   )}
                                 </Menu.Item>
@@ -238,7 +272,7 @@ export default function DomainsPage() {
                                         active ? 'bg-gray-100' : ''
                                       } group flex items-center px-4 py-2 text-sm text-gray-700`}
                                     >
-                                      DNS Settings
+                                      {t('domains.actions.dnsSettings')}
                                     </Link>
                                   )}
                                 </Menu.Item>
@@ -250,7 +284,7 @@ export default function DomainsPage() {
                                         active ? 'bg-gray-100' : ''
                                       } group flex items-center px-4 py-2 text-sm text-gray-700`}
                                     >
-                                      Transfer Settings
+                                      {t('domains.actions.transferSettings')}
                                     </Link>
                                   )}
                                 </Menu.Item>
@@ -262,7 +296,9 @@ export default function DomainsPage() {
 
                       <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
                         <div>
-                          <span className="text-gray-500">Status:</span>
+                          <span className="text-gray-500">
+                            {t('domains.card.status')}
+                          </span>
                           <div className="mt-1">
                             <span
                               className={cn(
@@ -276,7 +312,9 @@ export default function DomainsPage() {
                         </div>
 
                         <div>
-                          <span className="text-gray-500">Expires:</span>
+                          <span className="text-gray-500">
+                            {t('domains.card.expires')}
+                          </span>
                           <div className="mt-1 text-gray-900">
                             {formatDate(domain.expirationDate)}
                             {isExpiringSoon && (
@@ -286,7 +324,9 @@ export default function DomainsPage() {
                         </div>
 
                         <div>
-                          <span className="text-gray-500">Auto Renew:</span>
+                          <span className="text-gray-500">
+                            {t('domains.card.autoRenew')}
+                          </span>
                           <div className="mt-1">
                             <span
                               className={cn(
@@ -296,19 +336,23 @@ export default function DomainsPage() {
                                   : 'bg-gray-200 text-gray-800',
                               )}
                             >
-                              {domain.autoRenew ? 'Enabled' : 'Disabled'}
+                              {domain.autoRenew
+                                ? t('domains.table.enabled')
+                                : t('domains.table.disabled')}
                             </span>
                           </div>
                         </div>
 
                         <div>
-                          <span className="text-gray-500">Price:</span>
+                          <span className="text-gray-500">
+                            {t('domains.card.price')}
+                          </span>
                           <div className="mt-1 text-gray-900">
                             {formatCurrency(
                               domain.renewalPrice,
                               domain.currency,
                             )}
-                            /year
+                            {t('domains.table.year')}
                           </div>
                         </div>
                       </div>
@@ -325,22 +369,22 @@ export default function DomainsPage() {
                   <thead className="bg-gray-50">
                     <tr>
                       <th className="w-48 px-3 py-3 text-left text-xs font-medium tracking-wider whitespace-nowrap text-gray-500 uppercase sm:px-6">
-                        Domain
+                        {t('domains.table.domain')}
                       </th>
                       <th className="w-24 px-3 py-3 text-left text-xs font-medium tracking-wider whitespace-nowrap text-gray-500 uppercase sm:px-6">
-                        Status
+                        {t('domains.table.status')}
                       </th>
                       <th className="w-32 px-3 py-3 text-left text-xs font-medium tracking-wider whitespace-nowrap text-gray-500 uppercase sm:px-6">
-                        Expiry Date
+                        {t('domains.table.expiryDate')}
                       </th>
                       <th className="w-28 px-3 py-3 text-left text-xs font-medium tracking-wider whitespace-nowrap text-gray-500 uppercase sm:px-6">
-                        Auto Renew
+                        {t('domains.table.autoRenew')}
                       </th>
                       <th className="w-24 px-3 py-3 text-left text-xs font-medium tracking-wider whitespace-nowrap text-gray-500 uppercase sm:px-6">
-                        Price
+                        {t('domains.table.price')}
                       </th>
                       <th className="w-20 px-3 py-3 text-right text-xs font-medium tracking-wider whitespace-nowrap text-gray-500 uppercase sm:px-6">
-                        Actions
+                        {t('domains.table.actions')}
                       </th>
                     </tr>
                   </thead>
@@ -364,12 +408,12 @@ export default function DomainsPage() {
                                   </span>
                                   {domain.isPremium && (
                                     <span className="inline-flex items-center rounded bg-purple-200 px-2 py-0.5 text-xs font-medium text-purple-800">
-                                      Premium
+                                      {t('domains.table.premium')}
                                     </span>
                                   )}
                                 </div>
                                 <div className="text-xs text-gray-500">
-                                  Registered{' '}
+                                  {t('domains.table.registered')}{' '}
                                   {formatDate(domain.registrationDate)}
                                 </div>
                               </div>
@@ -394,7 +438,8 @@ export default function DomainsPage() {
                                 <div className="ml-2 flex items-center text-yellow-600">
                                   <ClockIcon className="mr-1 h-4 w-4" />
                                   <span className="text-xs">
-                                    {daysUntilExpiry}d
+                                    {daysUntilExpiry}
+                                    {t('domains.card.daysShort')}
                                   </span>
                                 </div>
                               )}
@@ -409,7 +454,9 @@ export default function DomainsPage() {
                                   : 'text-gray-500',
                               )}
                             >
-                              {domain.autoRenew ? 'Enabled' : 'Disabled'}
+                              {domain.autoRenew
+                                ? t('domains.table.enabled')
+                                : t('domains.table.disabled')}
                             </span>
                           </td>
                           <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-900 sm:px-6">
@@ -417,7 +464,7 @@ export default function DomainsPage() {
                               domain.renewalPrice,
                               domain.currency,
                             )}
-                            /year
+                            {t('domains.table.year')}
                           </td>
                           <td className="dropdown-cell px-3 py-4 text-right text-sm font-medium whitespace-nowrap sm:px-6">
                             <Menu
@@ -446,7 +493,7 @@ export default function DomainsPage() {
                                             active ? 'bg-gray-100' : ''
                                           } group flex items-center px-4 py-2 text-sm text-gray-700`}
                                         >
-                                          Manage Domain
+                                          {t('domains.actions.manageDomain')}
                                         </Link>
                                       )}
                                     </Menu.Item>
@@ -504,13 +551,13 @@ export default function DomainsPage() {
             <GlobeAltIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
             <h3 className="mb-2 text-lg font-medium text-gray-900">
               {searchQuery || filterStatus !== 'all'
-                ? 'No domains found'
-                : 'No domains yet'}
+                ? t('domains.noResults.title')
+                : t('domains.empty.title')}
             </h3>
             <p className="mb-4 text-gray-500">
               {searchQuery || filterStatus !== 'all'
-                ? 'Try adjusting your search or filters'
-                : 'Get started by purchasing your first domain'}
+                ? t('domains.noResults.subtitle')
+                : t('domains.empty.subtitle')}
             </p>
             {!searchQuery && filterStatus === 'all' && (
               <Link
@@ -518,7 +565,7 @@ export default function DomainsPage() {
                 className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
               >
                 <PlusIcon className="h-4 w-4" />
-                <span>Search Domains</span>
+                <span>{t('domains.empty.searchDomains')}</span>
               </Link>
             )}
           </div>

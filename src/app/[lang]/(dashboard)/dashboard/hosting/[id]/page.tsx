@@ -1,11 +1,8 @@
 'use client'
 
 import type { Deployment, HostingProject } from '@/lib/dashboard-api'
-import {
-  createDeployment,
-  getDeployments,
-  getHostingProject,
-} from '@/lib/dashboard-api'
+import { createDeployment } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
 import { cn, formatRelativeTime } from '@/lib/utils'
 import {
   ArrowTopRightOnSquareIcon,
@@ -20,12 +17,14 @@ import {
 import { useSession } from 'next-auth/react'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function HostingProjectPage() {
   const { data: session } = useSession()
   const params = useParams()
   const projectId = params?.id as string
   const lang = (params?.lang as string) || 'en'
+  const { t } = useTranslation('dashboard')
   console.log('lang in hosting/[id] page', lang)
 
   const [project, setProject] = useState<HostingProject | null>(null)
@@ -40,121 +39,28 @@ export default function HostingProjectPage() {
 
       try {
         const [projectData, deploymentsData] = await Promise.all([
-          getHostingProject(session.rawJwt, projectId),
-          getDeployments(session.rawJwt, projectId),
+          demoApiProvider.getHostingProject(
+            session.rawJwt,
+            projectId,
+            session.user?.email,
+          ),
+          demoApiProvider.getDeployments(
+            session.rawJwt,
+            projectId,
+            session.user?.email,
+          ),
         ])
         setProject(projectData)
         setDeployments(deploymentsData)
       } catch (error) {
         console.error('Failed to fetch project data:', error)
-        // Set mock data for development
-        setProject({
-          _id: projectId,
-          hostingPackageId: 'pkg_1',
-          userId: session.user._id,
-          projectName: 'my-portfolio',
-          displayName: 'My Portfolio',
-          description: 'Personal portfolio website built with Next.js',
-          repository: {
-            provider: 'github',
-            url: 'https://github.com/user/my-portfolio',
-            branch: 'main',
-            autoDeployEnabled: true,
-          },
-          buildSettings: {
-            buildCommand: 'npm run build',
-            outputDirectory: 'dist',
-            installCommand: 'npm install',
-            nodeVersion: '18.x',
-          },
-          environmentVariables: [
-            { key: 'NODE_ENV', value: 'production', environment: 'production' },
-            {
-              key: 'API_URL',
-              value: 'https://api.example.com',
-              environment: 'production',
-            },
-          ],
-          domains: [
-            {
-              domain: 'my-portfolio.dev',
-              type: 'production',
-              sslEnabled: true,
-              createdAt: '2024-01-15T00:00:00Z',
-            },
-            {
-              domain: 'staging-portfolio.vercel.app',
-              type: 'preview',
-              sslEnabled: true,
-              createdAt: '2024-01-15T00:00:00Z',
-            },
-          ],
-          status: 'ready',
-          lastDeployment: 'dep_1',
-          createdAt: '2024-01-15T00:00:00Z',
-          updatedAt: '2024-12-07T10:30:00Z',
-        })
-
-        setDeployments([
-          {
-            _id: 'dep_1',
-            projectId: projectId,
-            userId: session.user._id,
-            deploymentId: 'dpl_abc123def456',
-            status: 'ready',
-            environment: 'production',
-            source: {
-              type: 'git',
-              commitSha: 'a55d6ef',
-              commitMessage: 'added missing translation',
-              branch: 'main',
-              author: 'John Doe',
-            },
-            buildLogs: [],
-            buildDuration: 18000,
-            buildStartedAt: '2024-12-07T10:30:00Z',
-            buildCompletedAt: '2024-12-07T10:30:18Z',
-            url: 'https://my-portfolio-abc123.hostjamstack.app',
-            domains: ['my-portfolio.dev'],
-            analytics: {
-              pageViews: 1250,
-              uniqueVisitors: 890,
-              topPages: ['/'],
-            },
-            createdAt: '2024-12-07T10:30:00Z',
-            updatedAt: '2024-12-07T10:30:18Z',
-          },
-          {
-            _id: 'dep_2',
-            projectId: projectId,
-            userId: session.user._id,
-            deploymentId: 'dpl_def456ghi789',
-            status: 'ready',
-            environment: 'production',
-            source: {
-              type: 'git',
-              commitSha: '319ee63',
-              commitMessage: 'deploying with checkout',
-              branch: 'main',
-              author: 'John Doe',
-            },
-            buildLogs: [],
-            buildDuration: 15000,
-            buildStartedAt: '2024-12-06T09:15:00Z',
-            buildCompletedAt: '2024-12-06T09:15:15Z',
-            url: 'https://my-portfolio-def456.hostjamstack.app',
-            domains: [],
-            createdAt: '2024-12-06T09:15:00Z',
-            updatedAt: '2024-12-06T09:15:15Z',
-          },
-        ])
       } finally {
         setLoading(false)
       }
     }
 
     fetchData()
-  }, [session?.rawJwt, projectId, session?.user._id])
+  }, [session?.rawJwt, projectId, session?.user?.email])
 
   const handleDeploy = async () => {
     if (!session?.rawJwt || !project) return
@@ -171,10 +77,10 @@ export default function HostingProjectPage() {
   }
 
   const tabs = [
-    { id: 'overview', name: 'Overview' },
-    { id: 'deployments', name: 'Deployments' },
-    { id: 'analytics', name: 'Analytics' },
-    { id: 'settings', name: 'Settings' },
+    { id: 'overview', name: t('hostingDetail.tabs.overview') },
+    { id: 'deployments', name: t('hostingDetail.tabs.deployments') },
+    { id: 'analytics', name: t('hostingDetail.tabs.analytics') },
+    { id: 'settings', name: t('hostingDetail.tabs.settings') },
   ]
 
   if (loading) {
@@ -195,11 +101,9 @@ export default function HostingProjectPage() {
     return (
       <div className="py-12 text-center">
         <h1 className="mb-4 text-2xl font-bold text-gray-900">
-          Project Not Found
+          {t('hostingDetail.notFound.title')}
         </h1>
-        <p className="text-gray-600">
-          The requested project could not be found.
-        </p>
+        <p className="text-gray-600">{t('hostingDetail.notFound.message')}</p>
       </div>
     )
   }
@@ -239,7 +143,7 @@ export default function HostingProjectPage() {
               className="border-bg-gray-950 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-4 py-2 text-base font-medium whitespace-nowrap text-gray-950 shadow-md transition-colors hover:bg-gray-800 hover:text-white"
             >
               <CodeBracketIcon className="h-4 w-4" />
-              <span>Repository</span>
+              <span>{t('hostingDetail.repository')}</span>
               <ArrowTopRightOnSquareIcon className="h-4 w-4" />
             </a>
             <button
@@ -248,7 +152,11 @@ export default function HostingProjectPage() {
               className="inline-flex items-center justify-center gap-2 rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
             >
               <PlayIcon className="h-4 w-4" />
-              <span>{deploying ? 'Deploying...' : 'Deploy'}</span>
+              <span>
+                {deploying
+                  ? t('hostingDetail.deploying')
+                  : t('hostingDetail.deploy')}
+              </span>
             </button>
           </div>
         </div>
@@ -258,14 +166,14 @@ export default function HostingProjectPage() {
           <div className="rounded-lg bg-gray-50 p-4">
             <div className="mb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <h3 className="text-lg font-medium text-gray-900">
-                Production Deployment
+                {t('hostingDetail.productionDeployment.title')}
               </h3>
               <div className="mt-4 flex flex-col gap-2 space-x-3 sm:mt-0 sm:flex-row sm:items-center sm:justify-between">
                 <button className="rounded border border-gray-300 bg-white px-3 py-1 text-sm text-gray-600 hover:text-gray-900">
-                  Build Logs
+                  {t('hostingDetail.productionDeployment.buildLogs')}
                 </button>
                 <button className="rounded border border-gray-300 bg-white px-3 py-1 text-sm text-gray-600 hover:text-gray-900">
-                  Runtime Logs
+                  {t('hostingDetail.productionDeployment.runtimeLogs')}
                 </button>
                 <button className="max-w-fit rounded border border-gray-300 bg-white px-3 py-1 text-sm text-gray-600 hover:text-gray-900">
                   <ArrowTopRightOnSquareIcon className="h-4 w-4" />
@@ -275,7 +183,9 @@ export default function HostingProjectPage() {
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
-                <div className="mb-2 text-sm text-gray-500">Deployment</div>
+                <div className="mb-2 text-sm text-gray-500">
+                  {t('hostingDetail.productionDeployment.deployment')}
+                </div>
                 <div className="font-mono text-lg text-gray-900">
                   {project.projectName}-
                   {latestDeployment.deploymentId.slice(-8)}
@@ -283,7 +193,9 @@ export default function HostingProjectPage() {
               </div>
 
               <div>
-                <div className="mb-2 text-sm text-gray-500">Domains</div>
+                <div className="mb-2 text-sm text-gray-500">
+                  {t('hostingDetail.productionDeployment.domains')}
+                </div>
                 <div className="space-y-1">
                   {project.domains.map((domain, index) => (
                     <div key={index} className="flex items-center space-x-2">
@@ -302,10 +214,14 @@ export default function HostingProjectPage() {
               </div>
 
               <div>
-                <div className="mb-2 text-sm text-gray-500">Status</div>
+                <div className="mb-2 text-sm text-gray-500">
+                  {t('hostingDetail.productionDeployment.status')}
+                </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircleIcon className="h-4 w-4 text-green-500" />
-                  <span className="text-gray-900">Ready</span>
+                  <span className="text-gray-900">
+                    {t('hostingDetail.productionDeployment.ready')}
+                  </span>
                   <span className="text-sm text-gray-500">
                     {formatRelativeTime(latestDeployment.createdAt)} by{' '}
                     {latestDeployment.source.author}
@@ -314,7 +230,9 @@ export default function HostingProjectPage() {
               </div>
 
               <div>
-                <div className="mb-2 text-sm text-gray-500">Source</div>
+                <div className="mb-2 text-sm text-gray-500">
+                  {t('hostingDetail.productionDeployment.source')}
+                </div>
                 <div className="flex items-center space-x-2">
                   <CodeBracketIcon className="h-4 w-4 text-gray-400" />
                   <span className="font-mono text-gray-900">
@@ -328,11 +246,11 @@ export default function HostingProjectPage() {
             </div>
 
             <div className="mt-4 text-sm text-gray-500">
-              To update your Production Deployment, push to the{' '}
+              {t('hostingDetail.productionDeployment.updateInfo')}{' '}
               <span className="rounded bg-gray-200 px-1 font-mono">
                 {project.repository.branch}
               </span>{' '}
-              branch.
+              {t('hostingDetail.productionDeployment.branch')}.
             </div>
           </div>
         )}
@@ -365,7 +283,7 @@ export default function HostingProjectPage() {
             <div className="rounded-lg border border-gray-200 bg-white">
               <div className="border-b border-gray-200 px-6 py-4">
                 <h3 className="text-lg font-medium text-gray-900">
-                  Recent Deployments
+                  {t('hostingDetail.overview.recentDeployments')}
                 </h3>
               </div>
               <div className="divide-y divide-gray-200">
@@ -413,29 +331,32 @@ export default function HostingProjectPage() {
             {/* Project Settings Quick Access */}
             <div className="rounded-lg border border-gray-200 bg-white p-6">
               <h3 className="mb-4 text-lg font-medium text-gray-900">
-                Quick Actions
+                {t('hostingDetail.overview.quickActions')}
               </h3>
               <div className="space-y-3">
                 <button className="w-full rounded-lg p-3 text-left transition-colors hover:bg-gray-50">
                   <div className="font-medium text-gray-900">
-                    Environment Variables
+                    {t('hostingDetail.overview.environmentVariables')}
                   </div>
                   <div className="text-sm text-gray-500">
-                    {project.environmentVariables.length} variables
+                    {project.environmentVariables.length}{' '}
+                    {t('hostingDetail.overview.variables')}
                   </div>
                 </button>
                 <button className="w-full rounded-lg p-3 text-left transition-colors hover:bg-gray-50">
                   <div className="font-medium text-gray-900">
-                    Custom Domains
+                    {t('hostingDetail.overview.customDomains')}
                   </div>
                   <div className="text-sm text-gray-500">
-                    {project.domains.length} domain
-                    {project.domains.length !== 1 ? 's' : ''}
+                    {project.domains.length}{' '}
+                    {project.domains.length !== 1
+                      ? t('hostingDetail.overview.domains')
+                      : t('hostingDetail.overview.domain')}
                   </div>
                 </button>
                 <button className="w-full rounded-lg p-3 text-left transition-colors hover:bg-gray-50">
                   <div className="font-medium text-gray-900">
-                    Build Settings
+                    {t('hostingDetail.overview.buildSettings')}
                   </div>
                   <div className="text-sm text-gray-500">
                     Node.js {project.buildSettings.nodeVersion}
@@ -446,11 +367,15 @@ export default function HostingProjectPage() {
 
             {/* Usage Stats */}
             <div className="rounded-lg border border-gray-200 bg-white p-6">
-              <h3 className="mb-4 text-lg font-medium text-gray-900">Usage</h3>
+              <h3 className="mb-4 text-lg font-medium text-gray-900">
+                {t('hostingDetail.overview.usage')}
+              </h3>
               <div className="space-y-4">
                 <div>
                   <div className="mb-1 flex justify-between text-sm">
-                    <span className="text-gray-600">Bandwidth</span>
+                    <span className="text-gray-600">
+                      {t('hostingDetail.overview.bandwidth')}
+                    </span>
                     <span className="text-gray-900">2.1 GB / 10 GB</span>
                   </div>
                   <div className="h-2 w-full rounded-full bg-gray-200">
@@ -462,7 +387,9 @@ export default function HostingProjectPage() {
                 </div>
                 <div>
                   <div className="mb-1 flex justify-between text-sm">
-                    <span className="text-gray-600">Build Time</span>
+                    <span className="text-gray-600">
+                      {t('hostingDetail.overview.buildTime')}
+                    </span>
                     <span className="text-gray-900">45 min / 100 min</span>
                   </div>
                   <div className="h-2 w-full rounded-full bg-gray-200">
@@ -483,17 +410,19 @@ export default function HostingProjectPage() {
           <div className="border-b border-gray-200 px-6 py-4">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-medium text-gray-900">
-                All Deployments
+                {t('hostingDetail.deployments.title')}
               </h3>
               <div className="flex space-x-2">
                 <select className="rounded-lg border border-gray-300 bg-white px-3 py-1 text-sm text-gray-900">
-                  <option>All Branches</option>
-                  <option>main</option>
+                  <option>{t('hostingDetail.deployments.allBranches')}</option>
+                  <option>{t('hostingDetail.deployments.main')}</option>
                 </select>
                 <select className="rounded-lg border border-gray-300 bg-white px-3 py-1 text-sm text-gray-900">
-                  <option>All Environments</option>
-                  <option>Production</option>
-                  <option>Preview</option>
+                  <option>
+                    {t('hostingDetail.deployments.allEnvironments')}
+                  </option>
+                  <option>{t('hostingDetail.deployments.production')}</option>
+                  <option>{t('hostingDetail.deployments.preview')}</option>
                 </select>
               </div>
             </div>
@@ -568,16 +497,18 @@ export default function HostingProjectPage() {
 
       {activeTab === 'analytics' && (
         <div className="rounded-lg border border-gray-200 bg-white p-6">
-          <h3 className="mb-4 text-lg font-medium text-gray-900">Analytics</h3>
+          <h3 className="mb-4 text-lg font-medium text-gray-900">
+            {t('hostingDetail.analytics.title')}
+          </h3>
           <div className="py-8 text-center">
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-400">
               <span className="font-bold text-white">📊</span>
             </div>
             <h4 className="mb-2 text-lg font-medium text-gray-900">
-              Analytics Coming Soon
+              {t('hostingDetail.analytics.comingSoon')}
             </h4>
             <p className="text-gray-500">
-              Track visitors and page views for your deployment
+              {t('hostingDetail.analytics.description')}
             </p>
           </div>
         </div>
@@ -585,13 +516,124 @@ export default function HostingProjectPage() {
 
       {activeTab === 'settings' && (
         <div className="space-y-6">
+          {/* Environment Variables */}
+          <div className="rounded-lg border border-gray-200 bg-white p-6">
+            <div className="mb-6 flex items-center justify-between">
+              <h3 className="text-lg font-medium text-gray-900">
+                {t('hostingDetail.settings.environmentVariables.title')}
+              </h3>
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
+              >
+                {t('hostingDetail.settings.environmentVariables.addVariable')}
+              </button>
+            </div>
+
+            {project?.environmentVariables &&
+            project.environmentVariables.length > 0 ? (
+              <div className="space-y-3">
+                {project.environmentVariables.map((envVar, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between rounded-lg border border-gray-200 p-4"
+                  >
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-4">
+                        <span className="font-medium text-gray-900">
+                          {envVar.key}
+                        </span>
+                        <span className="text-gray-500">•••••••••</span>
+                        <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
+                          {envVar.environment}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <button className="text-sm text-gray-600 hover:text-gray-900">
+                        {t('hostingDetail.settings.environmentVariables.edit')}
+                      </button>
+                      <button className="text-sm text-red-600 hover:text-red-900">
+                        {t(
+                          'hostingDetail.settings.environmentVariables.delete',
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="py-8 text-center">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-400">
+                  <span className="font-bold text-white">ENV</span>
+                </div>
+                <h4 className="mb-2 text-lg font-medium text-gray-900">
+                  {t('hostingDetail.settings.environmentVariables.noVariables')}
+                </h4>
+                <p className="text-gray-500">
+                  {t('hostingDetail.settings.environmentVariables.description')}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Project Settings */}
           <div className="rounded-lg border border-gray-200 bg-white p-6">
             <h3 className="mb-4 text-lg font-medium text-gray-900">
-              Project Settings
+              {t('hostingDetail.settings.projectConfiguration.title')}
             </h3>
-            <p className="text-gray-500">
-              Project settings will be implemented in the next phase
-            </p>
+            <div className="space-y-4">
+              <div>
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  {t(
+                    'hostingDetail.settings.projectConfiguration.buildCommand',
+                  )}
+                </label>
+                <input
+                  type="text"
+                  value={project?.buildSettings.buildCommand || ''}
+                  disabled
+                  className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-gray-500"
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  {t(
+                    'hostingDetail.settings.projectConfiguration.outputDirectory',
+                  )}
+                </label>
+                <input
+                  type="text"
+                  value={project?.buildSettings.outputDirectory || ''}
+                  disabled
+                  className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-gray-500"
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  {t(
+                    'hostingDetail.settings.projectConfiguration.installCommand',
+                  )}
+                </label>
+                <input
+                  type="text"
+                  value={project?.buildSettings.installCommand || ''}
+                  disabled
+                  className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-gray-500"
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  {t('hostingDetail.settings.projectConfiguration.nodeVersion')}
+                </label>
+                <input
+                  type="text"
+                  value={project?.buildSettings.nodeVersion || ''}
+                  disabled
+                  className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-gray-500"
+                />
+              </div>
+            </div>
           </div>
         </div>
       )}

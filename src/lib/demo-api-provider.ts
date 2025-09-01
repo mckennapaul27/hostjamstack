@@ -7,6 +7,7 @@ import {
   getHostingPackages,
   getHostingProject,
   getHostingProjects,
+  getPurchasedSupportPackages,
   getSupportMessages,
   getSupportPackages,
   getSupportTicket,
@@ -18,6 +19,7 @@ import {
   type Domain,
   type HostingPackage,
   type HostingProject,
+  type PurchasedSupportPackage,
   type SupportMessage,
   type SupportPackage,
   type SupportTicket,
@@ -28,8 +30,9 @@ import {
   demoDeployments,
   demoDNSRecords,
   demoDomains,
-  demoHostingPackage,
+  demoHostingPackages,
   demoHostingProjects,
+  demoPurchasedSupportPackage,
   demoSupportMessages,
   demoSupportPackage,
   demoSupportTicket,
@@ -48,11 +51,14 @@ export function useDemoApiProvider() {
   return {
     isDemo,
     // Profile
-    getUserProfile: async (jwt: string): Promise<UserProfile> => {
+    getUserProfile: async (
+      jwt: string,
+      userId: string,
+    ): Promise<UserProfile> => {
       if (isDemo) {
         return Promise.resolve(demoUserProfile)
       }
-      return getUserProfile(jwt)
+      return getUserProfile(jwt, userId)
     },
 
     // Domains
@@ -89,7 +95,7 @@ export function useDemoApiProvider() {
     // Hosting
     getHostingPackages: async (jwt: string): Promise<HostingPackage[]> => {
       if (isDemo) {
-        return Promise.resolve([demoHostingPackage])
+        return Promise.resolve(demoHostingPackages)
       }
       return getHostingPackages(jwt)
     },
@@ -143,6 +149,15 @@ export function useDemoApiProvider() {
         return Promise.resolve([demoSupportPackage])
       }
       return getSupportPackages(jwt)
+    },
+
+    getPurchasedSupportPackages: async (
+      jwt: string,
+    ): Promise<PurchasedSupportPackage[]> => {
+      if (isDemo) {
+        return Promise.resolve([demoPurchasedSupportPackage])
+      }
+      return getPurchasedSupportPackages(jwt)
     },
 
     getSupportTickets: async (
@@ -201,12 +216,13 @@ export const demoApiProvider = {
 
   getUserProfile: async (
     jwt: string,
+    userId: string,
     userEmail?: string,
   ): Promise<UserProfile> => {
     if (isDemoUser(userEmail)) {
       return Promise.resolve(demoUserProfile)
     }
-    return getUserProfile(jwt)
+    return getUserProfile(jwt, userId)
   },
 
   getUserDomains: async (
@@ -251,7 +267,7 @@ export const demoApiProvider = {
     userEmail?: string,
   ): Promise<HostingPackage[]> => {
     if (isDemoUser(userEmail)) {
-      return Promise.resolve([demoHostingPackage])
+      return Promise.resolve(demoHostingPackages)
     }
     return getHostingPackages(jwt)
   },
@@ -308,6 +324,16 @@ export const demoApiProvider = {
       return Promise.resolve([demoSupportPackage])
     }
     return getSupportPackages(jwt)
+  },
+
+  getPurchasedSupportPackages: async (
+    jwt: string,
+    userEmail?: string,
+  ): Promise<PurchasedSupportPackage[]> => {
+    if (isDemoUser(userEmail)) {
+      return Promise.resolve([demoPurchasedSupportPackage])
+    }
+    return getPurchasedSupportPackages(jwt)
   },
 
   getSupportTickets: async (

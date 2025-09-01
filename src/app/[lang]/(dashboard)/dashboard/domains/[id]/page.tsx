@@ -1,7 +1,8 @@
 'use client'
 
-import type { Domain } from '@/lib/dashboard-api'
-import { getDomainById, updateDomainSettings } from '@/lib/dashboard-api'
+import type { DNSRecord, Domain } from '@/lib/dashboard-api'
+import { updateDomainSettings } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
 import { cn, formatCurrency, formatDate, getDaysUntilExpiry } from '@/lib/utils'
 import {
   ClockIcon,
@@ -11,15 +12,18 @@ import {
 import { useSession } from 'next-auth/react'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function DomainDetailPage() {
   const { data: session } = useSession()
   const params = useParams()
   const domainId = params?.id as string
   const lang = (params?.lang as string) || 'en'
+  const { t } = useTranslation('dashboard')
   console.log('lang in domains/[id] page', lang)
 
   const [domain, setDomain] = useState<Domain | null>(null)
+  const [dnsRecords, setDnsRecords] = useState<DNSRecord[]>([])
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [activeTab, setActiveTab] = useState('overview')
@@ -29,40 +33,29 @@ export default function DomainDetailPage() {
       if (!session?.rawJwt || !domainId) return
 
       try {
-        const data = await getDomainById(session.rawJwt, domainId)
-        setDomain(data)
+        const [domainData, dnsData] = await Promise.all([
+          demoApiProvider.getDomainById(
+            session.rawJwt,
+            domainId,
+            session.user?.email,
+          ),
+          demoApiProvider.getDNSRecords(
+            session.rawJwt,
+            domainId,
+            session.user?.email,
+          ),
+        ])
+        setDomain(domainData)
+        setDnsRecords(dnsData)
       } catch (error) {
         console.error('Failed to fetch domain:', error)
-        // Set mock data for development
-        setDomain({
-          _id: domainId,
-          domainName: 'example.com',
-          userId: session.user._id,
-          registrationDate: '2024-01-15T00:00:00Z',
-          expirationDate: '2025-01-15T00:00:00Z',
-          autoRenew: true,
-          registrationPeriod: 1,
-          isPremium: false,
-          status: 'active',
-          registrar: 'Name.com',
-          registrarDomainId: 'ext_123',
-          nameservers: ['ns1.hostjamstack.com', 'ns2.hostjamstack.com'],
-          useDefaultNameservers: true,
-          purchasePrice: 12.99,
-          renewalPrice: 14.99,
-          currency: 'EUR',
-          whoisPrivacy: true,
-          transferLock: true,
-          createdAt: '2024-01-15T00:00:00Z',
-          updatedAt: '2024-01-15T00:00:00Z',
-        })
       } finally {
         setLoading(false)
       }
     }
 
     fetchDomain()
-  }, [session?.rawJwt, domainId, session?.user._id])
+  }, [session?.rawJwt, domainId, session?.user?.email])
 
   const handleUpdateSettings = async (updates: Partial<Domain>) => {
     if (!session?.rawJwt || !domain) return
@@ -83,10 +76,10 @@ export default function DomainDetailPage() {
   }
 
   const tabs = [
-    { id: 'overview', name: 'Overview' },
-    { id: 'dns', name: 'DNS Records' },
-    { id: 'email', name: 'Email Forwarding' },
-    { id: 'transfer', name: 'Transfer & Sharing' },
+    { id: 'overview', name: t('domainDetail.tabs.overview') },
+    { id: 'dns', name: t('domainDetail.tabs.dns') },
+    { id: 'email', name: t('domainDetail.tabs.email') },
+    { id: 'transfer', name: t('domainDetail.tabs.transfer') },
   ]
 
   if (loading) {
@@ -107,11 +100,9 @@ export default function DomainDetailPage() {
     return (
       <div className="py-12 text-center">
         <h1 className="mb-4 text-2xl font-bold text-gray-900">
-          Domain Not Found
+          {t('domainDetail.notFound.title')}
         </h1>
-        <p className="text-gray-600">
-          The requested domain could not be found.
-        </p>
+        <p className="text-gray-600">{t('domainDetail.notFound.message')}</p>
       </div>
     )
   }
@@ -130,10 +121,13 @@ export default function DomainDetailPage() {
               {domain.domainName}
             </h1>
             <div className="flex items-center space-x-4 text-sm text-gray-500">
-              <span>Registered {formatDate(domain.registrationDate)}</span>
+              <span>
+                {t('domainDetail.registered')}{' '}
+                {formatDate(domain.registrationDate)}
+              </span>
               {domain.isPremium && (
                 <span className="inline-flex items-center rounded-full bg-purple-100 px-2 py-1 text-xs font-medium text-purple-800">
-                  Premium Domain
+                  {t('domainDetail.premiumDomain')}
                 </span>
               )}
             </div>
@@ -144,7 +138,7 @@ export default function DomainDetailPage() {
             type="button"
             className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
           >
-            Renew Domain
+            {t('domainDetail.renewDomain')}
           </button>
         </div>
       </div>
@@ -156,10 +150,12 @@ export default function DomainDetailPage() {
             <ClockIcon className="mr-3 h-5 w-5 text-yellow-600" />
             <div>
               <h3 className="text-sm font-medium text-yellow-800">
-                Domain expires in {daysUntilExpiry} days
+                {t('domainDetail.expiryWarning.title', {
+                  days: daysUntilExpiry,
+                })}
               </h3>
               <p className="text-sm text-yellow-700">
-                Renew now to avoid losing your domain
+                {t('domainDetail.expiryWarning.message')}
               </p>
             </div>
           </div>
@@ -192,35 +188,43 @@ export default function DomainDetailPage() {
             {/* Domain Status */}
             <div className="rounded-lg border border-gray-200 bg-white p-6">
               <h3 className="mb-4 text-lg font-medium text-gray-900">
-                Domain Status
+                {t('domainDetail.status.title')}
               </h3>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <div>
-                  <div className="mb-1 text-sm text-gray-500">Status</div>
+                  <div className="mb-1 text-sm text-gray-500">
+                    {t('domainDetail.status.status')}
+                  </div>
                   <div className="text-lg font-medium text-green-600 capitalize">
                     {domain.status}
                   </div>
                 </div>
                 <div>
-                  <div className="mb-1 text-sm text-gray-500">Expires</div>
+                  <div className="mb-1 text-sm text-gray-500">
+                    {t('domainDetail.status.expires')}
+                  </div>
                   <div className="text-lg font-medium text-gray-900">
                     {formatDate(domain.expirationDate)}
                   </div>
                 </div>
                 <div>
-                  <div className="mb-1 text-sm text-gray-500">Auto Renew</div>
+                  <div className="mb-1 text-sm text-gray-500">
+                    {t('domainDetail.status.autoRenew')}
+                  </div>
                   <div
                     className={cn(
                       'text-lg font-medium',
                       domain.autoRenew ? 'text-green-600' : 'text-red-600',
                     )}
                   >
-                    {domain.autoRenew ? 'Enabled' : 'Disabled'}
+                    {domain.autoRenew
+                      ? t('domainDetail.status.enabled')
+                      : t('domainDetail.status.disabled')}
                   </div>
                 </div>
                 <div>
                   <div className="mb-1 text-sm text-gray-500">
-                    Renewal Price
+                    {t('domainDetail.status.renewalPrice')}
                   </div>
                   <div className="text-lg font-medium text-gray-900">
                     {formatCurrency(domain.renewalPrice, domain.currency)}
@@ -232,16 +236,16 @@ export default function DomainDetailPage() {
             {/* Domain Settings */}
             <div className="rounded-lg border border-gray-200 bg-white p-6">
               <h3 className="mb-4 text-lg font-medium text-gray-900">
-                Domain Settings
+                {t('domainDetail.settings.title')}
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="text-sm font-medium text-gray-900">
-                      Auto Renewal
+                      {t('domainDetail.settings.autoRenewal.title')}
                     </h4>
                     <p className="text-sm text-gray-500">
-                      Automatically renew this domain before it expires
+                      {t('domainDetail.settings.autoRenewal.description')}
                     </p>
                   </div>
                   <button
@@ -266,10 +270,10 @@ export default function DomainDetailPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="text-sm font-medium text-gray-900">
-                      WHOIS Privacy
+                      {t('domainDetail.settings.whoisPrivacy.title')}
                     </h4>
                     <p className="text-sm text-gray-500">
-                      Hide your personal information from public WHOIS lookups
+                      {t('domainDetail.settings.whoisPrivacy.description')}
                     </p>
                   </div>
                   <button
@@ -296,10 +300,10 @@ export default function DomainDetailPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="text-sm font-medium text-gray-900">
-                      Transfer Lock
+                      {t('domainDetail.settings.transferLock.title')}
                     </h4>
                     <p className="text-sm text-gray-500">
-                      Prevent unauthorized domain transfers
+                      {t('domainDetail.settings.transferLock.description')}
                     </p>
                   </div>
                   <button
@@ -328,17 +332,16 @@ export default function DomainDetailPage() {
             {/* Nameservers */}
             <div className="rounded-lg border border-gray-200 bg-white p-6">
               <h3 className="mb-4 text-lg font-medium text-gray-900">
-                Nameservers
+                {t('domainDetail.nameservers.title')}
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="text-sm font-medium text-gray-900">
-                      Use Default Nameservers
+                      {t('domainDetail.nameservers.useDefault.title')}
                     </h4>
                     <p className="text-sm text-gray-500">
-                      Use HostJamstack&apos;s nameservers for easy DNS
-                      management
+                      {t('domainDetail.nameservers.useDefault.description')}
                     </p>
                   </div>
                   <button
@@ -370,7 +373,7 @@ export default function DomainDetailPage() {
                   {domain.nameservers.map((ns, index) => (
                     <div key={index} className="rounded-lg bg-gray-50 p-3">
                       <div className="text-sm font-medium text-gray-900">
-                        Nameserver {index + 1}
+                        {t('domainDetail.nameservers.nameserver')} {index + 1}
                       </div>
                       <div className="text-sm text-gray-500">{ns}</div>
                     </div>
@@ -384,24 +387,66 @@ export default function DomainDetailPage() {
         {activeTab === 'dns' && (
           <div className="rounded-lg border border-gray-200 bg-white p-6">
             <div className="mb-6 flex items-center justify-between">
-              <h3 className="text-lg font-medium text-gray-900">DNS Records</h3>
+              <h3 className="text-lg font-medium text-gray-900">
+                {t('domainDetail.dns.title')}
+              </h3>
               <button
                 type="button"
                 className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
               >
-                Add Record
+                {t('domainDetail.dns.addRecord')}
               </button>
             </div>
 
-            <div className="py-8 text-center">
-              <Cog6ToothIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
-              <h4 className="mb-2 text-lg font-medium text-gray-900">
-                DNS Management
-              </h4>
-              <p className="text-gray-500">
-                DNS record management will be implemented in the next phase
-              </p>
-            </div>
+            {dnsRecords.length > 0 ? (
+              <div className="space-y-4">
+                {dnsRecords.map((record) => (
+                  <div
+                    key={record._id}
+                    className="flex items-center justify-between rounded-lg border border-gray-200 p-4"
+                  >
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-4">
+                        <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
+                          {record.type}
+                        </span>
+                        <span className="font-medium text-gray-900">
+                          {record.name || '@'}
+                        </span>
+                        <span className="text-gray-500">→</span>
+                        <span className="text-gray-700">{record.value}</span>
+                      </div>
+                      <div className="mt-1 text-sm text-gray-500">
+                        {t('domainDetail.dns.ttl')}: {record.ttl}s
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span
+                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                          record.isActive
+                            ? 'bg-green-100 text-green-800'
+                            : 'bg-gray-100 text-gray-800'
+                        }`}
+                      >
+                        {record.isActive
+                          ? t('domainDetail.dns.active')
+                          : t('domainDetail.dns.inactive')}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="py-8 text-center">
+                <Cog6ToothIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
+                <h4 className="mb-2 text-lg font-medium text-gray-900">
+                  {t('domainDetail.dns.empty.title')}
+                </h4>
+                <p className="text-gray-500">
+                  {t('domainDetail.dns.empty.message')}
+                </p>
+              </div>
+            )}
           </div>
         )}
 
@@ -409,27 +454,63 @@ export default function DomainDetailPage() {
           <div className="rounded-lg border border-gray-200 bg-white p-6">
             <div className="mb-6 flex items-center justify-between">
               <h3 className="text-lg font-medium text-gray-900">
-                Email Forwarding
+                {t('domainDetail.email.title')}
               </h3>
               <button
                 type="button"
                 className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
               >
-                Add Forwarding
+                {t('domainDetail.email.addForwarding')}
               </button>
             </div>
 
-            <div className="py-8 text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-400">
-                <span className="font-bold text-white">@</span>
+            {domain?.emailForwarding && domain.emailForwarding.length > 0 ? (
+              <div className="space-y-4">
+                {domain.emailForwarding.map((forward, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between rounded-lg border border-gray-200 p-4"
+                  >
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-4">
+                        <span className="font-medium text-gray-900">
+                          {forward.alias}@{domain.domainName}
+                        </span>
+                        <span className="text-gray-500">→</span>
+                        <span className="text-gray-700">
+                          {forward.forwardTo}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span
+                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                          forward.active
+                            ? 'bg-green-100 text-green-800'
+                            : 'bg-gray-100 text-gray-800'
+                        }`}
+                      >
+                        {forward.active
+                          ? t('domainDetail.email.active')
+                          : t('domainDetail.email.inactive')}
+                      </span>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <h4 className="mb-2 text-lg font-medium text-gray-900">
-                Email Forwarding
-              </h4>
-              <p className="text-gray-500">
-                Set up email forwarding for your domain
-              </p>
-            </div>
+            ) : (
+              <div className="py-8 text-center">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-400">
+                  <span className="font-bold text-white">@</span>
+                </div>
+                <h4 className="mb-2 text-lg font-medium text-gray-900">
+                  {t('domainDetail.email.empty.title')}
+                </h4>
+                <p className="text-gray-500">
+                  {t('domainDetail.email.empty.message')}
+                </p>
+              </div>
+            )}
           </div>
         )}
 
@@ -437,28 +518,28 @@ export default function DomainDetailPage() {
           <div className="space-y-6">
             <div className="rounded-lg border border-gray-200 bg-white p-6">
               <h3 className="mb-4 text-lg font-medium text-gray-900">
-                Transfer Domain
+                {t('domainDetail.transfer.domain.title')}
               </h3>
               <p className="mb-4 text-gray-600">
-                Transfer this domain to another registrar or user
+                {t('domainDetail.transfer.domain.description')}
               </p>
               <button className="rounded-lg bg-red-600 px-4 py-2 text-white transition-colors hover:bg-red-700">
-                Initiate Transfer
+                {t('domainDetail.transfer.domain.button')}
               </button>
             </div>
 
             <div className="rounded-lg border border-gray-200 bg-white p-6">
               <h3 className="mb-4 text-lg font-medium text-gray-900">
-                Share Access
+                {t('domainDetail.transfer.share.title')}
               </h3>
               <p className="mb-4 text-gray-600">
-                Grant other users access to manage this domain
+                {t('domainDetail.transfer.share.description')}
               </p>
               <button
                 type="button"
                 className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
               >
-                Add User
+                {t('domainDetail.transfer.share.button')}
               </button>
             </div>
           </div>

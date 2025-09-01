@@ -9,6 +9,7 @@ import {
 
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface DomainSearchResult {
   domainName: string
@@ -21,6 +22,7 @@ interface DomainSearchResult {
 export default function DomainSearchPage() {
   const params = useParams()
   const lang = (params?.lang as string) || 'en'
+  const { t } = useTranslation('dashboard')
 
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<DomainSearchResult[]>([])
@@ -90,32 +92,27 @@ export default function DomainSearchPage() {
   }
 
   const popularExtensions = [
-    { ext: '.com', price: 12.99, description: 'Most popular choice' },
-    { ext: '.net', price: 14.99, description: 'Great for tech companies' },
-    { ext: '.org', price: 16.99, description: 'Perfect for organizations' },
+    { ext: '.com', price: 12.99, descriptionKey: 'com' },
+    { ext: '.co', price: 17.99, descriptionKey: 'co' },
+    { ext: '.info', price: 3.99, descriptionKey: 'info' },
+    { ext: '.org', price: 7.49, descriptionKey: 'org' },
+    { ext: '.biz', price: 9.99, descriptionKey: 'biz' },
     {
-      ext: '.io',
-      price: 45.99,
-      description: 'Popular with startups',
+      ext: '.ai',
+      price: 179.98,
+      descriptionKey: 'ai',
       premium: true,
     },
-    {
-      ext: '.dev',
-      price: 39.99,
-      description: 'Perfect for developers',
-      premium: true,
-    },
-    { ext: '.app', price: 25.99, description: 'Great for applications' },
   ]
 
   return (
     <div className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Search Domains</h1>
-        <p className="text-gray-600">
-          Find and register the perfect domain for your project
-        </p>
+        <h1 className="text-2xl font-bold text-gray-900">
+          {t('domainSearch.title')}
+        </h1>
+        <p className="text-gray-600">{t('domainSearch.subtitle')}</p>
       </div>
 
       {/* Search Form */}
@@ -126,7 +123,7 @@ export default function DomainSearchPage() {
               htmlFor="domain-search"
               className="mb-2 block text-sm font-medium text-gray-700"
             >
-              Enter your domain name
+              {t('domainSearch.form.label')}
             </label>
             <div className="flex flex-col space-x-3 sm:flex-row">
               <div className="relative !mr-0 flex-1 sm:!mr-2">
@@ -139,7 +136,7 @@ export default function DomainSearchPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full flex-1 rounded-lg border border-gray-300 py-3 pr-4 pl-10 text-lg focus:border-transparent focus:ring-2 focus:ring-purple-500"
-                  placeholder="yourdomain"
+                  placeholder={t('domainSearch.form.placeholder')}
                 />
               </div>
 
@@ -148,14 +145,15 @@ export default function DomainSearchPage() {
                 disabled={loading || !searchQuery.trim()}
                 className="mt-2 inline-flex items-center justify-center rounded-md border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800 sm:mt-0"
               >
-                {loading ? 'Searching...' : 'Search'}
+                {loading
+                  ? t('domainSearch.form.searching')
+                  : t('domainSearch.form.searchButton')}
               </button>
             </div>
           </div>
 
           <div className="text-sm text-gray-500">
-            Enter a domain name without the extension (e.g.,
-            &quot;mywebsite&quot; not &quot;mywebsite.com&quot;)
+            {t('domainSearch.form.helpText')}
           </div>
         </form>
       </div>
@@ -164,7 +162,7 @@ export default function DomainSearchPage() {
       {!searchResults.length && (
         <div className="rounded-lg border border-gray-200 bg-white p-6">
           <h2 className="mb-4 text-lg font-semibold text-gray-900">
-            Popular Extensions
+            {t('domainSearch.popularExtensions.title')}
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {popularExtensions.map((item) => (
@@ -178,13 +176,18 @@ export default function DomainSearchPage() {
                   </span>
                   {item.premium && (
                     <span className="inline-flex items-center rounded bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-800">
-                      Premium
+                      {t('domainSearch.popularExtensions.premium')}
                     </span>
                   )}
                 </div>
-                <p className="mb-2 text-sm text-gray-500">{item.description}</p>
+                <p className="mb-2 text-sm text-gray-500">
+                  {t(
+                    `domainSearch.popularExtensions.descriptions.${item.descriptionKey}`,
+                  )}
+                </p>
                 <div className="text-sm font-medium text-gray-900">
-                  {formatCurrency(item.price)}/year
+                  {formatCurrency(item.price)}
+                  {t('domainSearch.popularExtensions.perYear')}
                 </div>
               </div>
             ))}
@@ -197,7 +200,7 @@ export default function DomainSearchPage() {
         <div className="rounded-lg border border-gray-200 bg-white">
           <div className="border-b border-gray-200 px-6 py-4">
             <h2 className="text-lg font-semibold text-gray-900">
-              Search Results for &quot;{searchQuery}&quot;
+              {t('domainSearch.results.title', { query: searchQuery })}
             </h2>
           </div>
           <div className="divide-y divide-gray-200">
@@ -220,12 +223,14 @@ export default function DomainSearchPage() {
                         </span>
                         {result.premium && (
                           <span className="inline-flex items-center rounded bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-800">
-                            Premium
+                            {t('domainSearch.popularExtensions.premium')}
                           </span>
                         )}
                       </div>
                       <div className="text-sm text-gray-500">
-                        {result.available ? 'Available' : 'Not available'}
+                        {result.available
+                          ? t('domainSearch.results.available')
+                          : t('domainSearch.results.notAvailable')}
                       </div>
                     </div>
                   </div>
@@ -237,7 +242,9 @@ export default function DomainSearchPage() {
                       <div className="text-lg font-medium text-gray-900">
                         {formatCurrency(result.price)}
                       </div>
-                      <div className="text-sm text-gray-500">per year</div>
+                      <div className="text-sm text-gray-500">
+                        {t('domainSearch.results.perYear')}
+                      </div>
                     </div>
                   )}
 
@@ -252,14 +259,14 @@ export default function DomainSearchPage() {
                       }
                       className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
                     >
-                      Buy Now
+                      {t('domainSearch.results.buyNow')}
                     </button>
                   ) : (
                     <button
                       disabled
                       className="cursor-not-allowed rounded-lg bg-gray-300 px-4 py-2 font-medium text-gray-500"
                     >
-                      Unavailable
+                      {t('domainSearch.results.unavailable')}
                     </button>
                   )}
                 </div>
@@ -272,17 +279,16 @@ export default function DomainSearchPage() {
       {/* Domain Transfer */}
       <div className="rounded-lg border border-gray-200 bg-white p-6">
         <h2 className="mb-4 text-lg font-semibold text-gray-900">
-          Transfer Existing Domain
+          {t('domainSearch.transfer.title')}
         </h2>
         <p className="mb-4 text-gray-600">
-          Already own a domain? Transfer it to HostJamstack to manage everything
-          in one place.
+          {t('domainSearch.transfer.description')}
         </p>
         <button
           type="button"
           className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
         >
-          Transfer Domain
+          {t('domainSearch.transfer.button')}
         </button>
       </div>
     </div>

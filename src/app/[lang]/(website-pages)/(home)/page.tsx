@@ -55,7 +55,7 @@ async function FeatureSection({ lang }: { lang: string }) {
         <Screenshot
           width={1216}
           height={768}
-          src="/screenshots/app-2.png"
+          src="/screenshots/dashboard-new.png"
           className="mt-16 h-144 sm:h-auto sm:w-304"
         />
       </Container>

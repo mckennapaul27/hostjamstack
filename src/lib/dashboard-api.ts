@@ -1,4 +1,4 @@
-import { fetchWithToken } from '@/utils/config'
+import { fetchWithToken, serverUrl } from '@/utils/config'
 
 // Types based on the database schema
 export interface Domain {
@@ -20,6 +20,11 @@ export interface Domain {
   currency: string
   whoisPrivacy: boolean
   transferLock: boolean
+  emailForwarding?: Array<{
+    alias: string
+    forwardTo: string
+    active: boolean
+  }>
   createdAt: string
   updatedAt: string
 }
@@ -158,6 +163,22 @@ export interface SupportPackage {
   updatedAt: string
 }
 
+export interface PurchasedSupportPackage {
+  _id: string
+  userId: string
+  packageName: string
+  packageType: 'one-time'
+  status: 'completed' | 'in-progress' | 'cancelled'
+  domainName: string
+  features: string[]
+  price: number
+  currency: string
+  purchaseDate: string
+  completionDate: string
+  createdAt: string
+  updatedAt: string
+}
+
 export interface SupportTicket {
   _id: string
   userId: string
@@ -239,15 +260,24 @@ export interface UserProfile {
 // Dashboard API Functions
 
 // Profile
-export const getUserProfile = async (jwt: string): Promise<UserProfile> => {
-  return fetchWithToken('/api/users/profile', jwt)
+export const getUserProfile = async (
+  jwt: string,
+  userId: string,
+): Promise<UserProfile> => {
+  console.log('getUserProfile called with:')
+  console.log('- JWT exists:', !!jwt)
+  console.log('- JWT length:', jwt?.length)
+  console.log('- userId:', userId)
+  console.log('- serverUrl:', serverUrl)
+  console.log('- Full URL:', `${serverUrl}/api/users/${userId}`)
+  return fetchWithToken(`${serverUrl}/api/users/${userId}`, jwt)
 }
 
 export const updateUserProfile = async (
   jwt: string,
   data: Partial<UserProfile>,
 ): Promise<UserProfile> => {
-  const response = await fetch('/api/users/profile', {
+  const response = await fetch(`/api/users/profile`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -468,6 +498,12 @@ export const getSupportPackages = async (
   jwt: string,
 ): Promise<SupportPackage[]> => {
   return fetchWithToken('/api/support/packages', jwt)
+}
+
+export const getPurchasedSupportPackages = async (
+  jwt: string,
+): Promise<PurchasedSupportPackage[]> => {
+  return fetchWithToken('/api/support/purchased-packages', jwt)
 }
 
 export const getSupportTickets = async (

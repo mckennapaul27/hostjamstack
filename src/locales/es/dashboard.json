@@ -1,0 +1,682 @@
+{
+  "dashboard": {
+    "title": "¡Bienvenido de vuelta, {{name}}!",
+    "subtitle": "Esto es lo que está pasando con tu cuenta",
+    "buyDomain": "Comprar Dominio",
+    "quickStats": {
+      "domains": "Dominios",
+      "projects": "Proyectos",
+      "openTickets": "Tickets Abiertos",
+      "manageDomains": "Gestionar dominios →",
+      "viewProjects": "Ver proyectos →",
+      "viewTickets": "Ver tickets →"
+    },
+    "yourDomains": {
+      "title": "Tus Dominios",
+      "viewAll": "Ver todos",
+      "expires": "Expira",
+      "days": "días",
+      "manage": "Gestionar",
+      "noDomains": {
+        "title": "Aún no hay dominios",
+        "description": "Comienza comprando tu primer dominio",
+        "searchDomains": "Buscar Dominios"
+      }
+    },
+    "recentActivity": {
+      "title": "Actividad Reciente",
+      "noActivity": "Sin actividad reciente"
+    }
+  },
+  "domains": {
+    "title": "Dominios",
+    "subtitle": "Gestiona tu cartera de dominios",
+    "searchBuy": "Buscar y Comprar",
+    "expiringAlert": {
+      "single": "{{count}} dominio expira pronto",
+      "multiple": "{{count}} dominios expiran pronto",
+      "renewMessage": "{{domains}} - Considera renovar para evitar perder tu dominio",
+      "renewMessageMultiple": "{{domains}} - Considera renovar para evitar perder tus dominios"
+    },
+    "search": {
+      "placeholder": "Buscar dominios..."
+    },
+    "filters": {
+      "all": "Todos",
+      "active": "Activo",
+      "pending": "Pendiente",
+      "expired": "Expirado"
+    },
+    "table": {
+      "domain": "Dominio",
+      "status": "Estado",
+      "expiryDate": "Fecha de Expiración",
+      "autoRenew": "Renovación Automática",
+      "price": "Precio",
+      "actions": "Acciones",
+      "premium": "Premium",
+      "registered": "Registrado",
+      "enabled": "Habilitado",
+      "disabled": "Deshabilitado",
+      "year": "/año",
+      "manageDomain": "Gestionar Dominio",
+      "dnsSettings": "Configuración DNS",
+      "transferSettings": "Configuración de Transferencia"
+    },
+    "card": {
+      "status": "Estado:",
+      "expires": "Expira:",
+      "autoRenew": "Renovación Automática:",
+      "price": "Precio:",
+      "daysShort": "d"
+    },
+    "actions": {
+      "manageDomain": "Gestionar Dominio",
+      "dnsSettings": "Configuración DNS",
+      "transferSettings": "Configuración de Transferencia"
+    },
+    "noResults": {
+      "title": "No se encontraron dominios",
+      "subtitle": "Intenta ajustar tu búsqueda o filtros"
+    },
+    "empty": {
+      "title": "Aún no hay dominios",
+      "subtitle": "Comienza comprando tu primer dominio",
+      "searchDomains": "Buscar Dominios"
+    }
+  },
+  "domainSearch": {
+    "title": "Buscar Dominios",
+    "subtitle": "Encuentra y registra el dominio perfecto para tu proyecto",
+    "form": {
+      "label": "Introduce el nombre de tu dominio",
+      "placeholder": "tudominio",
+      "searchButton": "Buscar",
+      "searching": "Buscando...",
+      "helpText": "Introduce un nombre de dominio sin la extensión (ej. \"miweb\" no \"miweb.com\")"
+    },
+    "popularExtensions": {
+      "title": "Extensiones Populares",
+      "descriptions": {
+        "com": "La opción más popular",
+        "co": "Genial para empresas",
+        "info": "Perfecto para sitios informativos",
+        "org": "Perfecto para organizaciones",
+        "biz": "Genial para negocios",
+        "ai": "Perfecto para empresas de IA"
+      },
+      "premium": "Premium",
+      "perYear": "/año"
+    },
+    "results": {
+      "title": "Resultados de búsqueda para \"{{query}}\"",
+      "available": "Disponible",
+      "notAvailable": "No disponible",
+      "perYear": "por año",
+      "buyNow": "Comprar Ahora",
+      "unavailable": "No Disponible"
+    },
+    "transfer": {
+      "title": "Transferir Dominio Existente",
+      "description": "¿Ya tienes un dominio? Transfierelo a HostJamstack para gestionarlo todo en un lugar.",
+      "button": "Transferir Dominio"
+    }
+  },
+  "domainDetail": {
+    "renewDomain": "Renovar Dominio",
+    "registered": "Registrado",
+    "premiumDomain": "Dominio Premium",
+    "notFound": {
+      "title": "Dominio No Encontrado",
+      "message": "El dominio solicitado no se pudo encontrar."
+    },
+    "expiryWarning": {
+      "title": "El dominio expira en {{days}} días",
+      "message": "Renueva ahora para evitar perder tu dominio"
+    },
+    "tabs": {
+      "overview": "Resumen",
+      "dns": "Registros DNS",
+      "email": "Reenvío de Email",
+      "transfer": "Transferencia y Compartir"
+    },
+    "status": {
+      "title": "Estado del Dominio",
+      "status": "Estado",
+      "expires": "Expira",
+      "autoRenew": "Renovación Automática",
+      "renewalPrice": "Precio de Renovación",
+      "enabled": "Habilitado",
+      "disabled": "Deshabilitado"
+    },
+    "settings": {
+      "title": "Configuración del Dominio",
+      "autoRenewal": {
+        "title": "Renovación Automática",
+        "description": "Renovar automáticamente este dominio antes de que expire"
+      },
+      "whoisPrivacy": {
+        "title": "Privacidad WHOIS",
+        "description": "Ocultar tu información personal de las consultas WHOIS públicas"
+      },
+      "transferLock": {
+        "title": "Bloqueo de Transferencia",
+        "description": "Prevenir transferencias de dominio no autorizadas"
+      }
+    },
+    "nameservers": {
+      "title": "Servidores de Nombres",
+      "useDefault": {
+        "title": "Usar Servidores de Nombres Predeterminados",
+        "description": "Usar los servidores de nombres de HostJamstack para gestión DNS fácil"
+      },
+      "nameserver": "Servidor de Nombres"
+    },
+    "dns": {
+      "title": "Registros DNS",
+      "addRecord": "Agregar Registro",
+      "ttl": "TTL",
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "empty": {
+        "title": "Sin Registros DNS",
+        "message": "Agrega registros DNS para configurar tu dominio"
+      }
+    },
+    "email": {
+      "title": "Reenvío de Email",
+      "addForwarding": "Agregar Reenvío",
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "empty": {
+        "title": "Sin Reenvío de Email",
+        "message": "Configura el reenvío de email para tu dominio"
+      }
+    },
+    "transfer": {
+      "domain": {
+        "title": "Transferir Dominio",
+        "description": "Transferir este dominio a otro registrador o usuario",
+        "button": "Iniciar Transferencia"
+      },
+      "share": {
+        "title": "Compartir Acceso",
+        "description": "Otorgar a otros usuarios acceso para gestionar este dominio",
+        "button": "Agregar Usuario"
+      }
+    }
+  },
+  "hostingDetail": {
+    "repository": "Repositorio",
+    "deploy": "Desplegar",
+    "deploying": "Desplegando...",
+    "notFound": {
+      "title": "Proyecto No Encontrado",
+      "message": "El proyecto solicitado no se pudo encontrar."
+    },
+    "productionDeployment": {
+      "title": "Despliegue de Producción",
+      "buildLogs": "Logs de Construcción",
+      "runtimeLogs": "Logs de Ejecución",
+      "deployment": "Despliegue",
+      "domains": "Dominios",
+      "status": "Estado",
+      "ready": "Listo",
+      "source": "Origen",
+      "updateInfo": "Para actualizar tu Despliegue de Producción, haz push a la",
+      "branch": "rama"
+    },
+    "tabs": {
+      "overview": "Resumen",
+      "deployments": "Despliegues",
+      "analytics": "Analítica",
+      "settings": "Configuración"
+    },
+    "overview": {
+      "recentDeployments": "Despliegues Recientes",
+      "quickActions": "Acciones Rápidas",
+      "environmentVariables": "Variables de Entorno",
+      "variables": "variables",
+      "customDomains": "Dominios Personalizados",
+      "domain": "dominio",
+      "domains": "dominios",
+      "buildSettings": "Configuración de Construcción",
+      "usage": "Uso",
+      "bandwidth": "Ancho de Banda",
+      "buildTime": "Tiempo de Construcción"
+    },
+    "deployments": {
+      "title": "Todos los Despliegues",
+      "allBranches": "Todas las Ramas",
+      "main": "principal",
+      "allEnvironments": "Todos los Entornos",
+      "production": "Producción",
+      "preview": "Vista Previa"
+    },
+    "analytics": {
+      "title": "Analítica",
+      "comingSoon": "Analítica Próximamente",
+      "description": "Rastrea visitantes y vistas de página para tu despliegue"
+    },
+    "settings": {
+      "environmentVariables": {
+        "title": "Variables de Entorno",
+        "addVariable": "Agregar Variable",
+        "noVariables": "Sin Variables de Entorno",
+        "description": "Agrega variables de entorno para configurar tu proyecto",
+        "edit": "Editar",
+        "delete": "Eliminar"
+      },
+      "projectConfiguration": {
+        "title": "Configuración del Proyecto",
+        "buildCommand": "Comando de Construcción",
+        "outputDirectory": "Directorio de Salida",
+        "installCommand": "Comando de Instalación",
+        "nodeVersion": "Versión de Node"
+      }
+    }
+  },
+  "hostingPackages": {
+    "loading": "Cargando...",
+    "title": "Paquetes de Hosting",
+    "activePackages": "Tus Paquetes de Hosting Activos",
+    "noPackages": "No se encontraron paquetes de hosting activos.",
+    "created": "Creado",
+    "active": "Activo",
+    "billingCycle": "Ciclo de Facturación",
+    "annual": "Anual",
+    "monthly": "Mensual",
+    "price": "Precio",
+    "year": "año",
+    "month": "mes",
+    "nextBilling": "Próxima Facturación",
+    "autoRenew": "Renovación Automática",
+    "enabled": "Habilitado",
+    "disabled": "Deshabilitado",
+    "features": "Características",
+    "per": "por",
+    "renews": "Se renueva",
+    "storage": "Almacenamiento",
+    "bandwidth": "Ancho de Banda",
+    "usageStats": "Estadísticas de Uso"
+  },
+  "newHostingProject": {
+    "title": "Desplegar Nuevo Proyecto",
+    "subtitle": "Despliega tu proyecto desde GitHub en minutos",
+    "steps": {
+      "importRepository": "Importar Repositorio",
+      "configure": "Configurar",
+      "deploy": "Desplegar"
+    },
+    "importRepo": {
+      "title": "Importar Repositorio Git",
+      "github": "GitHub",
+      "githubDescription": "Importar desde tus repositorios de GitHub",
+      "connectGithub": "Conectar GitHub",
+      "repositoryUrl": "URL del Repositorio",
+      "repositoryPlaceholder": "https://github.com/usuario/repositorio",
+      "repositoryHelp": "O pega directamente una URL de repositorio",
+      "projectName": "Nombre del Proyecto",
+      "projectNamePlaceholder": "mi-proyecto-genial",
+      "continue": "Continuar"
+    },
+    "configure": {
+      "chooseFramework": "Elegir Framework",
+      "buildSettings": "Configuración de Construcción",
+      "buildCommand": "Comando de Construcción",
+      "outputDirectory": "Directorio de Salida",
+      "installCommand": "Comando de Instalación",
+      "back": "Atrás",
+      "deploy": "Desplegar"
+    },
+    "frameworks": {
+      "nextjs": "Framework React con capacidades full-stack",
+      "react": "Biblioteca JavaScript para construir interfaces de usuario",
+      "vue": "Framework JavaScript progresivo",
+      "vite": "Herramienta de construcción rápida para apps web modernas",
+      "astro": "Generador de sitios estáticos para sitios centrados en contenido",
+      "hugo": "Generador de sitios estáticos rápido y flexible",
+      "gatsby": "Framework basado en React para sitios estáticos",
+      "svelte": "Framework de desarrollo web con gran rendimiento"
+    },
+    "deployment": {
+      "title": "Desplegando Tu Proyecto",
+      "description": "Tu proyecto se está desplegando. Esto suele tomar 2-5 minutos.",
+      "repositoryCloned": "Repositorio clonado",
+      "dependenciesInstalled": "Dependencias instaladas",
+      "buildingProject": "Construyendo proyecto...",
+      "viewProject": "Ver Proyecto"
+    }
+  },
+  "hostingDeployments": {
+    "title": "Todos los Despliegues",
+    "subtitle": "Ver historial de despliegues de todos tus proyectos",
+    "newDeployment": "Nuevo Despliegue",
+    "visit": "Visitar",
+    "viewLogs": "Ver Logs",
+    "by": "por",
+    "builtIn": "Construido en",
+    "unknown": "desconocido",
+    "noCommitMessage": "Sin mensaje de commit",
+    "noDeployments": {
+      "title": "Aún no hay despliegues",
+      "description": "Despliega tu primera versión para comenzar."
+    },
+    "noProjects": {
+      "title": "No se encontraron proyectos",
+      "description": "Crea tu primer proyecto para comenzar a desplegar.",
+      "createProject": "Crear Proyecto"
+    }
+  },
+  "hosting": {
+    "title": "Proyectos de Hosting",
+    "subtitle": "Gestiona tus aplicaciones desplegadas",
+    "viewPackages": "Ver Paquetes",
+    "newProject": "Nuevo Proyecto",
+    "allProjects": "Todos los Proyectos",
+    "projectStatus": {
+      "ready": "Listo",
+      "building": "Construyendo",
+      "error": "Error"
+    },
+    "domains": "Dominios",
+    "repository": "Repositorio",
+    "viewProject": "Ver proyecto →",
+    "createProject": "Crear Proyecto",
+    "deployments": "Despliegues",
+    "settings": "Configuración",
+    "quickActions": {
+      "title": "Acciones Rápidas",
+      "deploy": {
+        "title": "Desplegar Nuevo Proyecto",
+        "description": "Conecta un repositorio Git y despliega"
+      },
+      "packages": {
+        "title": "Gestionar Paquetes",
+        "description": "Ver y actualizar planes de hosting"
+      },
+      "deployments": {
+        "title": "Despliegues Recientes",
+        "description": "Ver historial de despliegues"
+      }
+    },
+    "empty": {
+      "title": "Aún no hay proyectos",
+      "subtitle": "Despliega tu primer proyecto para comenzar"
+    }
+  },
+  "support": {
+    "title": "Tickets de Soporte",
+    "subtitle": "Obtén ayuda de nuestro equipo de soporte",
+    "packages": "Paquetes",
+    "newTicket": "Nuevo Ticket",
+    "createTicket": "Crear Ticket",
+    "packageInfo": {
+      "responseTime": "Tiempo de Respuesta: {{time}} minutos",
+      "monthlyUsage": "Uso Mensual: {{used}}/{{total}} tickets",
+      "supportHours": "Horas de Soporte: {{hours}} horas",
+      "supportLevel": "Nivel de Soporte"
+    },
+    "search": {
+      "placeholder": "Buscar tickets..."
+    },
+    "filters": {
+      "all": "Todos",
+      "open": "Abierto",
+      "inProgress": "En Progreso",
+      "waiting": "Esperando",
+      "resolved": "Resuelto"
+    },
+    "priority": {
+      "urgent": "prioridad urgente",
+      "high": "prioridad alta",
+      "normal": "prioridad normal",
+      "low": "prioridad baja"
+    },
+    "status": {
+      "open": "abierto",
+      "in_progress": "en progreso",
+      "waiting_customer": "esperando cliente",
+      "resolved": "resuelto",
+      "closed": "cerrado"
+    },
+    "ticket": {
+      "created": "Creado {{time}}",
+      "lastResponse": "Última respuesta {{time}}",
+      "domains": "Dominios:",
+      "hostingPackages": "Paquetes de hosting: {{count}}",
+      "assigned": "Asignado",
+      "view": "Ver →"
+    },
+    "noResults": {
+      "title": "No se encontraron tickets",
+      "subtitle": "Intenta ajustar tu búsqueda o filtros"
+    },
+    "empty": {
+      "title": "Aún no hay tickets de soporte",
+      "subtitle": "¿Necesitas ayuda? Crea tu primer ticket de soporte"
+    }
+  },
+  "supportDetail": {
+    "notFound": {
+      "title": "Ticket No Encontrado",
+      "message": "El ticket de soporte solicitado no se pudo encontrar."
+    },
+    "ticketInfo": {
+      "status": "Estado",
+      "priority": "Prioridad",
+      "category": "Categoría",
+      "created": "Creado",
+      "relatedResources": "Recursos Relacionados"
+    },
+    "conversation": {
+      "title": "Conversación",
+      "supportTeam": "Equipo de Soporte"
+    },
+    "reply": {
+      "label": "Agregar una respuesta",
+      "placeholder": "Escribe tu mensaje aquí...",
+      "attachFile": "Adjuntar archivo",
+      "sending": "Enviando...",
+      "sendReply": "Enviar Respuesta",
+      "fileSize": "KB"
+    }
+  },
+  "supportPackages": {
+    "title": "Paquetes de Soporte",
+    "loading": "Cargando...",
+    "yourPackages": "Tus Paquetes de Soporte",
+    "usedFor": "Usado para",
+    "billingType": "Tipo de Facturación",
+    "oneTimePayment": "Pago único",
+    "price": "Precio",
+    "purchaseDate": "Fecha de Compra",
+    "completionDate": "Fecha de Finalización",
+    "packageFeatures": "Características del Paquete",
+    "oneOff": "único",
+    "completed": "Completado",
+    "noPackages": "Aún no se han comprado paquetes de soporte.",
+    "availablePackages": "Paquetes Disponibles",
+    "availableDescription": "Obtén asistencia profesional de implementación para tu próximo proyecto",
+    "recentlyPurchased": "Comprado Recientemente",
+    "keyFeatures": "Características Clave",
+    "moreFeatures": "más características",
+    "buyNow": "Comprar Ahora"
+  },
+  "newSupportTicket": {
+    "title": "Crear Ticket de Soporte",
+    "subtitle": "Obtén ayuda de nuestro equipo de soporte",
+    "form": {
+      "subject": "Asunto",
+      "subjectRequired": "Asunto *",
+      "subjectPlaceholder": "Breve descripción de tu problema",
+      "category": "Categoría",
+      "categoryRequired": "Categoría *",
+      "priority": "Prioridad",
+      "priorityRequired": "Prioridad *",
+      "relatedDomains": "Dominios Relacionados",
+      "relatedDomainsPlaceholder": "ejemplo.com, otro-dominio.com (separados por comas)",
+      "description": "Descripción",
+      "descriptionRequired": "Descripción *",
+      "descriptionPlaceholder": "Por favor proporciona información detallada sobre tu problema, incluyendo mensajes de error, pasos para reproducir y lo que ya has intentado...",
+      "cancel": "Cancelar",
+      "creating": "Creando...",
+      "createTicket": "Crear Ticket"
+    },
+    "categories": {
+      "technical": "Soporte Técnico",
+      "billing": "Facturación y Cuenta",
+      "migration": "Migración de Sitio",
+      "general": "Pregunta General"
+    },
+    "priorities": {
+      "low": "Baja",
+      "normal": "Normal",
+      "high": "Alta",
+      "urgent": "Urgente"
+    }
+  },
+  "profile": {
+    "title": "Configuración del Perfil",
+    "subtitle": "Gestiona la configuración y preferencias de tu cuenta",
+    "tabs": {
+      "profile": "Perfil",
+      "billing": "Facturación",
+      "notifications": "Notificaciones",
+      "security": "Seguridad"
+    },
+    "personalInfo": {
+      "title": "Información Personal",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Dirección de Email",
+      "emailNote": "El email no se puede cambiar. Contacta soporte si es necesario.",
+      "company": "Empresa",
+      "phone": "Número de Teléfono",
+      "timezone": "Zona Horaria",
+      "language": "Idioma"
+    },
+    "billing": {
+      "title": "Información de Facturación",
+      "street": "Dirección",
+      "city": "Ciudad",
+      "state": "Estado/Provincia",
+      "zipCode": "Código Postal",
+      "country": "País",
+      "loading": "Cargando..."
+    },
+    "notifications": {
+      "title": "Preferencias de Notificación",
+      "domainExpiry": {
+        "title": "Recordatorios de Expiración de Dominio",
+        "description": "Recibe notificaciones cuando tus dominios estén por expirar"
+      },
+      "deployments": {
+        "title": "Notificaciones de Despliegue",
+        "description": "Recibe notificaciones sobre despliegues exitosos y fallidos"
+      },
+      "supportTickets": {
+        "title": "Actualizaciones de Tickets de Soporte",
+        "description": "Recibe notificaciones sobre actualizaciones de tus tickets de soporte"
+      },
+      "marketing": {
+        "title": "Emails de Marketing",
+        "description": "Recibe actualizaciones de productos y emails promocionales"
+      },
+      "savePreferences": "Guardar Preferencias"
+    },
+    "security": {
+      "title": "Configuración de Seguridad",
+      "changePassword": {
+        "title": "Cambiar Contraseña",
+        "button": "Cambiar Contraseña"
+      },
+      "twoFactor": {
+        "title": "Autenticación de Dos Factores",
+        "description": "Añade una capa extra de seguridad a tu cuenta",
+        "enable": "Habilitar 2FA",
+        "disable": "Deshabilitar 2FA"
+      },
+      "deleteAccount": {
+        "title": "Eliminación de Cuenta",
+        "description": "Elimina permanentemente tu cuenta y todos los datos asociados",
+        "button": "Eliminar Cuenta"
+      }
+    },
+    "timezones": {
+      "utc": "UTC",
+      "eastern": "Hora del Este",
+      "central": "Hora Central",
+      "mountain": "Hora de la Montaña",
+      "pacific": "Hora del Pacífico",
+      "london": "Londres",
+      "paris": "París",
+      "berlin": "Berlín"
+    },
+    "languages": {
+      "en": "Inglés",
+      "es": "Español",
+      "fr": "Francés",
+      "de": "Alemán",
+      "pl": "Polaco"
+    },
+    "saveChanges": "Guardar Cambios",
+    "saving": "Guardando..."
+  },
+  "purchaseHistory": {
+    "title": "Historial de Compras",
+    "subtitle": "Ver todas tus transacciones y compras",
+    "totalSpent": "Total Gastado",
+    "summary": {
+      "domains": "Dominios",
+      "hostingPlans": "Planes de Hosting",
+      "supportPackages": "Paquetes de Soporte"
+    },
+    "transactionHistory": "Historial de Transacciones",
+    "items": {
+      "domainRegistration": "Registro de Dominio: {{domain}}",
+      "hostingPlan": "Plan de Hosting: {{plan}}",
+      "supportPackage": "Paquete de Soporte: {{package}}",
+      "yearRegistration": "Registro de {{years}} años",
+      "annualPlan": "Plan de hosting anual",
+      "monthlyPlan": "Plan de hosting mensual",
+      "onetimeSupport": "Soporte único para {{domain}}"
+    },
+    "status": {
+      "completed": "completado",
+      "pending": "pendiente",
+      "cancelled": "cancelado"
+    },
+    "types": {
+      "domain": "Dominio",
+      "hosting": "Hosting",
+      "support": "Soporte"
+    },
+    "dates": {
+      "completed": "Completado el {{date}}"
+    },
+    "empty": {
+      "title": "Aún no hay compras",
+      "subtitle": "Tu historial de compras aparecerá aquí cuando hagas tu primera transacción."
+    }
+  },
+  "sidebar": {
+    "dashboard": "Panel",
+    "profile": "Perfil",
+    "purchaseHistory": "Historial de Compras",
+    "domains": "Dominios",
+    "allDomains": "Todos los Dominios",
+    "searchBuy": "Buscar y Comprar",
+    "hosting": "Hosting",
+    "allProjects": "Todos los Proyectos",
+    "packages": "Paquetes",
+    "support": "Soporte",
+    "tickets": "Tickets",
+    "settings": "Configuración"
+  },
+  "header": {
+    "profileSettings": "Configuración del Perfil",
+    "signOut": "Cerrar sesión",
+    "searchPlaceholder": "Buscar dominios, proyectos, tickets..."
+  }
+}

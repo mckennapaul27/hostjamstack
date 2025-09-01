@@ -4,7 +4,6 @@ import { Menu, Transition } from '@headlessui/react'
 import {
   ArrowRightOnRectangleIcon,
   Bars3Icon,
-  BellIcon,
   ChevronDownIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/outline'
@@ -12,6 +11,7 @@ import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Fragment, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface DashboardHeaderProps {
   onMobileMenuToggle?: () => void
@@ -23,6 +23,7 @@ export default function DashboardHeader({
   const { data: session } = useSession()
   const pathname = usePathname()
   const [searchQuery, setSearchQuery] = useState('')
+  const { t } = useTranslation('dashboard')
 
   // Extract language from pathname
   const lang = pathname.split('/')[1] || 'en'
@@ -55,7 +56,7 @@ export default function DashboardHeader({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 text-sm focus:border-transparent focus:ring-2 focus:ring-purple-500"
-              placeholder="Search domains, projects, tickets..."
+              placeholder={t('header.searchPlaceholder')}
             />
           </div> */}
         </div>
@@ -63,11 +64,10 @@ export default function DashboardHeader({
         {/* Right side - Notifications and User Menu */}
         <div className="flex items-center space-x-4">
           {/* Notifications */}
-          <button className="relative hidden rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-500 lg:block">
+          {/* <button className="relative hidden rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-500 lg:block">
             <BellIcon className="h-6 w-6" />
-            {/* Notification badge */}
             <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
-          </button>
+          </button> */}
 
           {/* User Menu */}
           <Menu as="div" className="relative">
@@ -115,7 +115,7 @@ export default function DashboardHeader({
                         } group flex items-center px-4 py-2 text-sm text-gray-700`}
                       >
                         <UserCircleIcon className="mr-3 h-4 w-4" />
-                        Profile Settings
+                        {t('header.profileSettings')}
                       </Link>
                     )}
                   </Menu.Item>
@@ -145,7 +145,7 @@ export default function DashboardHeader({
                         } group flex w-full items-center px-4 py-2 text-sm text-gray-700`}
                       >
                         <ArrowRightOnRectangleIcon className="mr-3 h-4 w-4" />
-                        Sign out
+                        {t('header.signOut')}
                       </button>
                     )}
                   </Menu.Item>

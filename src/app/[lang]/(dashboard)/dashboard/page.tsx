@@ -17,6 +17,7 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface DashboardOverview {
   domains: Domain[]
@@ -36,6 +37,7 @@ export default function DashboardPage() {
   const { data: session } = useSession()
   const params = useParams()
   const lang = (params?.lang as string) || 'en'
+  const { t } = useTranslation('dashboard')
 
   const [overview, setOverview] = useState<DashboardOverview | null>(null)
   const [loading, setLoading] = useState(true)
@@ -74,11 +76,9 @@ export default function DashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
-            Welcome back, {session?.user?.firstName}!
+            {t('dashboard.title', { name: session?.user?.firstName })}
           </h1>
-          <p className="text-gray-600">
-            Here&apos;s what&apos;s happening with your account
-          </p>
+          <p className="text-gray-600">{t('dashboard.subtitle')}</p>
         </div>
         <div className="mt-4 flex space-x-3 sm:mt-0">
           <Link
@@ -86,7 +86,7 @@ export default function DashboardPage() {
             className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
           >
             <PlusIcon className="h-4 w-4" />
-            <span>Buy Domain</span>
+            <span>{t('dashboard.buyDomain')}</span>
           </Link>
         </div>
       </div>
@@ -133,7 +133,9 @@ export default function DashboardPage() {
               <GlobeAltIcon className="h-6 w-6 text-purple-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Domains</p>
+              <p className="text-sm font-medium text-gray-600">
+                {t('dashboard.quickStats.domains')}
+              </p>
               <p className="text-2xl font-bold text-gray-900">
                 {overview?.domains.length || 0}
               </p>
@@ -144,7 +146,7 @@ export default function DashboardPage() {
               href={`/${lang}/dashboard/domains`}
               className="text-sm text-purple-600 hover:underline"
             >
-              Manage domains →
+              {t('dashboard.quickStats.manageDomains')}
             </Link>
           </div>
         </div>
@@ -155,8 +157,12 @@ export default function DashboardPage() {
               <ServerIcon className="h-6 w-6 text-green-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Projects</p>
-              <p className="text-2xl font-bold text-gray-900">3</p>
+              <p className="text-sm font-medium text-gray-600">
+                {t('dashboard.quickStats.projects')}
+              </p>
+              <p className="text-2xl font-bold text-gray-900">
+                {demoApiProvider.isDemo(session?.user?.email) ? 2 : 0}
+              </p>
             </div>
           </div>
           <div className="mt-4">
@@ -164,7 +170,7 @@ export default function DashboardPage() {
               href={`/${lang}/dashboard/hosting`}
               className="text-sm text-purple-600 hover:underline"
             >
-              View projects →
+              {t('dashboard.quickStats.viewProjects')}
             </Link>
           </div>
         </div>
@@ -175,8 +181,12 @@ export default function DashboardPage() {
               <ChatBubbleLeftRightIcon className="h-6 w-6 text-purple-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Open Tickets</p>
-              <p className="text-2xl font-bold text-gray-900">1</p>
+              <p className="text-sm font-medium text-gray-600">
+                {t('dashboard.quickStats.openTickets')}
+              </p>
+              <p className="text-2xl font-bold text-gray-900">
+                {demoApiProvider.isDemo(session?.user?.email) ? 0 : 0}
+              </p>
             </div>
           </div>
           <div className="mt-4">
@@ -184,7 +194,7 @@ export default function DashboardPage() {
               href={`/${lang}/dashboard/support`}
               className="text-sm text-purple-600 hover:underline"
             >
-              View tickets →
+              {t('dashboard.quickStats.viewTickets')}
             </Link>
           </div>
         </div>
@@ -195,13 +205,13 @@ export default function DashboardPage() {
         <div className="border-b border-gray-200 px-6 py-4">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900">
-              Your Domains
+              {t('dashboard.yourDomains.title')}
             </h2>
             <Link
               href={`/${lang}/dashboard/domains`}
               className="text-sm text-purple-600 hover:underline"
             >
-              View all
+              {t('dashboard.yourDomains.viewAll')}
             </Link>
           </div>
         </div>
@@ -227,7 +237,8 @@ export default function DashboardPage() {
                         </h3>
                         <div className="flex hidden items-center space-x-4 text-sm text-gray-500 sm:flex">
                           <span>
-                            Expires {formatDate(domain.expirationDate)}
+                            {t('dashboard.yourDomains.expires')}{' '}
+                            {formatDate(domain.expirationDate)}
                           </span>
                           <span
                             className={cn(
@@ -244,14 +255,14 @@ export default function DashboardPage() {
                       {isExpiringSoon && (
                         <span className="flex hidden items-center text-sm text-yellow-600 sm:flex">
                           <ClockIcon className="mr-1 h-4 w-4" />
-                          {daysUntilExpiry} days
+                          {daysUntilExpiry} {t('dashboard.yourDomains.days')}
                         </span>
                       )}
                       <Link
                         href={`/${lang}/dashboard/domains/${domain._id}`}
                         className="text-sm text-purple-600 hover:underline"
                       >
-                        Manage
+                        {t('dashboard.yourDomains.manage')}
                       </Link>
                     </div>
                   </div>
@@ -262,17 +273,19 @@ export default function DashboardPage() {
             <div className="py-8 text-center">
               <GlobeAltIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
               <h3 className="mb-2 text-lg font-medium text-gray-900">
-                No domains yet
+                {t('dashboard.yourDomains.noDomains.title')}
               </h3>
               <p className="mb-4 text-gray-500">
-                Get started by purchasing your first domain
+                {t('dashboard.yourDomains.noDomains.description')}
               </p>
               <Link
                 href={`/${lang}/dashboard/domains/search`}
                 className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
               >
                 <PlusIcon className="h-4 w-4" />
-                <span>Search Domains</span>
+                <span>
+                  {t('dashboard.yourDomains.noDomains.searchDomains')}
+                </span>
               </Link>
             </div>
           )}
@@ -283,7 +296,7 @@ export default function DashboardPage() {
       <div className="rounded-lg border border-gray-200 bg-white">
         <div className="border-b border-gray-200 px-6 py-4">
           <h2 className="text-lg font-semibold text-gray-900">
-            Recent Activity
+            {t('dashboard.recentActivity.title')}
           </h2>
         </div>
         <div className="p-6">
@@ -320,7 +333,9 @@ export default function DashboardPage() {
               ))}
             </div>
           ) : (
-            <p className="py-4 text-center text-gray-500">No recent activity</p>
+            <p className="py-4 text-center text-gray-500">
+              {t('dashboard.recentActivity.noActivity')}
+            </p>
           )}
         </div>
       </div>

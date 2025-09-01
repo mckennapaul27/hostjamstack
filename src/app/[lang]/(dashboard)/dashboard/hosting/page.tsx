@@ -19,11 +19,13 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function HostingPage() {
   const { data: session } = useSession()
   const params = useParams()
   const lang = (params?.lang as string) || 'en'
+  const { t } = useTranslation('dashboard')
 
   const [projects, setProjects] = useState<HostingProject[]>([])
   const [packages, setPackages] = useState<HostingPackage[]>([])
@@ -76,22 +78,24 @@ export default function HostingPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Hosting Projects</h1>
-          <p className="text-gray-600">Manage your deployed applications</p>
+          <h1 className="text-2xl font-bold text-gray-900">
+            {t('hosting.title')}
+          </h1>
+          <p className="text-gray-600">{t('hosting.subtitle')}</p>
         </div>
         <div className="mt-4 flex space-x-3 sm:mt-0">
           <Link
             href={`/${lang}/dashboard/hosting/packages`}
             className="border-bg-gray-950 inline-flex items-center justify-center rounded-full border bg-transparent px-4 py-2 text-base font-medium whitespace-nowrap text-gray-950 shadow-md transition-colors hover:bg-gray-800 hover:text-white"
           >
-            View Packages
+            {t('hosting.viewPackages')}
           </Link>
           <Link
             href={`/${lang}/dashboard/hosting/new`}
             className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
           >
             <PlusIcon className="h-4 w-4" />
-            <span>New Project</span>
+            <span>{t('hosting.newProject')}</span>
           </Link>
         </div>
       </div>
@@ -108,7 +112,7 @@ export default function HostingPage() {
                 : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
             )}
           >
-            All Projects ({projects.length})
+            {t('hosting.allProjects')} ({projects.length})
           </button>
           {packages.map((pkg) => (
             <button
@@ -175,7 +179,7 @@ export default function HostingPage() {
                                   active ? 'bg-gray-100' : ''
                                 } group flex items-center px-4 py-2 text-sm text-gray-700`}
                               >
-                                View Project
+                                {t('hosting.viewProject')}
                               </Link>
                             )}
                           </Menu.Item>
@@ -187,7 +191,7 @@ export default function HostingPage() {
                                   active ? 'bg-gray-100' : ''
                                 } group flex items-center px-4 py-2 text-sm text-gray-700`}
                               >
-                                Deployments
+                                {t('hosting.deployments')}
                               </Link>
                             )}
                           </Menu.Item>
@@ -199,7 +203,7 @@ export default function HostingPage() {
                                   active ? 'bg-gray-100' : ''
                                 } group flex items-center px-4 py-2 text-sm text-gray-700`}
                               >
-                                Settings
+                                {t('hosting.settings')}
                               </Link>
                             )}
                           </Menu.Item>
@@ -227,10 +231,10 @@ export default function HostingPage() {
                     )}
                   >
                     {project.status === 'ready'
-                      ? 'Ready'
+                      ? t('hosting.projectStatus.ready')
                       : project.status === 'building'
-                        ? 'Building'
-                        : 'Error'}
+                        ? t('hosting.projectStatus.building')
+                        : t('hosting.projectStatus.error')}
                   </span>
                   <span className="text-sm text-gray-500">
                     {formatRelativeTime(project.updatedAt)}
@@ -249,7 +253,7 @@ export default function HostingPage() {
                   <div className="mb-4">
                     <div className="mb-2 flex items-center space-x-1 text-sm text-gray-500">
                       <GlobeAltIcon className="h-4 w-4" />
-                      <span>Domains</span>
+                      <span>{t('hosting.domains')}</span>
                     </div>
                     <div className="space-y-1">
                       {project.domains.map((domain, index) => (
@@ -297,7 +301,7 @@ export default function HostingPage() {
                   href={`/${lang}/dashboard/hosting/${project._id}`}
                   className="text-sm text-purple-600 hover:underline"
                 >
-                  View project →
+                  {t('hosting.viewProject')} →
                 </Link>
               </div>
             </div>
@@ -307,17 +311,15 @@ export default function HostingPage() {
         <div className="py-12 text-center">
           <ServerIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
           <h3 className="mb-2 text-lg font-medium text-gray-900">
-            No projects yet
+            {t('hosting.empty.title')}
           </h3>
-          <p className="mb-4 text-gray-500">
-            Deploy your first project to get started
-          </p>
+          <p className="mb-4 text-gray-500">{t('hosting.empty.subtitle')}</p>
           <Link
             href={`/${lang}/dashboard/hosting/new`}
             className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
           >
             <PlusIcon className="h-4 w-4" />
-            <span>Create Project</span>
+            <span>{t('hosting.createProject')}</span>
           </Link>
         </div>
       )}
@@ -325,7 +327,7 @@ export default function HostingPage() {
       {/* Quick Actions */}
       <div className="rounded-lg border border-gray-200 bg-white p-6">
         <h2 className="mb-4 text-lg font-semibold text-gray-900">
-          Quick Actions
+          {t('hosting.quickActions.title')}
         </h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <Link
@@ -334,10 +336,10 @@ export default function HostingPage() {
           >
             <PlusIcon className="mb-2 h-6 w-6 text-purple-600" />
             <h3 className="mb-1 font-medium text-gray-900">
-              Deploy New Project
+              {t('hosting.quickActions.deploy.title')}
             </h3>
             <p className="text-sm text-gray-500">
-              Connect a Git repository and deploy
+              {t('hosting.quickActions.deploy.description')}
             </p>
           </Link>
 
@@ -346,9 +348,11 @@ export default function HostingPage() {
             className="rounded-lg border border-gray-200 p-4 transition-colors hover:border-purple-300"
           >
             <ServerIcon className="mb-2 h-6 w-6 text-green-600" />
-            <h3 className="mb-1 font-medium text-gray-900">Manage Packages</h3>
+            <h3 className="mb-1 font-medium text-gray-900">
+              {t('hosting.quickActions.packages.title')}
+            </h3>
             <p className="text-sm text-gray-500">
-              View and upgrade hosting plans
+              {t('hosting.quickActions.packages.description')}
             </p>
           </Link>
 
@@ -358,9 +362,11 @@ export default function HostingPage() {
           >
             <ClockIcon className="mb-2 h-6 w-6 text-purple-600" />
             <h3 className="mb-1 font-medium text-gray-900">
-              Recent Deployments
+              {t('hosting.quickActions.deployments.title')}
             </h3>
-            <p className="text-sm text-gray-500">View deployment history</p>
+            <p className="text-sm text-gray-500">
+              {t('hosting.quickActions.deployments.description')}
+            </p>
           </Link>
         </div>
       </div>

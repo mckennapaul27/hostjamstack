@@ -1,7 +1,10 @@
 'use client'
 
+import type { PurchasedSupportPackage } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
 import { formatCurrency } from '@/lib/utils'
 import { CheckIcon, ClockIcon } from '@heroicons/react/24/outline'
+import { useSession } from 'next-auth/react'
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -35,27 +38,45 @@ const tiers = [
   },
 ]
 
-// Mock purchased package data for demonstration
-const purchasedPackage = {
-  name: 'Quick Fix',
-  slug: 'quickFix',
-  price: 25,
-  purchaseDate: '2024-01-10',
-  completionDate: '2024-01-12',
-  status: 'completed',
-  deliveryTime: '1-3 business days',
-}
-
 function SupportPackagesContent() {
+  const { data: session } = useSession()
   const [mounted, setMounted] = useState(false)
+  const [supportPackages, setSupportPackages] = useState<
+    PurchasedSupportPackage[]
+  >([])
+  const [loading, setLoading] = useState(true)
   const params = useParams()
   const router = useRouter()
   const lang = (params?.lang as string) || 'en'
-  const { t, ready } = useTranslation(['support-packages', 'common'])
+  const { t, ready } = useTranslation([
+    'dashboard',
+    'support-packages',
+    'common',
+  ])
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    const fetchSupportPackages = async () => {
+      if (!session?.rawJwt) return
+
+      try {
+        const data = await demoApiProvider.getPurchasedSupportPackages(
+          session.rawJwt,
+          session.user?.email,
+        )
+        setSupportPackages(data)
+      } catch (error) {
+        console.error('Failed to fetch support packages:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchSupportPackages()
+  }, [session?.rawJwt, session?.user?.email])
 
   const handlePurchase = (packageSlug: string) => {
     router.push(`/${lang}/dashboard/support/checkout?package=${packageSlug}`)
@@ -68,8 +89,12 @@ function SupportPackagesContent() {
     return (
       <div className="space-y-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Support Packages</h1>
-          <p className="text-gray-600">Loading...</p>
+          <h1 className="text-2xl font-bold text-gray-900">
+            {t('dashboard:supportPackages.title')}
+          </h1>
+          <p className="text-gray-600">
+            {t('dashboard:supportPackages.loading')}
+          </p>
         </div>
         <div className="animate-pulse">
           <div className="rounded-lg border border-gray-200 bg-white p-6">
@@ -87,7 +112,7 @@ function SupportPackagesContent() {
       {/* Page Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">
-          {t('support-packages:header.title', 'Support Packages')}
+          {t('dashboard:supportPackages.title')}
         </h1>
         <p className="text-gray-600">
           {t(
@@ -97,129 +122,139 @@ function SupportPackagesContent() {
         </p>
       </div>
 
-      {/* Current Package Section */}
-      <div className="rounded-lg border border-gray-200 bg-white p-6">
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">
-            Recent Purchase
-          </h2>
-          <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
-            <CheckIcon className="mr-1 h-4 w-4" />
-            Completed
-          </span>
-        </div>
+      {/* Purchased Support Packages */}
+      <div className="space-y-6">
+        <h2 className="text-lg font-semibold text-gray-900">
+          {t('dashboard:supportPackages.yourPackages')}
+        </h2>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <div className="lg:col-span-2">
-            <div className="mb-4">
-              <h3 className="text-xl font-semibold text-gray-900">
-                {purchasedPackage.name} Package
-              </h3>
-              <p className="text-gray-600">
-                {t(
-                  `support-packages:tiers.${purchasedPackage.slug}.description`,
-                )}
-              </p>
-            </div>
+        {supportPackages.length > 0 ? (
+          <div className="space-y-4">
+            {supportPackages.map((supportPackage) => (
+              <div
+                key={supportPackage._id}
+                className="rounded-lg border border-gray-200 bg-white p-6"
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {supportPackage.packageName}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {t('dashboard:supportPackages.usedFor')}{' '}
+                      {supportPackage.domainName}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
+                    <CheckIcon className="mr-1 h-4 w-4" />
+                    {supportPackage.status}
+                  </span>
+                </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <dt className="text-sm font-medium text-gray-500">
-                  {t('support-packages:checkout.billing.type', 'Billing Type')}
-                </dt>
-                <dd className="text-sm text-gray-900">
-                  {t(
-                    'support-packages:checkout.billing.oneTime',
-                    'One-time payment',
-                  )}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm font-medium text-gray-500">
-                  {t('support-packages:checkout.price', 'Price')}
-                </dt>
-                <dd className="text-sm text-gray-900">
-                  {formatPrice(purchasedPackage.price)}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm font-medium text-gray-500">
-                  Purchase Date
-                </dt>
-                <dd className="text-sm text-gray-900">
-                  {new Date(purchasedPackage.purchaseDate).toLocaleDateString()}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm font-medium text-gray-500">
-                  Completion Date
-                </dt>
-                <dd className="text-sm text-gray-900">
-                  {new Date(
-                    purchasedPackage.completionDate,
-                  ).toLocaleDateString()}
-                </dd>
-              </div>
-            </div>
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                  <div className="lg:col-span-2">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">
+                          {t('dashboard:supportPackages.billingType')}
+                        </dt>
+                        <dd className="text-sm text-gray-900">
+                          {t('dashboard:supportPackages.oneTimePayment')}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">
+                          {t('dashboard:supportPackages.price')}
+                        </dt>
+                        <dd className="text-sm text-gray-900">
+                          €{supportPackage.price.toFixed(2)}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">
+                          {t('dashboard:supportPackages.purchaseDate')}
+                        </dt>
+                        <dd className="text-sm text-gray-900">
+                          {new Date(
+                            supportPackage.purchaseDate,
+                          ).toLocaleDateString()}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">
+                          {t('dashboard:supportPackages.completionDate')}
+                        </dt>
+                        <dd className="text-sm text-gray-900">
+                          {new Date(
+                            supportPackage.completionDate,
+                          ).toLocaleDateString()}
+                        </dd>
+                      </div>
+                    </div>
 
-            {/* Package Features */}
-            <div className="mt-6">
-              <h4 className="mb-3 text-sm font-medium text-gray-900">
-                {t('support-packages:checkout.features', "What's included")}
-              </h4>
-              <ul className="space-y-2">
-                {(
-                  (t(
-                    `support-packages:tiers.${purchasedPackage.slug}.highlights`,
-                    {
-                      returnObjects: true,
-                    },
-                  ) as string[]) || []
-                )
-                  .slice(0, 4)
-                  .map((feature: string, index: number) => (
-                    <li key={index} className="flex items-start">
-                      <CheckIcon className="mt-0.5 mr-2 h-4 w-4 text-green-500" />
-                      <span className="text-sm text-gray-600">{feature}</span>
-                    </li>
-                  ))}
-              </ul>
-            </div>
+                    {/* Package Features */}
+                    <div className="mt-6">
+                      <h4 className="mb-3 text-sm font-medium text-gray-900">
+                        {t('dashboard:supportPackages.packageFeatures')}
+                      </h4>
+                      <ul className="space-y-2">
+                        {supportPackage.features.map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <CheckIcon className="mt-0.5 mr-2 h-4 w-4 text-green-500" />
+                            <span className="text-sm text-gray-600">
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg bg-gray-50 p-4">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-gray-900">
+                        €{supportPackage.price.toFixed(2)}
+                        <span className="text-sm font-normal text-gray-500">
+                          {' '}
+                          {t('dashboard:supportPackages.oneOff')}
+                        </span>
+                      </div>
+                      <div className="mt-4 flex items-center justify-center text-sm text-gray-600">
+                        <ClockIcon className="mr-1 h-4 w-4" />
+                        {t('dashboard:supportPackages.completed')}{' '}
+                        {new Date(
+                          supportPackage.completionDate,
+                        ).toLocaleDateString()}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div className="rounded-lg bg-gray-50 p-4">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gray-900">
-                {formatPrice(purchasedPackage.price)}
-                <span className="text-sm font-normal text-gray-500">
-                  {' '}
-                  {t('support-packages:ui.oneOff', 'one-off')}
-                </span>
-              </div>
-              <div className="mt-4 flex items-center justify-center text-sm text-gray-600">
-                <ClockIcon className="mr-1 h-4 w-4" />
-                Completed{' '}
-                {new Date(purchasedPackage.completionDate).toLocaleDateString()}
-              </div>
-            </div>
+        ) : (
+          <div className="rounded-lg border border-gray-200 bg-white p-8 text-center">
+            <p className="text-gray-500">
+              {t('dashboard:supportPackages.noPackages')}
+            </p>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Available Packages Section */}
       <div className="rounded-lg border border-gray-200 bg-white p-6">
         <div className="mb-6">
           <h2 className="text-lg font-semibold text-gray-900">
-            Available Packages
+            {t('dashboard:supportPackages.availablePackages')}
           </h2>
           <p className="text-gray-600">
-            Get professional deployment assistance for your next project
+            {t('dashboard:supportPackages.availableDescription')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {tiers.map((tier) => {
-            const isRecent = tier.slug === purchasedPackage.slug
+            const isRecent = false // Demo mode
 
             return (
               <div
@@ -233,7 +268,7 @@ function SupportPackagesContent() {
                 {isRecent && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="inline-flex items-center rounded-full bg-green-500 px-3 py-1 text-xs font-medium text-white">
-                      Recently Purchased
+                      {t('dashboard:supportPackages.recentlyPurchased')}
                     </span>
                   </div>
                 )}
@@ -262,7 +297,7 @@ function SupportPackagesContent() {
                         disabled
                         className="w-full cursor-not-allowed rounded-lg bg-green-500 px-4 py-2 text-white"
                       >
-                        Recently Purchased
+                        {t('dashboard:supportPackages.recentlyPurchased')}
                       </button>
                     ) : (
                       <button
@@ -280,7 +315,7 @@ function SupportPackagesContent() {
                   {/* Features Preview */}
                   <div className="mt-6 text-left">
                     <h4 className="mb-3 text-sm font-medium text-gray-900">
-                      Key Features
+                      {t('dashboard:supportPackages.keyFeatures')}
                     </h4>
                     <ul className="space-y-1">
                       {(
@@ -313,7 +348,7 @@ function SupportPackagesContent() {
                               },
                             ) as string[]) || []
                           ).length - 3}{' '}
-                          more features
+                          {t('dashboard:supportPackages.moreFeatures')}
                         </li>
                       )}
                     </ul>

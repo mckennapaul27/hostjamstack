@@ -1,0 +1,790 @@
+{
+  "dashboard": {
+    "title": "Welcome back, {{name}}!",
+    "subtitle": "Here's what's happening with your account",
+    "buyDomain": "Buy Domain",
+    "quickStats": {
+      "domains": "Domains",
+      "projects": "Projects",
+      "openTickets": "Open Tickets",
+      "manageDomains": "Manage domains →",
+      "viewProjects": "View projects →",
+      "viewTickets": "View tickets →"
+    },
+    "yourDomains": {
+      "title": "Your Domains",
+      "viewAll": "View all",
+      "expires": "Expires",
+      "days": "days",
+      "manage": "Manage",
+      "noDomains": {
+        "title": "No domains yet",
+        "description": "Get started by purchasing your first domain",
+        "searchDomains": "Search Domains"
+      }
+    },
+    "recentActivity": {
+      "title": "Recent Activity",
+      "noActivity": "No recent activity"
+    }
+  },
+  "domains": {
+    "title": "Domains",
+    "subtitle": "Manage your domain portfolio",
+    "searchBuy": "Search & Buy",
+    "expiringAlert": {
+      "single": "{{count}} domain expiring soon",
+      "multiple": "{{count}} domains expiring soon",
+      "renewMessage": "{{domains}} - Consider renewing to avoid losing your domain",
+      "renewMessageMultiple": "{{domains}} - Consider renewing to avoid losing your domains"
+    },
+    "search": {
+      "placeholder": "Search domains..."
+    },
+    "filters": {
+      "all": "All",
+      "active": "Active",
+      "pending": "Pending",
+      "expired": "Expired"
+    },
+    "table": {
+      "domain": "Domain",
+      "status": "Status",
+      "expiryDate": "Expiry Date",
+      "autoRenew": "Auto Renew",
+      "price": "Price",
+      "actions": "Actions",
+      "premium": "Premium",
+      "registered": "Registered",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "year": "/year",
+      "manageDomain": "Manage Domain",
+      "dnsSettings": "DNS Settings",
+      "transferSettings": "Transfer Settings"
+    },
+    "card": {
+      "status": "Status:",
+      "expires": "Expires:",
+      "autoRenew": "Auto Renew:",
+      "price": "Price:",
+      "daysShort": "d"
+    },
+    "actions": {
+      "manageDomain": "Manage Domain",
+      "dnsSettings": "DNS Settings",
+      "transferSettings": "Transfer Settings"
+    },
+    "noResults": {
+      "title": "No domains found",
+      "subtitle": "Try adjusting your search or filters"
+    },
+    "empty": {
+      "title": "No domains yet",
+      "subtitle": "Get started by purchasing your first domain",
+      "searchDomains": "Search Domains"
+    }
+  },
+  "domainSearch": {
+    "title": "Search Domains",
+    "subtitle": "Find and register the perfect domain for your project",
+    "form": {
+      "label": "Enter your domain name",
+      "placeholder": "yourdomain",
+      "searchButton": "Search",
+      "searching": "Searching...",
+      "helpText": "Enter a domain name without the extension (e.g., \"mywebsite\" not \"mywebsite.com\")"
+    },
+    "popularExtensions": {
+      "title": "Popular Extensions",
+      "descriptions": {
+        "com": "Most popular choice",
+        "co": "Great for companies",
+        "info": "Perfect for information sites",
+        "org": "Perfect for organizations",
+        "biz": "Great for business",
+        "ai": "Perfect for AI companies"
+      },
+      "premium": "Premium",
+      "perYear": "/year"
+    },
+    "results": {
+      "title": "Search Results for \"{{query}}\"",
+      "available": "Available",
+      "notAvailable": "Not available",
+      "perYear": "per year",
+      "buyNow": "Buy Now",
+      "unavailable": "Unavailable"
+    },
+    "transfer": {
+      "title": "Transfer Existing Domain",
+      "description": "Already own a domain? Transfer it to HostJamstack to manage everything in one place.",
+      "button": "Transfer Domain"
+    }
+  },
+  "domainDetail": {
+    "renewDomain": "Renew Domain",
+    "registered": "Registered",
+    "premiumDomain": "Premium Domain",
+    "notFound": {
+      "title": "Domain Not Found",
+      "message": "The requested domain could not be found."
+    },
+    "expiryWarning": {
+      "title": "Domain expires in {{days}} days",
+      "message": "Renew now to avoid losing your domain"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "dns": "DNS Records",
+      "email": "Email Forwarding",
+      "transfer": "Transfer & Sharing"
+    },
+    "status": {
+      "title": "Domain Status",
+      "status": "Status",
+      "expires": "Expires",
+      "autoRenew": "Auto Renew",
+      "renewalPrice": "Renewal Price",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    },
+    "settings": {
+      "title": "Domain Settings",
+      "autoRenewal": {
+        "title": "Auto Renewal",
+        "description": "Automatically renew this domain before it expires"
+      },
+      "whoisPrivacy": {
+        "title": "WHOIS Privacy",
+        "description": "Hide your personal information from public WHOIS lookups"
+      },
+      "transferLock": {
+        "title": "Transfer Lock",
+        "description": "Prevent unauthorized domain transfers"
+      }
+    },
+    "nameservers": {
+      "title": "Nameservers",
+      "useDefault": {
+        "title": "Use Default Nameservers",
+        "description": "Use HostJamstack's nameservers for easy DNS management"
+      },
+      "nameserver": "Nameserver"
+    },
+    "dns": {
+      "title": "DNS Records",
+      "addRecord": "Add Record",
+      "ttl": "TTL",
+      "active": "Active",
+      "inactive": "Inactive",
+      "empty": {
+        "title": "No DNS Records",
+        "message": "Add DNS records to configure your domain"
+      }
+    },
+    "email": {
+      "title": "Email Forwarding",
+      "addForwarding": "Add Forwarding",
+      "active": "Active",
+      "inactive": "Inactive",
+      "empty": {
+        "title": "No Email Forwarding",
+        "message": "Set up email forwarding for your domain"
+      }
+    },
+    "transfer": {
+      "domain": {
+        "title": "Transfer Domain",
+        "description": "Transfer this domain to another registrar or user",
+        "button": "Initiate Transfer"
+      },
+      "share": {
+        "title": "Share Access",
+        "description": "Grant other users access to manage this domain",
+        "button": "Add User"
+      }
+    }
+  },
+  "hostingDetail": {
+    "repository": "Repository",
+    "deploy": "Deploy",
+    "deploying": "Deploying...",
+    "notFound": {
+      "title": "Project Not Found",
+      "message": "The requested project could not be found."
+    },
+    "productionDeployment": {
+      "title": "Production Deployment",
+      "buildLogs": "Build Logs",
+      "runtimeLogs": "Runtime Logs",
+      "deployment": "Deployment",
+      "domains": "Domains",
+      "status": "Status",
+      "ready": "Ready",
+      "source": "Source",
+      "updateInfo": "To update your Production Deployment, push to the",
+      "branch": "branch"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "deployments": "Deployments",
+      "analytics": "Analytics",
+      "settings": "Settings"
+    },
+    "overview": {
+      "recentDeployments": "Recent Deployments",
+      "quickActions": "Quick Actions",
+      "environmentVariables": "Environment Variables",
+      "variables": "variables",
+      "customDomains": "Custom Domains",
+      "domain": "domain",
+      "domains": "domains",
+      "buildSettings": "Build Settings",
+      "usage": "Usage",
+      "bandwidth": "Bandwidth",
+      "buildTime": "Build Time"
+    },
+    "deployments": {
+      "title": "All Deployments",
+      "allBranches": "All Branches",
+      "main": "main",
+      "allEnvironments": "All Environments",
+      "production": "Production",
+      "preview": "Preview"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "comingSoon": "Analytics Coming Soon",
+      "description": "Track visitors and page views for your deployment"
+    },
+    "settings": {
+      "environmentVariables": {
+        "title": "Environment Variables",
+        "addVariable": "Add Variable",
+        "noVariables": "No Environment Variables",
+        "description": "Add environment variables to configure your project",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "projectConfiguration": {
+        "title": "Project Configuration",
+        "buildCommand": "Build Command",
+        "outputDirectory": "Output Directory",
+        "installCommand": "Install Command",
+        "nodeVersion": "Node Version"
+      }
+    }
+  },
+  "hostingPackages": {
+    "loading": "Loading...",
+    "title": "Hosting Packages",
+    "activePackages": "Your Active Hosting Packages",
+    "noPackages": "No active hosting packages found.",
+    "created": "Created",
+    "active": "Active",
+    "billingCycle": "Billing Cycle",
+    "annual": "Annual",
+    "monthly": "Monthly",
+    "price": "Price",
+    "year": "year",
+    "month": "month",
+    "nextBilling": "Next Billing",
+    "autoRenew": "Auto Renew",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "features": "Features",
+    "per": "per",
+    "renews": "Renews",
+    "storage": "Storage",
+    "bandwidth": "Bandwidth",
+    "usageStats": "Usage Stats"
+  },
+  "newHostingProject": {
+    "title": "Deploy New Project",
+    "subtitle": "Deploy your project from GitHub in minutes",
+    "steps": {
+      "importRepository": "Import Repository",
+      "configure": "Configure",
+      "deploy": "Deploy"
+    },
+    "importRepo": {
+      "title": "Import Git Repository",
+      "github": "GitHub",
+      "githubDescription": "Import from your GitHub repositories",
+      "connectGithub": "Connect GitHub",
+      "repositoryUrl": "Repository URL",
+      "repositoryPlaceholder": "https://github.com/username/repository",
+      "repositoryHelp": "Or paste a repository URL directly",
+      "projectName": "Project Name",
+      "projectNamePlaceholder": "my-awesome-project",
+      "continue": "Continue"
+    },
+    "configure": {
+      "chooseFramework": "Choose Framework",
+      "buildSettings": "Build Settings",
+      "buildCommand": "Build Command",
+      "outputDirectory": "Output Directory",
+      "installCommand": "Install Command",
+      "back": "Back",
+      "deploy": "Deploy"
+    },
+    "frameworks": {
+      "nextjs": "React framework with full-stack capabilities",
+      "react": "JavaScript library for building user interfaces",
+      "vue": "Progressive JavaScript framework",
+      "vite": "Fast build tool for modern web apps",
+      "astro": "Static site generator for content-focused sites",
+      "hugo": "Fast and flexible static site generator",
+      "gatsby": "React-based framework for static sites",
+      "svelte": "Web development framework with great performance"
+    },
+    "deployment": {
+      "title": "Deploying Your Project",
+      "description": "Your project is being deployed. This usually takes 2-5 minutes.",
+      "repositoryCloned": "Repository cloned",
+      "dependenciesInstalled": "Dependencies installed",
+      "buildingProject": "Building project...",
+      "viewProject": "View Project"
+    }
+  },
+  "hostingDeployments": {
+    "title": "All Deployments",
+    "subtitle": "View deployment history across all your projects",
+    "newDeployment": "New Deployment",
+    "visit": "Visit",
+    "viewLogs": "View Logs",
+    "by": "by",
+    "builtIn": "Built in",
+    "unknown": "unknown",
+    "noCommitMessage": "No commit message",
+    "noDeployments": {
+      "title": "No deployments yet",
+      "description": "Deploy your first version to get started."
+    },
+    "noProjects": {
+      "title": "No projects found",
+      "description": "Create your first project to start deploying.",
+      "createProject": "Create Project"
+    }
+  },
+  "hosting": {
+    "title": "Hosting Projects",
+    "subtitle": "Manage your deployed applications",
+    "viewPackages": "View Packages",
+    "newProject": "New Project",
+    "allProjects": "All Projects",
+    "projectStatus": {
+      "ready": "Ready",
+      "building": "Building",
+      "error": "Error"
+    },
+    "domains": "Domains",
+    "repository": "Repository",
+    "viewProject": "View project →",
+    "createProject": "Create Project",
+    "deployments": "Deployments",
+    "settings": "Settings",
+    "quickActions": {
+      "title": "Quick Actions",
+      "deploy": {
+        "title": "Deploy New Project",
+        "description": "Connect a Git repository and deploy"
+      },
+      "packages": {
+        "title": "Manage Packages",
+        "description": "View and upgrade hosting plans"
+      },
+      "deployments": {
+        "title": "Recent Deployments",
+        "description": "View deployment history"
+      }
+    },
+    "empty": {
+      "title": "No projects yet",
+      "subtitle": "Deploy your first project to get started"
+    },
+    "viewProject": "View Project",
+    "deployments": "Deployments",
+    "settings": "Settings"
+  },
+  "support": {
+    "title": "Support Tickets",
+    "subtitle": "Get help from our support team",
+    "packages": "Packages",
+    "newTicket": "New Ticket",
+    "createTicket": "Create Ticket",
+    "packageInfo": {
+      "responseTime": "Response Time: {{time}} minutes",
+      "monthlyUsage": "Monthly Usage: {{used}}/{{total}} tickets",
+      "supportHours": "Support Hours: {{hours}} hours",
+      "supportLevel": "Support Level"
+    },
+    "search": {
+      "placeholder": "Search tickets..."
+    },
+    "filters": {
+      "all": "All",
+      "open": "Open",
+      "inProgress": "In Progress",
+      "waiting": "Waiting",
+      "resolved": "Resolved"
+    },
+    "priority": {
+      "urgent": "urgent priority",
+      "high": "high priority",
+      "normal": "normal priority",
+      "low": "low priority"
+    },
+    "status": {
+      "open": "open",
+      "in_progress": "in progress",
+      "waiting_customer": "waiting customer",
+      "resolved": "resolved",
+      "closed": "closed"
+    },
+    "ticket": {
+      "created": "Created {{time}}",
+      "lastResponse": "Last response {{time}}",
+      "domains": "Domains:",
+      "hostingPackages": "Hosting packages: {{count}}",
+      "assigned": "Assigned",
+      "view": "View →"
+    },
+    "noResults": {
+      "title": "No tickets found",
+      "subtitle": "Try adjusting your search or filters"
+    },
+    "empty": {
+      "title": "No support tickets yet",
+      "subtitle": "Need help? Create your first support ticket"
+    }
+  },
+  "supportDetail": {
+    "notFound": {
+      "title": "Ticket Not Found",
+      "message": "The requested support ticket could not be found."
+    },
+    "ticketInfo": {
+      "status": "Status",
+      "priority": "Priority",
+      "category": "Category",
+      "created": "Created",
+      "relatedResources": "Related Resources"
+    },
+    "conversation": {
+      "title": "Conversation",
+      "supportTeam": "Support Team"
+    },
+    "reply": {
+      "label": "Add a reply",
+      "placeholder": "Type your message here...",
+      "attachFile": "Attach file",
+      "sending": "Sending...",
+      "sendReply": "Send Reply",
+      "fileSize": "KB"
+    }
+  },
+  "supportPackages": {
+    "title": "Support Packages",
+    "loading": "Loading...",
+    "yourPackages": "Your Support Packages",
+    "usedFor": "Used for",
+    "billingType": "Billing Type",
+    "oneTimePayment": "One-time payment",
+    "price": "Price",
+    "purchaseDate": "Purchase Date",
+    "completionDate": "Completion Date",
+    "packageFeatures": "Package Features",
+    "oneOff": "one-off",
+    "completed": "Completed",
+    "noPackages": "No support packages purchased yet.",
+    "availablePackages": "Available Packages",
+    "availableDescription": "Get professional deployment assistance for your next project",
+    "recentlyPurchased": "Recently Purchased",
+    "keyFeatures": "Key Features",
+    "moreFeatures": "more features",
+    "buyNow": "Buy Now"
+  },
+  "newSupportTicket": {
+    "title": "Create Support Ticket",
+    "subtitle": "Get help from our support team",
+    "form": {
+      "subject": "Subject",
+      "subjectRequired": "Subject *",
+      "subjectPlaceholder": "Brief description of your issue",
+      "category": "Category",
+      "categoryRequired": "Category *",
+      "priority": "Priority",
+      "priorityRequired": "Priority *",
+      "relatedDomains": "Related Domains",
+      "relatedDomainsPlaceholder": "example.com, another-domain.com (comma-separated)",
+      "description": "Description",
+      "descriptionRequired": "Description *",
+      "descriptionPlaceholder": "Please provide detailed information about your issue, including any error messages, steps to reproduce, and what you've already tried...",
+      "cancel": "Cancel",
+      "creating": "Creating...",
+      "createTicket": "Create Ticket"
+    },
+    "categories": {
+      "technical": "Technical Support",
+      "billing": "Billing & Account",
+      "migration": "Site Migration",
+      "general": "General Question"
+    },
+    "priorities": {
+      "low": "Low",
+      "normal": "Normal",
+      "high": "High",
+      "urgent": "Urgent"
+    }
+  },
+  "profile": {
+    "title": "Profile Settings",
+    "subtitle": "Manage your account settings and preferences",
+    "tabs": {
+      "profile": "Profile",
+      "billing": "Billing",
+      "notifications": "Notifications",
+      "security": "Security"
+    },
+    "personalInfo": {
+      "title": "Personal Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "emailNote": "Email cannot be changed. Contact support if needed.",
+      "company": "Company",
+      "phone": "Phone Number",
+      "timezone": "Timezone",
+      "language": "Language"
+    },
+    "billing": {
+      "title": "Billing Information",
+      "street": "Street Address",
+      "city": "City",
+      "state": "State/Province",
+      "zipCode": "ZIP/Postal Code",
+      "country": "Country",
+      "loading": "Loading..."
+    },
+    "notifications": {
+      "title": "Notification Preferences",
+      "domainExpiry": {
+        "title": "Domain Expiry Reminders",
+        "description": "Get notified when your domains are about to expire"
+      },
+      "deployments": {
+        "title": "Deployment Notifications",
+        "description": "Get notified about successful and failed deployments"
+      },
+      "supportTickets": {
+        "title": "Support Ticket Updates",
+        "description": "Get notified about updates to your support tickets"
+      },
+      "marketing": {
+        "title": "Marketing Emails",
+        "description": "Receive product updates and promotional emails"
+      },
+      "savePreferences": "Save Preferences"
+    },
+    "security": {
+      "title": "Security Settings",
+      "changePassword": {
+        "title": "Change Password",
+        "button": "Change Password"
+      },
+      "twoFactor": {
+        "title": "Two-Factor Authentication",
+        "description": "Add an extra layer of security to your account",
+        "enable": "Enable 2FA",
+        "disable": "Disable 2FA"
+      },
+      "deleteAccount": {
+        "title": "Account Deletion",
+        "description": "Permanently delete your account and all associated data",
+        "button": "Delete Account"
+      }
+    },
+    "timezones": {
+      "utc": "UTC",
+      "eastern": "Eastern Time",
+      "central": "Central Time",
+      "mountain": "Mountain Time",
+      "pacific": "Pacific Time",
+      "london": "London",
+      "paris": "Paris",
+      "berlin": "Berlin"
+    },
+    "languages": {
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pl": "Polski"
+    },
+    "saveChanges": "Save Changes",
+    "saving": "Saving..."
+  },
+  "purchaseHistory": {
+    "title": "Purchase History",
+    "subtitle": "View all your transactions and purchases",
+    "totalSpent": "Total Spent",
+    "summary": {
+      "domains": "Domains",
+      "hostingPlans": "Hosting Plans",
+      "supportPackages": "Support Packages"
+    },
+    "transactionHistory": "Transaction History",
+    "items": {
+      "domainRegistration": "Domain Registration: {{domain}}",
+      "hostingPlan": "Hosting Plan: {{plan}}",
+      "supportPackage": "Support Package: {{package}}",
+      "yearRegistration": "{{years}} year registration",
+      "annualPlan": "Annual hosting plan",
+      "monthlyPlan": "Monthly hosting plan",
+      "onetimeSupport": "One-time support for {{domain}}"
+    },
+    "status": {
+      "completed": "completed",
+      "pending": "pending",
+      "cancelled": "cancelled"
+    },
+    "types": {
+      "domain": "Domain",
+      "hosting": "Hosting",
+      "support": "Support"
+    },
+    "dates": {
+      "completed": "Completed {{date}}"
+    },
+    "empty": {
+      "title": "No purchases yet",
+      "subtitle": "Your purchase history will appear here when you make your first transaction."
+    }
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "purchaseHistory": "Purchase History",
+    "domains": "Domains",
+    "allDomains": "All Domains",
+    "searchBuy": "Search & Buy",
+    "hosting": "Hosting",
+    "allProjects": "All Projects",
+    "packages": "Packages",
+    "support": "Support",
+    "tickets": "Tickets",
+    "settings": "Settings"
+  },
+  "header": {
+    "profileSettings": "Profile Settings",
+    "signOut": "Sign out",
+    "searchPlaceholder": "Search domains, projects, tickets..."
+  },
+  "domainDetail": {
+    "premiumDomain": "Premium Domain",
+    "renewDomain": "Renew Domain",
+    "expiryWarning": {
+      "title": "Domain expires in {{days}} days",
+      "message": "Renew now to avoid losing your domain"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "dns": "DNS Records",
+      "email": "Email Forwarding",
+      "transfer": "Transfer & Sharing"
+    },
+    "status": {
+      "title": "Domain Status",
+      "status": "Status",
+      "expires": "Expires",
+      "autoRenew": "Auto Renew",
+      "renewalPrice": "Renewal Price",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    },
+    "settings": {
+      "title": "Domain Settings",
+      "autoRenewal": {
+        "title": "Auto Renewal",
+        "description": "Automatically renew this domain before it expires"
+      },
+      "whoisPrivacy": {
+        "title": "WHOIS Privacy",
+        "description": "Hide your personal information from public WHOIS lookups"
+      },
+      "transferLock": {
+        "title": "Transfer Lock",
+        "description": "Prevent unauthorized domain transfers"
+      }
+    },
+    "nameservers": {
+      "title": "Nameservers",
+      "useDefault": {
+        "title": "Use Default Nameservers",
+        "description": "Use HostJamstack's nameservers for easy DNS management"
+      },
+      "nameserver": "Nameserver {{number}}"
+    },
+    "dns": {
+      "title": "DNS Records",
+      "addRecord": "Add Record",
+      "ttl": "TTL: {{seconds}}s",
+      "active": "Active",
+      "inactive": "Inactive",
+      "empty": {
+        "title": "No DNS Records",
+        "message": "Add DNS records to configure your domain"
+      }
+    },
+    "email": {
+      "title": "Email Forwarding",
+      "addForwarding": "Add Forwarding",
+      "active": "Active",
+      "inactive": "Inactive",
+      "empty": {
+        "title": "No Email Forwarding",
+        "message": "Set up email forwarding for your domain"
+      }
+    },
+    "transfer": {
+      "transferDomain": {
+        "title": "Transfer Domain",
+        "description": "Transfer this domain to another registrar or user",
+        "initiate": "Initiate Transfer"
+      },
+      "shareAccess": {
+        "title": "Share Access",
+        "description": "Grant other users access to manage this domain",
+        "addUser": "Add User"
+      }
+    },
+    "notFound": {
+      "title": "Domain Not Found",
+      "message": "The requested domain could not be found."
+    }
+  },
+  "domainSearch": {
+    "title": "Search Domains",
+    "subtitle": "Find and register the perfect domain for your project",
+    "enterDomain": "Enter your domain name",
+    "placeholder": "yourdomain",
+    "search": "Search",
+    "searching": "Searching...",
+    "helpText": "Enter a domain name without the extension (e.g., \"mywebsite\" not \"mywebsite.com\")",
+    "popularExtensions": "Popular Extensions",
+    "searchResults": "Search Results for \"{{query}}\"",
+    "available": "Available",
+    "notAvailable": "Not available",
+    "perYear": "per year",
+    "buyNow": "Buy Now",
+    "unavailable": "Unavailable",
+    "premium": "Premium",
+    "transfer": {
+      "title": "Transfer Existing Domain",
+      "description": "Already own a domain? Transfer it to HostJamstack to manage everything in one place.",
+      "button": "Transfer Domain"
+    }
+  }
+}

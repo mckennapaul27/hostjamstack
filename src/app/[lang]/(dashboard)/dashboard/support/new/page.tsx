@@ -4,12 +4,14 @@ import { createSupportTicket, type SupportTicket } from '@/lib/dashboard-api'
 import { useSession } from 'next-auth/react'
 import { useParams, useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function NewSupportTicketPage() {
   const { data: session } = useSession()
   const router = useRouter()
   const params = useParams()
   const lang = (params?.lang as string) || 'en'
+  const { t } = useTranslation('dashboard')
 
   const [formData, setFormData] = useState({
     subject: '',
@@ -53,9 +55,9 @@ export default function NewSupportTicketPage() {
       {/* Page Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">
-          Create Support Ticket
+          {t('newSupportTicket.title')}
         </h1>
-        <p className="text-gray-600">Get help from our support team</p>
+        <p className="text-gray-600">{t('newSupportTicket.subtitle')}</p>
       </div>
 
       {/* Form */}
@@ -66,7 +68,7 @@ export default function NewSupportTicketPage() {
               htmlFor="subject"
               className="mb-2 block text-sm font-medium text-gray-700"
             >
-              Subject *
+              {t('newSupportTicket.form.subjectRequired')}
             </label>
             <input
               type="text"
@@ -77,7 +79,7 @@ export default function NewSupportTicketPage() {
                 setFormData({ ...formData, subject: e.target.value })
               }
               className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-purple-500"
-              placeholder="Brief description of your issue"
+              placeholder={t('newSupportTicket.form.subjectPlaceholder')}
             />
           </div>
 
@@ -87,7 +89,7 @@ export default function NewSupportTicketPage() {
                 htmlFor="category"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
-                Category *
+                {t('newSupportTicket.form.categoryRequired')}
               </label>
               <select
                 id="category"
@@ -98,10 +100,18 @@ export default function NewSupportTicketPage() {
                 }
                 className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-purple-500"
               >
-                <option value="technical">Technical Support</option>
-                <option value="billing">Billing & Account</option>
-                <option value="migration">Site Migration</option>
-                <option value="general">General Question</option>
+                <option value="technical">
+                  {t('newSupportTicket.categories.technical')}
+                </option>
+                <option value="billing">
+                  {t('newSupportTicket.categories.billing')}
+                </option>
+                <option value="migration">
+                  {t('newSupportTicket.categories.migration')}
+                </option>
+                <option value="general">
+                  {t('newSupportTicket.categories.general')}
+                </option>
               </select>
             </div>
 
@@ -110,7 +120,7 @@ export default function NewSupportTicketPage() {
                 htmlFor="priority"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
-                Priority *
+                {t('newSupportTicket.form.priorityRequired')}
               </label>
               <select
                 id="priority"
@@ -121,10 +131,18 @@ export default function NewSupportTicketPage() {
                 }
                 className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-purple-500"
               >
-                <option value="low">Low</option>
-                <option value="normal">Normal</option>
-                <option value="high">High</option>
-                <option value="urgent">Urgent</option>
+                <option value="low">
+                  {t('newSupportTicket.priorities.low')}
+                </option>
+                <option value="normal">
+                  {t('newSupportTicket.priorities.normal')}
+                </option>
+                <option value="high">
+                  {t('newSupportTicket.priorities.high')}
+                </option>
+                <option value="urgent">
+                  {t('newSupportTicket.priorities.urgent')}
+                </option>
               </select>
             </div>
           </div>
@@ -134,7 +152,7 @@ export default function NewSupportTicketPage() {
               htmlFor="relatedDomains"
               className="mb-2 block text-sm font-medium text-gray-700"
             >
-              Related Domains
+              {t('newSupportTicket.form.relatedDomains')}
             </label>
             <input
               type="text"
@@ -144,7 +162,7 @@ export default function NewSupportTicketPage() {
                 setFormData({ ...formData, relatedDomains: e.target.value })
               }
               className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-purple-500"
-              placeholder="example.com, another-domain.com (comma-separated)"
+              placeholder={t('newSupportTicket.form.relatedDomainsPlaceholder')}
             />
           </div>
 
@@ -153,7 +171,7 @@ export default function NewSupportTicketPage() {
               htmlFor="description"
               className="mb-2 block text-sm font-medium text-gray-700"
             >
-              Description *
+              {t('newSupportTicket.form.descriptionRequired')}
             </label>
             <textarea
               id="description"
@@ -164,7 +182,7 @@ export default function NewSupportTicketPage() {
                 setFormData({ ...formData, description: e.target.value })
               }
               className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-purple-500"
-              placeholder="Please provide detailed information about your issue, including any error messages, steps to reproduce, and what you've already tried..."
+              placeholder={t('newSupportTicket.form.descriptionPlaceholder')}
             />
           </div>
 
@@ -174,14 +192,16 @@ export default function NewSupportTicketPage() {
               onClick={() => router.back()}
               className="rounded-lg border border-gray-300 px-4 py-2 text-gray-700 transition-colors hover:bg-gray-50"
             >
-              Cancel
+              {t('newSupportTicket.form.cancel')}
             </button>
             <button
               type="submit"
               disabled={submitting}
               className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800 disabled:bg-gray-400"
             >
-              {submitting ? 'Creating...' : 'Create Ticket'}
+              {submitting
+                ? t('newSupportTicket.form.creating')
+                : t('newSupportTicket.form.createTicket')}
             </button>
           </div>
         </form>

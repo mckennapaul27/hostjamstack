@@ -38,6 +38,7 @@ export default async function DashboardLayout({
   // Initialize translations with the namespaces needed for dashboard pages
   const { resources } = await initTranslations(lang, [
     'common',
+    'dashboard',
     'domains',
     'payment',
     'pricing',
@@ -49,6 +50,7 @@ export default async function DashboardLayout({
       <TranslationsProvider
         namespaces={[
           'common',
+          'dashboard',
           'domains',
           'payment',
           'pricing',

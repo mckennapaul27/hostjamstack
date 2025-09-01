@@ -16,11 +16,13 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function SupportPage() {
   const { data: session } = useSession()
   const params = useParams()
   const lang = (params?.lang as string) || 'en'
+  const { t } = useTranslation('dashboard')
 
   const [tickets, setTickets] = useState<SupportTicket[]>([])
   const [packages, setPackages] = useState<SupportPackage[]>([])
@@ -121,22 +123,24 @@ export default function SupportPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Support Tickets</h1>
-          <p className="text-gray-600">Get help from our support team</p>
+          <h1 className="text-2xl font-bold text-gray-900">
+            {t('support.title')}
+          </h1>
+          <p className="text-gray-600">{t('support.subtitle')}</p>
         </div>
         <div className="mt-4 flex space-x-3 md:mt-0">
           <Link
             href={`/${lang}/dashboard/support/packages`}
             className="border-bg-gray-950 inline-flex items-center justify-center rounded-full border bg-transparent px-4 py-2 text-base font-medium whitespace-nowrap text-gray-950 shadow-md transition-colors hover:bg-gray-800 hover:text-white"
           >
-            Packages
+            {t('support.packages')}
           </Link>
           <Link
             href={`/${lang}/dashboard/support/new`}
             className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
           >
             <PlusIcon className="h-4 w-4" />
-            <span>New Ticket</span>
+            <span>{t('support.newTicket')}</span>
           </Link>
         </div>
       </div>
@@ -151,20 +155,27 @@ export default function SupportPage() {
               </h3>
               <div className="mt-4 flex flex-col gap-2 space-x-6 text-sm text-gray-600 md:mt-0 md:flex-row md:items-center md:justify-between">
                 <span>
-                  Response Time: {packages[0].responseTimeGuarantee} minutes
+                  {t('support.packageInfo.responseTime', {
+                    time: packages[0].responseTimeGuarantee,
+                  })}
                 </span>
                 <span>
-                  Monthly Usage: {packages[0].currentUsage.ticketsUsed}/
-                  {packages[0].monthlyTickets} tickets
+                  {t('support.packageInfo.monthlyUsage', {
+                    used: packages[0].currentUsage.ticketsUsed,
+                    total: packages[0].monthlyTickets,
+                  })}
                 </span>
                 <span>
-                  Support Hours: {packages[0].currentUsage.hoursUsed.toFixed(1)}{' '}
-                  hours
+                  {t('support.packageInfo.supportHours', {
+                    hours: packages[0].currentUsage.hoursUsed.toFixed(1),
+                  })}
                 </span>
               </div>
             </div>
             <div className="mt-2 text-left md:text-right">
-              <div className="text-sm text-gray-500">Support Level</div>
+              <div className="text-sm text-gray-500">
+                {t('support.packageInfo.supportLevel')}
+              </div>
               <div className="text-lg font-medium text-green-600 capitalize">
                 {packages[0].packageType}
               </div>
@@ -185,27 +196,27 @@ export default function SupportPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 text-sm focus:border-transparent focus:ring-2 focus:ring-purple-500"
-              placeholder="Search tickets..."
+              placeholder={t('support.search.placeholder')}
             />
           </div>
 
           <div className="flex flex-col space-x-2 md:ml-8 md:flex-row">
             {[
-              { key: 'all', label: 'All', count: statusCounts.all },
-              { key: 'open', label: 'Open', count: statusCounts.open },
+              { key: 'all', labelKey: 'all', count: statusCounts.all },
+              { key: 'open', labelKey: 'open', count: statusCounts.open },
               {
                 key: 'in_progress',
-                label: 'In Progress',
+                labelKey: 'inProgress',
                 count: statusCounts.in_progress,
               },
               {
                 key: 'waiting_customer',
-                label: 'Waiting',
+                labelKey: 'waiting',
                 count: statusCounts.waiting_customer,
               },
               {
                 key: 'resolved',
-                label: 'Resolved',
+                labelKey: 'resolved',
                 count: statusCounts.resolved,
               },
             ].map((filter) => (
@@ -219,7 +230,7 @@ export default function SupportPage() {
                     : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
                 )}
               >
-                {filter.label} ({filter.count})
+                {t(`support.filters.${filter.labelKey}`)} ({filter.count})
               </button>
             ))}
           </div>
@@ -258,7 +269,7 @@ export default function SupportPage() {
                       <div className="flex items-center space-x-1">
                         {getPriorityIcon(ticket.priority)}
                         <span className="capitalize">
-                          {ticket.priority} priority
+                          {t(`support.priority.${ticket.priority}`)}
                         </span>
                       </div>
 
@@ -268,19 +279,22 @@ export default function SupportPage() {
                           getStatusColor(ticket.status),
                         )}
                       >
-                        {ticket.status.replace('_', ' ')}
+                        {t(`support.status.${ticket.status}`)}
                       </span>
 
                       <span className="capitalize">{ticket.category}</span>
 
                       <span>
-                        Created {formatRelativeTime(ticket.createdAt)}
+                        {t('support.ticket.created', {
+                          time: formatRelativeTime(ticket.createdAt),
+                        })}
                       </span>
 
                       {ticket.lastResponseAt && (
                         <span>
-                          Last response{' '}
-                          {formatRelativeTime(ticket.lastResponseAt)}
+                          {t('support.ticket.lastResponse', {
+                            time: formatRelativeTime(ticket.lastResponseAt),
+                          })}
                         </span>
                       )}
                     </div>
@@ -291,15 +305,16 @@ export default function SupportPage() {
                       <div className="mt-3 flex items-center space-x-4 text-xs text-gray-500">
                         {ticket.relatedDomains.length > 0 && (
                           <div className="flex items-center space-x-1">
-                            <span>Domains:</span>
+                            <span>{t('support.ticket.domains')}</span>
                             <span>{ticket.relatedDomains.join(', ')}</span>
                           </div>
                         )}
                         {ticket.relatedHostingPackages.length > 0 && (
                           <div className="flex items-center space-x-1">
                             <span>
-                              Hosting packages:{' '}
-                              {ticket.relatedHostingPackages.length}
+                              {t('support.ticket.hostingPackages', {
+                                count: ticket.relatedHostingPackages.length,
+                              })}
                             </span>
                           </div>
                         )}
@@ -311,7 +326,7 @@ export default function SupportPage() {
                     {ticket.assignedTo && (
                       <div className="flex items-center space-x-2 text-sm text-gray-500">
                         <UserCircleIcon className="h-4 w-4" />
-                        <span>Assigned</span>
+                        <span>{t('support.ticket.assigned')}</span>
                       </div>
                     )}
 
@@ -319,7 +334,7 @@ export default function SupportPage() {
                       href={`/${lang}/dashboard/support/${ticket._id}`}
                       className="text-sm text-purple-600 hover:underline"
                     >
-                      View →
+                      {t('support.ticket.view')}
                     </Link>
                   </div>
                 </div>
@@ -331,13 +346,13 @@ export default function SupportPage() {
             <ChatBubbleLeftRightIcon className="mx-auto mb-4 h-12 w-12 text-gray-400" />
             <h3 className="mb-2 text-lg font-medium text-gray-900">
               {searchQuery || filterStatus !== 'all'
-                ? 'No tickets found'
-                : 'No support tickets yet'}
+                ? t('support.noResults.title')
+                : t('support.empty.title')}
             </h3>
             <p className="mb-4 text-gray-500">
               {searchQuery || filterStatus !== 'all'
-                ? 'Try adjusting your search or filters'
-                : 'Need help? Create your first support ticket'}
+                ? t('support.noResults.subtitle')
+                : t('support.empty.subtitle')}
             </p>
             {!searchQuery && filterStatus === 'all' && (
               <Link
@@ -345,7 +360,7 @@ export default function SupportPage() {
                 className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800"
               >
                 <PlusIcon className="h-4 w-4" />
-                <span>Create Ticket</span>
+                <span>{t('support.createTicket')}</span>
               </Link>
             )}
           </div>

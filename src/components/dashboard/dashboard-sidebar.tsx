@@ -6,6 +6,7 @@ import {
   ChatBubbleLeftRightIcon,
   ChevronRightIcon,
   Cog6ToothIcon,
+  CreditCardIcon,
   GlobeAltIcon,
   HomeIcon,
   ServerIcon,
@@ -15,55 +16,68 @@ import {
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Fragment } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface DashboardSidebarProps {
   lang: string
   isOpen?: boolean
   onClose?: () => void
 }
-
-const navigation = [
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getNavigation = (t: any) => [
   {
-    name: 'Dashboard',
+    name: t('sidebar.dashboard'),
     href: '/dashboard',
     icon: HomeIcon,
-    description: 'Overview and quick actions',
+    description: t('dashboard.subtitle'),
   },
   {
-    name: 'Profile',
+    name: t('sidebar.dashboard'),
+    href: '/dashboard',
+    icon: HomeIcon,
+    description: t('dashboard.subtitle'),
+  },
+  {
+    name: t('sidebar.profile'),
     href: '/dashboard/profile',
     icon: UserIcon,
-    description: 'Account settings and preferences',
+    description: t('profile.subtitle'),
   },
   {
-    name: 'Domains',
+    name: t('sidebar.purchaseHistory'),
+    href: '/dashboard/purchase-history',
+    icon: CreditCardIcon,
+    description: t('purchaseHistory.subtitle'),
+  },
+  {
+    name: t('sidebar.domains'),
     href: '/dashboard/domains',
     icon: GlobeAltIcon,
-    description: 'Manage your domains and DNS',
+    description: t('domains.subtitle'),
     submenu: [
-      { name: 'All Domains', href: '/dashboard/domains' },
-      { name: 'Search & Buy', href: '/dashboard/domains/search' },
+      { name: t('sidebar.allDomains'), href: '/dashboard/domains' },
+      { name: t('sidebar.searchBuy'), href: '/dashboard/domains/search' },
     ],
   },
   {
-    name: 'Hosting',
+    name: t('sidebar.hosting'),
     href: '/dashboard/hosting',
     icon: ServerIcon,
-    description: 'Hosting packages and projects',
+    description: t('hosting.subtitle'),
     submenu: [
-      { name: 'All Projects', href: '/dashboard/hosting' },
-      { name: 'Packages', href: '/dashboard/hosting/packages' },
+      { name: t('sidebar.allProjects'), href: '/dashboard/hosting' },
+      { name: t('sidebar.packages'), href: '/dashboard/hosting/packages' },
       // { name: 'Deployments', href: '/dashboard/hosting/deployments' },
     ],
   },
   {
-    name: 'Support',
+    name: t('sidebar.support'),
     href: '/dashboard/support',
     icon: ChatBubbleLeftRightIcon,
-    description: 'Support packages and tickets',
+    description: t('support.subtitle'),
     submenu: [
-      { name: 'Tickets', href: '/dashboard/support' },
-      { name: 'Packages', href: '/dashboard/support/packages' },
+      { name: t('sidebar.tickets'), href: '/dashboard/support' },
+      { name: t('sidebar.packages'), href: '/dashboard/support/packages' },
       // { name: 'New Ticket', href: '/dashboard/support/new' },
     ],
   },
@@ -143,6 +157,8 @@ function SidebarContent({
   onClose?: () => void
 }) {
   const pathname = usePathname()
+  const { t } = useTranslation('dashboard')
+  const navigation = getNavigation(t)
 
   const isActiveRoute = (href: string) => {
     if (href === '/dashboard') {
@@ -182,7 +198,7 @@ function SidebarContent({
             </svg>
           </div>
           <span className="ml-3 text-lg font-semibold text-gray-900">
-            Dashboard
+            {t('sidebar.dashboard')}
           </span>
         </Link>
       </div>
@@ -263,7 +279,7 @@ function SidebarContent({
           )}
         >
           <Cog6ToothIcon className="mr-3 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500" />
-          Settings
+          {t('sidebar.settings')}
         </Link>
       </div>
     </div>

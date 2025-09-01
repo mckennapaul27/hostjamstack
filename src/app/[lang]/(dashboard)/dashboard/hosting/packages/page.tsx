@@ -1,7 +1,10 @@
 'use client'
 
+import type { HostingPackage } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
 import { formatCurrency } from '@/lib/utils'
 import { CheckIcon, ClockIcon } from '@heroicons/react/24/outline'
+import { useSession } from 'next-auth/react'
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -25,29 +28,39 @@ const tiers = [
   },
 ]
 
-// Mock purchased plan data
-const purchasedPlan = {
-  name: 'Growth',
-  slug: 'growth',
-  billingPeriod: 6, // 6 months
-  monthlyPrice: 10,
-  totalPrice: 54, // 6 months with 10% discount
-  purchaseDate: '2024-01-15',
-  expiryDate: '2024-07-15',
-  status: 'active',
-  nextBillingDate: '2024-07-15',
-}
-
 function HostingPackagesContent() {
+  const { data: session } = useSession()
   const [mounted, setMounted] = useState(false)
+  const [hostingPackages, setHostingPackages] = useState<HostingPackage[]>([])
+  const [loading, setLoading] = useState(true)
   const params = useParams()
   const router = useRouter()
   const lang = (params?.lang as string) || 'en'
-  const { t, ready } = useTranslation(['pricing', 'common'])
+  const { t, ready } = useTranslation(['pricing', 'common', 'dashboard'])
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    const fetchHostingPackages = async () => {
+      if (!session?.rawJwt) return
+
+      try {
+        const data = await demoApiProvider.getHostingPackages(
+          session.rawJwt,
+          session.user?.email,
+        )
+        setHostingPackages(data)
+      } catch (error) {
+        console.error('Failed to fetch hosting packages:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchHostingPackages()
+  }, [session?.rawJwt, session?.user?.email])
 
   const handleUpgrade = (planSlug: string) => {
     router.push(`/${lang}/dashboard/hosting/checkout?plan=${planSlug}`)
@@ -99,102 +112,146 @@ function HostingPackagesContent() {
         </p>
       </div>
 
-      {/* Current Plan Section */}
-      <div className="rounded-lg border border-gray-200 bg-white p-6">
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">
-            {t('pricing:hostingPackages.currentPlan', 'Current Plan')}
-          </h2>
-          <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
-            <CheckIcon className="mr-1 h-4 w-4" />
-            {t('pricing:hostingPackages.active', 'Active')}
-          </span>
-        </div>
+      {/* Active Hosting Packages */}
+      <div className="space-y-6">
+        <h2 className="text-lg font-semibold text-gray-900">
+          {t('dashboard:hostingPackages.activePackages')}
+        </h2>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <div className="lg:col-span-2">
-            <div className="mb-4">
-              <h3 className="text-xl font-semibold text-gray-900">
-                {purchasedPlan.name} Plan
-              </h3>
-              <p className="text-gray-600">
-                {t(`pricing:tiers.${purchasedPlan.slug}.description`)}
-              </p>
-            </div>
+        {hostingPackages.length > 0 ? (
+          <div className="space-y-4">
+            {hostingPackages.map((hostingPackage) => (
+              <div
+                key={hostingPackage._id}
+                className="rounded-lg border border-gray-200 bg-white p-6"
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {hostingPackage.packageName}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {t('dashboard:hostingPackages.created')}{' '}
+                      {new Date(hostingPackage.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
+                    <CheckIcon className="mr-1 h-4 w-4" />
+                    {t('dashboard:hostingPackages.active')}
+                  </span>
+                </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <dt className="text-sm font-medium text-gray-500">
-                  {t('pricing:hostingPackages.billingPeriod', 'Billing Period')}
-                </dt>
-                <dd className="text-sm text-gray-900">
-                  {getBillingPeriodText(purchasedPlan.billingPeriod)}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm font-medium text-gray-500">
-                  {t('pricing:hostingPackages.monthlyPrice', 'Monthly Price')}
-                </dt>
-                <dd className="text-sm text-gray-900">
-                  {formatPrice(purchasedPlan.monthlyPrice)}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm font-medium text-gray-500">
-                  {t('pricing:hostingPackages.purchaseDate', 'Purchase Date')}
-                </dt>
-                <dd className="text-sm text-gray-900">
-                  {new Date(purchasedPlan.purchaseDate).toLocaleDateString()}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm font-medium text-gray-500">
-                  {t('pricing:hostingPackages.nextBilling', 'Next Billing')}
-                </dt>
-                <dd className="text-sm text-gray-900">
-                  {new Date(purchasedPlan.nextBillingDate).toLocaleDateString()}
-                </dd>
-              </div>
-            </div>
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                  <div className="lg:col-span-2">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">
+                          {t('dashboard:hostingPackages.billingCycle')}
+                        </dt>
+                        <dd className="text-sm text-gray-900">
+                          {hostingPackage.billingCycle === 'yearly'
+                            ? t('dashboard:hostingPackages.annual')
+                            : t('dashboard:hostingPackages.monthly')}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">
+                          {t('dashboard:hostingPackages.price')}
+                        </dt>
+                        <dd className="text-sm text-gray-900">
+                          €{hostingPackage.price.toFixed(2)}/
+                          {hostingPackage.billingCycle === 'yearly'
+                            ? t('dashboard:hostingPackages.year')
+                            : t('dashboard:hostingPackages.month')}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">
+                          {t('dashboard:hostingPackages.nextBilling')}
+                        </dt>
+                        <dd className="text-sm text-gray-900">
+                          {new Date(
+                            hostingPackage.nextBillingDate,
+                          ).toLocaleDateString()}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">
+                          {t('dashboard:hostingPackages.autoRenew')}
+                        </dt>
+                        <dd className="text-sm text-gray-900">
+                          {hostingPackage.autoRenew
+                            ? t('dashboard:hostingPackages.enabled')
+                            : t('dashboard:hostingPackages.disabled')}
+                        </dd>
+                      </div>
+                    </div>
 
-            {/* Plan Features */}
-            <div className="mt-6">
-              <h4 className="mb-3 text-sm font-medium text-gray-900">
-                {t('pricing:hostingPackages.planFeatures', 'Plan Features')}
-              </h4>
-              <ul className="space-y-2">
-                {(
-                  (t(`pricing:tiers.${purchasedPlan.slug}.highlights`, {
-                    returnObjects: true,
-                  }) as string[]) || []
-                )
-                  .slice(0, 4)
-                  .map((feature: string, index: number) => (
-                    <li key={index} className="flex items-start">
-                      <CheckIcon className="mt-0.5 mr-2 h-4 w-4 text-green-500" />
-                      <span className="text-sm text-gray-600">{feature}</span>
-                    </li>
-                  ))}
-              </ul>
-            </div>
+                    {/* Plan Features */}
+                    <div className="mt-6">
+                      <h4 className="mb-3 text-sm font-medium text-gray-900">
+                        {t('dashboard:hostingPackages.features')}
+                      </h4>
+                      <ul className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                        {hostingPackage.features.map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <CheckIcon className="mt-0.5 mr-2 h-4 w-4 flex-shrink-0 text-green-500" />
+                            <span className="text-sm text-gray-600">
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg bg-gray-50 p-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-gray-900">
+                        €{hostingPackage.price.toFixed(2)}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {t('dashboard:hostingPackages.per')}{' '}
+                        {hostingPackage.billingCycle === 'yearly'
+                          ? t('dashboard:hostingPackages.year')
+                          : t('dashboard:hostingPackages.month')}
+                      </div>
+                      <div className="mt-4 space-y-2">
+                        <div className="flex items-center justify-center text-sm text-gray-600">
+                          <ClockIcon className="mr-1 h-4 w-4" />
+                          {t('dashboard:hostingPackages.renews')}{' '}
+                          {new Date(
+                            hostingPackage.nextBillingDate,
+                          ).toLocaleDateString()}
+                        </div>
+
+                        {/* Usage Stats */}
+                        <div className="space-y-1 pt-2 text-xs text-gray-500">
+                          <div>
+                            {t('dashboard:hostingPackages.storage')}:{' '}
+                            {hostingPackage.currentUsage.storage}GB /{' '}
+                            {hostingPackage.storage}GB
+                          </div>
+                          <div>
+                            {t('dashboard:hostingPackages.bandwidth')}:{' '}
+                            {hostingPackage.currentUsage.bandwidth}GB /{' '}
+                            {hostingPackage.bandwidth}GB
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div className="rounded-lg bg-gray-50 p-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">
-                {formatPrice(purchasedPlan.totalPrice)}
-              </div>
-              <div className="text-sm text-gray-500">
-                for {getBillingPeriodText(purchasedPlan.billingPeriod)}
-              </div>
-              <div className="mt-4 flex items-center justify-center text-sm text-gray-600">
-                <ClockIcon className="mr-1 h-4 w-4" />
-                {t('pricing:hostingPackages.renews', 'Renews')}{' '}
-                {new Date(purchasedPlan.nextBillingDate).toLocaleDateString()}
-              </div>
-            </div>
+        ) : (
+          <div className="rounded-lg border border-gray-200 bg-white p-8 text-center">
+            <p className="text-gray-500">
+              {t('dashboard:hostingPackages.noPackages')}
+            </p>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Available Plans Section */}
@@ -213,9 +270,10 @@ function HostingPackagesContent() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {tiers.map((tier) => {
-            const isCurrentPlan = tier.slug === purchasedPlan.slug
-            const isDowngrade =
-              tier.slug === 'growth' && purchasedPlan.slug !== 'growth'
+            // Check if this tier is already purchased
+            const isCurrentPlan =
+              tier.slug === 'growth' && hostingPackages.length > 0
+            const isDowngrade = false
 
             return (
               <div
@@ -247,7 +305,7 @@ function HostingPackagesContent() {
                       <div className="text-3xl font-bold text-gray-900">
                         {formatPrice(tier.priceMonthly)}
                         <span className="text-sm font-normal text-gray-500">
-                          /month
+                          /{t('dashboard:hostingPackages.month')}
                         </span>
                       </div>
                     ) : (

@@ -13,13 +13,14 @@ import {
 import { useSession } from 'next-auth/react'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function SupportTicketDetailPage() {
   const { data: session } = useSession()
   const params = useParams()
   const ticketId = params?.id as string
   const lang = (params?.lang as string) || 'en'
-  console.log('lang in support/[id] page', lang)
+  const { t } = useTranslation('dashboard')
 
   const [ticket, setTicket] = useState<SupportTicket | null>(null)
   const [messages, setMessages] = useState<SupportMessage[]>([])
@@ -112,11 +113,9 @@ export default function SupportTicketDetailPage() {
     return (
       <div className="py-12 text-center">
         <h1 className="mb-4 text-2xl font-bold text-gray-900">
-          Ticket Not Found
+          {t('supportDetail.notFound.title')}
         </h1>
-        <p className="text-gray-600">
-          The requested support ticket could not be found.
-        </p>
+        <p className="text-gray-600">{t('supportDetail.notFound.message')}</p>
       </div>
     )
   }
@@ -142,19 +141,23 @@ export default function SupportTicketDetailPage() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="mb-1 text-sm text-gray-500">Status</div>
+            <div className="mb-1 text-sm text-gray-500">
+              {t('supportDetail.ticketInfo.status')}
+            </div>
             <span
               className={cn(
                 'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium',
                 getStatusColor(ticket.status),
               )}
             >
-              {ticket.status.replace('_', ' ')}
+              {t(`support.status.${ticket.status}`)}
             </span>
           </div>
 
           <div>
-            <div className="mb-1 text-sm text-gray-500">Priority</div>
+            <div className="mb-1 text-sm text-gray-500">
+              {t('supportDetail.ticketInfo.priority')}
+            </div>
             <span
               className={cn(
                 'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium',
@@ -166,14 +169,18 @@ export default function SupportTicketDetailPage() {
           </div>
 
           <div>
-            <div className="mb-1 text-sm text-gray-500">Category</div>
+            <div className="mb-1 text-sm text-gray-500">
+              {t('supportDetail.ticketInfo.category')}
+            </div>
             <div className="text-sm font-medium text-gray-900 capitalize">
               {ticket.category}
             </div>
           </div>
 
           <div>
-            <div className="mb-1 text-sm text-gray-500">Created</div>
+            <div className="mb-1 text-sm text-gray-500">
+              {t('supportDetail.ticketInfo.created')}
+            </div>
             <div className="text-sm font-medium text-gray-900">
               {formatDate(ticket.createdAt)}
             </div>
@@ -184,7 +191,9 @@ export default function SupportTicketDetailPage() {
         {(ticket.relatedDomains.length > 0 ||
           ticket.relatedHostingPackages.length > 0) && (
           <div className="mt-6 border-t border-gray-200 pt-6">
-            <div className="mb-2 text-sm text-gray-500">Related Resources</div>
+            <div className="mb-2 text-sm text-gray-500">
+              {t('supportDetail.ticketInfo.relatedResources')}
+            </div>
             <div className="flex flex-wrap gap-2">
               {ticket.relatedDomains.map((domain) => (
                 <span
@@ -202,7 +211,9 @@ export default function SupportTicketDetailPage() {
       {/* Messages */}
       <div className="rounded-lg border border-gray-200 bg-white">
         <div className="border-b border-gray-200 px-6 py-4">
-          <h3 className="text-lg font-medium text-gray-900">Conversation</h3>
+          <h3 className="text-lg font-medium text-gray-900">
+            {t('supportDetail.conversation.title')}
+          </h3>
         </div>
 
         <div className="max-h-96 divide-y divide-gray-200 overflow-y-auto">
@@ -228,7 +239,8 @@ export default function SupportTicketDetailPage() {
                     <span className="text-sm font-medium text-gray-900">
                       {message.isFromCustomer
                         ? `${session?.user?.firstName} ${session?.user?.lastName}`
-                        : message.staffInfo?.name || 'Support Team'}
+                        : message.staffInfo?.name ||
+                          t('supportDetail.conversation.supportTeam')}
                     </span>
                     {message.staffInfo && (
                       <span className="text-xs text-gray-500">
@@ -263,7 +275,8 @@ export default function SupportTicketDetailPage() {
                             {attachment.filename}
                           </a>
                           <span className="text-xs text-gray-500">
-                            ({Math.round(attachment.fileSize / 1024)} KB)
+                            ({Math.round(attachment.fileSize / 1024)}{' '}
+                            {t('supportDetail.reply.fileSize')})
                           </span>
                         </div>
                       ))}
@@ -284,7 +297,7 @@ export default function SupportTicketDetailPage() {
                   htmlFor="message"
                   className="mb-2 block text-sm font-medium text-gray-700"
                 >
-                  Add a reply
+                  {t('supportDetail.reply.label')}
                 </label>
                 <textarea
                   id="message"
@@ -292,7 +305,7 @@ export default function SupportTicketDetailPage() {
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-purple-500"
-                  placeholder="Type your message here..."
+                  placeholder={t('supportDetail.reply.placeholder')}
                 />
               </div>
 
@@ -302,7 +315,7 @@ export default function SupportTicketDetailPage() {
                   className="flex items-center space-x-1 text-sm text-gray-600 hover:text-gray-900"
                 >
                   <PaperClipIcon className="h-4 w-4" />
-                  <span>Attach file</span>
+                  <span>{t('supportDetail.reply.attachFile')}</span>
                 </button>
 
                 <button
@@ -311,7 +324,11 @@ export default function SupportTicketDetailPage() {
                   className="inline-flex items-center justify-center rounded-full border border-transparent bg-gray-950 px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-md transition-colors hover:bg-gray-800 disabled:bg-gray-400"
                 >
                   <PaperAirplaneIcon className="h-4 w-4" />
-                  <span>{sending ? 'Sending...' : 'Send Reply'}</span>
+                  <span>
+                    {sending
+                      ? t('supportDetail.reply.sending')
+                      : t('supportDetail.reply.sendReply')}
+                  </span>
                 </button>
               </div>
             </form>

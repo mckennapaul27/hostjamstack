@@ -25,7 +25,9 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
   const { t, i18n } = useTranslation(['common', 'payment'])
   const router = useRouter()
   const searchParams = useSearchParams()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { countries, loading: countriesLoading } = useCountries(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     i18n.language as any,
   )
 

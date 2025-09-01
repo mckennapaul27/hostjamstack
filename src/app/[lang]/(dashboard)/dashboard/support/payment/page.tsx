@@ -22,6 +22,7 @@ function DashboardSupportPaymentContent() {
   const searchParams = useSearchParams()
   const lang = (params?.lang as string) || 'en'
   const { t, ready } = useTranslation(['payment', 'support-packages', 'common'])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { countries, loading: countriesLoading } = useCountries(lang as any)
 
   useEffect(() => {

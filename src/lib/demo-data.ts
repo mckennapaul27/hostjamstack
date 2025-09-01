@@ -4,6 +4,7 @@ import {
   type Domain,
   type HostingPackage,
   type HostingProject,
+  type PurchasedSupportPackage,
   type SupportMessage,
   type SupportPackage,
   type SupportTicket,
@@ -11,7 +12,10 @@ import {
 } from './dashboard-api'
 
 // Demo user credentials
-export const DEMO_USER_EMAIL = 'demo.user@example.com'
+//  demo.user@example.com  > a_johnson2295@gmail.com
+export const DEMO_USER_EMAIL = 'a_johnson2295@gmail.com'
+// email: a_johnson2295@gmail.com
+// password EJd05cTs9zvHw00536
 
 // Helper function to check if user is demo user
 export const isDemoUser = (userEmail?: string): boolean => {
@@ -26,19 +30,19 @@ export const demoUserProfile: UserProfile = {
   lastName: 'Johnson',
   emailVerified: true,
   profile: {
-    company: 'Demo Corp',
-    phone: '+1-555-123-4567',
-    timezone: 'UTC',
+    company: '-',
+    phone: '+447703 231356',
+    timezone: 'Europe/London',
     language: 'en',
   },
   billing: {
     defaultPaymentMethod: 'pm_demo123',
     billingAddress: {
-      street: '123 Demo Street',
-      city: 'Demo City',
-      state: 'DC',
-      zipCode: '12345',
-      country: 'US',
+      street: '137 Bletchingley Road',
+      city: 'Redhill',
+      state: 'Surrey',
+      zipCode: 'RH1 3QQ',
+      country: 'GB',
     },
   },
   isActive: true,
@@ -69,6 +73,18 @@ export const demoDomains: Domain[] = [
     currency: 'EUR',
     whoisPrivacy: true,
     transferLock: true,
+    emailForwarding: [
+      {
+        alias: 'info',
+        forwardTo: 'a_johnson2295@gmail.com',
+        active: true,
+      },
+      {
+        alias: 'contact',
+        forwardTo: 'a_johnson2295@gmail.com',
+        active: true,
+      },
+    ],
     createdAt: '2025-08-08T10:00:00Z',
     updatedAt: '2025-08-08T10:00:00Z',
   },
@@ -91,6 +107,18 @@ export const demoDomains: Domain[] = [
     currency: 'EUR',
     whoisPrivacy: true,
     transferLock: true,
+    emailForwarding: [
+      {
+        alias: 'info',
+        forwardTo: 'a_johnson2295@gmail.com',
+        active: true,
+      },
+      {
+        alias: 'support',
+        forwardTo: 'a_johnson2295@gmail.com',
+        active: true,
+      },
+    ],
     createdAt: '2025-08-15T14:30:00Z',
     updatedAt: '2025-08-15T14:30:00Z',
   },
@@ -156,7 +184,83 @@ export const demoDNSRecords: Record<string, DNSRecord[]> = {
   ],
 }
 
-// Demo Hosting Package
+// Demo Hosting Packages
+export const demoHostingPackages: HostingPackage[] = [
+  {
+    _id: '67f8a2c1b4e9d3f1a2b3c4d7',
+    userId: '67f8a2c1b4e9d3f1a2b3c000',
+    packageName: 'Growth Plan - javaletingdetailing.com',
+    packageType: 'serverless',
+    status: 'active',
+    storage: 100, // GB
+    bandwidth: 1000, // GB
+    databases: 5,
+    emailAccounts: 20,
+    subdomains: 100,
+    features: [
+      'Custom Domain + SSL',
+      'Environment Variables',
+      'Redirects & Rewrites',
+      'Deploy Hooks',
+      'Analytics',
+      'Password Protection',
+    ],
+    price: 96.0, // Annual pricing with 20% discount
+    currency: 'EUR',
+    billingCycle: 'yearly',
+    nextBillingDate: '2026-08-08T10:00:00Z',
+    autoRenew: true,
+    currentUsage: {
+      storage: 1.2,
+      bandwidth: 23.4,
+      databases: 1,
+      emailAccounts: 2,
+    },
+    serverLocation: 'eu-west-1',
+    serverIp: '185.199.108.153',
+    controlPanelUrl: 'https://dashboard.hostjamstack.com',
+    createdAt: '2025-08-08T10:00:00Z',
+    updatedAt: '2025-08-30T14:30:00Z',
+  },
+  {
+    _id: '67f8a2c1b4e9d3f1a2b3c4d8',
+    userId: '67f8a2c1b4e9d3f1a2b3c000',
+    packageName: 'Growth Plan - obrierry.co.uk',
+    packageType: 'serverless',
+    status: 'active',
+    storage: 100, // GB
+    bandwidth: 1000, // GB
+    databases: 5,
+    emailAccounts: 20,
+    subdomains: 100,
+    features: [
+      'Custom Domain + SSL',
+      'Environment Variables',
+      'Redirects & Rewrites',
+      'Deploy Hooks',
+      'Analytics',
+      'Password Protection',
+    ],
+    price: 96.0, // Annual pricing with 20% discount
+    currency: 'EUR',
+    billingCycle: 'yearly',
+    nextBillingDate: '2026-08-15T14:30:00Z',
+    autoRenew: true,
+    currentUsage: {
+      storage: 1.8,
+      bandwidth: 18.7,
+      databases: 1,
+      emailAccounts: 3,
+    },
+    serverLocation: 'eu-west-1',
+    serverIp: '185.199.108.154',
+    controlPanelUrl: 'https://dashboard.hostjamstack.com',
+    createdAt: '2025-08-15T14:30:00Z',
+    updatedAt: '2025-08-28T16:45:00Z',
+  },
+]
+
+// Legacy single package export for backward compatibility
 export const demoHostingPackage: HostingPackage = {
   _id: '67f8a2c1b4e9d3f1a2b3c4d7',
   userId: '67f8a2c1b4e9d3f1a2b3c000',
@@ -201,7 +305,7 @@ export const demoHostingProjects: HostingProject[] = [
     hostingPackageId: '67f8a2c1b4e9d3f1a2b3c4d7',
     userId: '67f8a2c1b4e9d3f1a2b3c000',
     projectName: 'javaletingdetailing-com',
-    displayName: 'Javaleting Detailing',
+    displayName: 'JA Valeting & Detailing',
     description: 'Professional car detailing service website',
     repository: {
       provider: 'github',
@@ -254,11 +358,11 @@ export const demoHostingProjects: HostingProject[] = [
   },
   {
     _id: '67f8a2c1b4e9d3f1a2b3c4d8',
-    hostingPackageId: '67f8a2c1b4e9d3f1a2b3c4d7',
+    hostingPackageId: '67f8a2c1b4e9d3f1a2b3c4d8',
     userId: '67f8a2c1b4e9d3f1a2b3c000',
     projectName: 'obrierry-co-uk',
-    displayName: "O'Brien Berry Farm",
-    description: 'Organic berry farm and e-commerce store',
+    displayName: "O'Brierry Services",
+    description: 'Professional services in security & waste management',
     repository: {
       provider: 'github',
       url: 'https://github.com/alexjohnson/obrierry.co.uk',
@@ -376,7 +480,30 @@ export const demoDeployments: Record<string, Deployment[]> = {
   ],
 }
 
-// Demo Support Package
+// Demo Purchased Support Package (One-time purchase)
+export const demoPurchasedSupportPackage: PurchasedSupportPackage = {
+  _id: '67f8a2c1b4e9d3f1a2b3c4d9',
+  userId: '67f8a2c1b4e9d3f1a2b3c000',
+  packageName: 'Quick Fix',
+  packageType: 'one-time',
+  status: 'completed',
+  domainName: 'obrierry.co.uk',
+  features: [
+    'Connect 1 custom domain + SSL',
+    'Up to 3 env vars',
+    'Up to 3 redirects / rewrites',
+    'One deploy hook',
+    'Production health check',
+  ],
+  price: 25.0,
+  currency: 'EUR',
+  purchaseDate: '2025-08-20T10:00:00Z',
+  completionDate: '2025-08-22T16:30:00Z',
+  createdAt: '2025-08-20T10:00:00Z',
+  updatedAt: '2025-08-22T16:30:00Z',
+}
+
+// Demo Support Package (Ongoing subscription)
 export const demoSupportPackage: SupportPackage = {
   _id: '67f8a2c1b4e9d3f1a2b3c4d9',
   userId: '67f8a2c1b4e9d3f1a2b3c000',
@@ -575,10 +702,10 @@ export const demoDashboardOverview = {
     },
   ],
   alerts: [
-    {
-      type: 'info' as const,
-      message: 'Domain renewals coming up in 11 months',
-      action: 'View domains',
-    },
+    // {
+    //   type: 'info' as const,
+    //   message: 'Domain renewals coming up in 11 months',
+    //   action: 'View domains',
+    // },
   ],
 }

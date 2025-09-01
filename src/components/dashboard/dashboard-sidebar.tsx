@@ -31,12 +31,12 @@ const getNavigation = (t: any) => [
     icon: HomeIcon,
     description: t('dashboard.subtitle'),
   },
-  {
-    name: t('sidebar.dashboard'),
-    href: '/dashboard',
-    icon: HomeIcon,
-    description: t('dashboard.subtitle'),
-  },
+  // {
+  //   name: t('sidebar.dashboard'),
+  //   href: '/dashboard',
+  //   icon: HomeIcon,
+  //   description: t('dashboard.subtitle'),
+  // },
   {
     name: t('sidebar.profile'),
     href: '/dashboard/profile',

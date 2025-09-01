@@ -1,6 +1,7 @@
 'use client'
 
 import { formatCurrency } from '@/lib/utils'
+import { useCountries } from '@/utils/countries'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
@@ -21,6 +22,7 @@ function DashboardSupportPaymentContent() {
   const searchParams = useSearchParams()
   const lang = (params?.lang as string) || 'en'
   const { t, ready } = useTranslation(['payment', 'support-packages', 'common'])
+  const { countries, loading: countriesLoading } = useCountries(lang as any)
 
   useEffect(() => {
     const packageName = searchParams.get('name')
@@ -52,10 +54,40 @@ function DashboardSupportPaymentContent() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate payment processing
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    // Collect form data
+    const formData = new FormData(e.target as HTMLFormElement)
+    const billingData = {
+      firstName: formData.get('firstName'),
+      lastName: formData.get('lastName'),
+      email: formData.get('email'),
+      company: formData.get('company'),
+      address: formData.get('address'),
+      city: formData.get('city'),
+      postalCode: formData.get('postalCode'),
+      country: formData.get('country'),
+      phone: formData.get('phone'),
+      paymentMethod: formData.get('paymentMethod'),
+    }
 
-    router.push(`/${lang}/dashboard/payment/success`)
+    try {
+      // TODO: Replace with actual payment gateway redirect
+      // For now, redirect to external payment gateway (placeholder)
+      const paymentGatewayUrl = 'https://payment.example.com/checkout'
+
+      // In a real implementation, you would:
+      // 1. Send billing data to your backend
+      // 2. Create a payment session
+      // 3. Redirect to the payment provider
+
+      // Simulate redirect delay
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      // For demo purposes, redirect to success page
+      router.push(`/${lang}/dashboard/payment/success`)
+    } catch (error) {
+      console.error('Payment initiation failed:', error)
+      setIsLoading(false)
+    }
   }
 
   if (!ready) {
@@ -248,29 +280,20 @@ function DashboardSupportPaymentContent() {
                         id="country"
                         name="country"
                         required
-                        className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 pr-8 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
+                        disabled={countriesLoading}
+                        className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 pr-8 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none disabled:opacity-50"
                       >
-                        <option value="US">
-                          {t('payment:countries.us', 'United States')}
-                        </option>
-                        <option value="GB">
-                          {t('payment:countries.gb', 'United Kingdom')}
-                        </option>
-                        <option value="DE">
-                          {t('payment:countries.de', 'Germany')}
-                        </option>
-                        <option value="FR">
-                          {t('payment:countries.fr', 'France')}
-                        </option>
-                        <option value="ES">
-                          {t('payment:countries.es', 'Spain')}
-                        </option>
-                        <option value="IT">
-                          {t('payment:countries.it', 'Italy')}
-                        </option>
-                        <option value="PL">
-                          {t('payment:countries.pl', 'Poland')}
-                        </option>
+                        {countriesLoading ? (
+                          <option value="">
+                            {t('common:loading', 'Loading...')}
+                          </option>
+                        ) : (
+                          countries.map((country) => (
+                            <option key={country.code} value={country.code}>
+                              {country.name}
+                            </option>
+                          ))
+                        )}
                       </select>
                       <ChevronDownIcon className="absolute top-1/2 right-2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                     </div>
@@ -301,8 +324,9 @@ function DashboardSupportPaymentContent() {
               </h2>
 
               <div className="space-y-4">
-                <div>
-                  <label className="flex items-center">
+                {/* Credit Card/Debit Card Option */}
+                <div className="rounded-lg border border-gray-200 p-4">
+                  <label className="flex cursor-pointer items-center">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -310,66 +334,70 @@ function DashboardSupportPaymentContent() {
                       defaultChecked
                       className="h-4 w-4 text-purple-600 focus:ring-purple-500"
                     />
-                    <span className="ml-2 text-sm font-medium text-gray-700">
-                      {t('payment:method.creditCard', 'Credit Card')}
+                    <span className="ml-3 text-sm font-medium text-gray-900">
+                      {t('payment:method.card', 'Credit/Debit Card')}
                     </span>
                   </label>
-                </div>
-
-                <div className="grid grid-cols-1 gap-4">
-                  <div>
-                    <label
-                      htmlFor="cardNumber"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      {t('payment:card.number', 'Card number')}
-                    </label>
-                    <input
-                      type="text"
-                      id="cardNumber"
-                      name="cardNumber"
-                      placeholder="1234 5678 9012 3456"
-                      required
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
+                  <div className="mt-3 flex items-center space-x-2">
+                    <img
+                      src="/payment-icons/visa.svg"
+                      alt="Visa"
+                      className="h-6"
+                    />
+                    <img
+                      src="/payment-icons/mastercard.svg"
+                      alt="Mastercard"
+                      className="h-6"
+                    />
+                    <img
+                      src="/payment-icons/apple.svg"
+                      alt="Apple Pay"
+                      className="h-6"
                     />
                   </div>
+                </div>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="expiryDate"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        {t(
-                          'payment:card.expiryDate',
-                          'Expiration date (MM/YY)',
-                        )}
-                      </label>
-                      <input
-                        type="text"
-                        id="expiryDate"
-                        name="expiryDate"
-                        placeholder="MM/YY"
-                        required
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="cvv"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        {t('payment:card.cvv', 'CVV')}
-                      </label>
-                      <input
-                        type="text"
-                        id="cvv"
-                        name="cvv"
-                        placeholder="123"
-                        required
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
-                      />
-                    </div>
+                {/* Skrill Option */}
+                <div className="rounded-lg border border-gray-200 p-4">
+                  <label className="flex cursor-pointer items-center">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="skrill"
+                      className="h-4 w-4 text-purple-600 focus:ring-purple-500"
+                    />
+                    <span className="ml-3 text-sm font-medium text-gray-900">
+                      {t('payment:method.skrill', 'Skrill')}
+                    </span>
+                  </label>
+                  <div className="mt-3">
+                    <img
+                      src="/payment-icons/skrill.svg"
+                      alt="Skrill"
+                      className="h-6"
+                    />
+                  </div>
+                </div>
+
+                {/* Paysafecard Option */}
+                <div className="rounded-lg border border-gray-200 p-4">
+                  <label className="flex cursor-pointer items-center">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="paysafecard"
+                      className="h-4 w-4 text-purple-600 focus:ring-purple-500"
+                    />
+                    <span className="ml-3 text-sm font-medium text-gray-900">
+                      {t('payment:method.paysafecard', 'Paysafecard')}
+                    </span>
+                  </label>
+                  <div className="mt-3">
+                    <img
+                      src="/payment-icons/paysafecard.svg"
+                      alt="Paysafecard"
+                      className="h-6"
+                    />
                   </div>
                 </div>
               </div>
@@ -475,8 +503,8 @@ function DashboardSupportPaymentContent() {
                   className="w-full rounded-lg bg-gray-950 px-4 py-3 text-base font-medium text-white shadow-md transition-colors hover:bg-gray-800 disabled:opacity-50"
                 >
                   {isLoading
-                    ? t('payment:processing', 'Processing...')
-                    : t('payment:completePayment', 'Complete Payment')}
+                    ? t('payment:redirecting', 'Redirecting to Payment...')
+                    : t('payment:continueToPayment', 'Continue to Payment')}
                 </button>
               </div>
             </div>

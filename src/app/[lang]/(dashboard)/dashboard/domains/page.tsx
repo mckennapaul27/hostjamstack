@@ -2,7 +2,7 @@
 
 import LoadingSpinner from '@/components/dashboard/loading-spinner'
 import type { Domain } from '@/lib/dashboard-api'
-import { getUserDomains } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
 import {
   cn,
   formatCurrency,
@@ -39,86 +39,20 @@ export default function DomainsPage() {
       if (!session?.rawJwt) return
 
       try {
-        const data = await getUserDomains(session.rawJwt)
+        const data = await demoApiProvider.getUserDomains(
+          session.rawJwt,
+          session.user?.email,
+        )
         setDomains(data)
       } catch (error) {
         console.error('Failed to fetch domains:', error)
-        // Set mock data for development
-        setDomains([
-          {
-            _id: '1',
-            domainName: 'example.com',
-            userId: session.user._id,
-            registrationDate: '2024-01-15T00:00:00Z',
-            expirationDate: '2025-01-15T00:00:00Z',
-            autoRenew: true,
-            registrationPeriod: 1,
-            isPremium: false,
-            status: 'active',
-            registrar: 'Name.com',
-            registrarDomainId: 'ext_123',
-            nameservers: ['ns1.hostjamstack.com', 'ns2.hostjamstack.com'],
-            useDefaultNameservers: true,
-            purchasePrice: 12.99,
-            renewalPrice: 14.99,
-            currency: 'EUR',
-            whoisPrivacy: true,
-            transferLock: true,
-            createdAt: '2024-01-15T00:00:00Z',
-            updatedAt: '2024-01-15T00:00:00Z',
-          },
-          {
-            _id: '2',
-            domainName: 'my-portfolio.dev',
-            userId: session.user._id,
-            registrationDate: '2024-03-10T00:00:00Z',
-            expirationDate: '2024-12-25T00:00:00Z',
-            autoRenew: false,
-            registrationPeriod: 1,
-            isPremium: true,
-            status: 'active',
-            registrar: 'Name.com',
-            registrarDomainId: 'ext_456',
-            nameservers: ['ns1.hostjamstack.com', 'ns2.hostjamstack.com'],
-            useDefaultNameservers: true,
-            purchasePrice: 45.99,
-            renewalPrice: 45.99,
-            currency: 'EUR',
-            whoisPrivacy: true,
-            transferLock: false,
-            createdAt: '2024-03-10T00:00:00Z',
-            updatedAt: '2024-03-10T00:00:00Z',
-          },
-          {
-            _id: '3',
-            domainName: 'startup-idea.io',
-            userId: session.user._id,
-            registrationDate: '2024-02-20T00:00:00Z',
-            expirationDate: '2025-02-20T00:00:00Z',
-            autoRenew: true,
-            registrationPeriod: 1,
-            isPremium: false,
-            status: 'pending',
-            registrar: 'Name.com',
-            registrarDomainId: 'ext_789',
-            nameservers: ['ns1.hostjamstack.com', 'ns2.hostjamstack.com'],
-            useDefaultNameservers: true,
-            purchasePrice: 29.99,
-            renewalPrice: 29.99,
-            currency: 'EUR',
-            whoisPrivacy: false,
-            transferLock: true,
-            createdAt: '2024-02-20T00:00:00Z',
-            updatedAt: '2024-02-20T00:00:00Z',
-          },
-        ])
       } finally {
         setLoading(false)
       }
     }
 
     fetchDomains()
-  }, [session?.rawJwt, session?.user._id])
+  }, [session?.rawJwt, session?.user?.email])
 
   const filteredDomains = domains.filter((domain) => {
     const matchesSearch = domain.domainName

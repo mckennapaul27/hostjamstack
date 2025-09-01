@@ -1,7 +1,7 @@
 'use client'
 
 import type { SupportPackage, SupportTicket } from '@/lib/dashboard-api'
-import { getSupportPackages, getSupportTickets } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
 import { cn, formatRelativeTime, getStatusColor } from '@/lib/utils'
 import {
   ChatBubbleLeftRightIcon,
@@ -34,121 +34,27 @@ export default function SupportPage() {
 
       try {
         const [ticketsData, packagesData] = await Promise.all([
-          getSupportTickets(session.rawJwt),
-          getSupportPackages(session.rawJwt),
+          demoApiProvider.getSupportTickets(
+            session.rawJwt,
+            undefined,
+            session.user?.email,
+          ),
+          demoApiProvider.getSupportPackages(
+            session.rawJwt,
+            session.user?.email,
+          ),
         ])
         setTickets(ticketsData)
         setPackages(packagesData)
       } catch (error) {
         console.error('Failed to fetch support data:', error)
-        // Set mock data for development
-        setTickets([
-          {
-            _id: '1',
-            userId: session.user._id,
-            supportPackageId: 'pkg_1',
-            ticketNumber: 'TKT-2024-001',
-            subject: 'Help with SSL configuration',
-            description:
-              "I'm having trouble setting up SSL certificates on my domain example.com",
-            priority: 'normal',
-            status: 'open',
-            category: 'technical',
-            subcategory: 'ssl_certificates',
-            assignedTo: 'support_1',
-            assignedAt: '2024-12-07T09:00:00Z',
-            firstResponseAt: '2024-12-07T09:30:00Z',
-            lastResponseAt: '2024-12-07T11:15:00Z',
-            slaBreached: false,
-            relatedDomains: ['example.com'],
-            relatedHostingPackages: [],
-            createdAt: '2024-12-07T08:45:00Z',
-            updatedAt: '2024-12-07T11:15:00Z',
-          },
-          {
-            _id: '2',
-            userId: session.user._id,
-            supportPackageId: 'pkg_1',
-            ticketNumber: 'TKT-2024-002',
-            subject: 'Domain transfer assistance',
-            description:
-              'I need help transferring my domain from GoDaddy to your service',
-            priority: 'high',
-            status: 'in_progress',
-            category: 'migration',
-            subcategory: 'domain_transfer',
-            assignedTo: 'support_2',
-            assignedAt: '2024-12-06T14:00:00Z',
-            firstResponseAt: '2024-12-06T14:15:00Z',
-            lastResponseAt: '2024-12-06T16:30:00Z',
-            slaBreached: false,
-            relatedDomains: ['my-business.com'],
-            relatedHostingPackages: [],
-            createdAt: '2024-12-06T13:45:00Z',
-            updatedAt: '2024-12-06T16:30:00Z',
-          },
-          {
-            _id: '3',
-            userId: session.user._id,
-            ticketNumber: 'TKT-2024-003',
-            subject: 'Billing question about hosting plan',
-            description:
-              'I have a question about upgrading my hosting plan and the billing cycle',
-            priority: 'low',
-            status: 'resolved',
-            category: 'billing',
-            subcategory: 'plan_upgrade',
-            assignedTo: 'support_3',
-            assignedAt: '2024-12-05T10:00:00Z',
-            firstResponseAt: '2024-12-05T10:30:00Z',
-            lastResponseAt: '2024-12-05T15:45:00Z',
-            resolvedAt: '2024-12-05T15:45:00Z',
-            slaBreached: false,
-            relatedDomains: [],
-            relatedHostingPackages: ['host_1'],
-            createdAt: '2024-12-05T09:30:00Z',
-            updatedAt: '2024-12-05T15:45:00Z',
-          },
-        ])
-
-        setPackages([
-          {
-            _id: 'pkg_1',
-            userId: session.user._id,
-            packageName: 'Priority Support',
-            packageType: 'priority',
-            status: 'active',
-            features: [
-              '24/7 Priority Support',
-              'Phone Support',
-              '1-hour Response Time',
-              'Technical Consultation',
-              'Site Migration Assistance',
-            ],
-            monthlyTickets: 10,
-            responseTimeGuarantee: 60,
-            supportChannels: ['email', 'phone', 'chat'],
-            price: 29.99,
-            currency: 'EUR',
-            billingCycle: 'monthly',
-            nextBillingDate: '2024-12-15T00:00:00Z',
-            autoRenew: true,
-            currentUsage: {
-              ticketsUsed: 3,
-              hoursUsed: 2.5,
-              resetDate: '2025-01-01T00:00:00Z',
-            },
-            createdAt: '2024-01-01T00:00:00Z',
-            updatedAt: '2024-01-01T00:00:00Z',
-          },
-        ])
       } finally {
         setLoading(false)
       }
     }
 
     fetchData()
-  }, [session?.rawJwt, session?.user._id])
+  }, [session?.rawJwt, session?.user?.email])
 
   const filteredTickets = tickets.filter((ticket) => {
     const matchesSearch =

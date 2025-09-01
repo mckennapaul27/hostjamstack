@@ -2,7 +2,7 @@
 
 import LoadingSpinner from '@/components/dashboard/loading-spinner'
 import type { Domain } from '@/lib/dashboard-api'
-import { getDashboardOverview } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
 import { cn, formatDate, getDaysUntilExpiry, getStatusColor } from '@/lib/utils'
 import {
   ChatBubbleLeftRightIcon,
@@ -45,95 +45,20 @@ export default function DashboardPage() {
       if (!session?.rawJwt) return
 
       try {
-        const data = await getDashboardOverview(session.rawJwt)
+        const data = await demoApiProvider.getDashboardOverview(
+          session.rawJwt,
+          session.user?.email,
+        )
         setOverview(data)
       } catch (error) {
         console.error('Failed to fetch dashboard overview:', error)
-        // Set mock data for development
-        setOverview({
-          domains: [
-            {
-              _id: '1',
-              domainName: 'example.com',
-              userId: session.user._id,
-              registrationDate: '2024-01-15T00:00:00Z',
-              expirationDate: '2025-01-15T00:00:00Z',
-              autoRenew: true,
-              registrationPeriod: 1,
-              isPremium: false,
-              status: 'active',
-              registrar: 'Name.com',
-              registrarDomainId: 'ext_123',
-              nameservers: ['ns1.hostjamstack.com', 'ns2.hostjamstack.com'],
-              useDefaultNameservers: true,
-              purchasePrice: 12.99,
-              renewalPrice: 14.99,
-              currency: 'EUR',
-              whoisPrivacy: true,
-              transferLock: true,
-              createdAt: '2024-01-15T00:00:00Z',
-              updatedAt: '2024-01-15T00:00:00Z',
-            },
-            {
-              _id: '2',
-              domainName: 'my-portfolio.dev',
-              userId: session.user._id,
-              registrationDate: '2024-03-10T00:00:00Z',
-              expirationDate: '2024-12-25T00:00:00Z',
-              autoRenew: false,
-              registrationPeriod: 1,
-              isPremium: true,
-              status: 'active',
-              registrar: 'Name.com',
-              registrarDomainId: 'ext_456',
-              nameservers: ['ns1.hostjamstack.com', 'ns2.hostjamstack.com'],
-              useDefaultNameservers: true,
-              purchasePrice: 45.99,
-              renewalPrice: 45.99,
-              currency: 'EUR',
-              whoisPrivacy: true,
-              transferLock: false,
-              createdAt: '2024-03-10T00:00:00Z',
-              updatedAt: '2024-03-10T00:00:00Z',
-            },
-          ],
-          recentActivity: [
-            {
-              type: 'domain',
-              message: 'DNS records updated for example.com',
-              timestamp: '2024-12-07T10:30:00Z',
-            },
-            {
-              type: 'hosting',
-              message: 'New deployment completed for my-portfolio project',
-              timestamp: '2024-12-07T09:15:00Z',
-            },
-            {
-              type: 'support',
-              message: 'Support ticket #TKT-001 has been resolved',
-              timestamp: '2024-12-06T16:45:00Z',
-            },
-          ],
-          alerts: [
-            {
-              type: 'warning',
-              message: 'Domain my-portfolio.dev expires in 18 days',
-              action: 'Renew now',
-            },
-            {
-              type: 'info',
-              message: 'Your hosting package has 85% storage usage',
-              action: 'Upgrade plan',
-            },
-          ],
-        })
       } finally {
         setLoading(false)
       }
     }
 
     fetchOverview()
-  }, [session?.rawJwt, session?.user._id])
+  }, [session?.rawJwt, session?.user?.email])
 
   if (loading) {
     return (

@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/button'
 import { Heading, Subheading } from '@/components/text'
+import { useCountries } from '@/utils/countries'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -20,10 +21,13 @@ interface ProductInfo {
 function PaymentContentInner({ productType }: PaymentContentProps) {
   const [productInfo, setProductInfo] = useState<ProductInfo | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [paymentMethod, setPaymentMethod] = useState('credit-card')
+  const [paymentMethod, setPaymentMethod] = useState('card')
   const { t, i18n } = useTranslation(['common', 'payment'])
   const router = useRouter()
   const searchParams = useSearchParams()
+  const { countries, loading: countriesLoading } = useCountries(
+    i18n.language as any,
+  )
 
   useEffect(() => {
     // Extract product info from URL parameters
@@ -63,11 +67,41 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate payment processing
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    // Collect form data
+    const formData = new FormData(e.target as HTMLFormElement)
+    const billingData = {
+      firstName: formData.get('firstName'),
+      lastName: formData.get('lastName'),
+      company: formData.get('company'),
+      address: formData.get('address'),
+      apartment: formData.get('apartment'),
+      city: formData.get('city'),
+      country: formData.get('country'),
+      state: formData.get('state'),
+      postalCode: formData.get('postalCode'),
+      phone: formData.get('phone'),
+      paymentMethod: formData.get('paymentMethod'),
+    }
 
-    // Redirect to success page
-    router.push(`/${i18n.language}/payment/success`)
+    try {
+      // TODO: Replace with actual payment gateway redirect
+      // For now, redirect to external payment gateway (placeholder)
+      const paymentGatewayUrl = 'https://payment.example.com/checkout'
+
+      // In a real implementation, you would:
+      // 1. Send billing data to your backend
+      // 2. Create a payment session
+      // 3. Redirect to the payment provider
+
+      // Simulate redirect delay
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      // For demo purposes, redirect to success page
+      router.push(`/${i18n.language}/payment/success`)
+    } catch (error) {
+      console.error('Payment initiation failed:', error)
+      setIsLoading(false)
+    }
   }
 
   if (!productInfo) {
@@ -197,15 +231,20 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                         id="country"
                         name="country"
                         required
-                        className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 pr-8 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
+                        disabled={countriesLoading}
+                        className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 pr-8 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none disabled:opacity-50"
                       >
-                        <option value="US">{t('payment:countries.us')}</option>
-                        <option value="GB">{t('payment:countries.gb')}</option>
-                        <option value="DE">{t('payment:countries.de')}</option>
-                        <option value="FR">{t('payment:countries.fr')}</option>
-                        <option value="ES">{t('payment:countries.es')}</option>
-                        <option value="IT">{t('payment:countries.it')}</option>
-                        <option value="PL">{t('payment:countries.pl')}</option>
+                        {countriesLoading ? (
+                          <option value="">
+                            {t('common:loading', 'Loading...')}
+                          </option>
+                        ) : (
+                          countries.map((country) => (
+                            <option key={country.code} value={country.code}>
+                              {country.name}
+                            </option>
+                          ))
+                        )}
                       </select>
                       <ChevronDownIcon className="absolute top-1/2 right-2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                     </div>
@@ -259,91 +298,95 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
               {/* Payment Method */}
               <div>
                 <h2 className="mb-4 text-lg font-semibold text-gray-900">
-                  {t('payment:method.title', 'Payment')}
+                  {t('payment:method.title', 'Payment Method')}
                 </h2>
                 <div className="space-y-4">
-                  <div className="flex items-center">
+                  {/* Credit Card/Debit Card Option */}
+                  <div className="rounded-lg border border-gray-200 p-4">
                     <label className="flex cursor-pointer items-center">
                       <input
                         type="radio"
                         name="paymentMethod"
-                        value="credit-card"
-                        checked={paymentMethod === 'credit-card'}
+                        value="card"
+                        checked={paymentMethod === 'card'}
                         onChange={(e) => setPaymentMethod(e.target.value)}
                         className="h-4 w-4 text-purple-600 focus:ring-purple-500"
                       />
-                      <span className="ml-2 text-sm font-medium text-gray-900">
-                        {t('payment:method.creditCard', 'Credit card')}
+                      <span className="ml-3 text-sm font-medium text-gray-900">
+                        {t('payment:method.card', 'Credit/Debit Card')}
                       </span>
                     </label>
+                    {paymentMethod === 'card' && (
+                      <div className="mt-3 flex items-center space-x-2">
+                        <img
+                          src="/payment-icons/visa.svg"
+                          alt="Visa"
+                          className="h-6"
+                        />
+                        <img
+                          src="/payment-icons/mastercard.svg"
+                          alt="Mastercard"
+                          className="h-6"
+                        />
+                        <img
+                          src="/payment-icons/apple.svg"
+                          alt="Apple Pay"
+                          className="h-6"
+                        />
+                      </div>
+                    )}
                   </div>
 
-                  <div className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="cardNumber"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        {t('payment:card.number')}
-                      </label>
+                  {/* Skrill Option */}
+                  <div className="rounded-lg border border-gray-200 p-4">
+                    <label className="flex cursor-pointer items-center">
                       <input
-                        type="text"
-                        id="cardNumber"
-                        name="cardNumber"
-                        placeholder="1234 5678 9012 3456"
-                        required
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
+                        type="radio"
+                        name="paymentMethod"
+                        value="skrill"
+                        checked={paymentMethod === 'skrill'}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        className="h-4 w-4 text-purple-600 focus:ring-purple-500"
                       />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="nameOnCard"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        {t('payment:card.nameOnCard')}
-                      </label>
-                      <input
-                        type="text"
-                        id="nameOnCard"
-                        name="nameOnCard"
-                        required
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label
-                          htmlFor="expiryDate"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          {t('payment:card.expiryDate')}
-                        </label>
-                        <input
-                          type="text"
-                          id="expiryDate"
-                          name="expiryDate"
-                          placeholder="MM/YY"
-                          required
-                          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
+                      <span className="ml-3 text-sm font-medium text-gray-900">
+                        {t('payment:method.skrill', 'Skrill')}
+                      </span>
+                    </label>
+                    {paymentMethod === 'skrill' && (
+                      <div className="mt-3">
+                        <img
+                          src="/payment-icons/skrill.svg"
+                          alt="Skrill"
+                          className="h-6"
                         />
                       </div>
-                      <div>
-                        <label
-                          htmlFor="cvc"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          {t('payment:card.cvc')}
-                        </label>
-                        <input
-                          type="text"
-                          id="cvc"
-                          name="cvc"
-                          placeholder="123"
-                          required
-                          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none"
+                    )}
+                  </div>
+
+                  {/* Paysafecard Option */}
+                  <div className="rounded-lg border border-gray-200 p-4">
+                    <label className="flex cursor-pointer items-center">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="paysafecard"
+                        checked={paymentMethod === 'paysafecard'}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        className="h-4 w-4 text-purple-600 focus:ring-purple-500"
+                      />
+                      <span className="ml-3 text-sm font-medium text-gray-900">
+                        {t('payment:method.paysafecard', 'Paysafecard')}
+                      </span>
+                    </label>
+                    {paymentMethod === 'paysafecard' && (
+                      <div className="mt-3">
+                        <img
+                          src="/payment-icons/paysafecard.svg"
+                          alt="Paysafecard"
+                          className="h-6"
                         />
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -353,10 +396,10 @@ function PaymentContentInner({ productType }: PaymentContentProps) {
                 {isLoading ? (
                   <div className="flex items-center justify-center gap-2">
                     <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-                    {t('payment:processing', 'Processing Payment...')}
+                    {t('payment:redirecting', 'Redirecting to Payment...')}
                   </div>
                 ) : (
-                  `${t('payment:payButton', 'Pay')} ${productInfo.price}`
+                  `${t('payment:continueToPayment', 'Continue to Payment')} - ${productInfo.price}`
                 )}
               </Button>
 

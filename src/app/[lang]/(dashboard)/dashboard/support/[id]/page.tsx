@@ -1,11 +1,8 @@
 'use client'
 
 import type { SupportMessage, SupportTicket } from '@/lib/dashboard-api'
-import {
-  createSupportMessage,
-  getSupportMessages,
-  getSupportTicket,
-} from '@/lib/dashboard-api'
+import { createSupportMessage } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
 import { cn, formatDate, formatRelativeTime, getStatusColor } from '@/lib/utils'
 import {
   ChatBubbleLeftRightIcon,
@@ -36,109 +33,28 @@ export default function SupportTicketDetailPage() {
 
       try {
         const [ticketData, messagesData] = await Promise.all([
-          getSupportTicket(session.rawJwt, ticketId),
-          getSupportMessages(session.rawJwt, ticketId),
+          demoApiProvider.getSupportTicket(
+            session.rawJwt,
+            ticketId,
+            session.user?.email,
+          ),
+          demoApiProvider.getSupportMessages(
+            session.rawJwt,
+            ticketId,
+            session.user?.email,
+          ),
         ])
         setTicket(ticketData)
         setMessages(messagesData)
       } catch (error) {
         console.error('Failed to fetch ticket data:', error)
-        // Set mock data for development
-        setTicket({
-          _id: ticketId,
-          userId: session.user._id,
-          supportPackageId: 'pkg_1',
-          ticketNumber: 'TKT-2024-001',
-          subject: 'Help with SSL configuration',
-          description:
-            "I'm having trouble setting up SSL certificates on my domain example.com. I followed the documentation but the SSL certificate is not being applied correctly.",
-          priority: 'normal',
-          status: 'in_progress',
-          category: 'technical',
-          subcategory: 'ssl_certificates',
-          assignedTo: 'support_1',
-          assignedAt: '2024-12-07T09:00:00Z',
-          firstResponseAt: '2024-12-07T09:30:00Z',
-          lastResponseAt: '2024-12-07T11:15:00Z',
-          slaBreached: false,
-          relatedDomains: ['example.com'],
-          relatedHostingPackages: [],
-          createdAt: '2024-12-07T08:45:00Z',
-          updatedAt: '2024-12-07T11:15:00Z',
-        })
-
-        setMessages([
-          {
-            _id: 'msg_1',
-            ticketId: ticketId,
-            userId: session.user._id,
-            content:
-              'I\'m having trouble setting up SSL certificates on my domain example.com. I followed the documentation but the SSL certificate is not being applied correctly. When I visit my site, I still see a "Not Secure" warning in the browser.',
-            messageType: 'reply',
-            isFromCustomer: true,
-            attachments: [],
-            createdAt: '2024-12-07T08:45:00Z',
-            updatedAt: '2024-12-07T08:45:00Z',
-          },
-          {
-            _id: 'msg_2',
-            ticketId: ticketId,
-            content:
-              "Thank you for contacting support. I understand you're having issues with SSL certificate configuration on example.com. Let me help you resolve this.\n\nCould you please check the following:\n1. Verify that your domain is pointed to our nameservers\n2. Check if there are any CNAME records that might conflict\n3. Let me know what specific error messages you're seeing\n\nI'll also check the SSL configuration from our end and get back to you shortly.",
-            messageType: 'reply',
-            isFromCustomer: false,
-            attachments: [],
-            staffInfo: {
-              name: 'Sarah Johnson',
-              role: 'Technical Support',
-              department: 'Support',
-            },
-            createdAt: '2024-12-07T09:30:00Z',
-            updatedAt: '2024-12-07T09:30:00Z',
-          },
-          {
-            _id: 'msg_3',
-            ticketId: ticketId,
-            userId: session.user._id,
-            content:
-              'Hi Sarah, thanks for the quick response!\n\n1. Yes, the domain is pointed to your nameservers (ns1.hostjamstack.com and ns2.hostjamstack.com)\n2. I don\'t think there are any conflicting CNAME records, but I\'m not 100% sure how to check this\n3. The browser shows "Your connection to this site is not secure" and the URL shows "Not secure" instead of the lock icon\n\nI\'ve attached a screenshot of what I\'m seeing.',
-            messageType: 'reply',
-            isFromCustomer: true,
-            attachments: [
-              {
-                filename: 'ssl-error-screenshot.png',
-                fileSize: 145623,
-                mimeType: 'image/png',
-                url: 'https://storage.hostjamstack.com/attachments/ssl-error-screenshot.png',
-              },
-            ],
-            createdAt: '2024-12-07T10:15:00Z',
-            updatedAt: '2024-12-07T10:15:00Z',
-          },
-          {
-            _id: 'msg_4',
-            ticketId: ticketId,
-            content:
-              "Perfect, thank you for the details and screenshot. I can see the issue now.\n\nI've checked your domain configuration and found that the SSL certificate was generated but there was a propagation delay. I've manually triggered the SSL renewal process and your certificate should be active within the next 10-15 minutes.\n\nI've also updated your DNS configuration to ensure optimal SSL performance. You should now see:\n\n✅ Valid SSL certificate\n✅ Automatic HTTP to HTTPS redirect\n✅ HSTS headers for enhanced security\n\nPlease wait about 15 minutes and then try accessing your site again. If you're still seeing the error, try clearing your browser cache or testing in an incognito window.\n\nLet me know if you need any further assistance!",
-            messageType: 'reply',
-            isFromCustomer: false,
-            attachments: [],
-            staffInfo: {
-              name: 'Sarah Johnson',
-              role: 'Technical Support',
-              department: 'Support',
-            },
-            createdAt: '2024-12-07T11:15:00Z',
-            updatedAt: '2024-12-07T11:15:00Z',
-          },
-        ])
       } finally {
         setLoading(false)
       }
     }
 
     fetchData()
-  }, [session?.rawJwt, ticketId, session?.user._id])
+  }, [session?.rawJwt, ticketId, session?.user?.email])
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -324,9 +240,10 @@ export default function SupportTicketDetailPage() {
                     </span>
                   </div>
 
-                  <div className="mb-3 text-sm whitespace-pre-wrap text-gray-700">
-                    {message.content}
-                  </div>
+                  <div
+                    className="mb-3 text-sm whitespace-pre-wrap text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: message.content }}
+                  />
 
                   {/* Attachments */}
                   {message.attachments.length > 0 && (

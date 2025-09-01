@@ -2,7 +2,7 @@
 
 import LoadingSpinner from '@/components/dashboard/loading-spinner'
 import type { HostingPackage, HostingProject } from '@/lib/dashboard-api'
-import { getHostingPackages, getHostingProjects } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
 import { cn, formatRelativeTime, getStatusColor } from '@/lib/utils'
 import { Menu, Transition } from '@headlessui/react'
 import {
@@ -36,132 +36,27 @@ export default function HostingPage() {
 
       try {
         const [projectsData, packagesData] = await Promise.all([
-          getHostingProjects(session.rawJwt),
-          getHostingPackages(session.rawJwt),
+          demoApiProvider.getHostingProjects(
+            session.rawJwt,
+            undefined,
+            session.user?.email,
+          ),
+          demoApiProvider.getHostingPackages(
+            session.rawJwt,
+            session.user?.email,
+          ),
         ])
         setProjects(projectsData)
         setPackages(packagesData)
       } catch (error) {
         console.error('Failed to fetch hosting data:', error)
-        // Set mock data for development
-        setProjects([
-          {
-            _id: '1',
-            hostingPackageId: 'pkg_1',
-            userId: session.user._id,
-            projectName: 'my-portfolio',
-            displayName: 'My Portfolio',
-            description: 'Personal portfolio website',
-            repository: {
-              provider: 'github',
-              url: 'https://github.com/user/my-portfolio',
-              branch: 'main',
-              autoDeployEnabled: true,
-            },
-            buildSettings: {
-              buildCommand: 'npm run build',
-              outputDirectory: 'dist',
-              installCommand: 'npm install',
-              nodeVersion: '18.x',
-            },
-            environmentVariables: [
-              {
-                key: 'NODE_ENV',
-                value: 'production',
-                environment: 'production',
-              },
-            ],
-            domains: [
-              {
-                domain: 'my-portfolio.dev',
-                type: 'production',
-                sslEnabled: true,
-                createdAt: '2024-01-15T00:00:00Z',
-              },
-            ],
-            status: 'ready',
-            lastDeployment: 'dep_1',
-            createdAt: '2024-01-15T00:00:00Z',
-            updatedAt: '2024-12-07T10:30:00Z',
-          },
-          {
-            _id: '2',
-            hostingPackageId: 'pkg_1',
-            userId: session.user._id,
-            projectName: 'company-website',
-            displayName: 'Company Website',
-            description: 'Corporate website with CMS',
-            repository: {
-              provider: 'github',
-              url: 'https://github.com/user/company-website',
-              branch: 'main',
-              autoDeployEnabled: true,
-            },
-            buildSettings: {
-              buildCommand: 'npm run build',
-              outputDirectory: 'dist',
-              installCommand: 'npm install',
-              nodeVersion: '18.x',
-            },
-            environmentVariables: [],
-            domains: [
-              {
-                domain: 'example.com',
-                type: 'production',
-                sslEnabled: true,
-                createdAt: '2024-02-01T00:00:00Z',
-              },
-            ],
-            status: 'building',
-            lastDeployment: 'dep_2',
-            createdAt: '2024-02-01T00:00:00Z',
-            updatedAt: '2024-12-07T09:15:00Z',
-          },
-        ])
-
-        setPackages([
-          {
-            _id: 'pkg_1',
-            userId: session.user._id,
-            packageName: 'Starter Plan',
-            packageType: 'shared',
-            status: 'active',
-            storage: 10,
-            bandwidth: 100,
-            databases: 5,
-            emailAccounts: 10,
-            subdomains: 25,
-            features: [
-              'SSL Certificates',
-              'Daily Backups',
-              '24/7 Support',
-              'CDN Included',
-            ],
-            price: 9.99,
-            currency: 'EUR',
-            billingCycle: 'monthly',
-            nextBillingDate: '2024-12-15T00:00:00Z',
-            autoRenew: true,
-            currentUsage: {
-              storage: 2.5,
-              bandwidth: 45,
-              databases: 2,
-              emailAccounts: 3,
-            },
-            serverLocation: 'Frankfurt, Germany',
-            serverIp: '192.168.1.100',
-            controlPanelUrl: 'https://cpanel.hostjamstack.com',
-            createdAt: '2024-01-01T00:00:00Z',
-            updatedAt: '2024-01-01T00:00:00Z',
-          },
-        ])
       } finally {
         setLoading(false)
       }
     }
 
     fetchData()
-  }, [session?.rawJwt, session?.user._id])
+  }, [session?.rawJwt, session?.user?.email])
 
   const filteredProjects =
     selectedPackage === 'all'

@@ -1,7 +1,9 @@
 'use client'
 
 import type { UserProfile } from '@/lib/dashboard-api'
-import { getUserProfile, updateUserProfile } from '@/lib/dashboard-api'
+import { updateUserProfile } from '@/lib/dashboard-api'
+import { demoApiProvider } from '@/lib/demo-api-provider'
+import { useCountries } from '@/utils/countries'
 import {
   BellIcon,
   CreditCardIcon,
@@ -18,51 +20,29 @@ export default function ProfilePage() {
   const [saving, setSaving] = useState(false)
   const [activeTab, setActiveTab] = useState('profile')
 
+  // Get the current locale from profile or default to 'en'
+  const currentLocale = (profile?.profile?.language || 'en') as any
+  const { countries, loading: countriesLoading } = useCountries(currentLocale)
+
   useEffect(() => {
     const fetchProfile = async () => {
       if (!session?.rawJwt) return
 
       try {
-        const data = await getUserProfile(session.rawJwt)
+        const data = await demoApiProvider.getUserProfile(
+          session.rawJwt,
+          session.user?.email,
+        )
         setProfile(data)
       } catch (error) {
         console.error('Failed to fetch profile:', error)
-        // Set mock data for development
-        setProfile({
-          _id: session.user._id,
-          email: session.user.email,
-          firstName: session.user.firstName,
-          lastName: session.user.lastName,
-          emailVerified: true,
-          profile: {
-            company: 'Acme Corp',
-            phone: '+1234567890',
-            timezone: 'UTC',
-            language: 'en',
-          },
-          billing: {
-            defaultPaymentMethod: '',
-            billingAddress: {
-              street: '123 Main St',
-              city: 'New York',
-              state: 'NY',
-              zipCode: '10001',
-              country: 'US',
-            },
-          },
-          isActive: true,
-          role: 'user',
-          twoFactorEnabled: false,
-          createdAt: '2024-01-15T00:00:00Z',
-          updatedAt: '2024-01-15T00:00:00Z',
-        })
       } finally {
         setLoading(false)
       }
     }
 
     fetchProfile()
-  }, [session?.rawJwt, session?.user])
+  }, [session?.rawJwt, session?.user?.email])
 
   const handleProfileUpdate = async (updates: Partial<UserProfile>) => {
     if (!session?.rawJwt || !profile) return
@@ -389,16 +369,18 @@ export default function ProfilePage() {
                     name="country"
                     id="country"
                     defaultValue={profile?.billing.billingAddress.country}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-purple-500"
+                    disabled={countriesLoading}
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-purple-500 disabled:opacity-50"
                   >
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="GB">United Kingdom</option>
-                    <option value="DE">Germany</option>
-                    <option value="FR">France</option>
-                    <option value="ES">Spain</option>
-                    <option value="IT">Italy</option>
-                    <option value="PL">Poland</option>
+                    {countriesLoading ? (
+                      <option value="">Loading...</option>
+                    ) : (
+                      countries.map((country) => (
+                        <option key={country.code} value={country.code}>
+                          {country.name}
+                        </option>
+                      ))
+                    )}
                   </select>
                 </div>
               </div>
